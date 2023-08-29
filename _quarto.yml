@@ -1,24 +1,75 @@
+
 project:
   type: book
   output-dir: docs
+  preview:
+    port: 7771
+    browser: false
+
+lang: ko-KR
 
 book:
   title: "챗GPT 데이터베이스"
-  author: "Norah Jones"
-  date: "2023. 8. 29."
+  subtitle: "범용 데이터 과학 도구"
+  author:
+    - name: "이광춘"
+      affiliations: "비영리법인 한국 R 사용자회"
+  date: last-modified
+  date-format: "YYYY년 MM월 DD일"
   chapters:
+    # - acknowledgments.qmd
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - part: "데이터베이스와 SQL"
+      chapters:
+        - 00-setup.qmd
+        - 01-select.qmd
+        - 02-sort-dup.qmd
+        - 03-filter.qmd
+        - 04-calc.qmd
+        - 05-null.qmd
+        - 06-agg.qmd
+        - 07-join.qmd
+        - 08-create.qmd
+        - 09-prog.qmd
+
+    - part: "GPT SQL"
     - references.qmd
 
-bibliography: references.bib
+
+
+
+
+
+
+
+
+
+
+
+
 
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
+    cover-image: images/cover.png
+    number-depth: 3
+    number-sections: true
+    colorlinks: true
+    # cite-method: biblatex
+    code-overflow: wrap
 
+bibliography: references.bib
+link-citations: false
 
+engine: knitr
 
+knitr:
+  opts_chunk:
+    message: false
+    warning: false
+    collapse: true
+    comment: "#>"
+    R.options:
+      knitr.graphics.auto_pdf: true
+editor_options:
+  chunk_output_type: console
