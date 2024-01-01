@@ -19,20 +19,28 @@ book:
   chapters:
     # - acknowledgments.qmd
     - index.qmd
-    - part: "데이터베이스와 SQL"
+    - intro.qmd
+    - part: "환경설정"
       chapters:
-        - 00-setup.qmd
-        - 01-select.qmd
-        - 02-sort-dup.qmd
-        - 03-filter.qmd
-        - 04-calc.qmd
-        - 05-null.qmd
-        - 06-agg.qmd
-        - 07-join.qmd
-        - 08-create.qmd
-        - 09-prog.qmd
+        - 01-setup.qmd
+        - 02-database.qmd        
 
-    - part: "GPT SQL"
+    - part: "SQL"
+      chapters:
+        - 11-select.qmd
+        - 12-sort-dup.qmd
+        - 13-filter.qmd
+        - 14-calc.qmd
+        - 15-null.qmd
+        - 16-agg.qmd
+        - 17-join.qmd
+        - 18-create.qmd
+        - 19-prog.qmd
+
+    - part: "챗GPT SQL"
+      chapters:
+        - 21-application.qmd
+
     - references.qmd
 
 
