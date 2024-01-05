@@ -9,7 +9,7 @@ project:
 lang: ko-KR
 
 book:
-  title: "챗GPT 데이터베이스"
+  title: "챗GPT SQL"
   subtitle: "범용 데이터 과학 도구"
   author:
     - name: "이광춘"
@@ -29,7 +29,7 @@ book:
       chapters:
         - select.qmd
         - sort-dup.qmd
-        - 13-filter.qmd
+        - filter.qmd
         - 14-calc.qmd
         - 15-null.qmd
         - 16-agg.qmd

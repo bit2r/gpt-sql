@@ -1,68 +1,54 @@
----
-layout: lesson
-root: ../..
----
 
-## 필터링 (Filtering)
+## 필터
 
 
-<div class="objectives" markdown="1">
-#### 목표
 
-*   사용자가 정의한 조건을 만족하는 레코드를 선택하는 쿼리를 작성한다.
-*   쿼리 절이 실행되는 순서를 설명한다.
-</div>
-
-
-데이터베이스의 가장 강력한 기능중 하나는 데이터를 [필터(filter)](../../gloss.html#filter)하는 능력이다.
+데이터베이스의 가장 강력한 기능 중 하나는 데이터를 **필터(filter)**하는 능력이다.
 즉, 특정 기준에 맞는 레코드만 선택한다. 예를 들어, 특정 사이트를 언제 방문했는지 확인한다고 가정하자.
-쿼리에 `where` 절을 사용해서 `Visited` 테이블로부터 레코드를 뽑아낼 수 있다.
+쿼리에 `where` 절을 사용해서 `Visited` 테이블로부터 조건에 맞는 레코드만 뽑아낼 수 있다.
 
 
-<pre class="in"><code>%load_ext sqlitemagic</code></pre>
+```sql
+SELECT * FROM Visited WHERE site = 'DR-1';
+```
+
+| id     | site   | dated      | 
+| ------ | ------ | ---------- |
+| 619    | DR-1   | 1927-02-08 | 
+| 622    | DR-1   | 1927-02-10 | 
+| 844    | DR-1   | 1932-03-22 | 
 
 
-<pre class="in"><code>%%sqlite survey.db
-select * from Visited where site=&#39;DR-1&#39;;</code></pre>
+데이터베이스 관리자는 이 쿼리를 두 단계로 실행한다. 
+먼저, `Visited` 테이블 각 행을 확인하여 `WHERE` 조건을 만족하는 행을 찾는다. 
+그 다음, `SELECT` 키워드 뒤에 따라오는 칼럼 이름을 사용하여 표시할 칼럼을 결정한다.
 
-<div class="out"><table>
-<tr><td>619</td><td>DR-1</td><td>1927-02-08</td></tr>
-<tr><td>622</td><td>DR-1</td><td>1927-02-10</td></tr>
-<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
-</table></div>
+이러한 처리 순서가 의미하는 바는 화면에 표시되지 않는 칼럼 값에 기반해서도 `WHERE` 절을 사용해서 레코드를 필터링할 수 있다는 것이다.
 
+```sql
+SELECT id FROM Visited WHERE site = 'DR-1';
+```
 
-데이터베이스 관리자는 두 단계로 나누어 쿼리를 실행한다.
-첫번째로, `where` 절을 만족하는 것이 있는지 확인하기 위해서 
-`Visited` 테이블의 각 행을 점검한다.
-그리고 나서 무슨 칼럼을 표시할지 결정하기 위해서 `select` 키워드 다음에 있는 칼럼 이름을 사용한다.
+| id     | 
+| ------ |
+| 619    | 
+| 622    | 
+| 844    | 
 
-
-이러한 처리 순서가 의미하는 바는 화면에 표시되지 않는 칼럼 값에 기반해서도 `where` 절을 사용해서 레코드를 필터링할 수 있다는 것이다.
-
-
-<pre class="in"><code>%%sqlite survey.db
-select ident from Visited where site=&#39;DR-1&#39;;</code></pre>
-
-<div class="out"><table>
-<tr><td>619</td></tr>
-<tr><td>622</td></tr>
-<tr><td>844</td></tr>
-</table></div>
+![SQL 필터링 동작방식](img/sql-filter.svg)
 
 
-<img src="img/sql-filter.svg" alt="SQL Filtering in Action" />
+데이터를 필터링하는데 부울 연산자(Boolean Operators)를 사용할 수 있다. 예를 들어, 1930년 이후로 `DR-1` 사이트에서 수집된 모든 정보를 요청할 수도 있다.
 
 
-데이터를 필터링하는데 불 연산자(Boolean Operators)를 사용할 수 있다. 예를 들어, 1930년 이후로 DR-1 사이트에서 수집된 모든 정보를 요청할 수도 있다.
+```sql
+SELECT * FROM Visited WHERE site = 'DR-1' AND dated < '1930-01-01';
+```
 
-
-<pre class="in"><code>%%sqlite survey.db
-select * from Visited where (site=&#39;DR-1&#39;) and (dated&gt;=&#39;1930-00-00&#39;);</code></pre>
-
-<div class="out"><table>
-<tr><td>844</td><td>DR-1</td><td>1932-03-22</td></tr>
-</table></div>
+| id     | site   | dated      | 
+| ------ | ------ | ---------- |
+| 619    | DR-1   | 1927-02-08 | 
+| 622    | DR-1   | 1927-02-10 | 
 
 
 (각 테스트 주위의 괄호는 엄밀히 말해 필요하지는 않지만 쿼리를 좀더 읽기 쉽게 한다.)

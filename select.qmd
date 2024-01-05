@@ -326,9 +326,9 @@ SELECT * FROM Person;
 | danforth  | Frank     | Danforth   | 
 
 
-## 연습문제
+## 연습문제 {.unnumbered}
 
-### `CREATE` 쿼리문
+### `CREATE` 쿼리문 {.unnumbered}
 
 데이터베이스 SQL 문을 작성할 때 테이블 칼럼 자료형(문자, 숫자, 날짜 등)을 파악하고 있어야 버그없는 깔끔한 쿼리를 작성할 수 있다.
 
@@ -348,8 +348,8 @@ CREATE TABLE Visited (id integer, site text, dated text);
 
 출력 결과에서, **Survey** 테이블(3번째 줄)의 **taken** 칼럼이 실수 자료형임을 확인할 수 있다.
 
-### 사이트 이름 선택하기
-
+### 사이트 이름 선택하기 {.unnumbered}
+ 
 `Site` 테이블에서 `name` 칼럼만 선택하는 쿼리를 작성한다.
 
 ```sql
@@ -363,7 +363,7 @@ SELECT name FROM Site;
 | MSK-4     | 
 
 
-### 쿼리 스타일
+### 쿼리 스타일 {.unnumbered}
 
 많은 사람들은 쿼리를 다음과 같이 작성한다.
 
