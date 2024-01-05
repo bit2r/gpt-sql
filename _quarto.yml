@@ -28,7 +28,7 @@ book:
     - part: "SQL"
       chapters:
         - select.qmd
-        - 12-sort-dup.qmd
+        - sort-dup.qmd
         - 13-filter.qmd
         - 14-calc.qmd
         - 15-null.qmd
