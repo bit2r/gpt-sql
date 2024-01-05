@@ -1,198 +1,228 @@
+---
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
 # 정렬과 중복제거
 
+남극 데이터(`survey.db`) 검토를 시작하며, 알고 싶은 것은 다음과 같다.
 
+-   각 사이트에서 어떤 종류의 양(quantities) 측정이 이루어졌는가?
+-   어떤 과학자들이 탐사에서 측정을 수행했는가?
 
-데이터는 종종 잉여가 있어서, 쿼리도 종종 과잉 정보를 반환한다.
-예를 들어, `survey` 테이블에서 측정된 수량 정보를 선택하면, 다음을 얻게된다.
+각 사이트에서 수행된 측정을 결정하기 위해 `Survey` 테이블을 살펴볼 수 있다.
 
+데이터에 종종 중복된 잉여정보가 포함되 있어 쿼리도 종종 과잉 정보를 반환한다.
+예를 들어, `Survey` 테이블에서 측정된 수량 정보를 선택하면 다음을 얻게 된다.
 
-<pre class="in"><code>%load_ext sqlitemagic</code></pre>
+``` sql
+SELECT quant FROM Survey;
+```
 
-
-<pre class="in"><code>%%sqlite survey.db
-select quant from Survey;</code></pre>
-
-<div class="out"><table>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>temp</td></tr>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>temp</td></tr>
-<tr><td>rad</td></tr>
-<tr><td>temp</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>temp</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>rad</td></tr>
-</table></div>
-
+| quant |
+|:-----:|
+|  rad  |
+|  sal  |
+|  rad  |
+|  sal  |
+|  rad  |
+|  sal  |
+| temp  |
+|  rad  |
+|  sal  |
+| temp  |
+|  rad  |
+| temp  |
+|  sal  |
+|  rad  |
+|  sal  |
+| temp  |
+|  sal  |
+|  rad  |
+|  sal  |
+|  sal  |
+|  rad  |
 
 결과를 좀더 읽을 수 있게 만들기 위해서 쿼리에 `distinct` 키워드를 추가해서 중복된 출력을 제거한다.
 
+반환된 결과는 `Survey` 테이블의 다양한 `quant` 유형을 직관적으로 확인하기 어렵게 만든다.
+`DISTINCT` 키워드를 쿼리에 추가함으로써 중복된 출력을 제거하여 결과의 가독성을 높인다.
 
-<pre class="in"><code>%%sqlite survey.db
-select distinct quant from Survey;</code></pre>
+``` sql
+SELECT DISTINCT quant FROM Survey;
+```
 
-<div class="out"><table>
-<tr><td>rad</td></tr>
-<tr><td>sal</td></tr>
-<tr><td>temp</td></tr>
-</table></div>
+| quant |
+|:-----:|
+|  rad  |
+|  sal  |
+| temp  |
 
+`taken` 칼럼에 저장된 방문(visit)에서 `quant` 측정을 확인하려면, 여러 칼럼에 대해 `DISTINCT` 키워드를 사용한다.
+둘 이상의 칼럼을 선택하면, 고유한 값의 *집합*이 반환된다(이 경우에는 두 칼럼을 선택하기 때문에 별개로 구별된 값의 **쌍**이 반환된다.)
 
-하나 이상의 칼럼(예를 들어 survey 사이트 ID와 측정된 수량)을 선택한다면, 별개로 구별된 값의 쌍이 반환된다.
+``` sql
+SELECT DISTINCT taken, quant FROM Survey;
+```
 
-
-<pre class="in"><code>%%sqlite survey.db
-select distinct taken, quant from Survey;</code></pre>
-
-<div class="out"><table>
-<tr><td>619</td><td>rad</td></tr>
-<tr><td>619</td><td>sal</td></tr>
-<tr><td>622</td><td>rad</td></tr>
-<tr><td>622</td><td>sal</td></tr>
-<tr><td>734</td><td>rad</td></tr>
-<tr><td>734</td><td>sal</td></tr>
-<tr><td>734</td><td>temp</td></tr>
-<tr><td>735</td><td>rad</td></tr>
-<tr><td>735</td><td>sal</td></tr>
-<tr><td>735</td><td>temp</td></tr>
-<tr><td>751</td><td>rad</td></tr>
-<tr><td>751</td><td>temp</td></tr>
-<tr><td>751</td><td>sal</td></tr>
-<tr><td>752</td><td>rad</td></tr>
-<tr><td>752</td><td>sal</td></tr>
-<tr><td>752</td><td>temp</td></tr>
-<tr><td>837</td><td>rad</td></tr>
-<tr><td>837</td><td>sal</td></tr>
-<tr><td>844</td><td>rad</td></tr>
-</table></div>
-
+| taken | quant |
+|:-----:|:-----:|
+|  619  |  rad  |
+|  619  |  sal  |
+|  622  |  rad  |
+|  622  |  sal  |
+|  734  |  rad  |
+|  734  |  sal  |
+|  734  | temp  |
+|  735  |  rad  |
+|  735  |  sal  |
+|  735  | temp  |
+|  751  |  rad  |
+|  751  | temp  |
+|  751  |  sal  |
+|  752  |  rad  |
+|  752  |  sal  |
+|  752  | temp  |
+|  837  |  rad  |
+|  837  |  sal  |
+|  844  |  rad  |
 
 양쪽 경우에 설사 데이터베이스 내에서 서로 인접하지 않더라도 모두 중복이 제거된 것을 주목하세요.
-다시 한번, 행은 실제로 정렬되지는 않았다는 것을 기억하세요. 단지 정렬된 것으로 화면에 출력된다.
+다시 한번, 행은 실제로 정렬되지는 않았다는 것을 기억하세요.
+단지 정렬된 것으로 화면에 출력된다.
 
+## 정렬
 
-#### 도전 과제
+두 경우 모두에서, 중복된 값이 제거되었음을 알 수 있다.
+데이터베이스 테이블에서 해당 행들이 인접해 있지 않아도 마찬가지다.
 
-1.  `Site` 테이블에서 별개로 구별되는 날짜를 선택하는 쿼리를 작성하세요.
+다음 과제로 `Person` 테이블에서 탐사에 참여한 과학자들을 식별하는 것이다.
+앞서 언급했듯이, 데이터베이스 레코드는 일반적으로 특정한 순서로 저장되지 않는다.
+쿼리 결과가 반드시 정렬되어 있지 않으며, 설사 정렬되어 있다 해도, 원하는 다른 방식(예를 들어, 개인 이름 대신 식별자 등)으로 정렬 결과를 보고 싶을 때가 많다는 의미기도 하다.
+SQL에서는 쿼리에 `ORDER BY` 절을 추가함으로써 간단하게 구현할 수 있다.
 
+``` sql
+SELECT * FROM Person ORDER BY id;
+```
 
-앞서 언급했듯이, 데이터베이스 레코드는 특별한 순서로 저장되지 않는다. 이것이 의미하는 바는 쿼리 결과가 반드시 정렬되어 있지 않다는 것이다.
-설사 정렬이 되어 있더라도, 종종 다른 방식으로 정렬하고 싶을 것이다.
-예를 들어 과학자의 이름 대신에 프로젝트 이름으로 정렬할 수도 있다. SQL에서 쿼리에 `order by` 절을 추가해서 간단하게 구현할 수 있다.
+|   id    | personal  |  family  |
+|:-------:|:---------:|:--------:|
+| danfort |   Frank   | Danforth |
+|  dyer   |  William  |   Dyer   |
+|  lake   | Anderson  |   Lake   |
+|   pb    |   Frank   | Pabodie  |
+|   roe   | Valentina | Roerich  |
 
+기본설정으로 `ORDER BY`를 사용할 때, 결과는 지정한 칼럼 오름차순으로 정렬된다 (즉, 가장 작은 값에서 가장 큰 값으로).
 
-<pre class="in"><code>%%sqlite survey.db
-select * from Person order by ident;</code></pre>
+`DESC`(내림차순을 의미하는 "descending"의 약자)를 사용하여 반대 순서로 정렬할 수 있다.
 
-<div class="out"><table>
-<tr><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
-<tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
-<tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
-<tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
-<tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
-</table></div>
+::: callout-note
+## 정렬 참고 사항
 
+데이터베이스에 쿼리문을 전송할 때마다 레코드가 일관되게 보이는 이유는 지금까지 아무도 데이터를 변경하거나 수정하지 않았기 때문이다.
+행이 일관성을 갖고 예측 가능한 순서로 반환되기를 원한다면 `ORDER BY`를 사용하는 것을 기억하라.
+:::
 
-디폴트로, 결과는 오름차순으로 정렬되어야 한다. (즉, 가장 적은 값에서 가장 큰 값 순으로 정렬된다.) 
-`desc` ("descending")를 사용해서 역순으로도 정렬할 수 있다.
+(오름차순 정렬을 명확히 하고 싶다면, `DESC` 대신 `ASC`를 사용한다.)
 
+각 사이트 방문 때 어떤 과학자가 양을 측정했는지 살펴보려면, 다시 `Survey` 테이블을 봐야 한다.
+여러 칼럼을 한 번에 정렬할 수도 있다.
+예를 들어, 다음 쿼리는 결과를 먼저 `taken`에 따라 오름차순으로 정렬한 다음, 각각의 동일한 `taken` 값 그룹 내에서 `person`에 따라 내림차순으로 정렬한다.
 
-<pre class="in"><code>%%sqlite survey.db
-select * from person order by ident desc;</code></pre>
+``` sql
+SELECT taken, person, quant FROM Survey ORDER BY taken ASC, person DESC;
+```
 
-<div class="out"><table>
-<tr><td>roe</td><td>Valentina</td><td>Roerich</td></tr>
-<tr><td>pb</td><td>Frank</td><td>Pabodie</td></tr>
-<tr><td>lake</td><td>Anderson</td><td>Lake</td></tr>
-<tr><td>dyer</td><td>William</td><td>Dyer</td></tr>
-<tr><td>danforth</td><td>Frank</td><td>Danforth</td></tr>
-</table></div>
+| taken | person | quant |
+|:-----:|:------:|:-----:|
+|  619  |  dyer  |  rad  |
+|  619  |  dyer  |  sal  |
+|  622  |  dyer  |  rad  |
+|  622  |  dyer  |  sal  |
+|  734  |   pb   |  rad  |
+|  734  |   pb   | temp  |
+|  734  |  lake  |  sal  |
+|  735  |   pb   |  rad  |
+|  735  | -null- |  sal  |
+|  735  | -null- | temp  |
+|  751  |   pb   |  rad  |
+|  751  |   pb   | temp  |
+|  751  |  lake  |  sal  |
+|  752  |  roe   |  sal  |
+|  752  |  lake  |  rad  |
+|  752  |  lake  |  sal  |
+|  752  |  lake  | temp  |
+|  837  |  roe   |  sal  |
+|  837  |  lake  |  rad  |
+|  837  |  lake  |  sal  |
+|  844  |  roe   |  rad  |
 
+다음 쿼리를 통해 어떤 과학자가 방문에 관여했으며, 방문 동안 어떤 측정을 수행했는지를 잘 파악할 수 있다.
 
-(그리고, `desc` 대신에 `asc`를 사용해서 오름차순으로 정렬하고 있다는 것을 명시적으로 표현할 수도 있다.)
+테이블을 살펴보면, 일부 과학자들이 특정 종류의 측정에 전문화되어 있는 것처럼 보인다.
+적절한 칼럼을 선택하고 중복을 제거함으로써 어떤 과학자가 어떤 측정을 수행했는지 선명히 드러난다.
 
-한번에 여러 필드를 정렬할 수도 있다. 예를 들어, 다음 쿼리는 `taken` 필드를 오름차순으로 그리고 동일 그룹의 `taken` 값 내에서는 
-`person`으로 내림차순으로 결과를 정렬한다.
+``` sql
+SELECT DISTINCT quant, person FROM Survey ORDER BY quant ASC;
+```
 
+| quant | person |
+|:-----:|:------:|
+|  rad  |  dyer  |
+|  rad  |   pb   |
+|  rad  |  lake  |
+|  rad  |  roe   |
+|  sal  |  dyer  |
+|  sal  |  lake  |
+|  sal  | -null- |
+|  sal  |  roe   |
+| temp  |   pb   |
+| temp  | -null- |
+| temp  |  lake  |
 
-<pre class="in"><code>%%sqlite survey.db
-select taken, person from Survey order by taken asc, person desc;</code></pre>
+데이터베이스 테이블의 레코드는 본질적으로 정렬되어 있지 않기 때문에, 특정 순서대로 표시하고 싶다면, ORDER BY를 명시적으로 사용하여 그 순서를 지정해야 한다.
+데이터베이스 저장된 값은 고유함이 보장되지 않기 때문에, 중복을 제거하고 싶다면, `DISTINCT`를 사용하여 명시적으로 지정하여 처리해야만 된다.
 
-<div class="out"><table>
-<tr><td>619</td><td>dyer</td></tr>
-<tr><td>619</td><td>dyer</td></tr>
-<tr><td>622</td><td>dyer</td></tr>
-<tr><td>622</td><td>dyer</td></tr>
-<tr><td>734</td><td>pb</td></tr>
-<tr><td>734</td><td>pb</td></tr>
-<tr><td>734</td><td>lake</td></tr>
-<tr><td>735</td><td>pb</td></tr>
-<tr><td>735</td><td>None</td></tr>
-<tr><td>735</td><td>None</td></tr>
-<tr><td>751</td><td>pb</td></tr>
-<tr><td>751</td><td>pb</td></tr>
-<tr><td>751</td><td>lake</td></tr>
-<tr><td>752</td><td>roe</td></tr>
-<tr><td>752</td><td>lake</td></tr>
-<tr><td>752</td><td>lake</td></tr>
-<tr><td>752</td><td>lake</td></tr>
-<tr><td>837</td><td>roe</td></tr>
-<tr><td>837</td><td>lake</td></tr>
-<tr><td>837</td><td>lake</td></tr>
-<tr><td>844</td><td>roe</td></tr>
-</table></div>
+## 연습문제
 
+### 중복 날짜
 
-만약 중복을 제거한다면 이해하기가 더 쉽다.
+`Visited` 테이블에서 별개로 구별되는 고유한(distinct) 날짜들을 선택하는 쿼리를 작성하시오.
 
+다음 쿼리는 `Visited` 테이블에서 중복 없이 모든 고유한 'dated' 칼럼의 값을 반환한다.
 
-<pre class="in"><code>%%sqlite survey.db
-select distinct taken, person from Survey order by taken asc, person desc;</code></pre>
+``` sql
+SELECT DISTINCT dated FROM Visited;
+```
 
-<div class="out"><table>
-<tr><td>619</td><td>dyer</td></tr>
-<tr><td>622</td><td>dyer</td></tr>
-<tr><td>734</td><td>pb</td></tr>
-<tr><td>734</td><td>lake</td></tr>
-<tr><td>735</td><td>pb</td></tr>
-<tr><td>735</td><td>None</td></tr>
-<tr><td>751</td><td>pb</td></tr>
-<tr><td>751</td><td>lake</td></tr>
-<tr><td>752</td><td>roe</td></tr>
-<tr><td>752</td><td>lake</td></tr>
-<tr><td>837</td><td>roe</td></tr>
-<tr><td>837</td><td>lake</td></tr>
-<tr><td>844</td><td>roe</td></tr>
-</table></div>
+|   dated    |
+|:----------:|
+| 1927-02-08 |
+| 1927-02-10 |
+| 1930-01-07 |
+| 1930-01-12 |
+| 1930-02-26 |
+|            |
+| 1932-01-14 |
+| 1932-03-22 |
 
+### 조사자명
 
-#### 도전 과제
+`Person` 테이블에 있는 과학자들 전체 이름을 표시하고, 가족 이름(family name)으로 정렬하는 쿼리문을 작성하시오.
 
-1.  `Visited` 테이블에서 별개로 구별되는 날짜를 반환하는 쿼리를 작성하세요.
+다음 쿼리는 `Person` 테이블에서 개인 이름(personal)과 가족 이름(family)을 결합하여 전체 이름(fullname)을 생성하고, 그 결과를 가족 이름으로 정렬해 반환한다.
+여기서 `||`는 문자열을 연결하는 SQL 연산자다.
 
-2.  성(family name)으로 정렬된 `Person` 테이블에 과학자의 성명 전부를 화면에 출력하는 쿼리를 작성하세요.
+``` sql
+SELECT personal, family FROM Person ORDER BY family ASC;
+```
 
-
-<div class="keypoints" markdown="1">
-#### 주요점
-
-*   데이터베이스 테이블의 레코드는 본질적으로 정렬되지 않는다.
-    만약 특정 순서로 정렬하여 표시하려면, 명시적으로 정렬을 명기하여야 한다.
-*   데이터베이스의 값이 유일(unique)함을 보장하지는 않는다. 
-    만약 중복을 제거하고자 한다면, 명시적으로 유일함을 명기하여야 한다.
-</div>
-
-
-<pre class="in"><code></code></pre>
+| personal  |  family  |
+|:---------:|:--------:|
+|   Frank   | Danforth |
+|  William  |   Dyer   |
+| Anderson  |   Lake   |
+|   Frank   | Pabodie  |
+| Valentina | Roerich  |

@@ -1,12 +1,35 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "챗GPT 데이터베이스",
-    "section": "",
-    "text": "감사의 글\n이 책이 탄생할 수 있도록 도움을 주신 여러분께 깊은 감사의 마음을 표합니다.\n기술적인 부분에서 깊은 통찰력을 제공해주신 한국 R 사용자회 유충현 회장님, 챗GPT가 국내에 소개된 후 가장 먼저 챗GPT를 세밀하게 조명할 수 있도록 교육 기회를 주신 경기도의회 문승호, 이자영, 장한별 의원님, 광명시 박승원 시장님, 김규식 부시장님, 김종업 센터장님, 지방행정연구원 최인수, 전대욱, 김필 박사님, 경기도청 AI빅데이터 산업과 이수재 과장님, 원금동, 최정환, 윤여찬 팀장님, 안양시청 엄순용 주무관님, 순천향대학교 박여진 팀장님, 경기도 인재개발원 박선현 주무관님, 나이스 디앤알 박정우 대표님, 남영민 본부장님, 우민호 실장님, 씨지인사이드 박선춘 대표님, 서울교육청 조희연 교육감님, 양신호 원장님, 김선자 장학관님, 서울고 학부모회 오혜석님, 디플래닉스 김범진 전대표님, 장석호 대표님, 이용빈님, 경기도 경제과학진흥원 임문영 상임이사님, 건국대 미래지식교육원 이영범 원장님께 감사드립니다.\n이 책의 공개와 출판이 가능했던 것은 한국 R 사용자회의 지원 덕분입니다. 행정사법인 광화문 최순영 대표님, 한채민 과장님, 법무법인 평안 김형주 변호사님, 법률사무소 하우림 정병운 변호사님, 홍성학 감사님, 김호성님, 김현철님, 형환희님, 한국텍학회 김강수님, 경상국립대 백원희 교수님께 진심으로 감사드립니다.\n한국 R 사용자회 활동에서 소프트웨어 카펜트리의 영향은 결코 무시할 수 없습니다. 소프트웨어 카펜트리를 설립한 Greg Wilson 박사님, 카펜트리 재단의 Kari Jordan 박사님, AsiaR 커뮤니티를 이끌고 계신 Janani Ravi 박사님, 서울 R 미트업에서 발표해주신 제빈 웨스트 교수님, 그리고 곽수영, 장연훈, 김송규, 나성호, 안영찬, 박남호, 공병규, 김용우, 이현진 교수님께 감사의 말씀을 드립니다.\n지적 자극을 주시고 더 넓은 세상을 보게 해주신 국가교육위원회 이배용 위원장님, 정대화 상임위원님, 김수환 전문위원님, 삼정 KPMG 장지수 부대표님, 박문구 전무님, 가톨릭 의대 문건웅 교수님, 성균관대 최재성 교수님, 국무조정실 장명헌 사무관님, 제주대 안도현 교수님, 명지대 박순만 교수님, 이희정 전대표님, 고길곤 교수님, 이원일 교수님에게 깊은 감사의 말씀을 전합니다.\n공공정책분야의 빅데이터 분석 활성화를 격려해주신 노웅래 의원님, 김병욱 의원님, 성남시의회 조정식 의원님, 환경보전협회 남광우 전 상근부회장님, 공공의창 최정묵 박사님, 조원씨앤아이 김대진 대표님, 그리고 이 책 출판에 관심이 많으신 오마이뉴스의 김지현 기자님, 나눔국민운동본부 위정희 이사님에게 감사의 인사를 전합니다.\n이 책이 출간되는데 있어 이들 모든 분들의 도움 없이는 어려웠을 것입니다. 그동안의 관심과 지원에 깊은 감사를 드리며, 이 책이 데이터 과학의 발전과 독자들에게 도움이 될 수 있기를 바라는 마음으로 마무리하겠습니다.",
+    "objectID": "sort-dup.html#정렬",
+    "href": "sort-dup.html#정렬",
+    "title": "4  정렬과 중복제거",
+    "section": "4.1 정렬",
+    "text": "4.1 정렬\n두 경우 모두에서, 중복된 값이 제거되었음을 알 수 있다. 데이터베이스 테이블에서 해당 행들이 인접해 있지 않아도 마찬가지다.\n다음 과제로 Person 테이블에서 탐사에 참여한 과학자들을 식별하는 것이다. 앞서 언급했듯이, 데이터베이스 레코드는 일반적으로 특정한 순서로 저장되지 않는다. 쿼리 결과가 반드시 정렬되어 있지 않으며, 설사 정렬되어 있다 해도, 원하는 다른 방식(예를 들어, 개인 이름 대신 식별자 등)으로 정렬 결과를 보고 싶을 때가 많다는 의미기도 하다. SQL에서는 쿼리에 ORDER BY 절을 추가함으로써 간단하게 구현할 수 있다.\nSELECT * FROM Person ORDER BY id;\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndanfort\nFrank\nDanforth\n\n\ndyer\nWilliam\nDyer\n\n\nlake\nAnderson\nLake\n\n\npb\nFrank\nPabodie\n\n\nroe\nValentina\nRoerich\n\n\n\n기본설정으로 ORDER BY를 사용할 때, 결과는 지정한 칼럼 오름차순으로 정렬된다 (즉, 가장 작은 값에서 가장 큰 값으로).\nDESC(내림차순을 의미하는 “descending”의 약자)를 사용하여 반대 순서로 정렬할 수 있다.\n\n\n\n\n\n\n정렬 참고 사항\n\n\n\n데이터베이스에 쿼리문을 전송할 때마다 레코드가 일관되게 보이는 이유는 지금까지 아무도 데이터를 변경하거나 수정하지 않았기 때문이다. 행이 일관성을 갖고 예측 가능한 순서로 반환되기를 원한다면 ORDER BY를 사용하는 것을 기억하라.\n\n\n(오름차순 정렬을 명확히 하고 싶다면, DESC 대신 ASC를 사용한다.)\n각 사이트 방문 때 어떤 과학자가 양을 측정했는지 살펴보려면, 다시 Survey 테이블을 봐야 한다. 여러 칼럼을 한 번에 정렬할 수도 있다. 예를 들어, 다음 쿼리는 결과를 먼저 taken에 따라 오름차순으로 정렬한 다음, 각각의 동일한 taken 값 그룹 내에서 person에 따라 내림차순으로 정렬한다.\nSELECT taken, person, quant FROM Survey ORDER BY taken ASC, person DESC;\n\n\n\ntaken\nperson\nquant\n\n\n\n\n619\ndyer\nrad\n\n\n619\ndyer\nsal\n\n\n622\ndyer\nrad\n\n\n622\ndyer\nsal\n\n\n734\npb\nrad\n\n\n734\npb\ntemp\n\n\n734\nlake\nsal\n\n\n735\npb\nrad\n\n\n735\n-null-\nsal\n\n\n735\n-null-\ntemp\n\n\n751\npb\nrad\n\n\n751\npb\ntemp\n\n\n751\nlake\nsal\n\n\n752\nroe\nsal\n\n\n752\nlake\nrad\n\n\n752\nlake\nsal\n\n\n752\nlake\ntemp\n\n\n837\nroe\nsal\n\n\n837\nlake\nrad\n\n\n837\nlake\nsal\n\n\n844\nroe\nrad\n\n\n\n다음 쿼리를 통해 어떤 과학자가 방문에 관여했으며, 방문 동안 어떤 측정을 수행했는지를 잘 파악할 수 있다.\n테이블을 살펴보면, 일부 과학자들이 특정 종류의 측정에 전문화되어 있는 것처럼 보인다. 적절한 칼럼을 선택하고 중복을 제거함으로써 어떤 과학자가 어떤 측정을 수행했는지 선명히 드러난다.\nSELECT DISTINCT quant, person FROM Survey ORDER BY quant ASC;\n\n\n\nquant\nperson\n\n\n\n\nrad\ndyer\n\n\nrad\npb\n\n\nrad\nlake\n\n\nrad\nroe\n\n\nsal\ndyer\n\n\nsal\nlake\n\n\nsal\n-null-\n\n\nsal\nroe\n\n\ntemp\npb\n\n\ntemp\n-null-\n\n\ntemp\nlake\n\n\n\n데이터베이스 테이블의 레코드는 본질적으로 정렬되어 있지 않기 때문에, 특정 순서대로 표시하고 싶다면, ORDER BY를 명시적으로 사용하여 그 순서를 지정해야 한다. 데이터베이스 저장된 값은 고유함이 보장되지 않기 때문에, 중복을 제거하고 싶다면, DISTINCT를 사용하여 명시적으로 지정하여 처리해야만 된다.",
     "crumbs": [
-      "감사의 글"
+      "SQL",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>정렬과 중복제거</span>"
+    ]
+  },
+  {
+    "objectID": "sort-dup.html#연습문제",
+    "href": "sort-dup.html#연습문제",
+    "title": "4  정렬과 중복제거",
+    "section": "4.2 연습문제",
+    "text": "4.2 연습문제\n\n4.2.1 중복 날짜\nVisited 테이블에서 별개로 구별되는 고유한(distinct) 날짜들을 선택하는 쿼리를 작성하시오.\n다음 쿼리는 Visited 테이블에서 중복 없이 모든 고유한 ‘dated’ 칼럼의 값을 반환한다.\nSELECT DISTINCT dated FROM Visited;\n\n\n\ndated\n\n\n\n\n1927-02-08\n\n\n1927-02-10\n\n\n1930-01-07\n\n\n1930-01-12\n\n\n1930-02-26\n\n\n \n\n\n1932-01-14\n\n\n1932-03-22\n\n\n\n\n\n4.2.2 조사자명\nPerson 테이블에 있는 과학자들 전체 이름을 표시하고, 가족 이름(family name)으로 정렬하는 쿼리문을 작성하시오.\n다음 쿼리는 Person 테이블에서 개인 이름(personal)과 가족 이름(family)을 결합하여 전체 이름(fullname)을 생성하고, 그 결과를 가족 이름으로 정렬해 반환한다. 여기서 ||는 문자열을 연결하는 SQL 연산자다.\nSELECT personal, family FROM Person ORDER BY family ASC;\n\n\n\npersonal\nfamily\n\n\n\n\nFrank\nDanforth\n\n\nWilliam\nDyer\n\n\nAnderson\nLake\n\n\nFrank\nPabodie\n\n\nValentina\nRoerich",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>정렬과 중복제거</span>"
+    ]
+  },
+  {
+    "objectID": "sort-dup.html#조사자명",
+    "href": "sort-dup.html#조사자명",
+    "title": "4  정렬과 중복제거",
+    "section": "4.3 조사자명",
+    "text": "4.3 조사자명\nPerson 테이블에 있는 과학자들 전체 이름을 표시하고, 가족 이름(family name)으로 정렬하는 쿼리문을 작성하시오.\n다음 쿼리는 Person 테이블에서 개인 이름(personal)과 가족 이름(family)을 결합하여 전체 이름(fullname)을 생성하고, 그 결과를 가족 이름으로 정렬해 반환한다. 여기서 ||는 문자열을 연결하는 SQL 연산자다.\nSELECT personal, family FROM Person ORDER BY family ASC;\n\n\n\npersonal\nfamily\n\n\n\n\nFrank\nDanforth\n\n\nWilliam\nDyer\n\n\nAnderson\nLake\n\n\nFrank\nPabodie\n\n\nValentina\nRoerich",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>정렬과 중복제거</span>"
     ]
   },
   {
@@ -152,8 +175,8 @@
     ]
   },
   {
-    "objectID": "11-select.html#기본-지식",
-    "href": "11-select.html#기본-지식",
+    "objectID": "select.html#기본-지식",
+    "href": "select.html#기본-지식",
     "title": "3  데이터 선택하기",
     "section": "3.1 기본 지식",
     "text": "3.1 기본 지식\n관계형 데이터베이스(relational database)는 테이블(tables)로 정렬된 정보를 저장하고 다루는 방식이다. 각 테이블은 데이터를 기술하는 필드(fields)로도 알려진 열(column)과 데이터를 담고 있는 레코드(records)로 알려진 행(row)으로 구성된다.\n스프레드쉬트를 사용할 때, 이전 값에 기초하여 새로운 값을 계산할 때 공식을 셀(cell)에 넣어서 구한다. 데이터베이스를 사용할 때는 쿼리(queries, 질의)로 불리는 명령문을 데이터베이스 관리자(database manager)에게 보낸다. 데이터베이스 관리자는 사용자를 대신해서 데이터베이스를 조작하는 프로그램이다. 데이터베이스 관리자는 쿼리가 명기하는 임의의 조회작업과 계산작업을 수행하고 다음 쿼리작업 시작점으로 사용될 수 있는 테이블 형식으로 결과값을 반환한다.\n\n\n\n\n\n\n데이터베이스 상호호환\n\n\n\n모든 데이터베이스 관리자(IBM DB2, PostgreSQL, MySQL, Microsoft Access, SQLite)는 서로 다른 고유한 방식으로 데이터를 저장하기 때문에, 특정 데이터베이스로 저장된 데이터를 다른 곳의 데이터베이스에서 직접적으로 사용할 수는 없다. 하지만, 모든 데이터베이스 관리자에는 데이터를 다양한 형식으로 가져오기(import)와 내보내기(export) 기능을 제공한다. 그래서 한 곳에서 다른 곳으로 정보를 이동하는 것이 가능하다.\n\n\n쿼리는 SQL로 불리는 언어로 작성된다. SQL 은 “Structured Query Language”(구조적 질의 언어)의 약자다. SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다. 본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다.",
@@ -163,8 +186,8 @@
     ]
   },
   {
-    "objectID": "11-select.html#조사-데이터베이스",
-    "href": "11-select.html#조사-데이터베이스",
+    "objectID": "select.html#조사-데이터베이스",
+    "href": "select.html#조사-데이터베이스",
     "title": "3  데이터 선택하기",
     "section": "3.2 조사 데이터베이스",
     "text": "3.2 조사 데이터베이스\nSQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자.\n\n\nPerson: 측정값을 기록한 사람, id는 해당 인물을 위한 고유 식별자를 나타낸다.\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndyer\nWilliam\nDyer\n\n\npb\nFrank\nPabodie\n\n\nlake\nAnderson\nLake\n\n\nroe\nValentina\nRoerich\n\n\ndanforth\nFrank\nDanforth\n\n\n\nSite: 측정값이 기록된 sites의 위치를 나타낸다.\n\n\n\nname\nlat\nlong\n\n\n\n\nDR-1\n-49.85\n-128.57\n\n\nDR-3\n-47.15\n-126.72\n\n\nMSK-4\n-48.87\n-123.4\n\n\n\nVisited: 측정 위지에서 측정값이 기록된 구체적인 위치와 날짜에 대한 특정 식별 id를 나타낸다.\n\n\n\nid\nsite\ndated\n\n\n\n\n619\nDR-1\n1927-02-08\n\n\n622\nDR-1\n1927-02-10\n\n\n734\nDR-3\n1930-01-07\n\n\n735\nDR-3\n1930-01-12\n\n\n751\nDR-3\n1930-02-26\n\n\n752\nDR-3\n-null-\n\n\n837\nMSK-4\n1932-01-14\n\n\n844\nDR-1\n1932-03-22\n\n\n\n\n\nSurvey: 각 측정지의 정확한 위치에서 취한 측정값들로, taken으로 식별된다. quant 필드는 ‘양’을 의미하는 줄임말로 측정 대상을 나타낸다. 값은 각각 ’방사능’, ‘염도’, ’온도’를 의미하는 rad, sal, temp로 표시된다.\n\n\n\ntaken\nperson\nquant\nreading\n\n\n\n\n619\ndyer\nrad\n9.82\n\n\n619\ndyer\nsal\n0.13\n\n\n622\ndyer\nrad\n7.8\n\n\n622\ndyer\nsal\n0.09\n\n\n734\npb\nrad\n8.41\n\n\n734\nlake\nsal\n0.05\n\n\n734\npb\ntemp\n-21.5\n\n\n735\npb\nrad\n7.22\n\n\n735\n-null-\nsal\n0.06\n\n\n735\n-null-\ntemp\n-26.0\n\n\n751\npb\nrad\n4.35\n\n\n751\npb\ntemp\n-18.5\n\n\n751\nlake\nsal\n0.1\n\n\n752\nlake\nrad\n2.19\n\n\n752\nlake\nsal\n0.09\n\n\n752\nlake\ntemp\n-16.0\n\n\n752\nroe\nsal\n41.6\n\n\n837\nlake\nrad\n1.46\n\n\n837\nlake\nsal\n0.21\n\n\n837\nroe\nsal\n22.5\n\n\n844\nroe\nrad\n11.25\n\n\n\n\n\n3개 항목 (Visited 테이블에서 1개, Survey 테이블에서 2개)은 실제 데이터가 아닌 특별한 -null- 항목을 가지고 있다. 왜냐하면 어떠한 값도 담고 있지 않아서 그렇다. 뒤에서 결측값(missing)을 다시 다룰 것이다.",
@@ -174,8 +197,8 @@
     ]
   },
   {
-    "objectID": "11-select.html#데이터-유무-확인하기",
-    "href": "11-select.html#데이터-유무-확인하기",
+    "objectID": "select.html#데이터-유무-확인하기",
+    "href": "select.html#데이터-유무-확인하기",
     "title": "3  데이터 선택하기",
     "section": "3.3 데이터 유무 확인하기",
     "text": "3.3 데이터 유무 확인하기\n쉘 명령으로, survey.db를 저장한 디렉토리로 작업 디렉토리를 변경한다. 만약 바탕화면에 저장했다면 다음 명령어를 사용해야 한다.\n$ cd Desktop\n$ ls | grep survey.db\nsurvey.db\n동일한 출력이 나오면 다음 명령어를 실행할 수 있다.\n$ sqlite3 survey.db\nSQLite version 3.8.8 2015-01-16 12:08:06\nEnter \".help\" for usage hints.\nsqlite&gt;\nSQLite에 survey.db 파일에 있는 데이터베이스를 로드하라는 명령어다.\n유용한 시스템 명령어 목록을 보려면 .help를 입력한다.\nSQLite 시스템 명령어들은 SQL 명령어와 구별하기 위해 .로 시작한다.\n데이터베이스의 테이블 목록을 보려면 .tables를 입력한다.\n.tables\nPerson   Site     Survey   Visited\nIf you had the above tables, you might be curious what information was stored in each table. To get more information on the tables, type .schema to see the SQL statements used to create the tables in the database. The statements will have a list of the columns and the data types each column stores.\n위와 같은 테이블이 있다면 각 테이블에 어떤 정보가 저장되어 있는지 궁금할 수 있다. 테이블에 대한 자세한 정보를 얻으려면 .schema를 입력해 데이터베이스의 테이블을 생성하는 데 사용된 SQL 문을 확인한다. 테이블명과 함께 테이블을 구성하는 칼럼과 칼럼 자료형이 목록으로 나열된다.\n.schema\nCREATE TABLE Person(\n        ident    text,\n        personal text,\n        family   text\n);\nCREATE TABLE Site(\n        name text,\n        lat  real,\n        long real\n);\nCREATE TABLE Visited(\n        ident integer,\n        site  text,\n        dated text\n);\nCREATE TABLE Survey(\n        taken   integer,\n        person  text,\n        quant   text,\n        reading real\n);\n출력 형식은 &lt;columnName dataType&gt;로 되어 있다. 따라서 첫 번째 줄에서 Person 테이블에 세 개의 열이 있음을 알 수 있다:\n\nid는 text 자료형\npersonal는 text 자료형\nfamily는 text 자료형\n\n참고: 사용 가능한 자료형은 데이터베이스 관리자에 따라 다르며, 지원되는 자료형은 온라인에서 검색할 수 있다.\nSQLite 설정을 변경하여 출력 가독성을 높일 수 있다. 먼저, 왼쪽 정렬 출력 모드를 설정한다. 그런 다음 칼럼명 헤더 표시를 켠다.\n.mode column\n.header on\n또 다른 방법으로, .sqliterc 파일을 생성하여 설정사항을 자동으로 가져올 수 있다. 위의 명령어를 추가하고 SQLite를 다시 연다. 윈도우에서는 C:\\Users\\&lt;yourusername&gt;.sqliterc를 사용한다. 리눅스와 맥(Linux/MacOS)에서는 /Users/&lt;yourusername&gt;/.sqliterc를 사용한다.\nSQLite를 종료하고 쉘 명령줄로 돌아가려면, .quit 또는 .exit를 사용하여 종료한다.",
@@ -185,8 +208,8 @@
     ]
   },
   {
-    "objectID": "11-select.html#sql-헬로월드",
-    "href": "11-select.html#sql-헬로월드",
+    "objectID": "select.html#sql-헬로월드",
+    "href": "select.html#sql-헬로월드",
     "title": "3  데이터 선택하기",
     "section": "3.4 SQL 헬로월드",
     "text": "3.4 SQL 헬로월드\n과학자의 이름을 화면에 표시하는 SQL 쿼리문을 작성해 보자. SQL SELECT 문을 사용해서 원하는 칼럼의 이름과 해당 열이 있는 테이블을 지정한다. 쿼리와 결과는 다음과 같다.\nSELECT family, personal FROM Person;\n\n\n\nfamily\npersonal\n\n\n\n\nDyer\nWilliam\n\n\nPabodie\nFrank\n\n\nLake\nAnderson\n\n\nRoerich\nValentina\n\n\nDanforth\nFrank\n\n\n\n쿼리 끝에 세미콜론(;)은 쿼리가 완료되어 실행준비 되었다고 데이터베이스 관리자에게 알린다. 명령문과 칼럼 이름을 모두 소문자로 작성했고, 테이블 이름은 타이틀 케이스(Title Case, 단어의 첫 문자를 대문자로 표기)로 작성했다. 하지만 그렇게 반듯이 할 필요는 없다. 아래 예제가 보여주듯이, SQL은 대소문자 구분하지 않는다(case insensitive).\nSeLeCt FaMiLy, PeRsOnAl FrOm PeRsOn;\n\n\n\nfamily\npersonal\n\n\n\n\nDyer\nWilliam\n\n\nPabodie\nFrank\n\n\nLake\nAnderson\n\n\nRoerich\nValentina\n\n\nDanforth\nFrank\n\n\n\n모두 소문자, 타이틀 케이스, 소문자 낙타 대문자(Lower Camel Case)를 선택하든지 관계없이 일관성을 가져라. 무작위 대문자를 추가적으로 인지하지 않더라고 복잡한 쿼리는 충분히 그 자체로 이해하기 어렵다.\nSQL의 대소문자 구분이 없는 특성을 이용해 SQL 문의 다른 부분을 구분할 수 있다. 일반적인 SQL 문 작성사례로, SQL 키워드(예: SELECT, FROM)는 대문자로, 테이블 이름은 타이틀 케이스로, 필드 이름은 소문자로 사용하는 관례를 따른다. 어떤 대소문자 사용 관례를 선택하든 일관성을 유지하는 것이 중요하다.\n\n\n\n\n\n\n노트\n\n\n\nSQL 구문의 한 측면인 ; (세미콜론)으로 명령을 마치지 않는 것은 초보자와 전문가 모두에게 혼란을 주고 있다. ;를 추가하지 않고 명령어를 입력한 후 엔터를 누르면 다음과 같은 상황이 발생한다.\nSELECT id FROM Person\n...&gt;\n...&gt;\n이것은 SQL이 추가 명령을 기다리거나 ;를 통해 SQL에게 명령을 마칠 준비가 되었음을 알리는 프롬프트다. 이 문제는 쉽게 해결할 수 있다! 단순히 ;를 입력하고 엔터를 누르면 된다!\n\n\n쿼리로 돌아가서, 데이터베이스 테이블의 행과 칼럼이 특정한 순서로 저장되어 있지 않는다는 것을 이해하는 것이 중요하다. 어떤 순서로 항상 표시되지만, 다양한 방식으로 출력을 제어할 수 있다. 예를 들어, 쿼리를 다음과 같이 작성해서 칼럼을 교환할 수 있다.\nSELECT personal, family FROM Person;\n\n\n\npersonal\nfamily\n\n\n\n\nWilliam\nDyer\n\n\nFrank\nPabodie\n\n\nAnderson\nLake\n\n\nValentina\nRoerich\n\n\nFrank\nDanforth\n\n\n\n혹은 심지어 칼럼을 반복할 수도 있다.\nSELECT id, id, id FROM Person;\n\n\n\nid\nid\nid\n\n\n\n\ndyer\ndyer\ndyer\n\n\npb\npb\npb\n\n\nlake\nlake\nlake\n\n\nroe\nroe\nroe\n\n\ndanforth\ndanforth\ndanforth\n\n\n\n손쉬운 방법으로, *을 사용해서 테이블의 모든 칼럼을 선택할 수도 있다.\nSELECT * FROM Person;\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndyer\nWilliam\nDyer\n\n\npb\nFrank\nPabodie\n\n\nlake\nAnderson\nLake\n\n\nroe\nValentina\nRoerich\n\n\ndanforth\nFrank\nDanforth",
@@ -196,25 +219,14 @@
     ]
   },
   {
-    "objectID": "11-select.html#연습문제",
-    "href": "11-select.html#연습문제",
+    "objectID": "select.html#연습문제",
+    "href": "select.html#연습문제",
     "title": "3  데이터 선택하기",
     "section": "3.5 연습문제",
     "text": "3.5 연습문제\n\n3.5.1 CREATE 쿼리문\n데이터베이스 SQL 문을 작성할 때 테이블 칼럼 자료형(문자, 숫자, 날짜 등)을 파악하고 있어야 버그없는 깔끔한 쿼리를 작성할 수 있다.\n정수를 포함하는 칼럼을 확인하기 위해, .schema 명령어를 사용하면 확인할 수 있다.\n.schema\nCREATE TABLE Person (id text, personal text, family text);\nCREATE TABLE Site (name text, lat real, long real);\nCREATE TABLE Survey (taken integer, person text, quant text, reading real);\nCREATE TABLE Visited (id integer, site text, dated text);\n출력 결과에서, Survey 테이블(3번째 줄)의 taken 칼럼이 실수 자료형임을 확인할 수 있다.\n\n\n3.5.2 사이트 이름 선택하기\nSite 테이블에서 name 칼럼만 선택하는 쿼리를 작성한다.\nSELECT name FROM Site;\n\n\n\nname\n\n\n\n\nDR-1\n\n\nDR-3\n\n\nMSK-4\n\n\n\n\n\n3.5.3 쿼리 스타일\n많은 사람들은 쿼리를 다음과 같이 작성한다.\nSELECT personal, family FROM person;\n또는,\nselect Personal, Family from PERSON;\n어떤 스타일이 가장 읽기 쉽다고 생각하며, 그 이유는 무엇인가?\n읽기 쉬운 쿼리 스타일은 주로 개인적인 선호와 경험에 따라 달라질 수 있다. 그러나 일반적으로 첫 번째 예시처럼 SQL 키워드를 대문자로, 테이블과 칼럼 이름을 소문자로 쓰는 방식이 가독성이 높다고 여겨진다. SQL 키워드와 테이블, 칼럼 이름 사이의 명확한 구분을 제공하여 쿼리를 더 쉽게 읽고 이해할 수 있게 한다. 반면, 두 번째 예시처럼 모든 것을 소문자나 대문자로 쓰는 방식은 이러한 구분을 덜 명확하게 만들어 쿼리의 구조를 파악하기 어렵게 할 수 있다.",
     "crumbs": [
       "SQL",
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
-    ]
-  },
-  {
-    "objectID": "12-sort-dup.html",
-    "href": "12-sort-dup.html",
-    "title": "4  정렬과 중복제거",
-    "section": "",
-    "text": "데이터는 종종 잉여가 있어서, 쿼리도 종종 과잉 정보를 반환한다. 예를 들어, survey 테이블에서 측정된 수량 정보를 선택하면, 다음을 얻게된다.\n%load_ext sqlitemagic\n%%sqlite survey.db\nselect quant from Survey;\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\nrad\n\n\n\n\ntemp\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\n결과를 좀더 읽을 수 있게 만들기 위해서 쿼리에 distinct 키워드를 추가해서 중복된 출력을 제거한다.\n%%sqlite survey.db\nselect distinct quant from Survey;\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\n하나 이상의 칼럼(예를 들어 survey 사이트 ID와 측정된 수량)을 선택한다면, 별개로 구별된 값의 쌍이 반환된다.\n%%sqlite survey.db\nselect distinct taken, quant from Survey;\n\n\n\n\n619\n\n\nrad\n\n\n\n\n619\n\n\nsal\n\n\n\n\n622\n\n\nrad\n\n\n\n\n622\n\n\nsal\n\n\n\n\n734\n\n\nrad\n\n\n\n\n734\n\n\nsal\n\n\n\n\n734\n\n\ntemp\n\n\n\n\n735\n\n\nrad\n\n\n\n\n735\n\n\nsal\n\n\n\n\n735\n\n\ntemp\n\n\n\n\n751\n\n\nrad\n\n\n\n\n751\n\n\ntemp\n\n\n\n\n751\n\n\nsal\n\n\n\n\n752\n\n\nrad\n\n\n\n\n752\n\n\nsal\n\n\n\n\n752\n\n\ntemp\n\n\n\n\n837\n\n\nrad\n\n\n\n\n837\n\n\nsal\n\n\n\n\n844\n\n\nrad\n\n\n\n\n양쪽 경우에 설사 데이터베이스 내에서 서로 인접하지 않더라도 모두 중복이 제거된 것을 주목하세요. 다시 한번, 행은 실제로 정렬되지는 않았다는 것을 기억하세요. 단지 정렬된 것으로 화면에 출력된다.\n\n도전 과제\n\nSite 테이블에서 별개로 구별되는 날짜를 선택하는 쿼리를 작성하세요.\n\n앞서 언급했듯이, 데이터베이스 레코드는 특별한 순서로 저장되지 않는다. 이것이 의미하는 바는 쿼리 결과가 반드시 정렬되어 있지 않다는 것이다. 설사 정렬이 되어 있더라도, 종종 다른 방식으로 정렬하고 싶을 것이다. 예를 들어 과학자의 이름 대신에 프로젝트 이름으로 정렬할 수도 있다. SQL에서 쿼리에 order by 절을 추가해서 간단하게 구현할 수 있다.\n%%sqlite survey.db\nselect * from Person order by ident;\n\n\n\n\ndanforth\n\n\nFrank\n\n\nDanforth\n\n\n\n\ndyer\n\n\nWilliam\n\n\nDyer\n\n\n\n\nlake\n\n\nAnderson\n\n\nLake\n\n\n\n\npb\n\n\nFrank\n\n\nPabodie\n\n\n\n\nroe\n\n\nValentina\n\n\nRoerich\n\n\n\n\n디폴트로, 결과는 오름차순으로 정렬되어야 한다. (즉, 가장 적은 값에서 가장 큰 값 순으로 정렬된다.) desc (“descending”)를 사용해서 역순으로도 정렬할 수 있다.\n%%sqlite survey.db\nselect * from person order by ident desc;\n\n\n\n\nroe\n\n\nValentina\n\n\nRoerich\n\n\n\n\npb\n\n\nFrank\n\n\nPabodie\n\n\n\n\nlake\n\n\nAnderson\n\n\nLake\n\n\n\n\ndyer\n\n\nWilliam\n\n\nDyer\n\n\n\n\ndanforth\n\n\nFrank\n\n\nDanforth\n\n\n\n\n(그리고, desc 대신에 asc를 사용해서 오름차순으로 정렬하고 있다는 것을 명시적으로 표현할 수도 있다.)\n한번에 여러 필드를 정렬할 수도 있다. 예를 들어, 다음 쿼리는 taken 필드를 오름차순으로 그리고 동일 그룹의 taken 값 내에서는 person으로 내림차순으로 결과를 정렬한다.\n%%sqlite survey.db\nselect taken, person from Survey order by taken asc, person desc;\n\n\n\n\n619\n\n\ndyer\n\n\n\n\n619\n\n\ndyer\n\n\n\n\n622\n\n\ndyer\n\n\n\n\n622\n\n\ndyer\n\n\n\n\n734\n\n\npb\n\n\n\n\n734\n\n\npb\n\n\n\n\n734\n\n\nlake\n\n\n\n\n735\n\n\npb\n\n\n\n\n735\n\n\nNone\n\n\n\n\n735\n\n\nNone\n\n\n\n\n751\n\n\npb\n\n\n\n\n751\n\n\npb\n\n\n\n\n751\n\n\nlake\n\n\n\n\n752\n\n\nroe\n\n\n\n\n752\n\n\nlake\n\n\n\n\n752\n\n\nlake\n\n\n\n\n752\n\n\nlake\n\n\n\n\n837\n\n\nroe\n\n\n\n\n837\n\n\nlake\n\n\n\n\n837\n\n\nlake\n\n\n\n\n844\n\n\nroe\n\n\n\n\n만약 중복을 제거한다면 이해하기가 더 쉽다.\n%%sqlite survey.db\nselect distinct taken, person from Survey order by taken asc, person desc;\n\n\n\n\n619\n\n\ndyer\n\n\n\n\n622\n\n\ndyer\n\n\n\n\n734\n\n\npb\n\n\n\n\n734\n\n\nlake\n\n\n\n\n735\n\n\npb\n\n\n\n\n735\n\n\nNone\n\n\n\n\n751\n\n\npb\n\n\n\n\n751\n\n\nlake\n\n\n\n\n752\n\n\nroe\n\n\n\n\n752\n\n\nlake\n\n\n\n\n837\n\n\nroe\n\n\n\n\n837\n\n\nlake\n\n\n\n\n844\n\n\nroe\n\n\n\n\n\n\n도전 과제\n\nVisited 테이블에서 별개로 구별되는 날짜를 반환하는 쿼리를 작성하세요.\n성(family name)으로 정렬된 Person 테이블에 과학자의 성명 전부를 화면에 출력하는 쿼리를 작성하세요.\n\n\n\n주요점\n\n데이터베이스 테이블의 레코드는 본질적으로 정렬되지 않는다. 만약 특정 순서로 정렬하여 표시하려면, 명시적으로 정렬을 명기하여야 한다.\n데이터베이스의 값이 유일(unique)함을 보장하지는 않는다. 만약 중복을 제거하고자 한다면, 명시적으로 유일함을 명기하여야 한다.",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>정렬하고 중복 제거하기</span>"
     ]
   },
   {
@@ -314,72 +326,6 @@
     "crumbs": [
       "챗GPT SQL",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>DVD 대여 데이터베이스</span>"
-    ]
-  },
-  {
-    "objectID": "select.html#기본-지식",
-    "href": "select.html#기본-지식",
-    "title": "3  데이터 선택하기",
-    "section": "3.1 기본 지식",
-    "text": "3.1 기본 지식\n관계형 데이터베이스(relational database)는 테이블(tables)로 정렬된 정보를 저장하고 다루는 방식이다. 각 테이블은 데이터를 기술하는 필드(fields)로도 알려진 열(column)과 데이터를 담고 있는 레코드(records)로 알려진 행(row)으로 구성된다.\n스프레드쉬트를 사용할 때, 이전 값에 기초하여 새로운 값을 계산할 때 공식을 셀(cell)에 넣어서 구한다. 데이터베이스를 사용할 때는 쿼리(queries, 질의)로 불리는 명령문을 데이터베이스 관리자(database manager)에게 보낸다. 데이터베이스 관리자는 사용자를 대신해서 데이터베이스를 조작하는 프로그램이다. 데이터베이스 관리자는 쿼리가 명기하는 임의의 조회작업과 계산작업을 수행하고 다음 쿼리작업 시작점으로 사용될 수 있는 테이블 형식으로 결과값을 반환한다.\n\n\n\n\n\n\n데이터베이스 상호호환\n\n\n\n모든 데이터베이스 관리자(IBM DB2, PostgreSQL, MySQL, Microsoft Access, SQLite)는 서로 다른 고유한 방식으로 데이터를 저장하기 때문에, 특정 데이터베이스로 저장된 데이터를 다른 곳의 데이터베이스에서 직접적으로 사용할 수는 없다. 하지만, 모든 데이터베이스 관리자에는 데이터를 다양한 형식으로 가져오기(import)와 내보내기(export) 기능을 제공한다. 그래서 한 곳에서 다른 곳으로 정보를 이동하는 것이 가능하다.\n\n\n쿼리는 SQL로 불리는 언어로 작성된다. SQL 은 “Structured Query Language”(구조적 질의 언어)의 약자다. SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다. 본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다.",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
-    ]
-  },
-  {
-    "objectID": "select.html#조사-데이터베이스",
-    "href": "select.html#조사-데이터베이스",
-    "title": "3  데이터 선택하기",
-    "section": "3.2 조사 데이터베이스",
-    "text": "3.2 조사 데이터베이스\nSQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자.\n\n\nPerson: 측정값을 기록한 사람, id는 해당 인물을 위한 고유 식별자를 나타낸다.\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndyer\nWilliam\nDyer\n\n\npb\nFrank\nPabodie\n\n\nlake\nAnderson\nLake\n\n\nroe\nValentina\nRoerich\n\n\ndanforth\nFrank\nDanforth\n\n\n\nSite: 측정값이 기록된 sites의 위치를 나타낸다.\n\n\n\nname\nlat\nlong\n\n\n\n\nDR-1\n-49.85\n-128.57\n\n\nDR-3\n-47.15\n-126.72\n\n\nMSK-4\n-48.87\n-123.4\n\n\n\nVisited: 측정 위지에서 측정값이 기록된 구체적인 위치와 날짜에 대한 특정 식별 id를 나타낸다.\n\n\n\nid\nsite\ndated\n\n\n\n\n619\nDR-1\n1927-02-08\n\n\n622\nDR-1\n1927-02-10\n\n\n734\nDR-3\n1930-01-07\n\n\n735\nDR-3\n1930-01-12\n\n\n751\nDR-3\n1930-02-26\n\n\n752\nDR-3\n-null-\n\n\n837\nMSK-4\n1932-01-14\n\n\n844\nDR-1\n1932-03-22\n\n\n\n\n\nSurvey: 각 측정지의 정확한 위치에서 취한 측정값들로, taken으로 식별된다. quant 필드는 ‘양’을 의미하는 줄임말로 측정 대상을 나타낸다. 값은 각각 ’방사능’, ‘염도’, ’온도’를 의미하는 rad, sal, temp로 표시된다.\n\n\n\ntaken\nperson\nquant\nreading\n\n\n\n\n619\ndyer\nrad\n9.82\n\n\n619\ndyer\nsal\n0.13\n\n\n622\ndyer\nrad\n7.8\n\n\n622\ndyer\nsal\n0.09\n\n\n734\npb\nrad\n8.41\n\n\n734\nlake\nsal\n0.05\n\n\n734\npb\ntemp\n-21.5\n\n\n735\npb\nrad\n7.22\n\n\n735\n-null-\nsal\n0.06\n\n\n735\n-null-\ntemp\n-26.0\n\n\n751\npb\nrad\n4.35\n\n\n751\npb\ntemp\n-18.5\n\n\n751\nlake\nsal\n0.1\n\n\n752\nlake\nrad\n2.19\n\n\n752\nlake\nsal\n0.09\n\n\n752\nlake\ntemp\n-16.0\n\n\n752\nroe\nsal\n41.6\n\n\n837\nlake\nrad\n1.46\n\n\n837\nlake\nsal\n0.21\n\n\n837\nroe\nsal\n22.5\n\n\n844\nroe\nrad\n11.25\n\n\n\n\n\n3개 항목 (Visited 테이블에서 1개, Survey 테이블에서 2개)은 실제 데이터가 아닌 특별한 -null- 항목을 가지고 있다. 왜냐하면 어떠한 값도 담고 있지 않아서 그렇다. 뒤에서 결측값(missing)을 다시 다룰 것이다.",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
-    ]
-  },
-  {
-    "objectID": "select.html#데이터-유무-확인하기",
-    "href": "select.html#데이터-유무-확인하기",
-    "title": "3  데이터 선택하기",
-    "section": "3.3 데이터 유무 확인하기",
-    "text": "3.3 데이터 유무 확인하기\n쉘 명령으로, survey.db를 저장한 디렉토리로 작업 디렉토리를 변경한다. 만약 바탕화면에 저장했다면 다음 명령어를 사용해야 한다.\n$ cd Desktop\n$ ls | grep survey.db\nsurvey.db\n동일한 출력이 나오면 다음 명령어를 실행할 수 있다.\n$ sqlite3 survey.db\nSQLite version 3.8.8 2015-01-16 12:08:06\nEnter \".help\" for usage hints.\nsqlite&gt;\nSQLite에 survey.db 파일에 있는 데이터베이스를 로드하라는 명령어다.\n유용한 시스템 명령어 목록을 보려면 .help를 입력한다.\nSQLite 시스템 명령어들은 SQL 명령어와 구별하기 위해 .로 시작한다.\n데이터베이스의 테이블 목록을 보려면 .tables를 입력한다.\n.tables\nPerson   Site     Survey   Visited\nIf you had the above tables, you might be curious what information was stored in each table. To get more information on the tables, type .schema to see the SQL statements used to create the tables in the database. The statements will have a list of the columns and the data types each column stores.\n위와 같은 테이블이 있다면 각 테이블에 어떤 정보가 저장되어 있는지 궁금할 수 있다. 테이블에 대한 자세한 정보를 얻으려면 .schema를 입력해 데이터베이스의 테이블을 생성하는 데 사용된 SQL 문을 확인한다. 테이블명과 함께 테이블을 구성하는 칼럼과 칼럼 자료형이 목록으로 나열된다.\n.schema\nCREATE TABLE Person(\n        ident    text,\n        personal text,\n        family   text\n);\nCREATE TABLE Site(\n        name text,\n        lat  real,\n        long real\n);\nCREATE TABLE Visited(\n        ident integer,\n        site  text,\n        dated text\n);\nCREATE TABLE Survey(\n        taken   integer,\n        person  text,\n        quant   text,\n        reading real\n);\n출력 형식은 &lt;columnName dataType&gt;로 되어 있다. 따라서 첫 번째 줄에서 Person 테이블에 세 개의 열이 있음을 알 수 있다:\n\nid는 text 자료형\npersonal는 text 자료형\nfamily는 text 자료형\n\n참고: 사용 가능한 자료형은 데이터베이스 관리자에 따라 다르며, 지원되는 자료형은 온라인에서 검색할 수 있다.\nSQLite 설정을 변경하여 출력 가독성을 높일 수 있다. 먼저, 왼쪽 정렬 출력 모드를 설정한다. 그런 다음 칼럼명 헤더 표시를 켠다.\n.mode column\n.header on\n또 다른 방법으로, .sqliterc 파일을 생성하여 설정사항을 자동으로 가져올 수 있다. 위의 명령어를 추가하고 SQLite를 다시 연다. 윈도우에서는 C:\\Users\\&lt;yourusername&gt;.sqliterc를 사용한다. 리눅스와 맥(Linux/MacOS)에서는 /Users/&lt;yourusername&gt;/.sqliterc를 사용한다.\nSQLite를 종료하고 쉘 명령줄로 돌아가려면, .quit 또는 .exit를 사용하여 종료한다.",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
-    ]
-  },
-  {
-    "objectID": "select.html#sql-헬로월드",
-    "href": "select.html#sql-헬로월드",
-    "title": "3  데이터 선택하기",
-    "section": "3.4 SQL 헬로월드",
-    "text": "3.4 SQL 헬로월드\n과학자의 이름을 화면에 표시하는 SQL 쿼리문을 작성해 보자. SQL SELECT 문을 사용해서 원하는 칼럼의 이름과 해당 열이 있는 테이블을 지정한다. 쿼리와 결과는 다음과 같다.\nSELECT family, personal FROM Person;\n\n\n\nfamily\npersonal\n\n\n\n\nDyer\nWilliam\n\n\nPabodie\nFrank\n\n\nLake\nAnderson\n\n\nRoerich\nValentina\n\n\nDanforth\nFrank\n\n\n\n쿼리 끝에 세미콜론(;)은 쿼리가 완료되어 실행준비 되었다고 데이터베이스 관리자에게 알린다. 명령문과 칼럼 이름을 모두 소문자로 작성했고, 테이블 이름은 타이틀 케이스(Title Case, 단어의 첫 문자를 대문자로 표기)로 작성했다. 하지만 그렇게 반듯이 할 필요는 없다. 아래 예제가 보여주듯이, SQL은 대소문자 구분하지 않는다(case insensitive).\nSeLeCt FaMiLy, PeRsOnAl FrOm PeRsOn;\n\n\n\nfamily\npersonal\n\n\n\n\nDyer\nWilliam\n\n\nPabodie\nFrank\n\n\nLake\nAnderson\n\n\nRoerich\nValentina\n\n\nDanforth\nFrank\n\n\n\n모두 소문자, 타이틀 케이스, 소문자 낙타 대문자(Lower Camel Case)를 선택하든지 관계없이 일관성을 가져라. 무작위 대문자를 추가적으로 인지하지 않더라고 복잡한 쿼리는 충분히 그 자체로 이해하기 어렵다.\nSQL의 대소문자 구분이 없는 특성을 이용해 SQL 문의 다른 부분을 구분할 수 있다. 일반적인 SQL 문 작성사례로, SQL 키워드(예: SELECT, FROM)는 대문자로, 테이블 이름은 타이틀 케이스로, 필드 이름은 소문자로 사용하는 관례를 따른다. 어떤 대소문자 사용 관례를 선택하든 일관성을 유지하는 것이 중요하다.\n\n\n\n\n\n\n노트\n\n\n\nSQL 구문의 한 측면인 ; (세미콜론)으로 명령을 마치지 않는 것은 초보자와 전문가 모두에게 혼란을 주고 있다. ;를 추가하지 않고 명령어를 입력한 후 엔터를 누르면 다음과 같은 상황이 발생한다.\nSELECT id FROM Person\n...&gt;\n...&gt;\n이것은 SQL이 추가 명령을 기다리거나 ;를 통해 SQL에게 명령을 마칠 준비가 되었음을 알리는 프롬프트다. 이 문제는 쉽게 해결할 수 있다! 단순히 ;를 입력하고 엔터를 누르면 된다!\n\n\n쿼리로 돌아가서, 데이터베이스 테이블의 행과 칼럼이 특정한 순서로 저장되어 있지 않는다는 것을 이해하는 것이 중요하다. 어떤 순서로 항상 표시되지만, 다양한 방식으로 출력을 제어할 수 있다. 예를 들어, 쿼리를 다음과 같이 작성해서 칼럼을 교환할 수 있다.\nSELECT personal, family FROM Person;\n\n\n\npersonal\nfamily\n\n\n\n\nWilliam\nDyer\n\n\nFrank\nPabodie\n\n\nAnderson\nLake\n\n\nValentina\nRoerich\n\n\nFrank\nDanforth\n\n\n\n혹은 심지어 칼럼을 반복할 수도 있다.\nSELECT id, id, id FROM Person;\n\n\n\nid\nid\nid\n\n\n\n\ndyer\ndyer\ndyer\n\n\npb\npb\npb\n\n\nlake\nlake\nlake\n\n\nroe\nroe\nroe\n\n\ndanforth\ndanforth\ndanforth\n\n\n\n손쉬운 방법으로, *을 사용해서 테이블의 모든 칼럼을 선택할 수도 있다.\nSELECT * FROM Person;\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndyer\nWilliam\nDyer\n\n\npb\nFrank\nPabodie\n\n\nlake\nAnderson\nLake\n\n\nroe\nValentina\nRoerich\n\n\ndanforth\nFrank\nDanforth",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
-    ]
-  },
-  {
-    "objectID": "select.html#연습문제",
-    "href": "select.html#연습문제",
-    "title": "3  데이터 선택하기",
-    "section": "3.5 연습문제",
-    "text": "3.5 연습문제\n\n3.5.1 CREATE 쿼리문\n데이터베이스 SQL 문을 작성할 때 테이블 칼럼 자료형(문자, 숫자, 날짜 등)을 파악하고 있어야 버그없는 깔끔한 쿼리를 작성할 수 있다.\n정수를 포함하는 칼럼을 확인하기 위해, .schema 명령어를 사용하면 확인할 수 있다.\n.schema\nCREATE TABLE Person (id text, personal text, family text);\nCREATE TABLE Site (name text, lat real, long real);\nCREATE TABLE Survey (taken integer, person text, quant text, reading real);\nCREATE TABLE Visited (id integer, site text, dated text);\n출력 결과에서, Survey 테이블(3번째 줄)의 taken 칼럼이 실수 자료형임을 확인할 수 있다.\n\n\n3.5.2 사이트 이름 선택하기\nSite 테이블에서 name 칼럼만 선택하는 쿼리를 작성한다.\nSELECT name FROM Site;\n\n\n\nname\n\n\n\n\nDR-1\n\n\nDR-3\n\n\nMSK-4\n\n\n\n\n\n3.5.3 쿼리 스타일\n많은 사람들은 쿼리를 다음과 같이 작성한다.\nSELECT personal, family FROM person;\n또는,\nselect Personal, Family from PERSON;\n어떤 스타일이 가장 읽기 쉽다고 생각하며, 그 이유는 무엇인가?\n읽기 쉬운 쿼리 스타일은 주로 개인적인 선호와 경험에 따라 달라질 수 있다. 그러나 일반적으로 첫 번째 예시처럼 SQL 키워드를 대문자로, 테이블과 칼럼 이름을 소문자로 쓰는 방식이 가독성이 높다고 여겨진다. SQL 키워드와 테이블, 칼럼 이름 사이의 명확한 구분을 제공하여 쿼리를 더 쉽게 읽고 이해할 수 있게 한다. 반면, 두 번째 예시처럼 모든 것을 소문자나 대문자로 쓰는 방식은 이러한 구분을 덜 명확하게 만들어 쿼리의 구조를 파악하기 어렵게 할 수 있다.",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
-    ]
-  },
-  {
-    "objectID": "sort-dup.html",
-    "href": "sort-dup.html",
-    "title": "4  정렬과 중복제거",
-    "section": "",
-    "text": "데이터는 종종 잉여가 있어서, 쿼리도 종종 과잉 정보를 반환한다. 예를 들어, survey 테이블에서 측정된 수량 정보를 선택하면, 다음을 얻게된다.\n%load_ext sqlitemagic\n%%sqlite survey.db\nselect quant from Survey;\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\nrad\n\n\n\n\ntemp\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\nsal\n\n\n\n\nrad\n\n\n\n\n결과를 좀더 읽을 수 있게 만들기 위해서 쿼리에 distinct 키워드를 추가해서 중복된 출력을 제거한다.\n%%sqlite survey.db\nselect distinct quant from Survey;\n\n\n\n\nrad\n\n\n\n\nsal\n\n\n\n\ntemp\n\n\n\n\n하나 이상의 칼럼(예를 들어 survey 사이트 ID와 측정된 수량)을 선택한다면, 별개로 구별된 값의 쌍이 반환된다.\n%%sqlite survey.db\nselect distinct taken, quant from Survey;\n\n\n\n\n619\n\n\nrad\n\n\n\n\n619\n\n\nsal\n\n\n\n\n622\n\n\nrad\n\n\n\n\n622\n\n\nsal\n\n\n\n\n734\n\n\nrad\n\n\n\n\n734\n\n\nsal\n\n\n\n\n734\n\n\ntemp\n\n\n\n\n735\n\n\nrad\n\n\n\n\n735\n\n\nsal\n\n\n\n\n735\n\n\ntemp\n\n\n\n\n751\n\n\nrad\n\n\n\n\n751\n\n\ntemp\n\n\n\n\n751\n\n\nsal\n\n\n\n\n752\n\n\nrad\n\n\n\n\n752\n\n\nsal\n\n\n\n\n752\n\n\ntemp\n\n\n\n\n837\n\n\nrad\n\n\n\n\n837\n\n\nsal\n\n\n\n\n844\n\n\nrad\n\n\n\n\n양쪽 경우에 설사 데이터베이스 내에서 서로 인접하지 않더라도 모두 중복이 제거된 것을 주목하세요. 다시 한번, 행은 실제로 정렬되지는 않았다는 것을 기억하세요. 단지 정렬된 것으로 화면에 출력된다.\n\n도전 과제\n\nSite 테이블에서 별개로 구별되는 날짜를 선택하는 쿼리를 작성하세요.\n\n앞서 언급했듯이, 데이터베이스 레코드는 특별한 순서로 저장되지 않는다. 이것이 의미하는 바는 쿼리 결과가 반드시 정렬되어 있지 않다는 것이다. 설사 정렬이 되어 있더라도, 종종 다른 방식으로 정렬하고 싶을 것이다. 예를 들어 과학자의 이름 대신에 프로젝트 이름으로 정렬할 수도 있다. SQL에서 쿼리에 order by 절을 추가해서 간단하게 구현할 수 있다.\n%%sqlite survey.db\nselect * from Person order by ident;\n\n\n\n\ndanforth\n\n\nFrank\n\n\nDanforth\n\n\n\n\ndyer\n\n\nWilliam\n\n\nDyer\n\n\n\n\nlake\n\n\nAnderson\n\n\nLake\n\n\n\n\npb\n\n\nFrank\n\n\nPabodie\n\n\n\n\nroe\n\n\nValentina\n\n\nRoerich\n\n\n\n\n디폴트로, 결과는 오름차순으로 정렬되어야 한다. (즉, 가장 적은 값에서 가장 큰 값 순으로 정렬된다.) desc (“descending”)를 사용해서 역순으로도 정렬할 수 있다.\n%%sqlite survey.db\nselect * from person order by ident desc;\n\n\n\n\nroe\n\n\nValentina\n\n\nRoerich\n\n\n\n\npb\n\n\nFrank\n\n\nPabodie\n\n\n\n\nlake\n\n\nAnderson\n\n\nLake\n\n\n\n\ndyer\n\n\nWilliam\n\n\nDyer\n\n\n\n\ndanforth\n\n\nFrank\n\n\nDanforth\n\n\n\n\n(그리고, desc 대신에 asc를 사용해서 오름차순으로 정렬하고 있다는 것을 명시적으로 표현할 수도 있다.)\n한번에 여러 필드를 정렬할 수도 있다. 예를 들어, 다음 쿼리는 taken 필드를 오름차순으로 그리고 동일 그룹의 taken 값 내에서는 person으로 내림차순으로 결과를 정렬한다.\n%%sqlite survey.db\nselect taken, person from Survey order by taken asc, person desc;\n\n\n\n\n619\n\n\ndyer\n\n\n\n\n619\n\n\ndyer\n\n\n\n\n622\n\n\ndyer\n\n\n\n\n622\n\n\ndyer\n\n\n\n\n734\n\n\npb\n\n\n\n\n734\n\n\npb\n\n\n\n\n734\n\n\nlake\n\n\n\n\n735\n\n\npb\n\n\n\n\n735\n\n\nNone\n\n\n\n\n735\n\n\nNone\n\n\n\n\n751\n\n\npb\n\n\n\n\n751\n\n\npb\n\n\n\n\n751\n\n\nlake\n\n\n\n\n752\n\n\nroe\n\n\n\n\n752\n\n\nlake\n\n\n\n\n752\n\n\nlake\n\n\n\n\n752\n\n\nlake\n\n\n\n\n837\n\n\nroe\n\n\n\n\n837\n\n\nlake\n\n\n\n\n837\n\n\nlake\n\n\n\n\n844\n\n\nroe\n\n\n\n\n만약 중복을 제거한다면 이해하기가 더 쉽다.\n%%sqlite survey.db\nselect distinct taken, person from Survey order by taken asc, person desc;\n\n\n\n\n619\n\n\ndyer\n\n\n\n\n622\n\n\ndyer\n\n\n\n\n734\n\n\npb\n\n\n\n\n734\n\n\nlake\n\n\n\n\n735\n\n\npb\n\n\n\n\n735\n\n\nNone\n\n\n\n\n751\n\n\npb\n\n\n\n\n751\n\n\nlake\n\n\n\n\n752\n\n\nroe\n\n\n\n\n752\n\n\nlake\n\n\n\n\n837\n\n\nroe\n\n\n\n\n837\n\n\nlake\n\n\n\n\n844\n\n\nroe\n\n\n\n\n\n\n도전 과제\n\nVisited 테이블에서 별개로 구별되는 날짜를 반환하는 쿼리를 작성하세요.\n성(family name)으로 정렬된 Person 테이블에 과학자의 성명 전부를 화면에 출력하는 쿼리를 작성하세요.\n\n\n\n주요점\n\n데이터베이스 테이블의 레코드는 본질적으로 정렬되지 않는다. 만약 특정 순서로 정렬하여 표시하려면, 명시적으로 정렬을 명기하여야 한다.\n데이터베이스의 값이 유일(unique)함을 보장하지는 않는다. 만약 중복을 제거하고자 한다면, 명시적으로 유일함을 명기하여야 한다.",
-    "crumbs": [
-      "SQL",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>정렬과 중복제거</span>"
     ]
   }
 ]
