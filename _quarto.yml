@@ -22,8 +22,8 @@ book:
     - intro.qmd
     - part: "환경설정"
       chapters:
-        - 01-setup.qmd
-        - 02-database.qmd        
+        - setup.qmd
+        - database.qmd        
 
     - part: "SQL"
       chapters:
