@@ -34,7 +34,7 @@ Oracle, MySQL, Microsoft SQL Server, PostgreSQL, SQLite이 여기에 포함된�
 처음 데이터베이스를 볼때 드는 생각은 마치 엑셀같은 다중 시트를 지닌 스프레드쉬트(spreadsheet)같다는 것이다.
 데이터베이스에서 주요 데이터 구조물은 테이블(tables), 행(rows), and 열(columns)이 된다. 
 
-![데이터베이스 개념](assets/images/db-concept.png){width=100%}
+![데이터베이스 개념](images/db-concept.png){width=100%}
 
 관계형 데이터베이스의 기술적인 면을 설명하면 테이블, 행, 열의 개념은 
 **관계(relation)**, **튜플(tuple)**, **속성(attribute)** 각각 형식적으로 매칭된다.
@@ -100,7 +100,7 @@ dbDisconnect(conn)
 파일을 다루는 **파일 핸들(file handle)**처럼 데이터베이스에 저장된 파일에 연산을 수행하기 위해서 **커서(cursor)**를 사용한다.
 `cursor()`를 호출하는 것은 개념적으로 텍스트 파일을 다룰 때 `readLines()`을 호출하는 것과 개념적으로 매우 유사하다.
 
-![데이터베이스 커서](assets/images/db-cursor.png){width=100%}
+![데이터베이스 커서](images/db-cursor.png){width=100%}
 
 커서가 생성되면, `dbGetQuery()` 함수를 사용하여 데이터베이스 콘텐츠에 명령어 실행을 할 수 있다.
 
@@ -340,7 +340,7 @@ SQLite에 `name`에 동일한 값을 가진 두 행을 삽입하지 못하게 �
 모델링하여 한 사람이 다른 사람을 "팔로우(follow)"하고 이것을 (a) 사람이
 연결되어 있고, (b) 관계을 방향성이 나타나도록 숫자를 짝지어 표현한다.
 
-![트위터 관계 데이터베이스 모델링](assets/images/twitter.png){width=100%}
+![트위터 관계 데이터베이스 모델링](images/twitter.png){width=100%}
 
 ### 테이블 제약사항 {#db-constraints}
 
