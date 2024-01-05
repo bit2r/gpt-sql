@@ -315,5 +315,60 @@
       "챗GPT SQL",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>DVD 대여 데이터베이스</span>"
     ]
+  },
+  {
+    "objectID": "select.html#기본-지식",
+    "href": "select.html#기본-지식",
+    "title": "3  데이터 선택하기",
+    "section": "3.1 기본 지식",
+    "text": "3.1 기본 지식\n관계형 데이터베이스(relational database)는 테이블(tables)로 정렬된 정보를 저장하고 다루는 방식이다. 각 테이블은 데이터를 기술하는 필드(fields)로도 알려진 열(column)과 데이터를 담고 있는 레코드(records)로 알려진 행(row)으로 구성된다.\n스프레드쉬트를 사용할 때, 이전 값에 기초하여 새로운 값을 계산할 때 공식을 셀(cell)에 넣어서 구한다. 데이터베이스를 사용할 때는 쿼리(queries, 질의)로 불리는 명령문을 데이터베이스 관리자(database manager)에게 보낸다. 데이터베이스 관리자는 사용자를 대신해서 데이터베이스를 조작하는 프로그램이다. 데이터베이스 관리자는 쿼리가 명기하는 임의의 조회작업과 계산작업을 수행하고 다음 쿼리작업 시작점으로 사용될 수 있는 테이블 형식으로 결과값을 반환한다.\n\n\n\n\n\n\n데이터베이스 상호호환\n\n\n\n모든 데이터베이스 관리자(IBM DB2, PostgreSQL, MySQL, Microsoft Access, SQLite)는 서로 다른 고유한 방식으로 데이터를 저장하기 때문에, 특정 데이터베이스로 저장된 데이터를 다른 곳의 데이터베이스에서 직접적으로 사용할 수는 없다. 하지만, 모든 데이터베이스 관리자에는 데이터를 다양한 형식으로 가져오기(import)와 내보내기(export) 기능을 제공한다. 그래서 한 곳에서 다른 곳으로 정보를 이동하는 것이 가능하다.\n\n\n쿼리는 SQL로 불리는 언어로 작성된다. SQL 은 “Structured Query Language”(구조적 질의 언어)의 약자다. SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다. 본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다.",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
+    ]
+  },
+  {
+    "objectID": "select.html#조사-데이터베이스",
+    "href": "select.html#조사-데이터베이스",
+    "title": "3  데이터 선택하기",
+    "section": "3.2 조사 데이터베이스",
+    "text": "3.2 조사 데이터베이스\nSQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자.\n\n\nPerson: 측정값을 기록한 사람, id는 해당 인물을 위한 고유 식별자를 나타낸다.\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndyer\nWilliam\nDyer\n\n\npb\nFrank\nPabodie\n\n\nlake\nAnderson\nLake\n\n\nroe\nValentina\nRoerich\n\n\ndanforth\nFrank\nDanforth\n\n\n\nSite: 측정값이 기록된 sites의 위치를 나타낸다.\n\n\n\nname\nlat\nlong\n\n\n\n\nDR-1\n-49.85\n-128.57\n\n\nDR-3\n-47.15\n-126.72\n\n\nMSK-4\n-48.87\n-123.4\n\n\n\nVisited: 측정 위지에서 측정값이 기록된 구체적인 위치와 날짜에 대한 특정 식별 id를 나타낸다.\n\n\n\nid\nsite\ndated\n\n\n\n\n619\nDR-1\n1927-02-08\n\n\n622\nDR-1\n1927-02-10\n\n\n734\nDR-3\n1930-01-07\n\n\n735\nDR-3\n1930-01-12\n\n\n751\nDR-3\n1930-02-26\n\n\n752\nDR-3\n-null-\n\n\n837\nMSK-4\n1932-01-14\n\n\n844\nDR-1\n1932-03-22\n\n\n\n\n\nSurvey: 각 측정지의 정확한 위치에서 취한 측정값들로, taken으로 식별된다. quant 필드는 ‘양’을 의미하는 줄임말로 측정 대상을 나타낸다. 값은 각각 ’방사능’, ‘염도’, ’온도’를 의미하는 rad, sal, temp로 표시된다.\n\n\n\ntaken\nperson\nquant\nreading\n\n\n\n\n619\ndyer\nrad\n9.82\n\n\n619\ndyer\nsal\n0.13\n\n\n622\ndyer\nrad\n7.8\n\n\n622\ndyer\nsal\n0.09\n\n\n734\npb\nrad\n8.41\n\n\n734\nlake\nsal\n0.05\n\n\n734\npb\ntemp\n-21.5\n\n\n735\npb\nrad\n7.22\n\n\n735\n-null-\nsal\n0.06\n\n\n735\n-null-\ntemp\n-26.0\n\n\n751\npb\nrad\n4.35\n\n\n751\npb\ntemp\n-18.5\n\n\n751\nlake\nsal\n0.1\n\n\n752\nlake\nrad\n2.19\n\n\n752\nlake\nsal\n0.09\n\n\n752\nlake\ntemp\n-16.0\n\n\n752\nroe\nsal\n41.6\n\n\n837\nlake\nrad\n1.46\n\n\n837\nlake\nsal\n0.21\n\n\n837\nroe\nsal\n22.5\n\n\n844\nroe\nrad\n11.25\n\n\n\n\n\n3개 항목 (Visited 테이블에서 1개, Survey 테이블에서 2개)은 실제 데이터가 아닌 특별한 -null- 항목을 가지고 있다. 왜냐하면 어떠한 값도 담고 있지 않아서 그렇다. 뒤에서 결측값(missing)을 다시 다룰 것이다.",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
+    ]
+  },
+  {
+    "objectID": "select.html#데이터-유무-확인하기",
+    "href": "select.html#데이터-유무-확인하기",
+    "title": "3  데이터 선택하기",
+    "section": "3.3 데이터 유무 확인하기",
+    "text": "3.3 데이터 유무 확인하기\n쉘 명령으로, survey.db를 저장한 디렉토리로 작업 디렉토리를 변경한다. 만약 바탕화면에 저장했다면 다음 명령어를 사용해야 한다.\n$ cd Desktop\n$ ls | grep survey.db\nsurvey.db\n동일한 출력이 나오면 다음 명령어를 실행할 수 있다.\n$ sqlite3 survey.db\nSQLite version 3.8.8 2015-01-16 12:08:06\nEnter \".help\" for usage hints.\nsqlite&gt;\nSQLite에 survey.db 파일에 있는 데이터베이스를 로드하라는 명령어다.\n유용한 시스템 명령어 목록을 보려면 .help를 입력한다.\nSQLite 시스템 명령어들은 SQL 명령어와 구별하기 위해 .로 시작한다.\n데이터베이스의 테이블 목록을 보려면 .tables를 입력한다.\n.tables\nPerson   Site     Survey   Visited\nIf you had the above tables, you might be curious what information was stored in each table. To get more information on the tables, type .schema to see the SQL statements used to create the tables in the database. The statements will have a list of the columns and the data types each column stores.\n위와 같은 테이블이 있다면 각 테이블에 어떤 정보가 저장되어 있는지 궁금할 수 있다. 테이블에 대한 자세한 정보를 얻으려면 .schema를 입력해 데이터베이스의 테이블을 생성하는 데 사용된 SQL 문을 확인한다. 테이블명과 함께 테이블을 구성하는 칼럼과 칼럼 자료형이 목록으로 나열된다.\n.schema\nCREATE TABLE Person(\n        ident    text,\n        personal text,\n        family   text\n);\nCREATE TABLE Site(\n        name text,\n        lat  real,\n        long real\n);\nCREATE TABLE Visited(\n        ident integer,\n        site  text,\n        dated text\n);\nCREATE TABLE Survey(\n        taken   integer,\n        person  text,\n        quant   text,\n        reading real\n);\n출력 형식은 &lt;columnName dataType&gt;로 되어 있다. 따라서 첫 번째 줄에서 Person 테이블에 세 개의 열이 있음을 알 수 있다:\n\nid는 text 자료형\npersonal는 text 자료형\nfamily는 text 자료형\n\n참고: 사용 가능한 자료형은 데이터베이스 관리자에 따라 다르며, 지원되는 자료형은 온라인에서 검색할 수 있다.\nSQLite 설정을 변경하여 출력 가독성을 높일 수 있다. 먼저, 왼쪽 정렬 출력 모드를 설정한다. 그런 다음 칼럼명 헤더 표시를 켠다.\n.mode column\n.header on\n또 다른 방법으로, .sqliterc 파일을 생성하여 설정사항을 자동으로 가져올 수 있다. 위의 명령어를 추가하고 SQLite를 다시 연다. 윈도우에서는 C:\\Users\\&lt;yourusername&gt;.sqliterc를 사용한다. 리눅스와 맥(Linux/MacOS)에서는 /Users/&lt;yourusername&gt;/.sqliterc를 사용한다.\nSQLite를 종료하고 쉘 명령줄로 돌아가려면, .quit 또는 .exit를 사용하여 종료한다.",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
+    ]
+  },
+  {
+    "objectID": "select.html#sql-헬로월드",
+    "href": "select.html#sql-헬로월드",
+    "title": "3  데이터 선택하기",
+    "section": "3.4 SQL 헬로월드",
+    "text": "3.4 SQL 헬로월드\n과학자의 이름을 화면에 표시하는 SQL 쿼리문을 작성해 보자. SQL SELECT 문을 사용해서 원하는 칼럼의 이름과 해당 열이 있는 테이블을 지정한다. 쿼리와 결과는 다음과 같다.\nSELECT family, personal FROM Person;\n\n\n\nfamily\npersonal\n\n\n\n\nDyer\nWilliam\n\n\nPabodie\nFrank\n\n\nLake\nAnderson\n\n\nRoerich\nValentina\n\n\nDanforth\nFrank\n\n\n\n쿼리 끝에 세미콜론(;)은 쿼리가 완료되어 실행준비 되었다고 데이터베이스 관리자에게 알린다. 명령문과 칼럼 이름을 모두 소문자로 작성했고, 테이블 이름은 타이틀 케이스(Title Case, 단어의 첫 문자를 대문자로 표기)로 작성했다. 하지만 그렇게 반듯이 할 필요는 없다. 아래 예제가 보여주듯이, SQL은 대소문자 구분하지 않는다(case insensitive).\nSeLeCt FaMiLy, PeRsOnAl FrOm PeRsOn;\n\n\n\nfamily\npersonal\n\n\n\n\nDyer\nWilliam\n\n\nPabodie\nFrank\n\n\nLake\nAnderson\n\n\nRoerich\nValentina\n\n\nDanforth\nFrank\n\n\n\n모두 소문자, 타이틀 케이스, 소문자 낙타 대문자(Lower Camel Case)를 선택하든지 관계없이 일관성을 가져라. 무작위 대문자를 추가적으로 인지하지 않더라고 복잡한 쿼리는 충분히 그 자체로 이해하기 어렵다.\nSQL의 대소문자 구분이 없는 특성을 이용해 SQL 문의 다른 부분을 구분할 수 있다. 일반적인 SQL 문 작성사례로, SQL 키워드(예: SELECT, FROM)는 대문자로, 테이블 이름은 타이틀 케이스로, 필드 이름은 소문자로 사용하는 관례를 따른다. 어떤 대소문자 사용 관례를 선택하든 일관성을 유지하는 것이 중요하다.\n\n\n\n\n\n\n노트\n\n\n\nSQL 구문의 한 측면인 ; (세미콜론)으로 명령을 마치지 않는 것은 초보자와 전문가 모두에게 혼란을 주고 있다. ;를 추가하지 않고 명령어를 입력한 후 엔터를 누르면 다음과 같은 상황이 발생한다.\nSELECT id FROM Person\n...&gt;\n...&gt;\n이것은 SQL이 추가 명령을 기다리거나 ;를 통해 SQL에게 명령을 마칠 준비가 되었음을 알리는 프롬프트다. 이 문제는 쉽게 해결할 수 있다! 단순히 ;를 입력하고 엔터를 누르면 된다!\n\n\n쿼리로 돌아가서, 데이터베이스 테이블의 행과 칼럼이 특정한 순서로 저장되어 있지 않는다는 것을 이해하는 것이 중요하다. 어떤 순서로 항상 표시되지만, 다양한 방식으로 출력을 제어할 수 있다. 예를 들어, 쿼리를 다음과 같이 작성해서 칼럼을 교환할 수 있다.\nSELECT personal, family FROM Person;\n\n\n\npersonal\nfamily\n\n\n\n\nWilliam\nDyer\n\n\nFrank\nPabodie\n\n\nAnderson\nLake\n\n\nValentina\nRoerich\n\n\nFrank\nDanforth\n\n\n\n혹은 심지어 칼럼을 반복할 수도 있다.\nSELECT id, id, id FROM Person;\n\n\n\nid\nid\nid\n\n\n\n\ndyer\ndyer\ndyer\n\n\npb\npb\npb\n\n\nlake\nlake\nlake\n\n\nroe\nroe\nroe\n\n\ndanforth\ndanforth\ndanforth\n\n\n\n손쉬운 방법으로, *을 사용해서 테이블의 모든 칼럼을 선택할 수도 있다.\nSELECT * FROM Person;\n\n\n\nid\npersonal\nfamily\n\n\n\n\ndyer\nWilliam\nDyer\n\n\npb\nFrank\nPabodie\n\n\nlake\nAnderson\nLake\n\n\nroe\nValentina\nRoerich\n\n\ndanforth\nFrank\nDanforth",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
+    ]
+  },
+  {
+    "objectID": "select.html#연습문제",
+    "href": "select.html#연습문제",
+    "title": "3  데이터 선택하기",
+    "section": "3.5 연습문제",
+    "text": "3.5 연습문제\n\n3.5.1 CREATE 쿼리문\n데이터베이스 SQL 문을 작성할 때 테이블 칼럼 자료형(문자, 숫자, 날짜 등)을 파악하고 있어야 버그없는 깔끔한 쿼리를 작성할 수 있다.\n정수를 포함하는 칼럼을 확인하기 위해, .schema 명령어를 사용하면 확인할 수 있다.\n.schema\nCREATE TABLE Person (id text, personal text, family text);\nCREATE TABLE Site (name text, lat real, long real);\nCREATE TABLE Survey (taken integer, person text, quant text, reading real);\nCREATE TABLE Visited (id integer, site text, dated text);\n출력 결과에서, Survey 테이블(3번째 줄)의 taken 칼럼이 실수 자료형임을 확인할 수 있다.\n\n\n3.5.2 사이트 이름 선택하기\nSite 테이블에서 name 칼럼만 선택하는 쿼리를 작성한다.\nSELECT name FROM Site;\n\n\n\nname\n\n\n\n\nDR-1\n\n\nDR-3\n\n\nMSK-4\n\n\n\n\n\n3.5.3 쿼리 스타일\n많은 사람들은 쿼리를 다음과 같이 작성한다.\nSELECT personal, family FROM person;\n또는,\nselect Personal, Family from PERSON;\n어떤 스타일이 가장 읽기 쉽다고 생각하며, 그 이유는 무엇인가?\n읽기 쉬운 쿼리 스타일은 주로 개인적인 선호와 경험에 따라 달라질 수 있다. 그러나 일반적으로 첫 번째 예시처럼 SQL 키워드를 대문자로, 테이블과 칼럼 이름을 소문자로 쓰는 방식이 가독성이 높다고 여겨진다. SQL 키워드와 테이블, 칼럼 이름 사이의 명확한 구분을 제공하여 쿼리를 더 쉽게 읽고 이해할 수 있게 한다. 반면, 두 번째 예시처럼 모든 것을 소문자나 대문자로 쓰는 방식은 이러한 구분을 덜 명확하게 만들어 쿼리의 구조를 파악하기 어렵게 할 수 있다.",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>데이터 선택하기</span>"
+    ]
   }
 ]
