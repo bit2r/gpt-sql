@@ -1,0 +1,163 @@
+---
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+# 새로운 값 계산
+
+탐험 기록을 주의 깊게 다시 읽은 후, 탐험대가 보고한 방사선 측정치를 5% 상향 조정해야 할 필요가 있음을 깨달았다.
+저장된 데이터를 변경하기보다는, 쿼리의 일부로서 현장에서 계산을 수행할 수 있다.
+
+``` sql
+SELECT 1.05 * reading FROM Survey WHERE quant = 'rad';
+```
+
+| 1.05 \* reading |
+|:---------------:|
+|     10.311      |
+|      8.19       |
+|     8.8305      |
+|      7.581      |
+|     4.5675      |
+|     2.2995      |
+|      1.533      |
+|     11.8125     |
+
+쿼리를 실행하면, 표현식 `1.05 * reading`이 각 행마다 평가된다.
+표현식에는 임의의 필드, 통상 많이 사용되는 연산자, 그리고 다양한 함수를 사용할 수 있다.
+(정확하게는 어떤 데이터베이스 관리자를 사용되느냐에 따라 의존성을 띄게된다.) 예를 들어, 화씨로 된 온도 측정치를 섭씨로 변환하고 소수점 아래 둘째 자리에서 반올림할 수 있다.
+
+``` sql
+SELECT taken, round(5 * (reading - 32) / 9, 2) FROM Survey WHERE quant = 'temp';
+```
+
+| taken | round(5\*(reading-32)/9, 2) |
+|:-----:|:---------------------------:|
+|  734  |           -29.72            |
+|  735  |           -32.22            |
+|  751  |           -28.06            |
+|  752  |           -26.67            |
+
+예시에서 볼 수 있듯이, 방정식으로부터 생성된 새 필드를 설명하는 문자열은 매우 길고 복잡해질 수 있다.
+SQL에서 필드 이름을 바꾸는 것이 허용되는데, 계산된 필드든 데이터베이스 기존 필드든 상관없다.
+간결함과 명확성을 위한 것이다.
+예를 들어, 쿼리를 다음과 같이 작성할 수 있다:
+
+``` sql
+SELECT taken, round(5 * (reading - 32) / 9, 2) as Celsius FROM Survey WHERE quant = 'temp';
+```
+
+다른 필드의 값을 조합할 수도 있다.
+예를 들어, 문자열 접합 연산자 (string concatenation operator, `||`)를 사용한다.
+
+``` sql
+SELECT personal || ' ' || family FROM Person;
+```
+
+|     personal      |
+|:-----------------:|
+|   William Dyer    |
+|   Frank Pabodie   |
+|   Anderson Lake   |
+| Valentina Roerich |
+|  Frank Danforth   |
+
+------------------------------------------------------------------------
+
+`first`와 `last` 대신에 필드 이름으로 `personal`과 `family`를 사용하는 것이 이상해 보일지 모른다.
+하지만, 문화적 차이를 다루기 위한 필요한 첫번째 단계다.
+예를 들어, 다음 규칙을 고려해보자.
+
+|      성명 전부(Full Name)       |  알파벳 순서   |                       이유                       |
+|:----------------------------------:|:-----------------:|:----------------:|
+|           Liu Xiaobo            |      Liu       |          중국 성이 이름보다 먼저 온다.           |
+|        Leonardo da Vinci        |    Leonardo    |       "da Vinci" 는 "from Vinci"를 뜻한다.       |
+|       Catherine de Medici       |     Medici     |                 성(family name)                  |
+|       Jean de La Fontaine       |  La Fontaine   |       성(family name)이 "La Fontaine"이다.       |
+|       Juan Ponce de Leon        | Ponce de Leon  | 전체 성(full family name)이 "Ponce de Leon"이다. |
+|     Gabriel Garcia Marquez      | Garcia Marquez |         이중으로 된 스페인 성(surnames)          |
+|        Wernher von Braun        | von *or* Braun |      독일 혹은 미국에 있는냐에 따라 달라짐       |
+| Elizabeth Alexandra May Windsor |   Elizabeth    |  군주가 통치하는 이름에 따라 알파벳순으로 정렬   |
+|        Thomas a Beckett         |     Thomas     |   시성된(canonized) 이름에 따라 성인이름 사용    |
+
+분명하게, 심지어 'personal'과 'family'라는 두 부분으로 나누는 것만으로는 충분하지 않다.
+
+## 합집합
+
+`UNION` 연산자는 두 개의 쿼리 결과를 결합한다.
+
+``` sql
+SELECT * FROM Person WHERE id = 'dyer' UNION SELECT * FROM Person WHERE id = 'roe';
+```
+
+|  id  | personal  | family  |
+|:----:|:---------:|:-------:|
+| dyer |  William  |  Dyer   |
+| roe  | Valentina | Roerich |
+
+`UNION ALL` 명령은 `UNION` 연산자와 동일하지만, `UNION ALL`은 모든 값을 선택한다는 점에서 차이가 있다.
+차이점은 `UNION ALL`이 중복 행을 제거하지 않는다는 것이다.
+대신, `UNION ALL`은 쿼리의 모든 행을 가져와서 하나의 테이블로 결합한다.
+`UNION` 명령은 결과 세트에 대해 `SELECT DISTINCT`를 수행한다.
+만약 합병할 모든 레코드가 고유하다면, `DISTINCT` 단계를 건너뛰므로 더 빠른 결과를 얻기 위해 `UNION ALL`을 사용한다.
+
+## 연습문제
+
+### 염도 측정치 수정
+
+추가로 정보를 살펴본 결과, 발렌티나 로에리히(Valentina Roerich)가 염도를 백분율로 보고했다는 것을 알게 되었다.
+`Survey` 테이블에서 모든 염도 측정치를 100으로 나눈 값으로 반환하는 쿼리를 작성하시오.
+
+``` sql
+SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
+```
+
+| taken | reading / 100 |
+|-------|---------------|
+| 752   | 0.416         |
+| 837   | 0.225         |
+
+### 통합 측정목록
+
+`UNION`을 사용하여 발렌티나 로에리히(Roerich가)의 염도 측정치를 앞선 도전과제에서 설명한 대로 수정하고, 발렌티나 로에리히만의 측정치로 통합된 염도 측정치 목록을 만든다.
+출력 결과는 다음과 같아야 한다.
+
+| taken | reading |
+|:-----:|:-------:|
+|  619  |  0.13   |
+|  622  |  0.09   |
+|  734  |  0.05   |
+|  751  |   0.1   |
+|  752  |  0.09   |
+|  752  |  0.416  |
+|  837  |  0.21   |
+|  837  |  0.225  |
+
+``` sql
+SELECT taken, reading FROM Survey WHERE person != 'roe' AND quant = 'sal' UNION SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal' ORDER BY taken ASC;
+```
+
+### 주요 사이트 식별자
+
+`Visited` 테이블의 사이트 식별자는 '-'로 구분된 두 부분으로 이루어져 있다.
+
+``` sql
+SELECT DISTINCT site FROM Visited;
+```
+
+| site  |
+|:-----:|
+| DR-1  |
+| DR-3  |
+| MSK-4 |
+
+일부 주요 사이트 식별자(즉, 문자 코드)는 두 글자 길이이고 일부는 세 글자 길이이다.
+"문자열 내" 함수인 `instr(X, Y)`는 문자열 X 내에서 문자열 Y가 처음 나타나는 1-기반 인덱스를 반환하며, X 안에 Y가 존재하지 않으면 0을 반환한다.
+부분 문자열 함수 `substr(X, I, [L])`는 X의 I 인덱스에서 시작하는 부분 문자열을 반환하며, 선택적으로 길이 L을 지정할 수 있다.
+이 두 함수를 사용하여 고유한 주요 사이트 식별자 목록을 생성한다.
+(이 데이터의 경우, 목록은 "DR"과 "MSK"만을 포함해야 한다).
+
+``` sql
+SELECT DISTINCT substr(site, 1, instr(site, '-') - 1) AS MajorSite FROM Visited;
+```

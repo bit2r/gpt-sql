@@ -1,10 +1,9 @@
-
 project:
   type: book
   output-dir: docs
   preview:
     port: 7771
-    browser: false
+    browser: true
 
 lang: ko-KR
 
@@ -30,8 +29,8 @@ book:
         - select.qmd
         - sort-dup.qmd
         - filter.qmd
-        - 14-calc.qmd
-        - 15-null.qmd
+        - calc.qmd
+        - null.qmd
         - 16-agg.qmd
         - 17-join.qmd
         - 18-create.qmd
@@ -42,19 +41,6 @@ book:
         - 21-application.qmd
 
     - references.qmd
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 format:
   html:
