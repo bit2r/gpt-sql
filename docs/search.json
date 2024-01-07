@@ -370,5 +370,27 @@
       "챗GPT SQL",
       "<span class='chapter-number'>12</span>  <span class='chapter-title'>DVD 대여 데이터베이스</span>"
     ]
+  },
+  {
+    "objectID": "join.html#데이터-위생",
+    "href": "join.html#데이터-위생",
+    "title": "9  조인(Join)",
+    "section": "9.1 데이터 위생",
+    "text": "9.1 데이터 위생\n데이터 위생(data hygiene)은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자.\n첫번째 규칙은 모든 값은 독립 요소로 분해될 수 없는 원자(atomic)적 속성을 지녀야 한다. 하나의 칼럼에 전체 이름을 넣는 대신에 별도로 구별되는 칼럼에 이름과 성을 저장해서 이름 컴포넌트를 뽑아내는 부분 문자열 연산(substring operation)을 사용할 필요가 없다. 좀더 중요하게는, 이름을 두 부분으로 저장한다. 왜냐하면, 공백으로 쪼개는 것은 신뢰성이 약하다. “Eloise St. Cyr” 혹은 “Jan Mikkel Steubart” 같은 이름을 생각하면 쉽게 알 수 있다.\n두번째 규칙은 모든 레코드는 유일한 기본키를 가져야한다. 내재적인 의미가 전혀없는 일련번호가 될 수도 있고, 레코드 값중의 하나 (Person 테이블의 ident 필드), 혹은 Survey 테이블에서 심지어 모든 측정값을 유일하게 식별하는 (taken, person, quant) 삼중값의 조합도 될 수 있다.\n세번째 규칙은 불필요한 정보가 없어야 한다. 예를 들어, Site테이블을 제거하고 다음과 같이 Visited 테이블을 다시 작성할 수 있다.\n\n\n\n619\n-49.85\n-128.57\n1927-02-08\n\n\n622\n-49.85\n-128.57\n1927-02-10\n\n\n734\n-47.15\n-126.72\n1939-01-07\n\n\n735\n-47.15\n-126.72\n1930-01-12\n\n\n751\n-47.15\n-126.72\n1930-02-26\n\n\n752\n-47.15\n-126.72\nnull\n\n\n837\n-48.87\n-123.40\n1932-01-14\n\n\n844\n-49.85\n-128.57\n1932-03-22\n\n\n\n사실, 스프레드쉬트와 마찬가지로 각 행에 각 측정값에 관한 모든 정보를 기록하는 하나의 테이블을 사용할 수도 있다. 문제는 이와 같은 방식으로 조직된 데이터를 일관성있게 관리하는 것은 매우 어렵다. 만약 특정한 사이트의 특정한 방문 날짜가 잘못된다면, 데이터베이스에 다수의 레코드를 변경해야한다. 더 안좋은 것은 다른 사이트도 그 날짜에 방문되었기 때문에 어느 레코드를 변경할지 추정해야하는 것이다.\n네번째 규칙은 모든 값의 단위는 명시적으로 저장되어야 한다. 예제 데이터베이스는 그렇지 못해서 문제다.\nRoerich의 염분치는 다른 사람의 측정치보다 수천배 크다. 하지만, 천단위 대신에 백만 단위를 사용하고 있는지 혹은 1932년에 측정된 값이 1939년에 측정된 값보다 1000배 큰지 알 수 없다. 그 사이트에 염분에 이상치가 실제로 있었는지 알지못한다.\n한걸음 물러나서 생각하자, 데이터와 저장하는데 사용되는 도구는 공생관계다. 테이블과 조인은 데이터가 특정 방식으로 잘 조직되었다면 매우 효과적이다. 하지만, 만약 특정 형태로 되어 있다면 효과적으로 다룰 수 있는 도구가 있기 때문에 데이터를 그와 같은 방식으로 조직하기도 한다. 인류학자가 말했듯이, 도구는 도구를 만드는 손을 만든다. (the tool shapes the hand that shapes the tool) 즉, 도구(기술, 방법론 등)가 사용자(인간, 조직 등)에게 영향을 미치며, 동시에 사용자가 그 도구를 개선하거나 변형시키는 과정을 의미한다. 결과적으로, 도구와 사용자는 서로 영향을 주고받으며 발전해 나간다는 개념을 내포하고 있다.",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>조인(Join)</span>"
+    ]
+  },
+  {
+    "objectID": "join.html#연습문제",
+    "href": "join.html#연습문제",
+    "title": "9  조인(Join)",
+    "section": "9.2 연습문제",
+    "text": "9.2 연습문제\n\n9.2.1 방사능 측정값 목록\nDR-1 사이트의 모든 방사선 측정치를 출력하는 쿼리를 작성하세요.\n\nSELECT\n   Survey.reading\nFROM\n   Site\n   JOIN\n      Visited\n  JOIN\n      Survey\n      ON Site.name = Visited.site\n      AND Visited.id = Survey.taken\nWHERE\n   Site.name = 'DR-1'\n   AND Survey.quant = 'rad';\n\n\n\nreading\n\n\n\n\n9.82\n\n\n7.8\n\n\n11.25\n\n\n\n\n\n9.2.2 프랭크 위치\n“Frank” 가 방문한 모든 사이트를 출력하는 쿼리를 작성하세요.\n\nSELECT\n  DISTINCT Site.name\nFROM\n  Site\n  JOIN Visited\n  JOIN Survey\n  JOIN Person ON Site.name = Visited.site\n  AND Visited.id = Survey.taken\n  AND Survey.person = Person.id\nWHERE\n  Person.personal = 'Frank';\n\n\n\nname\n\n\n\n\nDR-3\n\n\n\n\n\n9.2.3 쿼리 독해\n다음 쿼리가 무슨 결과를 산출하는지 말로 기술하세요.\nSELECT Site.name FROM Site JOIN Visited\nON Site.lat &lt; -49.0 AND Site.name = Visited.site AND Visited.dated &gt;= '1932-01-01';\n\n\n9.2.4 누가 어디에 방문했는가?\n각 사이트의 정확한 위치(위도, 경도)와 방문 날짜별로 정렬된 목록을 작성하고, 사이트를 방문한 사람의 개인 이름과 성, 그리고 측정 유형 및 측정값을 나타내는 쿼리를 작성한다. null 값은 모두 피한다. 힌트: 15개의 레코드와 8개의 필드를 얻어야 한다.\nSELECT Site.name, Site.lat, Site.long, Person.personal, Person.family, Survey.quant, Survey.reading, Visited.dated\nFROM\n   Site\n   JOIN\n      Visited\n   JOIN\n      Survey\n   JOIN\n      Person\n      ON Site.name = Visited.site\n      AND Visited.id = Survey.taken\n      AND Survey.person = Person.id\nWHERE\n   Survey.person IS NOT NULL\n   AND Visited.dated IS NOT NULL\nORDER BY\n   Visited.dated;\n\n\n\n\n\n\n\n\n\n\n\n\n\nname\nlat\nlong\npersonal\nfamily\nquant\nreading\ndated\n\n\n\n\nDR-1\n-49.85\n-128.57\nWilliam\nDyer\nrad\n9.82\n1927-02-08\n\n\nDR-1\n-49.85\n-128.57\nWilliam\nDyer\nsal\n0.13\n1927-02-08\n\n\nDR-1\n-49.85\n-128.57\nWilliam\nDyer\nrad\n7.8\n1927-02-10\n\n\nDR-1\n-49.85\n-128.57\nWilliam\nDyer\nsal\n0.09\n1927-02-10\n\n\nDR-3\n-47.15\n-126.72\nAnderson\nLake\nsal\n0.05\n1930-01-07\n\n\nDR-3\n-47.15\n-126.72\nFrank\nPabodie\nrad\n8.41\n1930-01-07\n\n\nDR-3\n-47.15\n-126.72\nFrank\nPabodie\ntemp\n-21.5\n1930-01-07\n\n\nDR-3\n-47.15\n-126.72\nFrank\nPabodie\nrad\n7.22\n1930-01-12\n\n\nDR-3\n-47.15\n-126.72\nAnderson\nLake\nsal\n0.1\n1930-02-26\n\n\nDR-3\n-47.15\n-126.72\nFrank\nPabodie\nrad\n4.35\n1930-02-26\n\n\nDR-3\n-47.15\n-126.72\nFrank\nPabodie\ntemp\n-18.5\n1930-02-26\n\n\nMSK-4\n-48.87\n-123.4\nAnderson\nLake\nrad\n1.46\n1932-01-14\n\n\nMSK-4\n-48.87\n-123.4\nAnderson\nLake\nsal\n0.21\n1932-01-14\n\n\nMSK-4\n-48.87\n-123.4\nValentina\nRoerich\nsal\n22.5\n1932-01-14\n\n\nDR-1\n-49.85\n-128.57\nValentina\nRoerich\nrad\n11.25\n1932-03-22",
+    "crumbs": [
+      "SQL",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>조인(Join)</span>"
+    ]
   }
 ]
