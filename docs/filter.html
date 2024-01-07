@@ -1,0 +1,1236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR" xml:lang="ko-KR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.4.523">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>챗GPT SQL - 5&nbsp; 필터</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./calc.html" rel="next">
+<link href="./sort-dup.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "일치 없음",
+    "search-matching-documents-text": "일치된 문서",
+    "search-copy-link-title": "검색 링크 복사",
+    "search-hide-matches-text": "추가 검색 결과 숨기기",
+    "search-more-match-text": "추가 검색결과",
+    "search-more-matches-text": "추가 검색결과",
+    "search-clear-button-title": "제거",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "취소",
+    "search-submit-button-title": "검색",
+    "search-label": "검색"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./filter.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">챗GPT SQL</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="검색"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">감사의 글</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">들어가며</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">환경설정</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./database.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">SQL</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./filter.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./null.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./18-create.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형(Creating and Modifying Data)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./19-prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스로 프로그래밍</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">챗GPT SQL</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./21-application.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">참고문헌</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#부울-연산자" id="toc-부울-연산자" class="nav-link active" data-scroll-target="#부울-연산자"><span class="header-section-number">5.1</span> 부울 연산자</a></li>
+  <li><a href="#like-키워드" id="toc-like-키워드" class="nav-link" data-scroll-target="#like-키워드"><span class="header-section-number">5.2</span> <code>LIKE</code> 키워드</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a>
+  <ul class="collapse">
+  <li><a href="#쿼리-디버깅" id="toc-쿼리-디버깅" class="nav-link" data-scroll-target="#쿼리-디버깅"><span class="header-section-number">5.2.1</span> 쿼리 디버깅</a></li>
+  <li><a href="#이상치-탐지" id="toc-이상치-탐지" class="nav-link" data-scroll-target="#이상치-탐지"><span class="header-section-number">5.2.2</span> 이상치 탐지</a></li>
+  <li><a href="#패턴-매칭" id="toc-패턴-매칭" class="nav-link" data-scroll-target="#패턴-매칭"><span class="header-section-number">5.2.3</span> 패턴 매칭</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./filter.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>데이터베이스의 가장 강력한 기능 중 하나는 데이터를 <strong>필터(filter)</strong>하는 능력이다. 즉, 특정 기준에 맞는 레코드만 선택한다. 예를 들어, 특정 사이트를 언제 방문했는지 확인한다고 가정하자. 쿼리에 <code>where</code> 절을 사용해서 <code>Visited</code> 테이블로부터 조건에 맞는 레코드만 뽑아낼 수 있다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="op">=</span> <span class="st">'DR-1'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">id</th>
+<th style="text-align: center;">site</th>
+<th style="text-align: center;">dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">619</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1927-02-08</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">622</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1927-02-10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">844</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p>데이터베이스 관리자는 이 쿼리를 두 단계로 실행한다. 먼저, <code>Visited</code> 테이블 각 행을 확인하여 <code>WHERE</code> 조건을 만족하는 행을 찾는다. 그 다음, <code>SELECT</code> 키워드 뒤에 따라오는 칼럼 이름을 사용하여 표시할 칼럼을 결정한다.</p>
+<p>이러한 처리 순서가 의미하는 바는 화면에 표시되지 않는 칼럼 값에 기반해서도 <code>WHERE</code> 절을 사용해서 레코드를 필터링할 수 있다는 것이다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">id</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="op">=</span> <span class="st">'DR-1'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">id</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">619</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">622</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">844</td>
+</tr>
+</tbody>
+</table>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/sql-filter.svg" class="img-fluid figure-img"></p>
+<figcaption>SQL 필터링 동작방식</figcaption>
+</figure>
+</div>
+<section id="부울-연산자" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="부울-연산자"><span class="header-section-number">5.1</span> 부울 연산자</h2>
+<p>데이터를 필터링할 때 부울 연산자(Boolean Operators)를 사용한다. 이는 특정 조건을 만족하는 데이터를 선택하거나 제외하는 데 유용하다. 예를 들어, <code>DR-1</code> 사이트에서 1930년 이후로 수집된 모든 정보를 요청하는 경우, 부울 연산자를 사용하여 ‘사이트 이름이 DR-1이고, 수집 연도가 1930년 이후인’ 데이터를 필터링할 수 있다. 이렇게 SQL 쿼리에서 부울 연산자를 사용하면, 복잡한 데이터 집합에서 필요한 정보를 정확하고 효율적으로 추출할 수 있다.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="op">=</span> <span class="st">'DR-1'</span> <span class="kw">AND</span> dated <span class="op">&lt;</span> <span class="st">'1930-01-01'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">id</th>
+<th style="text-align: center;">site</th>
+<th style="text-align: center;">dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">619</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1927-02-08</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">622</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1927-02-10</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+날짜 자료형
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>거의 모든 데이터베이스 관리자는 날짜 자료 처리를 위한 특별한 자료형(Data Type)을 가지고 있다. 실제로 많은 데이터베이스는 크게 두개로 갈린다. 하나는 “1971년 5월 31일”과 같은 날짜용이고, 다른 하나는 “31일”과 같은 기간용(duration)이다. 하지만, <code>SQLite</code>는 그렇지 않다. 대신, <code>SQLite</code>는 날짜를 텍스트(ISO-8601 표준 형식 “YYYY-MM-DD HH:MM:SS.SSSS”), 실수(<a href="https://en.wikipedia.org/wiki/Julian_day">율리우스 일자</a>, 기원전 4714년 11월 24일부터 일수), 또는 정수(<a href="https://en.wikipedia.org/wiki/Unix_time">유닉스 시간</a>, 1970년 1월 1일 자정 이후의 초 수)로 저장한다. 만약 복잡하게 들린다면, 그럴수도 있다 하지만 <a href="https://en.wikipedia.org/wiki/Swedish_calendar">옛날 스웨덴 날짜</a>를 파악하는 것만큼 복잡하지는 않다.</p>
+</div>
+</div>
+<p>Lake나 Roerich에 의해 수행된 측정이 무엇인지 알아보려면, 그들의 이름에 대한 검사를 <code>OR</code>를 사용하여 결합한다.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">=</span> <span class="st">'lake'</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">'roe'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">taken</th>
+<th style="text-align: center;">person</th>
+<th style="text-align: center;">quant</th>
+<th style="text-align: center;">reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">734</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">751</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">2.19</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">temp</td>
+<td style="text-align: center;">-16.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">41.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">1.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">22.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">844</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">11.25</td>
+</tr>
+</tbody>
+</table>
+<p>다른 방식으로, <code>IN</code>을 사용하여 특정 집합에 값이 있는지 확인할 수 있다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="kw">IN</span> (<span class="st">'lake'</span>, <span class="st">'roe'</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">taken</th>
+<th style="text-align: center;">person</th>
+<th style="text-align: center;">quant</th>
+<th style="text-align: center;">reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">734</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">751</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">2.19</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">temp</td>
+<td style="text-align: center;">-16.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">41.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">1.46</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.21</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">22.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">844</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">11.25</td>
+</tr>
+</tbody>
+</table>
+<p><code>AND</code>와 <code>OR</code>을 결합할 수 있지만, 어떤 연산자가 먼저 실행되는지 주의해야 한다. 괄호를 사용하지 <em>않으면</em>, 다음과 같은 결과를 얻게 된다:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">AND</span> person <span class="op">=</span> <span class="st">'lake'</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">'roe'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">taken</th>
+<th style="text-align: center;">person</th>
+<th style="text-align: center;">quant</th>
+<th style="text-align: center;">reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">734</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">751</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">41.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">22.5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">844</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">rad</td>
+<td style="text-align: center;">11.25</td>
+</tr>
+</tbody>
+</table>
+<p>이 쿼리는 Lake에 의한 염도(salinity) 측정과 Roerich에 의한 <em>모든</em> 측정을 포함한다. 대신에 아마도 다음과 같은 결과를 얻고자 했을 것이다.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">AND</span> (person <span class="op">=</span> <span class="st">'lake'</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">'roe'</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">taken</th>
+<th style="text-align: center;">person</th>
+<th style="text-align: center;">quant</th>
+<th style="text-align: center;">reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">734</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.05</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">751</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.09</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">41.6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">0.21</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">22.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="like-키워드" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="like-키워드"><span class="header-section-number">5.2</span> <code>LIKE</code> 키워드</h2>
+<p>SQL 필터링에서 <code>LIKE</code> 키워드의 중요성은 부분 일치를 통해 데이터를 필터링할 수 있게 해준다는 데에 있다. 예를 들어, ’DR’로 시작하는 사이트 이름과 같이 특정 패턴이나 문자열을 포함하는 레코드를 찾고 싶을 때 <code>LIKE</code> 키워드를 사용한다. 퍼센트 기호(%)는 <strong>와일드카드</strong>로서, 그 위치에 어떤 문자열이든 일치할 수 있게 한다. 이를 통해 문자열의 시작, 중간, 끝 부분에서 특정 패턴을 검색할 수 있다. <code>LIKE</code>와 와일드카드의 조합은 SQL 쿼리에서 매우 유연한 문자열 검색을 가능하게 하며, 복잡하거나 정확하지 않은 데이터에서 원하는 정보를 효과적으로 추출하는 데 중요한 역할을 한다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> site <span class="kw">LIKE</span> <span class="st">'DR%'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">id</th>
+<th style="text-align: center;">site</th>
+<th style="text-align: center;">dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">619</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1927-02-08</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">622</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1927-02-10</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">734</td>
+<td style="text-align: center;">DR-3</td>
+<td style="text-align: center;">1930-01-07</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">735</td>
+<td style="text-align: center;">DR-3</td>
+<td style="text-align: center;">1930-01-12</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">751</td>
+<td style="text-align: center;">DR-3</td>
+<td style="text-align: center;">1930-02-26</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">DR-3</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">844</td>
+<td style="text-align: center;">DR-1</td>
+<td style="text-align: center;">1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p>마지막으로, <code>DISTINCT</code>를 <code>WHERE</code>와 함께 사용하여, 두 번째 수준 필터링 작업을 수행한다.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> person, quant <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">=</span> <span class="st">'lake'</span> <span class="kw">OR</span> person <span class="op">=</span> <span class="st">'roe'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">person</th>
+<th style="text-align: center;">quant</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">sal</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">rad</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">lake</td>
+<td style="text-align: center;">temp</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">rad</td>
+</tr>
+</tbody>
+</table>
+<p>하지만, 기억하라. <code>DISTINCT</code>는 처리될 때 선택된 칼럼에 표시되는 값에만 적용되고 전체 행에는 적용되지 않는다.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+쿼리작성 방법
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>방금 수행한 방식이 대부분의 사람들이 SQL 쿼리를 “발전시키는” 방식이기도 하다. 의도한 것의 일부를 수행하는 단순한 것에서부터 시작했다. 그리고 절을 하나씩 하나씩 추가하면서 효과를 테스트했다. 좋은 전략이다. 사실 복잡한 쿼리를 작성할 때, 거의 <em>유일한</em> 전략이다. 하지만 이런 전략은 빠른 결과 확인과 더불어, 올바른 결과를 얻었을 때 빠른 인식에도 상당히 의존한다.</p>
+<p>빠른 결과 확인을 이루는 가장 좋은 방법은 데이터의 일부를 임시 데이터베이스에 저장하고 그 위에서 쿼리를 실행하는 것이거나, 혹은 합리적으로 구성된 레코드로 소규모 데이터베이스를 채워두고 실험하는 것이다. 예를 들어, 실제 2000만 호주 인구의 데이터베이스에서 쿼리를 실행하기보다는 1만 명의 샘플을 추출하여 실험을 하거나, 무작위 또는 그럴듯한 1만 명의 레코드를 생성할 수 있는 작은 프로그램을 작성해 사용하는 것이다.</p>
+</div>
+</div>
+</section>
+<section id="연습문제" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
+<section id="쿼리-디버깅" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="쿼리-디버깅"><span class="header-section-number">5.2.1</span> 쿼리 디버깅</h3>
+<p>극에서 48&amp;deg보다 고위도에 위치한 모든 사이트를 선택하고자 한다고 가정하자. 작성한 첫번째 쿼리는 다음과 같다.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Site <span class="kw">WHERE</span> (lat <span class="op">&gt;</span> <span class="op">-</span><span class="dv">48</span>) <span class="kw">OR</span> (lat <span class="op">&lt;</span> <span class="dv">48</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>왜 이 쿼리가 잘못된 것인지 설명하세요. 그리고 쿼리를 다시 작성해서 올바르게 동작하게 만드세요.</p>
+<hr>
+<p><code>OR</code>를 사용했기 때문에, 예를 들어 남극에 있는 사이트도 두 번째 기준을 만족하여 포함된다. 대신에, <em>두 가지 기준 모두</em>를 충족하는 사이트만을 포함시키고 싶다면 다음과 같이 쿼리를 수정한다.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Site <span class="kw">WHERE</span> (lat <span class="op">&gt;</span> <span class="op">-</span><span class="dv">48</span>) <span class="kw">AND</span> (lat <span class="op">&lt;</span> <span class="dv">48</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>작성된 쿼리는 위도가 -48보다 크고 48보다 작은 Site 테이블의 모든 레코드를 선택한다. 이는 사실상 남극과 북극 사이의 사이트들만을 대상으로 한다.</p>
+</section>
+<section id="이상치-탐지" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="이상치-탐지"><span class="header-section-number">5.2.2</span> 이상치 탐지</h3>
+<p>정규화된 염분 수치는 0.0에서 1.0 사이에 있어야 한다. 상기 범위 밖에 있는 염분수치를 가진 모든 레코드를 <code>Survey</code> 테이블에서 선택하는 쿼리를 작성하세요.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">AND</span> ((reading <span class="op">&gt;</span> <span class="fl">1.0</span>) <span class="kw">OR</span> (reading <span class="op">&lt;</span> <span class="fl">0.0</span>));</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">taken</th>
+<th style="text-align: center;">person</th>
+<th style="text-align: center;">quant</th>
+<th style="text-align: center;">reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">752</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">41.6</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">837</td>
+<td style="text-align: center;">roe</td>
+<td style="text-align: center;">sal</td>
+<td style="text-align: center;">22.5</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="패턴-매칭" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="패턴-매칭"><span class="header-section-number">5.2.3</span> 패턴 매칭</h3>
+<p>다음 표현식 중 참은 무엇인가?</p>
+<ol type="1">
+<li><code>'a' LIKE 'a'</code></li>
+<li><code>'a' LIKE '%a'</code></li>
+<li><code>'beta' LIKE '%a'</code></li>
+<li><code>'alpha' LIKE 'a%%'</code></li>
+<li><code>'alpha' LIKE 'a%p%'</code></li>
+</ol>
+<hr>
+<p>표현식들이 참인 이유는 다음과 같습니다:</p>
+<ol type="1">
+<li><code>True</code> - ’a’와 ’a’는 동일한 문자이기 때문이다.</li>
+<li><code>True</code> - 와일드카드는 <em>제로</em> 또는 그 이상의 문자와 일치할 수 있기 때문이다.</li>
+<li><code>True</code> - ’%’가 ’bet’과 일치하고, ’a’가 마지막 ’a’와 일치한다.</li>
+<li><code>True</code> - 첫 번째 와일드카드가 ’lpha’와 일치하고, 두 번째 와일드카드는 제로 문자(또는 그 반대)와 일치한다.</li>
+<li><code>True</code> - 첫 번째 와일드카드가 ’l’과 일치하고, 두 번째 와일드카드가 ’ha’와 일치한다.</li>
+</ol>
+<p>만약 명명된 칼럼의 값이 주어진 패턴과 일치한다면 SQL 테스트 <code>*column-name* like *pattern*</code>은 참이다. “0 혹은 그 이상의 문자와 매칭”된다는 것을 의미하기 위해서 ’%’문자를 패턴에 임의 숫자 횟수에 사용한다. 반면, 표현식 <code>*column-name* not like *pattern*</code>은 매칭을 거꾸로 한다.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "복사완료!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "복사완료!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    const typesetMath = (el) => {
+      if (window.MathJax) {
+        // MathJax Typeset
+        window.MathJax.typeset([el]);
+      } else if (window.katex) {
+        // KaTeX Render
+        var mathElements = el.getElementsByClassName("math");
+        var macros = [];
+        for (var i = 0; i < mathElements.length; i++) {
+          var texText = mathElements[i].firstChild;
+          if (mathElements[i].tagName == "SPAN") {
+            window.katex.render(texText.data, mathElements[i], {
+              displayMode: mathElements[i].classList.contains('display'),
+              throwOnError: false,
+              macros: macros,
+              fleqn: false
+            });
+          }
+        }
+      }
+    }
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        typesetMath(container);
+        return container.innerHTML
+      } else {
+        typesetMath(note);
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      typesetMath(note);
+      return note.innerHTML;
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./sort-dup.html" class="pagination-link  aria-label=" &lt;span="" 중복제거&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./calc.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>새로운 값 계산</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

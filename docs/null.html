@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 들어가며</title>
+<title>챗GPT SQL - 7&nbsp; 결측 데이터</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./setup.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./agg.html" rel="next">
+<link href="./calc.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">들어가며</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./null.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -114,7 +148,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">들어가며</span></a>
   </div>
 </li>
@@ -176,7 +210,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
+  <a href="./null.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
   </div>
 </li>
@@ -235,14 +269,25 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link active" data-scroll-target="#연습문제"><span class="header-section-number">7.1</span> 연습문제</a>
+  <ul class="collapse">
+  <li><a href="#알려진-날짜별로-정렬" id="toc-알려진-날짜별로-정렬" class="nav-link" data-scroll-target="#알려진-날짜별로-정렬"><span class="header-section-number">7.1.1</span> 알려진 날짜별로 정렬</a></li>
+  <li><a href="#집합에서-null" id="toc-집합에서-null" class="nav-link" data-scroll-target="#집합에서-null"><span class="header-section-number">7.1.2</span> 집합에서 NULL</a></li>
+  <li><a href="#표식값-장단점" id="toc-표식값-장단점" class="nav-link" data-scroll-target="#표식값-장단점"><span class="header-section-number">7.1.3</span> 표식값 장단점</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./null.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">들어가며</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></h1>
 </div>
 
 
@@ -259,10 +304,355 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>엑셀로 대표되는 스프레드시트를 사용하는 것은 많은 사람들에게 익숙한 경험이다. 이들은 데이터를 쉽게 조작하고 분석할 수 있는 기본적인 도구로 활용되지만, 데이터셋이 복잡해지면서 한계에 부딪힌다. 이때 스프레드시트의 한계를 넘어서 데이터베이스의 역할이 중요해진다. 간단한 수치 연산에는 스프레드시트가 충분할 수 있지만, 복잡하고 큰 데이터셋을 빠르고 효율적으로 처리하려면 데이터베이스가 필요하다. SQL(Structured Query Language)은 데이터베이스를 관리하고 조작하는 데 있어 중요한 역할을 한다. 데이터베이스가 어떻게 작동하는지 이해하는 것은 단순한 데이터 조작 능력을 넘어서, 우리가 사용하는 다양한 시스템들이 왜 그런 방식으로 작동하는지, 그리고 왜 데이터를 특정한 방식으로 구조화하는지에 대한 깊은 이해를 제공한다.</p>
-<p>이 책은 데이터베이스의 기본 개념과 SQL을 다룬다. 데이터베이스의 기본 개념을 이해하고 SQL을 사용하는 방법을 익히면, 데이터베이스를 사용하는 다양한 시스템들을 쉽게 이해할 수 있다. 또한 데이터베이스를 사용하는 다양한 시스템들을 이해하면, 데이터베이스 기본 개념과 SQL을 더 깊게 이해할 수 있다.</p>
+<p>데이터베이스가 어떻게 결측 정보를 표현하는지 살펴보고, 결측 정보를 다룰 때, 3개 값을 가진 로직(three-valued logic) 데이터베이스 사용하여 결측 정보를 올바르게 처리하는 쿼리를 작성한다.</p>
+<p>현실 세계 데이터는 결코 완전하지 않고 구멍은 항상 있다. <code>null</code>로 불리는 특별한 값을 사용하여 데이터베이스는 구멍을 표현한다. <code>null</code>는 0, <code>False</code>, 혹은 빈 문자열도 아니다.”아무것도 없음(nothing here)“을 의미하는 특별한 값이다. <code>null</code>을 다루는 것은 약간 특별한 기교와 신중한 생각을 요구한다.</p>
+<p>기본적으로 SQLite는 출력에서 NULL 값을 표시하지 않는다. <code>.nullvalue</code> 명령은 SQLite가 NULL에 대해 지정한 값을 표시하도록 한다. NULL을 더 쉽게 볼 수 있도록 <code>-null-</code> 값을 사용한다.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>.nullvalue <span class="op">-</span><span class="kw">null</span><span class="op">-</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>시작으로 <code>Visited</code> 테이블을 살펴보자. 혹은 더 정확히 말하면 날짜가 <code>null</code>이다.</p>
+<p>시작으로 <code>Visited</code> 테이블을 살펴보자. 레코드가 8개 있지만 #752은 날짜가 없다. 즉, 그 날짜는 <code>null</code>이다:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>site</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>DR-1</td>
+<td>1927-02-08</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>DR-1</td>
+<td>1927-02-10</td>
+</tr>
+<tr class="odd">
+<td>734</td>
+<td>DR-3</td>
+<td>1930-01-07</td>
+</tr>
+<tr class="even">
+<td>735</td>
+<td>DR-3</td>
+<td>1930-01-12</td>
+</tr>
+<tr class="odd">
+<td>751</td>
+<td>DR-3</td>
+<td>1930-02-26</td>
+</tr>
+<tr class="even">
+<td>752</td>
+<td>DR-3</td>
+<td>-null-</td>
+</tr>
+<tr class="odd">
+<td>837</td>
+<td>MSK-4</td>
+<td>1932-01-14</td>
+</tr>
+<tr class="even">
+<td>844</td>
+<td>DR-1</td>
+<td>1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p><code>Null</code> 다른 값과는 다르게 동작한다. 만약 1930년 이전 레코드를 선택한다면,</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">&lt;</span> <span class="st">'1930-01-01'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>site</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>DR-1</td>
+<td>1927-02-08</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>DR-1</td>
+<td>1927-02-10</td>
+</tr>
+</tbody>
+</table>
+<p>결과 2개를 얻게 되고, 만약 1930년 동안 혹은 이후 레코드를 선택한다면,</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">&gt;=</span> <span class="st">'1930-01-01'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>site</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>734</td>
+<td>DR-3</td>
+<td>1930-01-07</td>
+</tr>
+<tr class="even">
+<td>735</td>
+<td>DR-3</td>
+<td>1930-01-12</td>
+</tr>
+<tr class="odd">
+<td>751</td>
+<td>DR-3</td>
+<td>1930-02-26</td>
+</tr>
+<tr class="even">
+<td>837</td>
+<td>MSK-4</td>
+<td>1932-01-14</td>
+</tr>
+<tr class="odd">
+<td>844</td>
+<td>DR-1</td>
+<td>1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p>결과를 5개 얻게 되지만, 레코드 #752은 결과값 어디에도 존재하지 않는다. 이유는 <code>null&lt;'1930-00-00'</code> 평가결과가 참도 거짓도 아니기 때문이다. <code>null</code> 이 의미하는 것은 “알수가 없다”는 것이다. 그리고 만약 비교 평가식의 왼쪽편 값을 알지 못한다면, 비교도 참인지 거짓인지 알수가 없다. 데이터베이스는 “알 수 없음”을 <code>null</code>로 표현하기 때문에, <code>null&lt;'1930-00-00'</code>의 값도 사실 <code>null</code>이다. <code>null&gt;='1930-00-00'</code>도 또한 <code>null</code>인데 왜냐하면 질문에 답을 할 수 없기 때문이다. 그리고, <code>WHERE</code>절에 레코드는 테스트가 참인 것만 있기 때문에 레코드 #752은 어느 결과값에도 포함되지 않게 된다.</p>
+<p>비교 연산 뿐만 아니라 다른 연산들도 null과 함께 이러한 방식으로 동작한다. <code>1+null</code>도 <code>null</code>이고, <code>5*null</code>도 <code>null</code>이고, <code>log(null)</code>도 <code>null</code>이 된다. 특히, 무언가를 <code>=</code> 과 <code>!=</code> 으로 <code>null</code>과 비교하는 것도 <code>null</code>이 된다.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">=</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>출력을 생성하지 않으며, 다음도 마찬가지로 출력을 생성하지 않는다.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">!=</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><code>null</code> 인지 아닌지를 점검하기 위해서, 특별한 테스트 <code>IS NULL</code>을 사용해야 한다.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>site</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>752</td>
+<td>DR-3</td>
+<td>-null-</td>
+</tr>
+</tbody>
+</table>
+<p>혹은, 역으로는 <code>IS NOT NULL</code>을 사용한다.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>site</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>DR-1</td>
+<td>1927-02-08</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>DR-1</td>
+<td>1927-02-10</td>
+</tr>
+<tr class="odd">
+<td>734</td>
+<td>DR-3</td>
+<td>1930-01-07</td>
+</tr>
+<tr class="even">
+<td>735</td>
+<td>DR-3</td>
+<td>1930-01-12</td>
+</tr>
+<tr class="odd">
+<td>751</td>
+<td>DR-3</td>
+<td>1930-02-26</td>
+</tr>
+<tr class="even">
+<td>837</td>
+<td>MSK-4</td>
+<td>1932-01-14</td>
+</tr>
+<tr class="odd">
+<td>844</td>
+<td>DR-1</td>
+<td>1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p><code>null</code> 값은 나타나는 곳마다 문제를 일으킬 수 있다. 예를 들어, Lake에 의해 측정되지 않은 모든 염도 측정을 찾고 싶다고 가정해보자. 쿼리를 다음과 같이 작성하는 것이 자연스럽다.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">AND</span> person <span class="op">!=</span> <span class="st">'lake'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>taken</th>
+<th>person</th>
+<th>quant</th>
+<th>reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>dyer</td>
+<td>sal</td>
+<td>0.13</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>dyer</td>
+<td>sal</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>752</td>
+<td>roe</td>
+<td>sal</td>
+<td>41.6</td>
+</tr>
+<tr class="even">
+<td>837</td>
+<td>roe</td>
+<td>sal</td>
+<td>22.5</td>
+</tr>
+</tbody>
+</table>
+<p>하지만, 상기 쿼리 필터는 누가 측정을 했는지 모르는 레코드는 빠뜨린다. 다시 한번, 이유는 <code>person</code>이 <code>null</code>일 때, <code>!=</code>비교는 <code>null</code>값을 만들어서 레코드가 결과값에 있지 않게 된다. 만약 이런 레코드도 유지하려고 한다면, 명시적으로 검사를 추가할 필요가 있다.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">AND</span> (person <span class="op">!=</span> <span class="st">'lake'</span> <span class="kw">OR</span> person <span class="kw">IS</span> <span class="kw">NULL</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>taken</th>
+<th>person</th>
+<th>quant</th>
+<th>reading</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>dyer</td>
+<td>sal</td>
+<td>0.13</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>dyer</td>
+<td>sal</td>
+<td>0.09</td>
+</tr>
+<tr class="odd">
+<td>735</td>
+<td>-null-</td>
+<td>sal</td>
+<td>0.06</td>
+</tr>
+<tr class="even">
+<td>752</td>
+<td>roe</td>
+<td>sal</td>
+<td>41.6</td>
+</tr>
+<tr class="odd">
+<td>837</td>
+<td>roe</td>
+<td>sal</td>
+<td>22.5</td>
+</tr>
+</tbody>
+</table>
+<p>여전히 이러한 접근법이 맞는 것인지 아닌 것인지 판단할 필요가 있다. 만약 절대적으로 결과에 Lake가 측정한 어떠한 값도 포함하지 않는다고 확신한다면, 누가 작업을 한 것인지 모르는 모든 레코드를 제외할 필요가 있다.</p>
+<p>산술 또는 부울 연산자와 달리, <code>min</code>, <code>max</code> 또는 <code>avg</code>와 같은 여러 값을 결합하는 집계 함수는 <code>null</code> 값을 <em>무시한다</em>. 대부분의 경우, 이는 바람직한 결과이다. 예를 들어, 알려지지 않은 값들이 평균을 낼 때 <code>null</code>값은 데이터에 영향을 주지 않는다. 집계 함수는 다음 장에서 더 자세히 다룰 것이다.</p>
+<section id="연습문제" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">7.1</span> 연습문제</h2>
+<section id="알려진-날짜별로-정렬" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="알려진-날짜별로-정렬"><span class="header-section-number">7.1.1</span> 알려진 날짜별로 정렬</h3>
+<p>날짜가 알려지지 않은 (즉 <code>null</code>) 항목은 빼고, 날짜 순으로 <code>Visited</code> 테이블에 있는 레코드를 정렬한</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">ORDER</span> <span class="kw">BY</span> dated <span class="kw">ASC</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>site</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>DR-1</td>
+<td>1927-02-08</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>DR-1</td>
+<td>1927-02-10</td>
+</tr>
+<tr class="odd">
+<td>734</td>
+<td>DR-3</td>
+<td>1930-01-07</td>
+</tr>
+<tr class="even">
+<td>735</td>
+<td>DR-3</td>
+<td>1930-01-12</td>
+</tr>
+<tr class="odd">
+<td>751</td>
+<td>DR-3</td>
+<td>1930-02-26</td>
+</tr>
+<tr class="even">
+<td>837</td>
+<td>MSK-4</td>
+<td>1932-01-14</td>
+</tr>
+<tr class="odd">
+<td>844</td>
+<td>DR-1</td>
+<td>1932-03-22</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="집합에서-null" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="집합에서-null"><span class="header-section-number">7.1.2</span> 집합에서 NULL</h3>
+<p>다음 쿼리가 어떤 결과를 생성할 것으로 예상하는가?</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IN</span> (<span class="st">'1927-02-08'</span>, <span class="kw">NULL</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>실제로 어떤 결과를 생성하는가?</p>
+<hr>
+<p>위 쿼리는 ‘1927-02-08’ 또는 NULL인 ‘dated’ 행을 반환할 것으로 예상할 수 있다. 하지만 실제로는 ’1927-02-08’인 행만 반환한다. 이는 다음과 같은 더 간단한 쿼리에서 얻을 수 있는 결과와 동일하다:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IN</span> (<span class="st">'1927-02-08'</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이런 결과가 나타나는 이유는 <code>IN</code> 연산자가 <em>값들</em>의 집합과 작동하는데, NULL은 정의상 값이 아니며 따라서 단순히 무시되기 때문이다.</p>
+<p>실제로 NULL을 포함시키고자 한다면, 쿼리를 다음과 같이 IS NULL 조건을 사용하여 다시 작성해야 한다:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">=</span> <span class="st">'1927-02-08'</span> <span class="kw">OR</span> dated <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>이 쿼리는 ’dated’가 ’1927-02-08’이거나 NULL인 행을 모두 반환한다.</p>
+</section>
+<section id="표식값-장단점" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="표식값-장단점"><span class="header-section-number">7.1.3</span> 표식값 장단점</h3>
+<p>일부 데이터베이스 설계자들은 <code>null</code> 대신 표식값(sentienl value)을 사용하여 누락된 데이터를 표시하는 것을 선호한다. 예를 들어, 누락된 날짜에 “0000-00-00”을 사용하거나, 염도나 방사능 측정치가 누락된 경우 -1.0을 사용한다(실제 측정치는 음수가 될 수 없으므로). 이러한 접근방법이 단순화시킨 것은 무엇인가? 어떤 부담이나 위험을 도입하는가?</p>
+<hr>
+<p>표식값은 누락된 데이터의 존재를 명확히 표현한다. <code>null</code>보다 직관적으로 이해될 수 있고, 특정 값으로 데이터를 표시하면 null 값을 다룰 때 발생할 수 있는 복잡성(예: IS NULL 조건)을 피할 수 있다.</p>
+<p>표식값은 실제 데이터와 혼동될 위험이 있다. 예를 들어, “0000-00-00”이나 -1.0이 실제 측정치로 잘못 해석될 수 있다. 센티넬 값은 데이터 분석 시 추가적인 검증 단계를 필요로 한다. 예를 들어, 평균을 계산할 때 -1.0과 같은 표식값을 제외해야 한다. 센티넬 값의 사용은 데이터베이스 설계 및 유지 관리를 더 복잡하게 만들 수 있다. 모든 사용자 및 개발자가 표식값의 의미를 정확히 이해하고 있어야 한다.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -664,13 +1054,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link  aria-label=" 감사의="" 글"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">감사의 글</span>
+      <a href="./calc.html" class="pagination-link  aria-label=" &lt;span="" 값="" 계산&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./setup.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>SQLite3</span>">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./agg.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>집계</span>">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">집계</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

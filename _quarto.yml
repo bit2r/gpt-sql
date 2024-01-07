@@ -32,7 +32,7 @@ book:
         - calc.qmd
         - null.qmd
         - agg.qmd
-        - 17-join.qmd
+        - join.qmd
         - 18-create.qmd
         - 19-prog.qmd
 
