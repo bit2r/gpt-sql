@@ -33,8 +33,9 @@ book:
         - null.qmd
         - agg.qmd
         - join.qmd
-        - 18-create.qmd
-        - 19-prog.qmd
+        - hygene.qmd        
+        - create.qmd
+        - prog.qmd
 
     - part: "챗GPT SQL"
       chapters:

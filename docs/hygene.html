@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="이광춘">
 
-<title>챗GPT SQL</title>
+<title>챗GPT SQL - 10&nbsp; 데이터 위생</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./create.html" rel="next">
+<link href="./join.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">감사의 글</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./hygene.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 위생</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">감사의 글</span></a>
   </div>
 </li>
@@ -194,20 +194,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
+  <a href="./hygene.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터 생성과 변형(Creating and Modifying Data)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+  <a href="./19-prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스로 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -245,43 +245,27 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#감사의-글" id="toc-감사의-글" class="nav-link active" data-scroll-target="#감사의-글">감사의 글</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link active" data-scroll-target="#연습문제"><span class="header-section-number">10.1</span> 연습문제</a>
+  <ul class="collapse">
+  <li><a href="#원자-값-식별하기" id="toc-원자-값-식별하기" class="nav-link" data-scroll-target="#원자-값-식별하기"><span class="header-section-number">10.1.1</span> 원자 값 식별하기</a></li>
+  <li><a href="#기본-키-식별하기" id="toc-기본-키-식별하기" class="nav-link" data-scroll-target="#기본-키-식별하기"><span class="header-section-number">10.1.2</span> 기본 키 식별하기</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./hygene.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 위생</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">챗GPT SQL</h1>
-<p class="subtitle lead">범용 데이터 과학 도구</p>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 위생</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">저자</div>
-  <div class="quarto-title-meta-heading">소속</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">이광춘 </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            비영리법인 한국 R 사용자회
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">공개</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2024년 01월 07일</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -291,18 +275,119 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><strong>데이터 위생(data hygiene)</strong>은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자.</p>
+<p>첫번째 규칙은 모든 값은 독립 요소로 분해될 수 없는 <strong>원자(atomic)</strong>적 속성을 지녀야 한다. 하나의 칼럼에 전체 이름을 넣는 대신에 별도로 구별되는 칼럼에 이름과 성을 저장해서 이름 컴포넌트를 뽑아내는 부분 문자열 연산(substring operation)을 사용할 필요가 없다. 좀더 중요하게는, 이름을 두 부분으로 저장한다. 왜냐하면, 공백으로 쪼개는 것은 신뢰성이 약하다. “Eloise St.&nbsp;Cyr” 혹은 “Jan Mikkel Steubart” 같은 이름을 생각하면 쉽게 알 수 있다.</p>
+<p>두번째 규칙은 모든 레코드는 유일한 기본키를 가져야한다. 내재적인 의미가 전혀없는 일련번호가 될 수도 있고, 레코드 값중의 하나 (<code>Person</code> 테이블의 <code>ident</code> 필드), 혹은 <code>Survey</code> 테이블에서 심지어 모든 측정값을 유일하게 식별하는 <code>(taken, person, quant)</code> 삼중값의 조합도 될 수 있다.</p>
+<p>세번째 규칙은 불필요한 정보가 없어야 한다. 예를 들어, <code>Site</code>테이블을 제거하고 다음과 같이 <code>Visited</code> 테이블을 다시 작성할 수 있다.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>lat</th>
+<th>long</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>-49.85</td>
+<td>-128.57</td>
+<td>1927-02-08</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>-49.85</td>
+<td>-128.57</td>
+<td>1927-02-10</td>
+</tr>
+<tr class="odd">
+<td>734</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>1930-01-07</td>
+</tr>
+<tr class="even">
+<td>735</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>1930-01-12</td>
+</tr>
+<tr class="odd">
+<td>751</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>1930-02-26</td>
+</tr>
+<tr class="even">
+<td>752</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>-null-</td>
+</tr>
+<tr class="odd">
+<td>837</td>
+<td>-48.87</td>
+<td>-123.40</td>
+<td>1932-01-14</td>
+</tr>
+<tr class="even">
+<td>844</td>
+<td>-49.85</td>
+<td>-128.57</td>
+<td>1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p>사실, 스프레드쉬트와 마찬가지로 각 행에 각 측정값에 관한 모든 정보를 기록하는 하나의 테이블을 사용할 수도 있다. 문제는 이와 같은 방식으로 조직된 데이터를 일관성있게 관리하는 것은 매우 어렵다. 만약 특정한 사이트의 특정한 방문 날짜가 잘못된다면, 데이터베이스에 다수의 레코드를 변경해야한다. 더 안좋은 것은 다른 사이트도 그 날짜에 방문되었기 때문에 어느 레코드를 변경할지 추정해야하는 것이다.</p>
+<p>네번째 규칙은 모든 값의 단위는 명시적으로 저장되어야 한다. 예제 데이터베이스는 그렇지 못해서 문제다. 로에리히(Roerich)의 염도 측정치는 다른 사람들보다 몇 배나 더 높지만, 천분율(parts per thousand) 대신 백만분율(parts per million)을 사용했는지, 아니면 1932년 그 사이트에서 실제로 염분 이상 현상이 있었는지 알 수 없습니다.</p>
+<p>한걸음 물러나서 생각하자, 데이터와 저장하는데 사용되는 도구는 공생관계다. 테이블과 조인은 데이터가 특정 방식으로 잘 조직되었다면 매우 효과적이다. 하지만, 만약 특정 형태로 되어 있다면 효과적으로 다룰 수 있는 도구가 있기 때문에 데이터를 그와 같은 방식으로 조직하기도 한다. 인류학자가 말했듯이, 도구는 도구를 만드는 손을 만든다. (the tool shapes the hand that shapes the tool) 즉, 도구(기술, 방법론 등)가 사용자(인간, 조직 등)에게 영향을 미치며, 동시에 사용자가 그 도구를 개선하거나 변형시키는 과정을 의미한다. 결과적으로, 도구와 사용자는 서로 영향을 주고받으며 발전해 나간다는 개념을 내포하고 있다.</p>
+<section id="연습문제" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">10.1</span> 연습문제</h2>
+<section id="원자-값-식별하기" class="level3" data-number="10.1.1">
+<h3 data-number="10.1.1" class="anchored" data-anchor-id="원자-값-식별하기"><span class="header-section-number">10.1.1</span> 원자 값 식별하기</h3>
+<p>다음 중 어떤 것이 원자 값인가? 어떤 것이 아닌가? 그 이유는 무엇인가?</p>
+<ul>
+<li>뉴질랜드 (New Zealand)</li>
+<li>87 튜링 애비뉴 (87 Turing Avenue)</li>
+<li>1971년 1월 25일 (January 25, 1971)</li>
+<li>XY 좌표 (0.5, 3.3)</li>
+</ul>
+<hr>
+<p>뉴질랜드는 명확한 원자 값이다.</p>
+<p>주소와 XY 좌표는 별도로 저장되야 하는 여러 정보를 포함하고 있다.</p>
+<ul>
+<li>주소, 거리명</li>
+<li>X 좌표, Y 좌표</li>
+</ul>
+<p>날짜 항목은 월, 일, 연도 요소를 포함하고 있어 덜 명확하다. 그러나 SQL에는 <code>DATE</code> 데이터 유형이 있으며, 날짜는 이 형식을 사용하여 저장되어야 한다. 월, 일 또는 연도를 별도로 작업해야 하는 경우, 데이터베이스 소프트웨어에서 사용 가능한 SQL 함수를 사용할 수 있다(예: SQLite <a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions050.htm"><code>EXTRACT</code></a> 또는 <a href="https://www.sqlite.org/lang_datefunc.html"><code>STRFTIME</code></a>).</p>
+</section>
+<section id="기본-키-식별하기" class="level3" data-number="10.1.2">
+<h3 data-number="10.1.2" class="anchored" data-anchor-id="기본-키-식별하기"><span class="header-section-number">10.1.2</span> 기본 키 식별하기</h3>
+<p>다음 테이블에 기본 키는 무엇인가? 즉, 어떤 값 혹은 값들을 조합해야 레코드를 유일무이하게 식별해낼 수 있을까?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>latitude</th>
+<th>longitude</th>
+<th>date</th>
+<th>temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>57.3</td>
+<td>-22.5</td>
+<td>2015-01-09</td>
+<td>-14.2</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>위도, 경도 및 날짜는 모두 온도 기록을 고유하게 식별하는 데 필요하다.</p>
 
-<section id="감사의-글" class="level1 unnumbered">
-<h1 class="unnumbered">감사의 글</h1><p><img src="images/cover.png" title="챗GPT SQL" class="quarto-cover-image img-fluid"></p>
-<p>이 책이 탄생할 수 있도록 도움을 주신 여러분께 깊은 감사의 마음을 표합니다.</p>
-<p>기술적인 부분에서 깊은 통찰력을 제공해주신 한국 R 사용자회 유충현 회장님, 챗GPT가 국내에 소개된 후 가장 먼저 챗GPT를 세밀하게 조명할 수 있도록 교육 기회를 주신 경기도의회 문승호, 이자영, 장한별 의원님, 광명시 박승원 시장님, 김규식 부시장님, 김종업 센터장님, 지방행정연구원 최인수, 전대욱, 김필 박사님, 경기도청 AI빅데이터 산업과 이수재 과장님, 원금동, 최정환, 윤여찬 팀장님, 안양시청 엄순용 주무관님, 순천향대학교 박여진 팀장님, 경기도 인재개발원 박선현 주무관님, 나이스 디앤알 박정우 대표님, 남영민 본부장님, 우민호 실장님, 씨지인사이드 박선춘 대표님, 서울교육청 조희연 교육감님, 양신호 원장님, 김선자 장학관님, 서울고 학부모회 오혜석님, 디플래닉스 김범진 전대표님, 장석호 대표님, 이용빈님, 경기도 경제과학진흥원 임문영 상임이사님, 건국대 미래지식교육원 이영범 원장님께 감사드립니다.</p>
-<p>이 책의 공개와 출판이 가능했던 것은 한국 R 사용자회의 지원 덕분입니다. 행정사법인 광화문 최순영 대표님, 한채민 과장님, 법무법인 평안 김형주 변호사님, 법률사무소 하우림 정병운 변호사님, 홍성학 감사님, 김호성님, 김현철님, 형환희님, 한국텍학회 김강수님, 경상국립대 백원희 교수님께 진심으로 감사드립니다.</p>
-<p>한국 R 사용자회 활동에서 소프트웨어 카펜트리의 영향은 결코 무시할 수 없습니다. 소프트웨어 카펜트리를 설립한 Greg Wilson 박사님, 카펜트리 재단의 Kari Jordan 박사님, AsiaR 커뮤니티를 이끌고 계신 Janani Ravi 박사님, 서울 R 미트업에서 발표해주신 제빈 웨스트 교수님, 그리고 곽수영, 장연훈, 김송규, 나성호, 안영찬, 박남호, 공병규, 김용우, 이현진 교수님께 감사의 말씀을 드립니다.</p>
-<p>지적 자극을 주시고 더 넓은 세상을 보게 해주신 국가교육위원회 이배용 위원장님, 정대화 상임위원님, 김수환 전문위원님, 삼정 KPMG 장지수 부대표님, 박문구 전무님, 가톨릭 의대 문건웅 교수님, 성균관대 최재성 교수님, 국무조정실 장명헌 사무관님, 제주대 안도현 교수님, 명지대 박순만 교수님, 이희정 전대표님, 고길곤 교수님, 이원일 교수님에게 깊은 감사의 말씀을 전합니다.</p>
-<p>공공정책분야의 빅데이터 분석 활성화를 격려해주신 노웅래 의원님, 김병욱 의원님, 성남시의회 조정식 의원님, 환경보전협회 남광우 전 상근부회장님, 공공의창 최정묵 박사님, 조원씨앤아이 김대진 대표님, 그리고 이 책 출판에 관심이 많으신 오마이뉴스의 김지현 기자님, 나눔국민운동본부 위정희 이사님에게 감사의 인사를 전합니다.</p>
-<p>이 책이 출간되는데 있어 이들 모든 분들의 도움 없이는 어려웠을 것입니다. 그동안의 관심과 지원에 깊은 감사를 드리며, 이 책이 데이터 과학의 발전과 독자들에게 도움이 될 수 있기를 바라는 마음으로 마무리하겠습니다.</p>
 
-
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -705,10 +790,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./join.html" class="pagination-link  aria-label=" &lt;span="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="들어가며">
-        <span class="nav-page-text">들어가며</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./create.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>데이터 생성과 변형(Creating and Modifying Data)</span>">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터 생성과 변형(Creating and Modifying Data)</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
