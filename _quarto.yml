@@ -31,7 +31,7 @@ book:
         - filter.qmd
         - calc.qmd
         - null.qmd
-        - 16-agg.qmd
+        - agg.qmd
         - 17-join.qmd
         - 18-create.qmd
         - 19-prog.qmd

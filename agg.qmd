@@ -1,0 +1,355 @@
+---
+editor: 
+  markdown: 
+    wrap: sentence
+---
+
+## 집계
+
+이제 데이터의 평균과 범위를 계산하고자 한다.
+`Visited` 테이블에서 모든 날짜 정보를 어떻게 선택하는지 알고 있다.
+
+``` sql
+SELECT dated FROM Visited;
+```
+
+|   dated    |
+|:----------:|
+| 1927-02-08 |
+| 1927-02-10 |
+| 1930-01-07 |
+| 1930-01-12 |
+| 1930-02-26 |
+|   -null-   |
+| 1932-01-14 |
+| 1932-03-22 |
+
+하지만 조합하기 위해서는 `min` 혹은 `max` 같은 **집계 함수(aggregation function)**를 사용해야만 한다.
+각 함수는 입력으로 레코드 집합을 받고 출력으로 단일 레코드를 만든다.
+
+``` sql
+SELECT min(dated) FROM Visited;
+```
+
+| min(dated) |
+|:----------:|
+| 1927-02-08 |
+
+![](images/sql-aggregation.svg){fig-align="center"}
+
+``` sql
+SELECT max(dated) FROM Visited;
+```
+
+| max(dated) |
+|:----------:|
+| 1932-03-22 |
+
+`min`과 `max`는 SQL에 내장된 단지 두개의 집계 함수다.
+다른 함수로 많이 사용되는 `avg`, `count`, `sum`을 들 수 있다.
+
+``` sql
+SELECT avg(reading) FROM Survey WHERE quant = 'sal';
+```
+
+|   avg(reading)   |
+|:----------------:|
+| 7.20333333333333 |
+
+``` sql
+SELECT count(reading) FROM Survey WHERE quant = 'sal';
+```
+
+| count(reading) |
+|:--------------:|
+|       9        |
+
+``` sql
+SELECT sum(reading) FROM Survey WHERE quant = 'sal';
+```
+
+| sum(reading) |
+|:------------:|
+|    64.83     |
+
+여기서 `count(reading)`을 사용했다.
+테이블에서 `quant`나 다른 필드를 세는 것도 마찬가지로 쉽게 할 수 있다.
+심지어 `count(*)`를 사용할 수도 있다.
+이 함수는 값 자체에 대해서는 관심이 없고, 값이 몇 개 있는지만을 고려하기 때문이다.
+
+SQL에서 한 번에 여러 집계작업을 수행할 수도 있다.
+예를 들어, 적절한 염분측정치의 범위를 찾을 수도 있다.
+
+``` sql
+SELECT min(reading), max(reading) FROM Survey WHERE quant = 'sal' AND reading <= 1.0;
+```
+
+| min(reading) | max(reading) |
+|:------------:|:------------:|
+|     0.05     |     0.21     |
+
+출력결과가 놀라움을 줄 수도 있지만, 원 결과값과 집계 결과를 조합할 수도 있다.
+
+``` sql
+SELECT person, count(*) FROM Survey WHERE quant = 'sal' AND reading <= 1.0;
+```
+
+| person | count(\*) |
+|:------:|:---------:|
+|  lake  |     7     |
+
+Lake의 이름이 Roerich나 Dyer 대신 나타나는 이유는 무엇일까?
+이는 데이터베이스 관리자가 특정 필드를 집계해야 하지만, 집계 방법에 대한 지시가 없을 때 실제 입력 세트에서 하나의 값을 선택하기 때문이다.
+이는 처리된 첫 번째 값일 수도 있고, 마지막 값이나 전혀 다른 어떤 값일 수도 있다.
+
+이 쿼리의 경우, `person` 필드가 그룹화되지 않았기 때문에, 데이터베이스 관리자는 `person` 칼럼에 대해 어떤 특정 값을 선택한다.
+그 결과로 'lake'가 출력된 것일 수 있는데, 이는 'lake'가 데이터베이스에서 처리된 첫 번째 또는 마지막 값일 가능성이 있다.
+데이터베이스의 내부 작동 방식에 따라, 이러한 선택은 일관성이 없을 수도 있다.
+
+또 다른 중요한 사실은 집계할 값이 없을 때 — 예를 들어, `WHERE` 절을 만족하는 행이 없는 경우 — 집계의 결과는 "모른다"로 처리되며, 이는 0이나 다른 임의의 값이 아니라는 점이다.
+
+예를 들어, 특정 조건을 만족하는 행이 하나도 없다면, `count()` 함수와 같은 집계 함수는 0을 반환하지만, `sum()`이나 `avg()`와 같은 다른 집계 함수들은 NULL을 반환할 수 있다.
+이는 해당 집계 함수가 적용될 데이터가 전혀 없기 때문에, 그 결과가 "알 수 없는 값"이 됨을 의미한다.
+이러한 방식은 데이터의 부재가 잘못된 결과로 이어지는 것을 방지하는 데 도움이 된다.
+
+| person | max(reading) | sum(reading) |
+|:------:|:------------:|:------------:|
+| -null- |    -null-    |    -null-    |
+
+집계 함수의 또 다른 중요한 특징은 SQL 나머지 부분과는 매우 유용한 방식으로 일관성이 없다는 것이다.
+이러한 동작은 다음과 같은 쿼리를 작성할 수 있게 해준다:
+
+집합 함수의 마지막 중요한 한가지 기능은 매우 유용한 방식으로 나머지 SQL과는 일관되지 않다는 점이다.
+두 값을 더할 때 하나가 `null`이면 결과는 `null`이 된다.
+이를 확장하면, `sum`을 사용하여 집합의 모든 값을 더하고 그 값들 중 하나라도 `null`이라면 결과도 `null`이 되어야 한다.
+그러나 집계 함수가 `null` 값을 무시하고 `null`이 아닌 값들만 결합하는 것이 훨씬 더 유용하다.
+명시적으로 항상 필터해야하는 대신에 이것의 결과 쿼리를 다음과 같이 작성할 수 있게 한다.
+
+``` sql
+SELECT min(dated) FROM Visited;
+```
+
+| min(dated) |
+|:----------:|
+| 1927-02-08 |
+
+명시적으로 항상 다음과 같이 필터하는 쿼리를 작성할 필요가 없다.
+
+``` sql
+SELECT min(dated) FROM Visited WHERE dated IS NOT NULL;
+```
+
+| min(dated) |
+|:----------:|
+| 1927-02-08 |
+
+모든 레코드를 한꺼번에 집계하는 것이 항상 의미 있는 것은 아니다.
+예를 들어, 데이터에 체계적인 편향(bias)이 있을 것이라고 의심하고, 일부 과학자들의 방사능 측정값이 다른 사람들보다 높다고 생각한다고 가정해보자.
+이런 경우에 다음과 같은 방법은 효과적이지 않다:
+
+``` sql
+SELECT person, count(reading), round(avg(reading), 2)
+FROM  Survey
+WHERE quant = 'rad';
+```
+
+| person | count(reading) | round(avg(reading), 2) |
+|:------:|:--------------:|:----------------------:|
+|  roe   |       8        |          6.56          |
+
+데이터베이스 관리자가 각 과학자별로 별도로 집계하는 대신 임의로 한 과학자의 이름을 선택하기 때문에 이 방법은 효과적이지 않다.
+과학자가 단지 다섯 명뿐이므로, 다음 형식의 다섯 개의 쿼리를 작성할 수 있다.
+
+``` sql
+SELECT person, count(reading), round(avg(reading), 2)
+FROM  Survey
+WHERE quant = 'rad'
+AND   person = 'dyer';
+```
+
+| person | count(reading) | round(avg(reading), 2) |
+|:------:|:--------------:|:----------------------:|
+|  dyer  |       2        |          8.81          |
+
+하지만, 이러한 접근법은 성가시고, 만약 50명 혹은 500명의 과학자를 가진 데이터셋을 분석한다면, 모든 쿼리를 올바르게 작성할 가능성은 작다.
+
+필요한 것은 데이터베이스 관리자에게 각 과학자별로 시간을 별도로 집계하도록 `GROUP BY` 절을 사용하여 지시하는 것이다.
+
+``` sql
+SELECT   person, count(reading), round(avg(reading), 2)
+FROM     Survey
+WHERE    quant = 'rad'
+GROUP BY person;
+```
+
+| person | count(reading) | round(avg(reading), 2) |
+|:------:|:--------------:|:----------------------:|
+|  dyer  |       2        |          8.81          |
+|  lake  |       2        |          1.82          |
+|   pb   |       3        |          6.66          |
+|  roe   |       1        |         11.25          |
+
+`GROUP BY`는 그 이름이 암시하는 것처럼 정확히 다음과 같이 동작한다.
+지정된 필드의 같은 값을 가진 모든 레코드를 그룹화하여 집계가 각 배치를 별도로 처리할 수 있도록 한다.
+각 배치에 모든 레코드는 `person`에 대해 동일한 값을 가지기 때문에, 데이터베이스 관리자가 임의의 값을 잡아서 집합된 `reading` 값과 함께 표시하는 것은 더 이상 문제가 되지 않는다.
+
+우리가 한 번에 여러 기준에 따라 정렬할 수 있는 것처럼, 다중 기준에 따라 그룹화할 수도 있다.
+예를 들어, 과학자별 및 측정된 양별로 평균 측정값을 얻기 위해서 `GROUP BY` 절에 다른 필드를 추가하기만 하면 된다.
+
+``` sql
+SELECT   person, quant, count(reading), round(avg(reading), 2)
+FROM     Survey
+GROUP BY person, quant;
+```
+
+| person | quant | count(reading) | round(avg(reading), 2) |
+|:------:|:-----:|:--------------:|:----------------------:|
+| -null- |  sal  |       1        |          0.06          |
+| -null- | temp  |       1        |         -26.0          |
+|  dyer  |  rad  |       2        |          8.81          |
+|  dyer  |  sal  |       2        |          0.11          |
+|  lake  |  rad  |       2        |          1.82          |
+|  lake  |  sal  |       4        |          0.11          |
+|  lake  | temp  |       1        |         -16.0          |
+|   pb   |  rad  |       3        |          6.66          |
+|   pb   | temp  |       2        |         -20.0          |
+|  roe   |  rad  |       1        |         11.25          |
+|  roe   |  sal  |       2        |         32.05          |
+
+`quant`를 표시되는 필드 목록에 추가한 것에 주목하자.
+그렇지 않으면 결과가 큰 의미를 가지지 않을 것이다.
+
+한 단계 더 나아가 측정을 수행한 사람을 알 수 없는 모든 항목을 제거해보자.
+
+``` sql
+SELECT   person, quant, count(reading), round(avg(reading), 2)
+FROM     Survey
+WHERE    person IS NOT NULL
+GROUP BY person, quant
+ORDER BY person, quant;
+```
+
+| person | quant | count(reading) | round(avg(reading), 2) |
+|:------:|:-----:|:--------------:|:----------------------:|
+|  dyer  |  rad  |       2        |          8.81          |
+|  dyer  |  sal  |       2        |          0.11          |
+|  lake  |  rad  |       2        |          1.82          |
+|  lake  |  sal  |       4        |          0.11          |
+|  lake  | temp  |       1        |         -16.0          |
+|   pb   |  rad  |       3        |          6.66          |
+|   pb   | temp  |       2        |         -20.0          |
+|  roe   |  rad  |       1        |         11.25          |
+|  roe   |  sal  |       2        |         32.05          |
+
+좀더 면밀하게 살펴보면, 이 쿼리는,
+
+1.  `Survey`테이블에서 `person` 필드가 `null`이 아닌 레코드를 선택한다.
+
+2.  상기 레코드를 부분집합으로 그룹지어서 각 부분집합의 `person`과 `quant`의 값은 같다.
+
+3.  먼저 `person`으로 부분집합을 정렬하고나서 `quant`로 각 하위 그룹내에서도 정렬한다.
+
+4.  각 부분집합의 레코드 숫자를 세고, 각각 `reading` 평균을 계산하고, 각각 `person`과 `quant` 값을 선택한다.
+    (모두 동등하기 때문에 어느 것인지는 문제가 되지 않는다.)
+
+## 연습 문제
+
+### 온도 측정횟수 세기
+
+프랭크 파보디(Frank Pabodie)가 기록한 온도 측정횟수는 몇 번이며, 그 평균 값은 얼마인가?
+
+``` sql
+SELECT count(reading), avg(reading) FROM Survey WHERE quant = 'temp' AND person = 'pb';
+```
+
+| count(reading) | avg(reading) |
+|:--------------:|:------------:|
+|       2        |    -20.0     |
+
+### NULL 포함 평균 계산
+
+집합 값의 평균은 값들의 합을 값들의 개수로 나눈 것이다.
+이는 `avg` 함수가 1.0, `null`, 5.0이라는 값들이 주어졌을 때 2.0 또는 3.0을 반환한다는 것을 의미하는가?
+
+------------------------------------------------------------------------
+
+정답은 3.0이다.
+`NULL`은 값이 아니라 값이 없음을 나타낸다.
+따라서 계산에 포함되지 않는다.
+SQL `avg` 함수는 `null` 값을 무시하고, `null`이 아닌 값들만을 사용하여 평균을 계산한다.
+따라서 주어진 값이 1.0, `null`, 5.0일 때, `avg` 함수는 `null`을 제외한 1.0과 5.0의 평균을 계산한다.
+이는 (1.0 + 5.0) / 2 = 3.0 이므로, 함수는 3.0을 반환한다.
+
+다음 코드를 실행하여 이를 확인할 수 있다:
+
+``` sql
+SELECT AVG(a) FROM (
+    SELECT 1 AS a
+    UNION ALL SELECT NULL
+    UNION ALL SELECT 5);
+```
+
+### 쿼리가 의미하는 바는?
+
+각 개별 방사능 측정값과 모든 방사능 측정값의 평균 사이의 차이를 계산하고자 한다.
+이를 위해 다음과 같은 쿼리를 작성했다.
+
+``` sql
+SELECT avg(reading) FROM Survey WHERE quant='rad';
+```
+
+쿼리가 실제로 어떤 결과를 생성하며, 그 이유는 무엇일까?
+
+------------------------------------------------------------------------
+
+쿼리는 각 측정값에 대한 결과 대신 단 하나의 결과 행만을 생성한다.
+`avg()` 함수는 단일 값을 생성하며, 먼저 실행되기 때문에 테이블이 단일 행으로 축소된다.
+`reading` 값은 단순히 임의의 값일 뿐이다.
+
+원하는 결과를 얻기 위해서는 두 개의 쿼리를 실행해야 한다:
+
+``` sql
+SELECT avg(reading) FROM Survey WHERE quant='rad';
+```
+
+이는 평균값(6.5625)을 생성하는데, 이 값을 다음과 같은 두 번째 쿼리에 삽입할 수 있다.
+
+``` sql
+SELECT reading - 6.5625 FROM Survey WHERE quant = 'rad';
+```
+
+이 쿼리는 우리가 원하는 결과를 생성하지만, 하위 쿼리(subquery)를 사용하여 이를 단일 쿼리로 결합할 수 있다.
+
+``` sql
+SELECT reading - (SELECT avg(reading) FROM Survey WHERE quant='rad') FROM Survey WHERE quant = 'rad';
+```
+
+이 방법을 사용하면 두 개의 쿼리를 실행할 필요가 없다.
+
+요약하자면, 원래 쿼리에서 `avg(reading)`을 `(SELECT avg(reading) FROM Survey WHERE quant='rad')`로 대체한 것이다.
+
+### group_concat 함수 사용
+
+`group_concat(field, separator)` 함수는 지정된 구분자 문자(또는 구분자가 지정되지 않은 경우 ',')를 사용하여 필드의 모든 값을 연결한다.
+이를 사용하여 과학자들의 이름을 한 줄 목록으로 생성하면 출력결과는 다음과 같다.
+
+``` sql
+William Dyer, Frank Pabodie, Anderson Lake, Valentina Roerich, Frank Danforth
+```
+
+쉼표로 구분된 모든 과학자들의 성을 나열하는 쿼리를 작성하세요.
+쉼표로 구분된 모든 과학자들의 개인 이름과 성을 나열하는 쿼리를 작성하세요.
+
+------------------------------------------------------------------------
+
+쉼표로 구분된 모든 성을 나열하는 쿼리는 다음과 같다.
+
+``` sql
+SELECT group_concat(family, ',') FROM Person;
+```
+
+쉼표로 구분된 모든 전체 이름을 나열하는 쿼리는 다음과 같다.
+
+``` sql
+SELECT group_concat(personal || ' ' || family, ',') FROM Person;
+```
