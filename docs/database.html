@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 2&nbsp; 데이터베이스와 SQL</title>
+<title>챗GPT SQL - 13&nbsp; 데이터베이스와 SQL</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./select.html" rel="next">
-<link href="./setup.html" rel="prev">
+<link href="./spreadsheet.html" rel="next">
+<link href="./prog-r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">환경설정</a></li><li class="breadcrumb-item"><a href="./database.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./database.html">활용사례</a></li><li class="breadcrumb-item"><a href="./database.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">환경설정</span></a>
+ <span class="menu-text">SQL</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -169,8 +169,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
+  <a href="./select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./null.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./create.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -178,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">활용사례</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -186,56 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  <a href="./database.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">집계</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./18-create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형(Creating and Modifying Data)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./19-prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스로 프로그래밍</span></span></a>
+  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
       </ul>
@@ -252,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -273,27 +291,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#r-db-what-it-is" id="toc-r-db-what-it-is" class="nav-link active" data-scroll-target="#r-db-what-it-is"><span class="header-section-number">2.1</span> 데이터베이스가 뭔가요?</a></li>
-  <li><a href="#r-db-concept" id="toc-r-db-concept" class="nav-link" data-scroll-target="#r-db-concept"><span class="header-section-number">2.2</span> 데이터베이스 개념</a></li>
-  <li><a href="#r-db-firefox" id="toc-r-db-firefox" class="nav-link" data-scroll-target="#r-db-firefox"><span class="header-section-number">2.3</span> 파이어폭스 SQLite 관리자</a></li>
-  <li><a href="#r-db-create-table" id="toc-r-db-create-table" class="nav-link" data-scroll-target="#r-db-create-table"><span class="header-section-number">2.4</span> 데이터베이스 테이블 생성</a></li>
-  <li><a href="#r-db-sql" id="toc-r-db-sql" class="nav-link" data-scroll-target="#r-db-sql"><span class="header-section-number">2.5</span> SQL 요약</a></li>
-  <li><a href="#r-datamodeling-basics" id="toc-r-datamodeling-basics" class="nav-link" data-scroll-target="#r-datamodeling-basics"><span class="header-section-number">2.6</span> 데이터 모델링 기초</a>
+  <li><a href="#r-db-what-it-is" id="toc-r-db-what-it-is" class="nav-link active" data-scroll-target="#r-db-what-it-is"><span class="header-section-number">13.1</span> 데이터베이스가 뭔가요?</a></li>
+  <li><a href="#r-db-concept" id="toc-r-db-concept" class="nav-link" data-scroll-target="#r-db-concept"><span class="header-section-number">13.2</span> 데이터베이스 개념</a></li>
+  <li><a href="#r-db-firefox" id="toc-r-db-firefox" class="nav-link" data-scroll-target="#r-db-firefox"><span class="header-section-number">13.3</span> 파이어폭스 SQLite 관리자</a></li>
+  <li><a href="#r-db-create-table" id="toc-r-db-create-table" class="nav-link" data-scroll-target="#r-db-create-table"><span class="header-section-number">13.4</span> 데이터베이스 테이블 생성</a></li>
+  <li><a href="#r-db-sql" id="toc-r-db-sql" class="nav-link" data-scroll-target="#r-db-sql"><span class="header-section-number">13.5</span> SQL 요약</a></li>
+  <li><a href="#r-datamodeling-basics" id="toc-r-datamodeling-basics" class="nav-link" data-scroll-target="#r-datamodeling-basics"><span class="header-section-number">13.6</span> 데이터 모델링 기초</a>
   <ul class="collapse">
-  <li><a href="#db-constraints" id="toc-db-constraints" class="nav-link" data-scroll-target="#db-constraints"><span class="header-section-number">2.6.1</span> 테이블 제약사항</a></li>
+  <li><a href="#db-constraints" id="toc-db-constraints" class="nav-link" data-scroll-target="#db-constraints"><span class="header-section-number">13.6.1</span> 테이블 제약사항</a></li>
   </ul></li>
-  <li><a href="#db-three-keys" id="toc-db-three-keys" class="nav-link" data-scroll-target="#db-three-keys"><span class="header-section-number">2.7</span> 세 종류 키</a></li>
-  <li><a href="#db-debugging" id="toc-db-debugging" class="nav-link" data-scroll-target="#db-debugging"><span class="header-section-number">2.8</span> 디버깅</a></li>
-  <li><a href="#db-terminology" id="toc-db-terminology" class="nav-link" data-scroll-target="#db-terminology"><span class="header-section-number">2.9</span> 용어정의</a></li>
+  <li><a href="#db-three-keys" id="toc-db-three-keys" class="nav-link" data-scroll-target="#db-three-keys"><span class="header-section-number">13.7</span> 세 종류 키</a></li>
+  <li><a href="#db-debugging" id="toc-db-debugging" class="nav-link" data-scroll-target="#db-debugging"><span class="header-section-number">13.8</span> 디버깅</a></li>
+  <li><a href="#db-terminology" id="toc-db-terminology" class="nav-link" data-scroll-target="#db-terminology"><span class="header-section-number">13.9</span> 용어정의</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">환경설정</a></li><li class="breadcrumb-item"><a href="./database.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./database.html">활용사례</a></li><li class="breadcrumb-item"><a href="./database.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="r-db" class="quarto-section-identifier"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></h1>
+<h1 class="title"><span id="r-db" class="quarto-section-identifier"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></h1>
 </div>
 
 
@@ -310,8 +328,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="r-db-what-it-is" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="r-db-what-it-is"><span class="header-section-number">2.1</span> 데이터베이스가 뭔가요?</h2>
+<section id="r-db-what-it-is" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="r-db-what-it-is"><span class="header-section-number">13.1</span> 데이터베이스가 뭔가요?</h2>
 <p><strong>데이터베이스(database)</strong>는 데이터를 저장하기 위한 목적으로 조직된 파일이다. 대부분의 데이터베이스는 <strong>키(key)</strong>와 <strong>값(value)</strong>를 매핑한다는 의미에서 딕셔너리처럼 조직되었다. 가장 큰 차이점은 데이터베이스는 디스크(혹은 다른 영구 저장소)에 위치하고 있어서, 프로그램 종료 후에도 정보가 계속 저장된다. 데이터베이스가 영구 저장소에 저장되어서, 컴퓨터 주기억장치(memory) 크기에 제한받는 딕셔너리보다 훨씬 더 많은 정보를 저장할 수 있다.</p>
 <p>딕셔너리처럼, 데이터베이스 소프트웨어는 엄청난 양의 데이터 조차도 매우 빠르게 삽입하고 접근하도록 설계되었다. 컴퓨터가 특정 항목으로 빠르게 찾아갈 수 있도록 데이터베이스에 <strong>인덱스(indexes)</strong>를 추가한다. 데이터베이스 소프트웨어는 인덱스를 구축하여 성능을 보장한다.</p>
 <p>다양한 목적에 맞춰 서로 다른 많은 데이터베이스 시스템이 개발되어 사용되고 있다. Oracle, MySQL, Microsoft SQL Server, PostgreSQL, SQLite이 여기에 포함된다. 이 책에서는 SQLite를 집중해서 살펴볼 것이다. 왜냐하면 매우 일반적인 데이터베이스이며 파이썬에 이미 내장되어 있기 때문이다. 응용프로그램 내부에서 데이터베이스 기능을 제공하도록 SQLite가 다른 응용프로그램 내부에 내장(embedded)되도록 설계되었다. 예를 들어, 다른 많은 소프트웨어 제품이 그렇듯이, 파이어폭스 브라우져도 SQLite를 사용한다.</p>
@@ -320,8 +338,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>이번 장에서 기술하는 트위터 스파이더링 응용프로그램처럼 정보과학(Informatics)에서 마주치는 몇몇 데이터 조작 문제에 SQLite가 적합하다.</p>
 </section>
-<section id="r-db-concept" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="r-db-concept"><span class="header-section-number">2.2</span> 데이터베이스 개념</h2>
+<section id="r-db-concept" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="r-db-concept"><span class="header-section-number">13.2</span> 데이터베이스 개념</h2>
 <p>처음 데이터베이스를 볼때 드는 생각은 마치 엑셀같은 다중 시트를 지닌 스프레드쉬트(spreadsheet)같다는 것이다. 데이터베이스에서 주요 데이터 구조물은 테이블(tables), 행(rows), and 열(columns)이 된다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -331,8 +349,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>관계형 데이터베이스의 기술적인 면을 설명하면 테이블, 행, 열의 개념은 <strong>관계(relation)</strong>, <strong>튜플(tuple)</strong>, <strong>속성(attribute)</strong> 각각 형식적으로 매칭된다. 이번 장에서는 조금 덜 형식 용어를 사용한다.</p>
 </section>
-<section id="r-db-firefox" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="r-db-firefox"><span class="header-section-number">2.3</span> 파이어폭스 SQLite 관리자</h2>
+<section id="r-db-firefox" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="r-db-firefox"><span class="header-section-number">13.3</span> 파이어폭스 SQLite 관리자</h2>
 <p>SQLite 데이터베이스 파일에 있는 데이터를 다루기 위해서 이번장에서 주로 R 사용에 집중을 하지만, 다음 웹사이트에서 무료로 이용 가능한 SQLite 데이터베이스 매니저(SQLite Database Manager)로 불리는 <strong>파이어폭스 애드온(add-on)</strong>을 사용해서 좀더 쉽게 많은 작업을 수행할 수 있다. 파이어폭스 애드온은 크롬 확장 프로그램과 유사한 개념으로 파이어폭스는 개발자들이 많이 사용하는 웹브라우져 중 하나다.</p>
 <ul>
 <li><a href="https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/">https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/</a></li>
@@ -340,8 +358,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>브라우져를 사용해서 쉽게 테이블을 생성하고, 데이터를 삽입, 편집하고 데이터베이스 데이터에 대해 간단한 SQL 질의를 실행할 수 있다.</p>
 <p>이러한 점에서 데이터베이스 매니저는 텍스트 파일을 작업할 때 사용하는 텍스트 편집기와 유사하다. 텍스트 파일에 하나 혹은 몇개 작업만 수행하고자 하면, 텍스트 편집기에서 파일을 열어 필요한 수정작업을 하고 닫으면 된다. 텍스트 파일에 작업할 사항이 많은 경우는 종종 간단한 R 프로그램을 작성하여 수행한다. 데이터베이스로 작업할 때도 동일한 패턴이 발견된다. 간단한 작업은 데이터베이스 매니저를 통해서 수행하고, 좀더 복잡한 작업은 R로 수행하는 것이 더 편리하다.</p>
 </section>
-<section id="r-db-create-table" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="r-db-create-table"><span class="header-section-number">2.4</span> 데이터베이스 테이블 생성</h2>
+<section id="r-db-create-table" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="r-db-create-table"><span class="header-section-number">13.4</span> 데이터베이스 테이블 생성</h2>
 <p>데이터베이스는 R 리스트 혹은 딕셔너리보다 좀더 명확히 정의된 구조를 요구한다. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
 <p>데이터베이스에 테이블(table)을 생성할 때, 열(column)의 명칭과 각 열(column)에 저장하는 테이터 형식을 사전에 정의해야 한다. 데이터베이스 소프트웨어가 각 열의 데이터 형식을 인식하게 되면, 데이터 형식에 따라 데이터를 저장하고 찾아오는 방법을 가장 효율적인 방식을 선택할 수 있다.</p>
 <p>다음 url에서 SQLite에서 지원되는 다양한 데이터 형식을 살펴볼 수 있다.</p>
@@ -410,8 +428,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>프로그램 마지막에 SQL 명령어를 실행 사용해서 방금전에 생성한 행을 모두 삭제(<code>DELETE</code>)했기 때문에 프로그램을 반복해서 실행할 수 있다. 삭제(<code>DELETE</code>) 명령어는 <code>WHERE</code> 문을 사용하여 선택 조건을 표현할 수 있다. 따라서 명령문에 조건을 충족하는 행에만 명령문을 적용한다. 이번 예제에서 기준이 모든 행에 적용되어 테이블에 아무 것도 없게 된다. 따라서 프로그램을 반복적으로 실행할 수 있다. 삭제(DELETE)를 실행한 후에 데이터베이스에서 데이터를 완전히 제거했다.</p>
 </section>
-<section id="r-db-sql" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="r-db-sql"><span class="header-section-number">2.5</span> SQL 요약</h2>
+<section id="r-db-sql" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="r-db-sql"><span class="header-section-number">13.5</span> SQL 요약</h2>
 <p>지금까지, R 예제를 통해서 SQL(Structured Query Language)을 사용했고, SQL 명령어에 대한 기본을 다루었다. 이번 장에서는 SQL 언어를 보고 SQL 구문 개요를 살펴본다.</p>
 <p>대단히 많은 데이터베이스 업체가 존재하기 때문에 호환성의 문제로 SQL(Structured Query Language)이 표준화되었다. 그래서, 여러 업체가 개발한 데이터베이스 시스템 사이에 호환하는 방식으로 커뮤니케이션 가능하다.</p>
 <p>관계형 데이터베이스는 테이블, 행과 열로 구성된다. 열(column)은 일반적으로 텍스트, 숫자, 혹은 날짜 자료형을 갖는다. 테이블을 생성할 때, 열의 명칭과 자료형을 지정한다.</p>
@@ -432,8 +450,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>UPDATE</code> 문장은 먼저 테이블을 명시한다. 그리고 나서, <code>SET</code> 키워드 다음에 변경할 필드 리스트 와 값을 명시한다. 그리고 선택사항으로 갱신될 행을 <code>WHERE</code>절에 지정한다. 단일 <code>UPDATE</code> 문장은 <code>WHERE</code>절에서 매칭되는 모든 행을 갱신한다. 혹은 만약 <code>WHERE</code>절이 지정되지 않으면,테이블 모든 행에 대해서 갱신(UPDATE)을 한다.</p>
 <p>네가지 기본 SQL 명령문(<strong>INSERT</strong>, <strong>SELECT</strong>, <strong>UPDATE</strong>, <strong>DELETE</strong>)은 데이터를 생성하고 유지 관리하는데 필요한 기본적인 4가지 작업을 가능케 한다.</p>
 </section>
-<section id="r-datamodeling-basics" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="r-datamodeling-basics"><span class="header-section-number">2.6</span> 데이터 모델링 기초</h2>
+<section id="r-datamodeling-basics" class="level2" data-number="13.6">
+<h2 data-number="13.6" class="anchored" data-anchor-id="r-datamodeling-basics"><span class="header-section-number">13.6</span> 데이터 모델링 기초</h2>
 <p>관계형 데이터베이스의 진정한 힘은 다중 테이블과 테이블 사이의 관계를 생성할 때 생긴다. 응용프로그램 데이터를 쪼개서 다중 테이블과 두 테이블 간에 관계를 설정하는 것을 <strong>데이터 모델링(data modeling)</strong>이라고 한다. 테이블 정보와 테이블 관계를 표현하는 설계 문서를 <strong>데이터 모델(data model)</strong>이라고 한다.</p>
 <p>데이터 모델링(data modeling)은 상대적으로 고급 기술이여서 이번 장에서는 관계형 데이터 모델링의 가장 기본적인 개념만을 소개한다. 데이터 모델링에 대한 좀더 자세한 사항은 다음 링크에서 시작해 볼 수 있다.</p>
 <ul>
@@ -463,8 +481,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>트위터 관계 데이터베이스 모델링</figcaption>
 </figure>
 </div>
-<section id="db-constraints" class="level3" data-number="2.6.1">
-<h3 data-number="2.6.1" class="anchored" data-anchor-id="db-constraints"><span class="header-section-number">2.6.1</span> 테이블 제약사항</h3>
+<section id="db-constraints" class="level3" data-number="13.6.1">
+<h3 data-number="13.6.1" class="anchored" data-anchor-id="db-constraints"><span class="header-section-number">13.6.1</span> 테이블 제약사항</h3>
 <p>테이블 구조를 설계할 때, 데이터베이스 시스템에 몇 가지 규칙을 설정할 수 있다. 이러한 규칙은 실수를 방지하고 잘못된 데이터가 테이블에 들어가는 것을 막는다. 테이블을 생성할 때:</p>
 <pre><code>dbSendQuery( conn, 'CREATE TABLE IF NOT EXISTS People (id INTEGER PRIMARY KEY, name TEXT UNIQUE, retrieved INTEGER)")
 
@@ -478,8 +496,8 @@ dbSendQuery( conn, 'CREATE TABLE IF NOT EXISTS Follows (from_id INTEGER, to_id I
 <p>다시 한번, <code>Follows</code> 행에 대해 지정한 유일한 제약사항을 위반하게 되면 <code>INSERT</code> 시도를 무시하도록 데이터베이스에 지시한다.</p>
 </section>
 </section>
-<section id="db-three-keys" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="db-three-keys"><span class="header-section-number">2.7</span> 세 종류 키</h2>
+<section id="db-three-keys" class="level2" data-number="13.7">
+<h2 data-number="13.7" class="anchored" data-anchor-id="db-three-keys"><span class="header-section-number">13.7</span> 세 종류 키</h2>
 <p>지금까지 데이터를 다중 연결된 테이블에 넣고 <strong>키(keys)</strong>를 사용하여 행을 연결하는 방식으로 데이터 모델을 생성했는데, 키와 관련된 몇몇 용어를 살펴볼 필요가 있다. 일반적으로 데이터베이스 모델에서 세가지 종류의 키가 사용된다.</p>
 <ul>
 <li><p><strong>논리 키(logical key)</strong>는 “실제 세상”이 행을 찾기 위해서 사용하는 키다. 데이터 모델 예제에서, <code>name</code> 필드는 논리키다. 사용자에 대해서 <code>screen_name</code>이고, <code>name</code> 필드를 사용하여 프로그램에서 여러번 사용자 행을 찾을 수 있다. 논리 키에 <code>UNIQUE</code> 제약 사항을 추가하는 것이 의미있다는 것을 종종 이해하게 된다. 논리 키는 어떻게 바깥 세상에서 행을 찾는지 다루기 때문에, 테이블에 동일한 값을 가진 다중 행이 존재한다는 것은 의미가 없다.</p></li>
@@ -488,14 +506,14 @@ dbSendQuery( conn, 'CREATE TABLE IF NOT EXISTS Follows (from_id INTEGER, to_id I
 </ul>
 <p>주키 <code>id</code>필드명을 호출하고, 항상 외부키에 임의 필드명에 접미사로 <code>_id</code> 붙이는 명명규칙을 사용한다.</p>
 </section>
-<section id="db-debugging" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="db-debugging"><span class="header-section-number">2.8</span> 디버깅</h2>
+<section id="db-debugging" class="level2" data-number="13.8">
+<h2 data-number="13.8" class="anchored" data-anchor-id="db-debugging"><span class="header-section-number">13.8</span> 디버깅</h2>
 <p>SQLite 데이터베이스에 연결하는 파이썬 프로그램을 개발할 때 하나의 일반적인 패턴은 파이썬 프로그램을 실행하고 SQLite 데이터베이스 브라우저를 통해서 결과를 확인하는 것이다. 브라우저를 통해서 빠르게 프로그램이 정상적으로 작동하는지를 확인할 수 있다.</p>
 <p>SQLite에서 두 프로그램이 동시에 동일한 데이터를 변경하지 못하기 때문에 주의가 필요하다. 예를 들어, 브라우저에서 데이터베이스를 열고 데이터베이스에 변경을 하고 “저장(save)”버튼을 누르지 않는다면, 브라우져는 데이터베이스 파일에 “락(lock)”을 걸구, 다른 프로그램이 파일에 접근하는 것을 막는다. 특히, 파일이 잠겨져 있으면 작성하고 있는 파이썬 프로그램이 파일에 접근할 수 없다.</p>
 <p>해결책은 데이터베이스가 잠겨져 있어서 파이썬 코드가 작동하지 않는 문제를 피하도록 파이썬에서 데이터베이스에 접근하려 시도하기 전에 데이터베이스 브라우져를 닫거나 혹은 <strong>File</strong> 메뉴를 사용해서 브라우져 데이터베이스를 닫는 것이다.</p>
 </section>
-<section id="db-terminology" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="db-terminology"><span class="header-section-number">2.9</span> 용어정의</h2>
+<section id="db-terminology" class="level2" data-number="13.9">
+<h2 data-number="13.9" class="anchored" data-anchor-id="db-terminology"><span class="header-section-number">13.9</span> 용어정의</h2>
 <ul>
 <li><strong>속성(attribute)</strong>: 튜플 내부에 값의 하나. 좀더 일반적으로 “열”, “칼럼”, “필드”로 불린다.</li>
 <li><strong>제약(constraint)</strong>: 데이터베이스가 테이블의 필드나 행에 규칙을 강제하는 것. 일반적인 제약은 특정 필드에 중복된 값이 없도록 하는 것(즉, 모든 값이 유일해야 한다.)</li>
@@ -919,13 +937,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./setup.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span>
+      <a href="./prog-r.html" class="pagination-link  aria-label=" &lt;span="" 프로그래밍&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./select.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>데이터 선택하기</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./spreadsheet.html" class="pagination-link" aria-label="<span class='chapter-number'>14</span>&nbsp; <span class='chapter-title'>엑셀에서 데이터베이스로</span>">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

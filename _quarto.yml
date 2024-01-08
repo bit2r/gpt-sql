@@ -19,13 +19,9 @@ book:
     # - acknowledgments.qmd
     - index.qmd
     - intro.qmd
-    - part: "환경설정"
-      chapters:
-        - setup.qmd
-        - database.qmd        
-
     - part: "SQL"
       chapters:
+        - setup.qmd
         - select.qmd
         - sort-dup.qmd
         - filter.qmd
@@ -36,6 +32,12 @@ book:
         - hygene.qmd        
         - create.qmd
         - prog.qmd
+        - prog-r.qmd
+        
+    - part: "활용사례"
+      chapters:
+        - database.qmd
+        - spreadsheet.qmd
 
     - part: "챗GPT SQL"
       chapters:
