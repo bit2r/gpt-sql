@@ -146,772 +146,91 @@ scales::percent(row_error_rate, accuracy = 0.000001)
 유념할 점은 이러한 추정은 작업의 복잡성, 작업 빈도 및 프로그래밍 능력에 따라 달라질 수 있으므로, 여러가지 요소들을 고려하여 신중하게 추정해야 한다. 
 
 
-## 자료 추출
+## 엑셀 문제점
 
-첫번째 단계는 스프레드쉬트 행을 (키값, 저자명) 짝으로 추출(extract)하는 것이다.
-파이썬이 올바르게 스프레드쉬트를 읽어들이는지 확인하는 것부터 시작된다.
-윈도우에서 파이썬으로 CSV 파일을 읽어드리게 되면 인코딩 오류가 발생하는 경우가 있다.
-이를 방지하기 위해 인코딩을 `UTF-8`으로 설정한다.
 
-```{{python}}
-# count-lines.py
-# 스프레드쉬트에 얼마나 많은 줄이 있는지 계수한다.
+### 1. 스프레드쉬트를 버려야 하는 6가지 이유 [^stop-excel]
 
-# -*- coding: utf-8 -*-
+엑셀은 작은 데이터를 가지고 임의 분석과 계산을 하는데 최적화 되었지만, 데이터베이스 기능으로 사용하는 것은 자제하여야 한다.
+아주 많은 기업이나 조직에서 마이크로소프트 엑셀 스프레드쉬트에 매우 중요한 데이터로 보관하고 작업을 해서,
+사소한 실수로 중요한 의사결정이 왜곡되는 위험에 처해 있다.
 
-import sys
+> #### 스프레드쉬트를 사용하는 이유 {.callout}
+> 
+> * 항상 엑셀을 사용했다: 항상 데이터를 엑셀로 저장하고 분석해서 사용했다. 하지만, 버튼 하나로 데이터를 내보내기 쉽다.
+> * 데이터베이스를 사용할 만큼 데이터가 충분하지 않다: 데이터가 작아서 데이터베이스를 사용할 이유를 찾지 못하지만,
+사업이 커지고, 업무량이 늘어나면서 엑셀 작업량이 높아지고, 복잡성도 커지고, 엑셀 자체에서 처리되는 시간도 늘어난다.
 
-filename = sys.argv[1]
-reader = open(filename, 'r', encoding='UTF-8')
-count = 0
-for line in reader:
-    count += 1
-reader.close()
+#### 1.1. 한번에 한사람만 작업이 가능하다.
 
-print(count)
-```
+해당 시간에 한번만 엑셀로 작업이 가능하다. 만약 다른 직원이 엑셀을 열어 작업을 하게 되면 "읽기 전용(Read-Only)"으로만 볼 수만 있다.
 
-상기 코드가 이제는 칙숙해보여야 된다: 파일명이 첫번째 명령라인 인자(`sys.argv[1]`)로 주어졌다.
-따라서, 파일을 열고, `for` 루프를 사용해서 한줄씩 읽어들인다.
-매번 루프가 실행될 때, 1을 `count` 변수에 더한다; 루프가 종류될 때, 파일을 닫고 계수 결과를 출력한다.
+#### 1.2. 데이터 감사는 데이터베이스에서만 가능
 
-상기 프로그램을 다음과 같이 실행한다:
+보통 한 사람만 엑셀 스프레드쉬트 파일을 생성하고 유지보수한다. 이 직원이 다른 부서로 전보되거나 회사를 떠나게 되면, 모든 지식이 직원과 함께 날아간다.
+고로, 해당 업무를 담고 있는 엑셀 스프레드쉬트를 익히는데 수개월이 소요된다.
 
-``` bash
-$ python code/count-lines.py data/bibliography.csv
-```
+이와 비교하여 감사 기능이 제공되는 데이터베이스는 주기적으로 사용자 활동을 기록해서 엑셀 스프레드쉬트가 담고 있는 정보 및 직관도 전달한다.
 
-물론, 결과는 다음과 같다:
+#### 1.3. 데이터베이스는 정형화된 작업흐름을 지원한다.
 
-``` bash
-2937
-```
+업무 프로세스를 엑셀 스프레드쉬트로 정의할 경우, 엑셀 스프레드쉬트 파일을 전자우편으로 다수 개발자, 검토자, 승인자에게 셀 수 없이 많이 전달해야 한다.
+더 큰 문제는 이를 취합해서 수작업으로 정리해야 된다.
 
-그래서, 파이썬이 모든 행을 읽어들인 것을 알게된다.
+하지만, 업무 프로세스를 데이터베이스로 정의할 경우, 특정 사업 요구사항을 해결하는데 작업을 매핑하고, 추적하고 관리하기 편하다.
+효과적으로 중앙에서 체계적으로 관리되는 스프레드쉬트, 데이터베이스로 할당된 작업에 대응하기 좋다.
 
-다음 단계는 각 줄을 필드로 쪼개서 각 항목에 대한 키값과 저자명을 얻게된다.
-필드는 콤마로 구분된다.
-그래서 `str.split` 사용해서 시도해볼 수 있다.
-하지만, 동작하지는 않는데 이유는 저자명에도 콤마가 포함되어서 그렇다("성, 이름"같은 형식으로 되어 있어서 그렇다).
+#### 1.4. 데이터베이스는 엑셀보다 모형을 보다 잘 지원한다.
 
-대신에 취할 수 있는 조치는 선호하는 검색엔진에 도움을 청한다.
-물론, "python csv"에 대한 검색결과는 [`csv` 라이브러리](https://docs.python.org/2/library/csv.html)가 나오고, 표준 파이썬 배포판의 일부이기도 하다.
-라이브러리 문서에 일부 예제가 포함되어 있다.
-몇번 실험을 한 뒤에, 다음과 같은 결과가 나오게 된다:
+엑셀 스프레드쉬트 업무가 늘어나고 크기가 커지게 되면, 오류에 취약해 진다.
+예를 들어, 새로운 수식을 새로운 곳에 복사해서 넣게 되면 셀참조가 엉클어져서 엉뚱한 값이 반영되는 경우도 흔히 발견된다.
 
-```{{python}}
-# read-fields.py
-# CSV 파일에서 필드값을 제대로 읽어 오는지 확인한다.
+#### 1.5. 데이터베이스로 보고서 생성이 수월하다.
 
-# -*- coding: utf-8 -*-
+데이터베이스에서 쿼리, 쿼리에 기반한 보고서를 작성하기 더 쉽다.
+정적 스프레드쉬트와 반대로 관계형 환경에서 데이터를 정렬, 매칭, 조합하기 더 좋다.
 
-import sys
-import csv
+#### 1.6.  데이터베이스는 보안이 강력하고 규제하기 좋다.
 
-raw = open(sys.argv[1], 'r', encoding='utf-8')
-reader = csv.reader(raw);
+스프레드쉬트는 규제를 가하고 보안기능을 두기가 마땅치 않는다. 보안과 제한 기능은 완전히 사용자 몫으로 남겨진다.
+엑셀 사용자가 수작업으로 모든 것을 식별해서 작업해야 되고 실수한 것도 고쳐야 된다.
+스프레드쉬트에 이러한 기능이 거의 전무하기 때문에, 실수한 것도 알아차리지 못한 상태로 그냥 넘어가는 경우가 상당히 많다.
 
-for line in reader:
-    print(line)
-    
-raw.close()
-```
+### 2. 스프레드쉬트 참사 [^excel-disaster]
 
-작성한 프로그램은 참고문헌 파일을 열어서 시작한다(다시 한번, 첫번째 명령-라인 인자로 파일명을 넘긴다) 그리고 나서, `csv.reader` 메쏘드를 호출해서 파일주위에 래퍼를 생성한다.
-`open`으로 생성된 기본 파일 객체가 한번에 한줄씩 읽어올 때, `csv.reader`에 의해서 생성된 래퍼가 해당 라인을 올바른 지점에서 필드로 쪼갠다.
-`csv.reader`는 해당 필드에 내장된 콤마, 특수문자, 신경쓰지 않아도 되는 다른 엄청난 것에 대해 어떻게 처리하는지 알고 있다.
+|     회사      | 참사 비용 |   발생일 |        영향           |               참사 개요                         | 
+|---------------|-----------|----------|-----------------------|-------------------------------------------------|
+| 옥스포드 대학 | 미확인    | '11.12월 | 학생 인터뷰 일정 지연 | 엑셀이 수식이 꼬여 인터뷰 일정이 뒤죽박죽 [^12] |
+|      MI5      | 미확인    |   '11년  | 잘못된 전화번호 작업  | 엑셀 서식 수식이 꼬여 엉뚱한 전화번호 작업 [^11] |
+| '12년 런던 올림픽 | £ 0.5백만  |  '12.01월  | 티켓 환불 소동  | 수영장 10,000 티켓이 초과 판매 (엑셀 입력 오류) [^10] |
+|     Mouchel   |  £ 4.3백만  |  '10.11월  | CEO 사임, 주가폭락 | 연금펀드평가 £ 4.3백만 엑셀 오류 [^09] |
+|   C&C Group   |  £ 9 백만  |  '09.7월  | 주가 15% 하락 등 | 매출 3% 상승이 아니고 5% 하락, 엑셀 오류 [^08] |
+|   UK 교통부   | 최소 £ 50 백만 |  '12.10월  | 영국민 추가 세금 부담 | 영국 철도 입찰 오류 [^07] |
+|   King 펀드   | £ 130 백만 |  '11.05월  | 브래드 이미지 하락 | 웨일즈 지방 NHS 지출 엑셀 오류 [^06] |
+| AXA Rosenberg | £ 150 백만 |  '11.02월  | 은폐, 벌금, 브래드 이미지 하락 | 엑셀 오류를 감춰서 $242 백만 벌금 |
+| JP Morgan Chase | £ 250 백만 |  '13.01월  | 명성, 고객 신뢰도 저하 | 바젤 II VaR 위험 평가 엑셀 오류 [^04] |
+| Fidelity Magellan 펀드 | £ 1.6 십억 |  '95.01월  | 투자자에게 약속한 배당금 지급 못함 | 음수 부호 누락으로 자본이득 과대계상 [^03] |
+| 미연방준비위원회 | £ 2.5 십억 |  '10.10월  | 명확하지 않음 | 리볼빙 카드 신용액 산출 과정에 엑셀 오류 [^02] |
+|  하버드 대학  | 평가 불능 | '13.04월  | 유럽 정부 긴축예산 편성 근거 | GDP 대비 정부 부채 영향도 분석 엑셀 오류 [^01] |
 
-올바르게 동작하는지 점검하려면, `csv.reader`에 의한 처리가 끝난 후에 각 줄을 출력하면 된다.
-출력결과 중 첫 몇줄이 다음에 나와 있다:
 
-``` bash
-$ python code/read-fields.py data/bibliography.csv | head -5
 
-['8SW85SQM', 'journalArticle', '2013', 'McClelland, James L', 'Incorporating Rapid Neocortical Learning of New Schema-Consistent Information Into Complementary Learning Systems Theory.', 'J Exp Psychol Gen', '', '1939-2222', '', 'http://www.biomedsearch.com/nih/Incorporating-Rapid-Neocortical-Learning-New/23978185.html', '', '', '', '', '', '', '', '', '']
-['85QV9X5F', 'journalArticle', '1995', "McClelland, J. L.; McNaughton, B. L.; O'Reilly, R. C.", 'Why There are Complementary Learning Systems in the Hippocampus and Neocortex: Insights from the Successes and Failures of Connectionist Models of Learning and Memory', 'Psychological Review', '', '', '', '', '', '', '', '', '', '', '', '', '']
-['Z4X6DT6N', 'journalArticle', '1990', 'Ratcliff, R.', 'Connectionist models of recognition memory: constraints imposed by learning and forgetting functions.', 'Psychological review', '', '0033-295X', '', 'http://view.ncbi.nlm.nih.gov/pubmed/2186426', '', '', '', '', '', '', '', '', '']
-['F5DGU3Q4', 'bookSection', '1989', 'McCloskey, M.; Cohen, N. J.', 'Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem', 'The Psychology of Learning and Motivation, Vol. 24', '', '', '', '', '', '', '', '', '', '', '', '', '']
-['PNGQMCP5', 'conferencePaper', '2006', 'Bucilu\xc7\x8e, Cristian; Caruana, Rich; Niculescu-Mizil, Alexandru', 'Model compression', 'Proceedings of the 12th ACM SIGKDD international conference on Knowledge discovery and data mining', '', '', '', '', '', '', '', '', '', '', '', '', '']
-```
+[^12]: [Test errors impede History applications](http://www.cherwell.org/2011/12/07/test-errors-impede-history-applications/)
+[^11]: [MI5 makes 1,061 bugging errors](http://national-security.governmentcomputing.com/news/2011/jul/01/mi5-data-collection-errors)
+[^10]: [London 2012 Olympics - lucky few to get 100m final tickets after synchronised swimming was overbooked by 10,000](http://www.telegraph.co.uk/sport/olympics/8992490/London-2012-Olympics-lucky-few-to-get-100m-final-tickets-after-synchronised-swimming-was-overbooked-by-10000.html)
+[^09]: [Mouchel profits blow](http://www.express.co.uk/finance/city/276053/Mouchel-profits-blow)
+[^08]: [C&C Group admit to mistake in revenue results](http://drinksdaily.com/2009/07/cc-group-admit-to-mistake-in-revenue-results/)
+[^07]: [West Coast Main Line franchise fiasco 'to cost at least £50m'](http://www.bbc.com/news/uk-politics-21577826)
+[^06]: [King’s Fund apologise for “error” in figures on health spending in Wales](http://leftfootforward.org/2011/05/kings-fund-apologise-for-error-on-health-spending-in-wales/)
+[^04]: [Report of JPMorgan Chase & Co. Management Task Force Regarding 2012 CIO Losses](http://files.shareholder.com/downloads/ONE/2261602328x0x628656/4cb574a0-0bf5-4728-9582-625e4519b5ab/Task_Force_Report.pdf)
+[^03]: [Computing error at Fidelity's Magellan fund](http://catless.ncl.ac.uk/Risks/16.72.html#subj1)
+[^02]: [Blatant Data Error At The Federal Reserve](http://www.zerohedge.com/article/blatant-data-error-federal-reserve)
+[^01]: [Is the evidence for austerity based on an Excel spreadsheet error?](https://www.washingtonpost.com/news/wonk/wp/2013/04/16/is-the-best-evidence-for-austerity-based-on-an-excel-spreadsheet-error/)
 
-(프로그램 출력결과를 `head` 명령어로 실행해서 출력결과를 스크롤해서 다시 위로 올라가기 보다 첫 몇줄만 화면에 출력함에 주목한다.) 상기 결과는 정확하게 필요한 결과다: 키값이 각 리스트 첫번째 구성요소로 있고, 저자는 모두 네번째에 몰려있따.
-프로그램을 변경해서, 단지 두 필드만 출력하게 변경하자:
 
-```{{python}}
-# display-fields.py
-# 키값과 저자 모두를 화면에 출력한다.
 
-# -*- coding: utf-8 -*-
+[^excel-disaster]: [THE DIRTY DOZEN 12 MODELLING HORROR STORIES & SPREADSHEET DISASTERS](http://blogs.mazars.com/the-model-auditor/files/2014/01/12-Modelling-Horror-Stories-and-Spreadsheet-Disasters-Mazars-UK.pdf)
 
-import sys
-import csv
-
-raw = open(sys.argv[1], 'r', encoding='utf-8')
-reader = csv.reader(raw);
-
-for line in reader:
-    print (line[0], line[3])
-
-raw.close()
-    
-```
-
-출력결과는 다음과 같다:
-
-``` bash
-8SW85SQM McClelland, James L
-85QV9X5F McClelland, J. L.; McNaughton, B. L.; O'Reilly, R. C.
-Z4X6DT6N Ratcliff, R.
-F5DGU3Q4 McCloskey, M.; Cohen, N. J.
-PNGQMCP5 Buciluǎ, Cristian; Caruana, Rich; Niculescu-Mizil, Alexandru
-```
-
-마지막 단계는 저자 다수를 갖는 행을 복수개 행으로 단일저자가 한줄에 나타나도록 변경한다.
-이번이 `str.split` 메쏘드를 사용할 때다: 저자명이 세미콜론으로 구분되어 있어서, 저자 목록을 각 저자별로 나눌 수 있다.
-또다른 루프를 사용해서 하나씩 결과를 화면에 출력한다:
-
-``` bash
-$ python code/display-authors-1.py data/bibliography.csv | head -10
-
-8SW85SQM McClelland, James L
-85QV9X5F McClelland, J. L.
-85QV9X5F McNaughton, B. L.
-85QV9X5F O'Reilly, R. C.
-Z4X6DT6N Ratcliff, R.
-F5DGU3Q4 McCloskey, M.
-F5DGU3Q4 Cohen, N. J.
-PNGQMCP5 Buciluǎ, Cristian
-PNGQMCP5 Caruana, Rich
-PNGQMCP5 Niculescu-Mizil, Alexandru
-```
-
-이제 원하는 바에 가까워졌다.
-하지만, 꼭 그렇지는 않다; 저자명은 실제로 세미콜론과 공백으로 구분되는데 세미콜론만으로 구분했기 때문에, 각 줄마다 두번째와 이어진 명칭에 원치않는 공백이 앞에 온다.
-세미콜론과 공백으로 쪼개면 어떻게 될까?
-
-```{{python}}
-# display-authors-2.py
-# (키값, 저자명) 짝을 화면에 출력한다.
-
-# -*- coding: utf-8 -*-
-
-import sys
-import csv
-
-raw = open(sys.argv[1], 'r', encoding='utf-8')
-reader = csv.reader(raw);
-
-try:
-    for line in reader:
-      key, authors = line[0], line[3]
-      for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용
-          print (key, auth)
-except BrokenPipeError:
-  sys.stderr.close()
-          
-raw.close()
-```
-
-``` bash
-8SW85SQM McClelland, James L
-85QV9X5F McClelland, J. L.
-85QV9X5F McNaughton, B. L.
-85QV9X5F O'Reilly, R. C.
-Z4X6DT6N Ratcliff, R.
-F5DGU3Q4 McCloskey, M.
-F5DGU3Q4 Cohen, N. J.
-PNGQMCP5 Buciluǎ, Cristian
-PNGQMCP5 Caruana, Rich
-PNGQMCP5 Niculescu-Mizil, Alexandru
-```
-
-### 버전 관리
-
-이로써 데이터 추출의 첫 번째 단계가 완료되어, 재사용 가능한 유용한 코드를 얻었기 때문에, 후속 작업을 위해서 저장한다. 깃(Git) 버전 제어는 데이터 처리 및 분석의 복잡성과 변화에 대응하는 데 있어 핵심적인 역할을 한다. ETL 과정은 데이터의 추출, 변환 및 로드 과정에서 수많은 쿼리와 스크립트를 포함하며, 이러한 작업들은 지속적으로 수정 및 개선이 필요하다. Git을 사용하면 이러한 변경사항을 효과적으로 추적하고 관리할 수 있다. 오류 발생시 이전 버전으로 쉽게 되돌릴 수 있게 해주며, 팀원 간의 협업에서도 변경 사항을 쉽게 공유하고 통합할 수 있게 한다. 또한, Git은 작업의 히스토리를 기록하여 프로젝트의 진행 상황을 명확하게 파악할 수 있도록 해주어 프로젝트 관리에도 큰 도움이 된다. 
-
-`git init .` 명령어를 사용하여 현재 디렉토리에서 새로운 Git 저장소를 초기화하는데 `.git` 폴더를 생성하여 Git 관련 데이터를 저장할 수 있는 토대를 만든다. 다음 단계로 `git add -A` 명령어는 작업 디렉토리의 모든 변경사항(새로운 파일, 수정된 파일 등)을 Git 스테이징 영역에 추가하여 커밋할 파일을 준비한다. `git status` 명령어는 현재 Git 저장소의 상태를 보여주는데 스테이징 영역에 추가된 변경사항, 커밋되지 않은 변경사항 등이 포함된 것이 확인된다. `git commit -m "메시지"` 명령어는 스테이징 영역에 추가된 변경사항을 저장소의 이력에 기록한다. `-m` 옵션 뒤에는 커밋에 대한 설명을 추가한다. 예시로 "Extracting (key, author) pairs from bibliography"라는 메시지와 함께 커밋이 이루어졌으며, 6개의 파일이 변경되었고 2996개의 추가되었다.
-
-``` bash
-$ git init .
-
-Initialized empty Git repository in /Users/aturing/lessons/capstone-novice-spreadsheet-biblio/.git
-
-$ git add -A
-$ git status
-
-On branch master
-
-Initial commit
-
-Changes to be committed:
-  (use "git rm --cached <file>..." to unstage)
-
-  new file:   code/count-lines.py
-  new file:   code/display-authors-1.py
-  new file:   code/display-authors-2.py
-  new file:   code/display-fields.py
-  new file:   code/read-fields.py
-  new file:   data/bibliography.csv
-
-$ git commit -m "Extracting (key, author) pairs from bibliography"
-
-[master (root-commit) 9db78ed] Extracting (key, author) pairsfrom bibliography
- 6 files changed, 2996 insertions(+)
- create mode 100644 code/count-lines.py
- create mode 100644 code/display-authors-1.py
- create mode 100644 code/display-authors-2.py
- create mode 100644 code/display-fields.py
- create mode 100644 code/read-fields.py
- create mode 100644 data/bibliography.csv
-```
-
-## 자료 변환
-
-**정규화(normalization)**는 데이터를 여러 테이블로 분할하는 과정으로 
-전체 데이터셋을 여러 테이블로 분할하는 것으로 이해하면 된다. 다만, 기억해야 할 몇 가지 규칙이 있다.
-
-- 다중 값 속성은 사용하지 않는다!
-- 모든 행은 그 행을 고유하게 식별하는 "키"를 가져야 한다.
-- 모든 속성은 오직 키와만 관련되어야 한다.
-
-시간이 있다면 서지학 데이터에 대한 정규화 방법을 면밀히 검토할 수 있지만 빠르고 간단한 해결책에 집중해보자. 
-
-앞선 데이터 추출 작업으로 짝(키값, 저자명) 데이터를 갖게 되었다.
-다음 단계는 관계형 데이터베이스에 데이터를 삽입하는 것이다.
-데이터가 데이터베이스에 입력되면, 쿼리를 전송해서 질의 응답을 할 수 있다.
-시작점으로 이전 학습과정에서 나온 최종 스크립트를 바탕으로 시작해보자.
-
-```{{python}}
-# display-authors-2.py
-# (키값, 저자명) 짝을 화면에 출력한다.
-
-# -*- coding: utf-8 -*-
-
-import sys
-import csv
-
-raw = open(sys.argv[1], 'r', encoding='utf-8')
-reader = csv.reader(raw);
-
-try:
-    for line in reader:
-      key, authors = line[0], line[3]
-      for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용
-          print (key, auth)
-except BrokenPipeError:
-  sys.stderr.close()
-          
-raw.close()
-```
-
-상기 프로그램 실행결과는 다음과 같다:
-
-``` bash
-8SW85SQM McClelland, James L
-85QV9X5F McClelland, J. L.
-85QV9X5F McNaughton, B. L.
-85QV9X5F O'Reilly, R. C.
-Z4X6DT6N Ratcliff, R.
-F5DGU3Q4 McCloskey, M.
-F5DGU3Q4 Cohen, N. J.
-PNGQMCP5 Buciluǎ, Cristian
-PNGQMCP5 Caruana, Rich
-PNGQMCP5 Niculescu-Mizil, Alexandru
-```
-
-데이터베이스에 넣을 수 있는 CSV 파일을 생성해보자.
-
-```{{python}}
-# convert-1.py
-# 데이터베이스에 로드할 수 있는 CSV로 출력결과 전송
-
-# -*- coding: utf-8 -*-
-
-import sys
-import csv
-
-output_rows=[]
-
-with open(sys.argv[1], 'r') as raw:
-    reader = csv.reader(raw);
-    for line in reader:
-        key, authors = line[0], line[3]
-        for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용
-            output_rows.append([key, auth])
-
-# 출력 파일에 대해 두 번째 인수가 필요
-with open(sys.argv[2], 'w') as csvout:
-    writer = csv.writer(csvout) # 두 번째 인수로 csv 파일 생성
-    writer.writerow(["Key", "Author"]) # 칼럼명 헤더 생성
-    writer.writerows(output_rows) # output_rows를 파일에 쓰기
-
-print(len(output_rows)) # rows output_rows 행수를 알아야 데이터베이스에 확실하게 적재되었는지 확인 가능.
-```
-
-상기 프로그램을 실행하면, 다음과 같은 결과를 얻게 된다.
-6,587개 키-저자 쌍이 존재함을 확인하고 데이터베이스에 적재할 준비가 되었다.
-
-``` bash
-$ python code/convert-db-1.py data/bibliography.csv data/key_author.csv
-6587
-$ head key_author.csv
-Key,Author
-8SW85SQM,"McClelland, James L"
-85QV9X5F,"McClelland, J. L."
-85QV9X5F,"McNaughton, B. L."
-85QV9X5F,"O'Reilly, R. C."
-Z4X6DT6N,"Ratcliff, R."
-F5DGU3Q4,"McCloskey, M."
-F5DGU3Q4,"Cohen, N. J."
-PNGQMCP5,"Buciluǎ, Cristian"
-PNGQMCP5,"Caruana, Rich"
-```
-
-::: callout-note
-### 절차 생략(Cutting Corners)
-
-파이썬과 다른 언어들은 데이터베이스와 상호작용하기 위한 라이브러리를 가지고 있음에도 
-불구하고, 왜 이렇게 대량으로 데이터를 로드하는 방식을 사용하는 것일까? 
-그런데, 왜 `INSERT` 문장을 SQLite 안으로 흘려보내지 않는가?
-대답은 지금까지 소개한 모든 도구를 사용하는 단순한 해답이 있기 때문이다.
-만약 데이터로 좀더 복잡한 어떤 것을 해야한다면, 거의 확실히 `import sqlite3` 사용해서 
-작업을 수행하게 된다.
-:::
-
-
-## 적재 (Load)
-
-이제 데이터를 적재하기 위해 스크립트를 만들어 `load_bibliography.sql` 파일을 호출한다.
-`key_author.csv` 파일이 현재 작업디렉토리 아래 `data` 폴더 아래 저장되어 있기 대문에 
-다음과 같이 SQL 코드를 작성한다. 
-
-```{{sql}}
-# load_bibliography.sql
-.mode csv
-.import key_author.csv key_author
-
-.header on
-.mode column
-
-SELECT *
-  FROM key_author
- LIMIT 10;
-
-SELECT count(*)
-  FROM key_author;
-```
-
-`load_bibliography.sql` 파일을 실행하게 되면 다음 결과를 얻게 된다.
-
-``` bash
-$ sqlite3
-SQLite version 3.34.1 2021-01-20 14:10:07
-Enter ".help" for usage hints.
-Connected to a transient in-memory database.
-Use ".open FILENAME" to reopen on a persistent database.
-
-sqlite> .read code/load_bibliography.sql
-Key       Author
---------  --------------------------
-8SW85SQM  McClelland, James L
-85QV9X5F  McClelland, J. L.
-85QV9X5F  McNaughton, B. L.
-85QV9X5F  O'Reilly, R. C.
-Z4X6DT6N  Ratcliff, R.
-F5DGU3Q4  McCloskey, M.
-F5DGU3Q4  Cohen, N. J.
-PNGQMCP5  Buciluǎ, Cristian
-PNGQMCP5  Caruana, Rich
-PNGQMCP5  Niculescu-Mizil, Alexandru
-count(*)
---------
-6587
-sqlite> .quit
-```
-
-## 쿼리 작성
-
-### 다작 저자
-
-가장 활발히 논문을 저술한 저자를 찾아보자.
-SQL 쿼리문을 작성해서 가장 빈도수가 높은 저자를 찾아 상위 10명을 추려보자.
-
-```{{sql}}
-sqlite> SELECT author, count(*)
-   ...> FROM key_author
-   ...> GROUP BY author
-   ...> ORDER BY count(*) desc
-   ...> LIMIT 10;
-```
-
-그동안 노력이 결실을 맺은 첫번째 결과로, 
-단 하나의 명령으로 가장 많이 저술한 저자들을 알아낼 수 있다는 것이다. 
-두번째로 알게 된 것은 작업이 아직 끝나지 않았다는 점이다. 
-"Bengio, Yoshua"와 "Bengio, Y."는 거의 확실히 동일 인물이며, "LeCun, Yann"과 "LeCun, Y."도 마찬가지다. 정말로 누가 가장 많은 논문을 썼는지 알고 싶다면, 
-동일 인물에 대한 식별작업을 별도로 수행해야 한다.
-
-``` bash
-Author                 count(*)
----------------------  --------
-Bengio, Yoshua         122
-Bengio, Y.             111
-Hinton, Geoffrey E.    78
-LeCun, Yann            56
-Hinton, G. E.          45
-Salakhutdinov, Ruslan  34
-LeCun, Y.              31
-Vincent, Pascal        29
-Jordan, M. I.          27
-Frasconi, P.           25
-```
-
-::: {.callout-note}
-### 비정규화(Denormalization)는 많은 악의 뿌리가 된다.
-
-데이터가 표준을 따르고, 어떤 군더더기도 없다면 **정규화**된 것이다.
-예제 데이터는 **비정규화(denormalized)** 적절한 사례다. 이유는 특정 저자명이 몇가지 다른 방식으로 표현되었다. **경험적(heuristics, 휴리스틱)**으로 데이터를 정규화할 수 있다.
-예를 들어, "만약 성과 다른 이름의 첫부분이 매칭되면, 동일인으로 간주한다."와 같은 방식이다.
-하지만, 오류가 항상 끼어들 여지가 있다. 예제 데이터에서, "Albar, M."이 Mohammd Albar 혹은 Michael Albar인지 어느 것이 맞는지 알 수가 없다.
-따라서, 경헙적으로 정규화된 데이터에 기초한 대답은 항상 현실에 대한 근사다.
-이런 경우에 사용한 경험적 방법과 직접적으로 수행한 변환에 대해 기록하는 것이 매우 중요하다.
-그렇게 해서 다른 사람(미래의 본인 자신을 포함해서)이 작업한 결과물을 상호검사할 수 있게 한다.
-
-:::
-
-### 공저자
-
-파이썬 데이터 전처리 단계의 일부로 이름을 정규화하고 데이터를 정제하는 작업은 별도로 하지 않고,
-다른 질문에 답할 수 있는지 살펴봅시다. 먼저, 공저자로 가장 많이 참여한 저자를 찾아보자.
-
-```{{sql}}
-SELECT a.author, b.author 
-  FROM key_author a 
-  JOIN key_author b USING(key) 
- WHERE a.author > b.author
- LIMIT 10;
-```
-
-``` bash
-Author             Author           
------------------  -----------------
-McNaughton, B. L.  McClelland, J. L.
-O'Reilly, R. C.    McClelland, J. L.
-O'Reilly, R. C.    McNaughton, B. L.
-McCloskey, M.      Cohen, N. J.     
-Caruana, Rich      Buciluǎ, Cristian
-Niculescu-Mizil,   Buciluǎ, Cristian
-Niculescu-Mizil,   Caruana, Rich    
-Rigamonti, Robert  Fua, Pascal      
-Rigamonti, Robert  Lepetit, Vincent 
-Sironi, Amos       Fua, Pascal 
-```
-
-(`a.author > b.author`를 사용하여 각기 다른 저자 쌍이 한 번만 나타나도록 한다.) 
-만약 다른 저자들이 얼마나 자주 함께 작업했는지 알고 싶다면 어떻게 해야 할까?
-
-```{{sql}}
-SELECT a.author, b.author, count(*)
-  FROM key_author a 
-  JOIN key_author b USING(key) 
- WHERE a.author > b.author
- GROUP BY a.author, b.author
- ORDER BY count(*) desc
-limit 10;
-```
-
-``` bash
-Author           Author          count(*)  
----------------  --------------  ----------
-Vincent, Pascal  Bengio, Yoshua  27        
-Roux, Nicolas L  Bengio, Yoshua  20        
-Delalleau, Oliv  Bengio, Yoshua  19        
-Bengio, Y.       Bengio, S.      18        
-Larochelle, Hug  Bengio, Yoshua  15        
-Roux, Nicolas L  Delalleau, Oli  15        
-Vincent, P.      Bengio, Y.      15        
-Chapados, N.     Bengio, Y.      14        
-Gori, M.         Frasconi, P.    14        
-Salakhutdinov,   Hinton, Geoffr  14  
-```
-
-다시 한번, 우리는 데이터 정규화 문제에 직면하고 있다: "Vincent, Pascal"과 "Bengio, Yoshua" 쌍은 거의 확실히 "Vincent, P."와 "Bengio, S." 쌍과 동일할 것이다. 하지만 이 문제는 수작업으로 데이터를 분석할 때에도 존재했으며, 데이터베이스에 데이터를 넣음으로써 새로운 질문들을 쉽게 물어볼 수 있게 되어, 그렇지 않았다면 다룰 수 없었을 연구를 진행할 수 있게 되었다. 
-마지막 단계는 작업한 스크립트를 Git에 커밋하고 커피 한잔 하면서 자축할 시간만 남았다.
-
-## 다른 접근방법
-
-### R 프로그래밍
-
-난이도가 있는 복잡한 데이터의 경우 ETL 과정을 통해 
-데이터베이스에 넣고 SQL 쿼리를 사용하여 원하는 정보를 추출하는 것도 가능하지만 
-R 프로그래밍을 사용하여 동일한 작업을 수행하는 것도 가능하다. `tidyverse` 라이브러리를 사용하여 `bibliography.csv` 데이터를 읽고 처리하는 방식은 다음과 같다. 먼저, `read_csv` 함수로 파일을 불러오고, `janitor::clean_names()`로 칼럼명을 정리한 후, `select`와 `set_names`로 원하는 칼럼을 선택하고 칼럼명을 지정한다. 그런 다음 `mutate`와 `str_split`로 저자 이름을 분할하고, `unnest`로 이를 펼친 후, `count`로 각 `key`와 `author` 조합의 빈도를 계산하고 필요없는 열을 제거한다. 이후 `inner_join`을 사용하여 같은 데이터 프레임을 자기 자신과 조인하고, `filter`로 특정 조건을 만족하는 행을 필터링한다. `group_by`와 `summarise`로 그룹별로 집계하고, `ungroup`, `arrange`, `top_n`을 통해 결과를 정렬하고 상위 10개의 결과를 추출한다. 작성된 코드를 통해 저자들 간의 공동 작업 빈도를 분석하여 가장 자주 협업한 저자 쌍을 찾을 수 있다.
-
-```{r}
-#| eval: false
-
-library(tidyverse)
-
-biblio <-  read_csv("data/bibliography.csv", col_names = FALSE )
-
-biblio_tbl <- biblio |> 
-  janitor::clean_names() |> 
-  select(x1:x5) |> 
-  set_names(c("key", "jounral", "year", "author", "affiliation"))
-
-key_author <- biblio_tbl |> 
-  mutate(author = str_split(author, "; ")) |> 
-  unnest(author) |> 
-  count(key, author) |> 
-  select(-n)
-
-key_author %>%
-  inner_join(key_author, by = "key", suffix = c(".a", ".b")) %>%
-  filter(author.a > author.b) %>%
-  group_by(author.a, author.b) %>%
-  summarise(count = n()) %>%
-  ungroup() %>%
-  arrange(desc(count)) %>%
-  top_n(10, count)
-```
-
-``` bash
-# A tibble: 10 × 3
-   author.a              author.b            count
-   <chr>                 <chr>               <int>
- 1 Vincent, Pascal       Bengio, Yoshua         27
- 2 Roux, Nicolas Le      Bengio, Yoshua         20
- 3 Delalleau, Olivier    Bengio, Yoshua         19
- 4 Bengio, Y.            Bengio, S.             18
- 5 Larochelle, Hugo      Bengio, Yoshua         15
- 6 Roux, Nicolas Le      Delalleau, Olivier     15
- 7 Vincent, P.           Bengio, Y.             15
- 8 Chapados, N.          Bengio, Y.             14
- 9 Gori, M.              Frasconi, P.           14
-10 Salakhutdinov, Ruslan Hinton, Geoffrey E.    14
-```
-
-### 쉘 프로그래밍
-
-쉘 기반 파이썬 프로그래밍으로 SQL 데이터베이스를 제작하는 방식은 명령줄 인터페이스(CLI)를 통해 파이썬 스크립트를 실행하여 데이터베이스와 테이블을 생성하고 데이터를 조작하는 것이다. 
-파이썬 `sqlite3` 라이브러리를 사용하여 데이터베이스 파일을 생성하고 연결을 설정한다. 연결 객체를 사용하여 커서 객체를 생성하고, SQL 명령어를 커서를 통해 실행하여 데이터베이스 테이블을 생성하고 데이터를 삽입한다. 예를 들어, `CREATE TABLE` SQL 명령어로 테이블을 생성하고, `INSERT INTO` 명령어로 데이터를 삽입한다. 모든 작업이 끝나면 데이터베이스 연결을 커밋하고 닫아서 변경사항을 저장한다. 이러한 방식을 통해 쉘 환경에서 파이썬 스크립트를 실행하여 데이터베이스를 제어하고 데이터를 처리함으로써, 데이터베이스 작업을 자동화하고 프로그래밍적으로 접근할 수 있는 장점을 제공한다.
-
-
-CSV 파일에서 행을 데이터베이스 레코드로 SQL `INSERT` 문장 통해 삽입한다.
-먼저, SQL `INSERT` 코드를 다음과 같이 작성한다.
-
-``` sql
-INSERT INTO data VALUES ('8SW85SQM', 'McClelland, James L');
-INSERT INTO data VALUES ('85QV9X5F', 'McClelland, J. L.');
-INSERT INTO data VALUES ('85QV9X5F', 'McNaughton, B. L.');
-```
-
-그래서, 대신에 상기 데이터를 출력하도록 프로그램을 변경하자:
-
-```{{python}}
-# convert-1.py
-# 데이터베이스에 (키값, 저자명) 짝을 집어넣는 SQL 문장을 생성한다.
-# -*- coding: utf-8 -*-
-
-import sys
-import csv
-
-INSERT = "INSERT INTO data VALUES('{0}', '{1}');"
-
-raw = open(sys.argv[1], 'r', encoding='utf-8')
-
-reader = csv.reader(raw);
-
-for line in reader:
-  key, authors = line[0], line[3]
-  for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용
-    print(INSERT.format(key, auth))
-        
-raw.close()
-```
-
-첫번째 변경사항이 `INSERT` 정의로, 삽입 문장에 대한 형식 문자열(format string)이 된다.
-두번째 변경사항은 키값과 저자명을 직접적으로 출력하는 대신에, 데이터 값을 `str.format` 을 
-사용하는 `INSERT` 안으로 삽입하는 것이다.
-
-
-잘 동작한다, 하지만 "동작한다"라는 말은 단지 "분명한 오류없이 작업완료가 되도록 동작한다"라는 의미다. 더 가까이 검사하면, 문제가 두가지가 보인다:
-
-1.  실제로 어떤 누구도 데이터를 삽입하는데 데이터베이스를 생성해주지는 않는다.
-2.  저자명에 단일 인용부호를 포함할 수 있다.
-
-첫번째 문제는 풀기 쉽다. 프로그램 시작부분에 다음 코드를 추가한다.
-
-``` sql
-CREATE = 'CREATE TABLE data(key text not null, author text not null);'
-```
-
-어떤 `insert` 문장을 출력하기 전에 출력한다.
-두번째 문제는 더 까다롭다: 만약 "O'Mear, Fiona" 같은 저자명을 `INSERT`해서 끼워넣으려면, 결과가 다음과 같이 된다:
-
-``` sql
-"INSERT INTO data VALUES('RJS8QDC4', 'O'Mear, Fiona');"
-```
-
-상기 방식은 적법한 파이썬 방법이 아니다.
-문제 해결방식은 단일 인용부호 대신에 문자열 주위를 이중 인용부호를 사용하는 것이다.
-왜냐하면 사람 이름에 이중 인용부호는 포함될 수 없기 때문이다.
-변경사항을 마치고 나면, 전체 프로그램은 다음과 같다:
-
-```{{python}}
-# convert-2.py
-# 키값과 저자명에 대한 데이터베이스 생성.
-# -*- coding: utf-8 -*-
-
-import sys
-import csv
-
-CREATE = 'CREATE TABLE data(key text not null, author text not null);'
-INSERT = 'INSERT INTO data VALUES("{0}", "{1}");'
-
-print(CREATE)
-
-raw = open(sys.argv[1], 'r')
-reader = csv.reader(raw);
-for line in reader:
-    key, authors = line[0], line[3]
-    for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용
-        print INSERT.format(key, auth)
-raw.close()
-```
-
-프로그램을 실행해보자:
-
-``` bash
-$ python code/convert-2.py data/bibliography.csv | head -5
-CREATE TABLE data(key text not null, author text not null);
-INSERT INTO data VALUES("8SW85SQM", "McClelland, James L");
-INSERT INTO data VALUES("85QV9X5F", "McClelland, J. L.");
-INSERT INTO data VALUES("85QV9X5F", "McNaughton, B. L.");
-INSERT INTO data VALUES("85QV9X5F", "O'Reilly, R. C.");
-```
-
-결과가 상당히 좋아 보인다.
-그래서, 실제 데이터베이스를 생성하는데 이것을 사용하기로 한다:
-
-``` bash
-$ python code/convert-2.py data/bibliography.csv | sqlite3 bibliography.db
-```
-
-상기 파이프라인 작업은 저자 컴퓨터에서 실행하는데 약 4초 걸렸고, 205 킬로바이트 `bibliography.db` 파일을 생성했다.
-데이터베이스가 담고 있는 것을 살펴보자:
-
-``` bash
-$ sqlite3 bibliography.db
-SQLite version 3.8.5 2014-08-15 22:37:57
-Enter ".help" for usage hints.
-
-sqlite> .schema
-CREATE TABLE data(key text not null, author text not null);
-
-sqlite> SELECT * FROM data LIMIT 10;
-8SW85SQM|McClelland, James L
-85QV9X5F|McClelland, J. L.
-85QV9X5F|McNaughton, B. L.
-85QV9X5F|O'Reilly, R. C.
-Z4X6DT6N|Ratcliff, R.
-F5DGU3Q4|McCloskey, M.
-F5DGU3Q4|Cohen, N. J.
-PNGQMCP5|Buciluǎ, Cristian
-PNGQMCP5|Caruana, Rich
-PNGQMCP5|Niculescu-Mizil, Alexandru
-```
-
-결과가 좋아보인다.
-그래서, 질의를 던져보자:
-
-``` sql
-SELECT author, COUNT(*)
-FROM data
-GROUP BY author
-ORDER BY COUNT(*) DESC
-LIMIT 10;
-
-Bengio, Yoshua|122
-Bengio, Y.|111
-Hinton, Geoffrey E.|78
-LeCun, Yann|56
-Hinton, G. E.|45
-Salakhutdinov, Ruslan|34
-LeCun, Y.|31
-Vincent, Pascal|29
-Jordan, M. I.|27
-Frasconi, P.|25
-```
-
-첫번째로 보이는 것은 프로그램 작업이 성과를 내고 있다는 것이다: 누가 가장 다작하는 저자인지 명령문 하나로 이제는 알아낼 수 있다.
-두번째로 보이는 것이 아직 작업을 완수한 것은 아니라는 것이다: "Bengio, Yoshua"와 "Bengio, Y."는 거의 확실히 동일한 사람이다.
-마찬가지로 "LeCun, Yann"와 "LeCun, Y."도 동일인이다.
-정말로 누가 가장 많은 논문을 썼는지 알아내려고 한다면, 동일인에 대한 다른 이름을 맞출 필요가 있다.
-
-
-저자명을 정규화하는 대신에, 대답할 수 있는 다른 질문을 살펴보자.
-누가 누구와 공동으로 논문을 썼을까?
-
-``` sql
-SELECT a.author, b.author
-FROM data a
-JOIN data b ON a.key = b.key AND a.author > b.author
-LIMIT 10;
-
-
-McNaughton, B. L.|McClelland, J. L.
-O'Reilly, R. C.|McClelland, J. L.
-O'Reilly, R. C.|McNaughton, B. L.
-McCloskey, M.|Cohen, N. J.
-Caruana, Rich|Buciluǎ, Cristian
-Niculescu-Mizil, Alexandru|Buciluǎ, Cristian
-Niculescu-Mizil, Alexandru|Caruana, Rich
-Rigamonti, Roberto|Fua, Pascal
-Rigamonti, Roberto|Lepetit, Vincent
-Sironi, Amos|Fua, Pascal
-```
-
-(`a.author > b.author` 을 사용하게 되면, 완전히 다른 저자명 짝이 한번만 나오게 한다.) 다른 저자 짝이 얼마나 자주 함께 논문을 작성했는지 알고자 한다면 어떨까?
-
-``` sql
-select a.author, b.author, count(*)
-from data a join data b
-on a.key=b.key and a.author > b.author
-group by a.author, b.author
-order by count(*) desc
-limit 10;
-
-Vincent, Pascal|Bengio, Yoshua|27
-Roux, Nicolas Le|Bengio, Yoshua|20
-Delalleau, Olivier|Bengio, Yoshua|19
-Bengio, Y.|Bengio, S.|18
-Larochelle, Hugo|Bengio, Yoshua|15
-Roux, Nicolas Le|Delalleau, Olivier|15
-Vincent, P.|Bengio, Y.|15
-Chapados, N.|Bengio, Y.|14
-Gori, M.|Frasconi, P.|14
-Salakhutdinov, Ruslan|Hinton, Geoffrey E.|14
-```
-
-## 연습문제 {.unnumbered}
-
-### 작업을 올바른 방식으로 수행하기 {.unnumbered}
-
-`print` 문장 대신에, `sqlite3` 라이브러리를 사용해서, 데이터베이스를 생성하도록 파이썬 프로그램을 다시 작성하시오.
-
-### 고유한 쌍  {.unnumbered}
-
-`a.author > b.author` 을 사용하게 되면 왜 완전히 다른 저자명 짝이 한번만 나타나게 되는지 설명하시오.
-
-### 데이터 정제 {.unnumbered}
-
-입력값으로 저자명 두명을 받아서 만약 아마도 동일인이면 `True`를 반환하고 만약 동일인이 아니라면 `False`를 반환하는 함수를 작성하시오. 작성한 함수를 옆사람과 비교하고, 두명이 불일치하는 사례를 찾을 수 있는가?
-
-### 데이터 정제 (계속) {.unnumbered}
-
-지금까지 작성한 함수를 재활용하여 저자명을 정규화하시오.
-작업 결과를 옆사람과 비교하시오. 정확하게 저자명과 동일한 목록을 만들어 냈는지 확인하시고,
-만약 그렇지 못하다면, 상응하는 목록을 만들어 냈는지 확인하세요.
-
-
+[^stop-excel]: [6 Reasons It’s Time To Stop Using Excel As A Database](http://venasolutions.com/blog/2014/08/6-reasons-its-time-to-stop-using-excel-as-a-database/)
 
 

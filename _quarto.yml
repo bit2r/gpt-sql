@@ -38,6 +38,7 @@ book:
       chapters:
         - database.qmd
         - spreadsheet.qmd
+        - etl.qmd        
 
     - part: "챗GPT SQL"
       chapters:
