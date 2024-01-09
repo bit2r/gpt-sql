@@ -26,31 +26,163 @@ editor_options:
 
 5.  **캘크(Calc)**: 오픈 소스 스프레드시트 프로그램들은 각각 Apache OpenOffice와 LibreOffice 스위트의 일부로 엑셀과 유사한 기능을 제공하며, 무료로 사용할 수 있는 대안으로 많이 사용된다.
 
+## 엑셀 사용
+
+회계부정으로 파산한 엔론(Enron)은 많은 유산[@hermans2015]을 남겼다.
+유산중에 대기업에서 스프레드쉬트 엑셀을 어떻게 사용했는지에 대한 다양한 사례를 파악할 수 있다.
+엑셀 코퍼스 분석 결과에 따르면, 엔론 스프레드시트 중 24%에서 엑셀 오류가 발견되었다.
+사용된 함수들 중 핵심적인 15개의 함수가 전체 스프레드시트의 76%를 차지했고, 매일 100개의 스프레드시트가 이메일에 첨부되어 유통되었으며, 전체 전자주편 중 10%에서 스프레드시트가 첨부되거나 주제로 전달되었다.
+
+| 순위 |   함수   | 스프레드쉬트 갯수 | 누적 백분율(%) |
+|:----:|:--------:|:-----------------:|:--------------:|
+|  1   |   SUM    |        578        |      6.4%      |
+|  2   |    \+    |       1259        |     14.0%      |
+|  3   |    \-    |       2262        |     25.1%      |
+|  4   |    /     |       2625        |     29.1%      |
+|  5   |    \*    |       3959        |     43.9%      |
+|  6   |    IF    |       4260        |     47.3%      |
+|  7   |   NOW    |       5322        |     59.1%      |
+|  8   | AVERAGE  |       5664        |     62.8%      |
+|  9   | VLOOKUP  |       5733        |     63.6%      |
+|  10  |  ROUND   |       5990        |     66.5%      |
+|  11  |  TODAY   |       6182        |     68.6%      |
+|  12  | SUBTOTAL |       6480        |     71.9%      |
+|  13  |  MONTH   |       6520        |     72.3%      |
+|  14  |   CELL   |       6774        |     75.2%      |
+|  15  |   YEAR   |       6812        |     75.6%      |
+
+: 엑셀 빈도수 높은 함수 {#tbl-functions}
+
+## 엑셀의 한계
+
+엑셀은 작은 데이터 분석과 계산에 최적화되어 있지만, 데이터베이스로 사용하는 것에는 제약이 있다.
+많은 기업과 조직이 중요한 데이터를 엑셀 스프레드시트에 보관하고 작업하는데, 이는 사소한 실수로 중요한 의사결정이 왜곡될 위험이 있다.
+
+엑셀을 사용하는 주된 이유는 엑셀 사용 습관으로 데이터를 엑셀로 저장하고 분석하는 습관이 있으며, 데이터 내보내기가 쉽기 때문이다.
+또한, 데이터가 작아서 데이터베이스가 필요 없다고 생각하지만, 사업이 커지고 업무량이 늘면서 엑셀의 작업량과 복잡성이 증가한다.
+
+엑셀 스프레드시트의 단점으로 다음이 많이 언급된다.
+
+1.  **한 번에 한 사람만 작업 가능**: 다른 사람이 작업 중이면 읽기 전용으로만 접근 가능.
+2.  **데이터 감사의 부재**: 한 사람이 주로 관리하므로, 그 사람이 떠나면 지식과 정보가 손실될 수 있다.
+3.  **정형화된 작업흐름 부족**: 엑셀로 정의된 업무 프로세스는 수작업으로 취합과 정리가 필요하다.
+4.  **모형 지원 부족**: 엑셀은 크기가 커지면 오류에 취약해진다.
+5.  **보고서 생성의 어려움**: 데이터베이스에서는 쿼리를 통해 보고서를 더 쉽게 생성할 수 있다.
+6.  **보안과 규제의 어려움**: 스프레드시트는 보안과 규제를 가하기 어렵다.
+
+"여러 기업이 엑셀 사용을 중요한 업무에서 단순히 피하는 것을 넘어 전면 중단시킨 사례가 존재한다. 다음은 스프레드시트 참사[^spreadsheet-1]를 기록한 사례들인데, 최근 들어 이런 사례들은 크게 줄어들었다."
+
+[^spreadsheet-1]: [THE DIRTY DOZEN 12 MODELLING HORROR STORIES & SPREADSHEET DISASTERS](http://blogs.mazars.com/the-model-auditor/files/2014/01/12-Modelling-Horror-Stories-and-Spreadsheet-Disasters-Mazars-UK.pdf)
+
+|          회사          |   참사 비용    |  발생일  |                영향                | 참사 개요                                                        |
+|:------------:|:-----------:|:----------:|:-------------:|-------------------|
+|     옥스포드 대학      |     미확인     | '11.12월 |       학생 인터뷰 일정 지연        | 엑셀이 수식이 꼬여 인터뷰 일정이 뒤죽박죽 [^spreadsheet-2]       |
+|          MI5           |     미확인     |  '11년   |        잘못된 전화번호 작업        | 엑셀 서식 수식이 꼬여 엉뚱한 전화번호 작업 [^spreadsheet-3]      |
+|   '12년 런던 올림픽    |   £ 0.5백만    | '12.01월 |           티켓 환불 소동           | 수영장 10,000 티켓이 초과 판매 (엑셀 입력 오류) [^spreadsheet-4] |
+|        Mouchel         |   £ 4.3백만    | '10.11월 |         CEO 사임, 주가폭락         | 연금펀드평가 £ 4.3백만 엑셀 오류 [^spreadsheet-5]                |
+|       C&C Group        |    £ 9 백만    | '09.7월  |          주가 15% 하락 등          | 매출 3% 상승이 아니고 5% 하락, 엑셀 오류 [^spreadsheet-6]        |
+|       UK 교통부        | 최소 £ 50 백만 | '12.10월 |       영국민 추가 세금 부담        | 영국 철도 입찰 오류 [^spreadsheet-7]                             |
+|       King 펀드        |   £ 130 백만   | '11.05월 |         브래드 이미지 하락         | 웨일즈 지방 NHS 지출 엑셀 오류 [^spreadsheet-8]                  |
+|     AXA Rosenberg      |   £ 150 백만   | '11.02월 |   은폐, 벌금, 브래드 이미지 하락   | 엑셀 오류를 감춰서 \$242 백만 벌금                               |
+|    JP Morgan Chase     |   £ 250 백만   | '13.01월 |       명성, 고객 신뢰도 저하       | 바젤 II VaR 위험 평가 엑셀 오류 [^spreadsheet-9]                 |
+| Fidelity Magellan 펀드 |   £ 1.6 십억   | '95.01월 | 투자자에게 약속한 배당금 지급 못함 | 음수 부호 누락으로 자본이득 과대계상 [^spreadsheet-10]           |
+|    미연방준비위원회    |   £ 2.5 십억   | '10.10월 |           명확하지 않음            | 리볼빙 카드 신용액 산출 과정에 엑셀 오류 [^spreadsheet-11]       |
+|      하버드 대학       |   평가 불능    | '13.04월 |    유럽 정부 긴축예산 편성 근거    | GDP 대비 정부 부채 영향도 분석 엑셀 오류 [^spreadsheet-12]       |
+
+: 역대 엑셀 참사 사례 {#tbl-disaster}
+
+[^spreadsheet-2]: [Test errors impede History applications](http://www.cherwell.org/2011/12/07/test-errors-impede-history-applications/)
+
+[^spreadsheet-3]: [MI5 makes 1,061 bugging errors](http://national-security.governmentcomputing.com/news/2011/jul/01/mi5-data-collection-errors)
+
+[^spreadsheet-4]: [London 2012 Olympics - lucky few to get 100m final tickets after synchronised swimming was overbooked by 10,000](http://www.telegraph.co.uk/sport/olympics/8992490/London-2012-Olympics-lucky-few-to-get-100m-final-tickets-after-synchronised-swimming-was-overbooked-by-10000.html)
+
+[^spreadsheet-5]: [Mouchel profits blow](http://www.express.co.uk/finance/city/276053/Mouchel-profits-blow)
+
+[^spreadsheet-6]: [C&C Group admit to mistake in revenue results](http://drinksdaily.com/2009/07/cc-group-admit-to-mistake-in-revenue-results/)
+
+[^spreadsheet-7]: [West Coast Main Line franchise fiasco 'to cost at least £50m'](http://www.bbc.com/news/uk-politics-21577826)
+
+[^spreadsheet-8]: [King’s Fund apologise for “error” in figures on health spending in Wales](http://leftfootforward.org/2011/05/kings-fund-apologise-for-error-on-health-spending-in-wales/)
+
+[^spreadsheet-9]: [Report of JPMorgan Chase & Co. Management Task Force Regarding 2012 CIO Losses](http://files.shareholder.com/downloads/ONE/2261602328x0x628656/4cb574a0-0bf5-4728-9582-625e4519b5ab/Task_Force_Report.pdf)
+
+[^spreadsheet-10]: [Computing error at Fidelity's Magellan fund](http://catless.ncl.ac.uk/Risks/16.72.html#subj1)
+
+[^spreadsheet-11]: [Blatant Data Error At The Federal Reserve](http://www.zerohedge.com/article/blatant-data-error-federal-reserve)
+
+[^spreadsheet-12]: [Is the evidence for austerity based on an Excel spreadsheet error?](https://www.washingtonpost.com/news/wonk/wp/2013/04/16/is-the-best-evidence-for-austerity-based-on-an-excel-spreadsheet-error/)
+
+반면, 데이터베이스는 사용자 활동 기록, 정형화된 작업흐름 지원, 오류 감소, 효율적인 보고서 생성 및 강력한 보안과 규제 기능을 제공한다.
+따라서 엑셀 스프레드시트 대신 데이터베이스를 사용하는 것이 여러 면에서 이점을 제공한다.
+
+::: callout-note
+### 도널드 럼스펠트와 제니 브라이언
+
+"전쟁은 가지고 있는 군대와 함께 가야지, 나중에 원하거나 바라는 군대와 함께 가는 것이 아니다" -- 도널드 럼스펠트
+
+"데이터 분석은 알고 있는 도구와 함께 시작하지, 필요한 도구와 함께 시작하는 것이 아니다" -- 제니 브라이언
+:::
+
+## 스프레드쉬트 이해하기
+
+데이터 분석을 위해, 사람과 컴퓨터 모두 읽을 수 있는 프로그램들이 많이 존재한다.
+컴퓨터 프로그램을 열어보면, 컴퓨터가 실행하는 코드와 함께, 컴퓨터에서는 무시되지만 사람에게 매우 중요한 주석이 포함되어 있다.
+따라서 컴퓨터와 사람 모두가 읽을 수 있는 코드는 데이터 과학에 필수적이다.
+
+**코드**는 사람과 컴퓨터 모두에게 가독성을 제공해야 한다.
+그러나 **데이터** 역시 사람과 컴퓨터 모두에게 가독성을 제공해야 한다는 것이 문제다.
+특히 스프레드시트는 사람과 컴퓨터 양쪽 모두에게 가독성을 제공하지 않는 경우가 많다.
+스프레드시트는 처음에는 쉽게 접근할 수 있지만, 1주일 지난 후 해독하기 어려운 복잡성을 종종 경험하게 된다.
+
+"ALGORITHMS BY COMPLEXITY" [@fig-algo] 제목 아래에 다양한 알고리즘과 시스템이 복잡도에 따라 나열되어 있으며, 왼쪽에서 오른쪽으로 갈수록 복잡도가 증가한다.
+가장 왼쪽에는 "LEFTPAD"와 "QUICKSORT"가 있고, 그 오른쪽에는 "GIT MERGE"가 있다.
+그 다음에는 "SELF-DRIVING CAR"과 "GOOGLE SEARCH BACKEND"가 위치하고 있으며 오른쪽 끝에 "SPRAWLING EXCEL SPREADSHEET BUILT UP OVER 20 YEARS BY A CHURCH GROUP IN NEBRASKA TO COORDINATE THEIR SCHEDULING"이라는 문구가 있고, 20년 동안 네브래스카의 한 교회 그룹이 그들의 스케줄링을 조정하기 위해 만들어온 방대한 엑셀 스프레드시트 복잡성을 강조하고 있다.
+
+![엑셀 알고리즘 복잡성](images/ds-xls-algo-complexity.png){#fig-algo}
+
+스프레드쉬트는 데이터, 서식, 수식으로 구성된다.
+숫자 데이터를 엑셀로 가져오게 되면 엑셀 내장 함수를 통해 수식 계산을 수행하고, 엑셀 사용자 본인 혹은 외부 사람을 위해 서식을 입히는 과정을 거쳐 비로소 완성된 스프레드쉬트가 된다.
+
+![엑셀 구성요소](images/excel_complexity.png){#fig-excel fig-align="center" width="541"}
+
+스프레드쉬트와 R을 비교해 보면, 서로 상응하는 기능이 일대일로 대응되는 것을 확인할 수 있다.
+
+| **스프레드쉬트**          | **R**                         |
+|---------------------------|-------------------------------|
+| \* 데이터                 | \* 데이터                     |
+| \* 로직                   | \* .R, .Rmd                   |
+| \* 그림                   | \* .png, .svg                 |
+| \* 서식을 갖춘 표         | \* .md, .html, .pdf, Shiny 앱 |
+| \* **반응성(reactivity)** | \* **빌드와 배포**            |
+
 ## 데이터베이스 도입
 
-데이터 복잡성이 일반적으로 처리할 수 있는 것을 넘어서면 "추출(Extract), 변환(Transform), 로드(Load)"라고 하는 과정을 수행해야 한다. 예를 들어 서지학 데이터에서 다음과 같은 질문에 답을 하고자 한다고 가정해 보자.
+데이터 복잡성이 일반적으로 처리할 수 있는 것을 넘어서면 "추출(Extract), 변환(Transform), 로드(Load)"라고 하는 과정을 수행해야 한다.
+예를 들어 서지학 데이터에서 다음과 같은 질문에 답을 하고자 한다고 가정해 보자.
 
-- 각 사람이 기여한 논문의 수는 얼마인가?
-- 누가 누구와 협업하는가?
+-   각 사람이 기여한 논문의 수는 얼마인가?
+-   누가 누구와 협업하는가?
 
 불행히도, "다중 값 필드(multi-valued field)"가 있는 필드 때문에 바로 스프레드시트/CSV 형식 서지학 데이터를 데이터베이스에 넣을 수 없다.
 
-저자 한명에만 관심이 있다면, 첫번째 질문에 답하기 위해 스프레드시트에서 저자명을 검색한 다음, 
-그 행을 선택하고 수동으로 그녀의 공동 저자를 집계하여 두 번째 질문에 답할 수 있다. 
-그러나 모든 저자에 대해서 동일한 작업을 한땀한땀 수행하는 데는 며칠이 걸릴 것이며, 거의 확실하게 실수(휴먼 에러)가 있을 것이며, 그러면 누군가가 또 다른 더 큰 스프레드시트를 건네주고 처음부터 다시 시작해야 할 것이다. 하지만, 모든 저자에 대해 하나씩 이런 작업을 수행하는 것은 몇일이 소요된다.
+저자 한명에만 관심이 있다면, 첫번째 질문에 답하기 위해 스프레드시트에서 저자명을 검색한 다음, 그 행을 선택하고 수동으로 그녀의 공동 저자를 집계하여 두 번째 질문에 답할 수 있다.
+그러나 모든 저자에 대해서 동일한 작업을 한땀한땀 수행하는 데는 며칠이 걸릴 것이며, 거의 확실하게 실수(휴먼 에러)가 있을 것이며, 그러면 누군가가 또 다른 더 큰 스프레드시트를 건네주고 처음부터 다시 시작해야 할 것이다.
+하지만, 모든 저자에 대해 하나씩 이런 작업을 수행하는 것은 몇일이 소요된다.
 거의 확실히 실수도 할 것이다.
 
-두가지 질문에 답하기 위해 많은 작업처럼 보일 수 있지만, 
-수십줄 이상되는 데이터에 대해서는 많은 시간을 절약할 수 있다.
+두가지 질문에 답하기 위해 많은 작업처럼 보일 수 있지만, 수십줄 이상되는 데이터에 대해서는 많은 시간을 절약할 수 있다.
 
-* 데이터가 데이터베이스에 존재한다면 다른 질문들도 묻고 답하기 쉬워진다.
-* 향후 또다른 형태 스프레드시트에 개발한 도구를 재사용할 수 있다.
-* 지금까지 수행한 일에 대한 기록을 가질 수 있다(스프레드시트에서 클릭하는 것으로는 얻을 수 없는 것).
-* 정확할 가능성이 훨씬 더 높고 빠르다.
+-   데이터가 데이터베이스에 존재한다면 다른 질문들도 묻고 답하기 쉬워진다.
+-   향후 또다른 형태 스프레드시트에 개발한 도구를 재사용할 수 있다.
+-   지금까지 수행한 일에 대한 기록을 가질 수 있다(스프레드시트에서 클릭하는 것으로는 얻을 수 없는 것).
+-   정확할 가능성이 훨씬 더 높고 빠르다.
 
-이 접근 방식을 통해 데이터를 보다 체계적이고 효율적으로 관리할 수 있으며, 데이터 분석을 위한 기반을 마련할 수 있다. 데이터베이스에 데이터를 저장함으로써, 데이터의 일관성을 유지하고, 복잡한 쿼리를 쉽게 실행할 수 있으며, 나중에 데이터를 검토하거나 업데이트할 때 시간과 노력을 절약할 수 있다. 전체적인 작업흐름은 다음과 같다.
+이 접근 방식을 통해 데이터를 보다 체계적이고 효율적으로 관리할 수 있으며, 데이터 분석을 위한 기반을 마련할 수 있다.
+데이터베이스에 데이터를 저장함으로써, 데이터의 일관성을 유지하고, 복잡한 쿼리를 쉽게 실행할 수 있으며, 나중에 데이터를 검토하거나 업데이트할 때 시간과 노력을 절약할 수 있다.
+전체적인 작업흐름은 다음과 같다.
 
-1. 모든 논문에 모든 기여자에 대한 (키값, 저자명) 짝을 출력하는 작은 파이썬 프로그램을 작성한다. 예를 들어, 작성한 프로그램이 스프레드쉬트 첫 세줄을 다음과 같이 변환한다:
+1.  모든 논문에 모든 기여자에 대한 (키값, 저자명) 짝을 출력하는 작은 파이썬 프로그램을 작성한다. 예를 들어, 작성한 프로그램이 스프레드쉬트 첫 세줄을 다음과 같이 변환한다:
 
 ``` bash
 8SW85SQM McClelland, James L
@@ -60,10 +192,9 @@ editor_options:
 Z4X6DT6N Ratcliff, R.
 ```
 
-2. 프로그램을 변경해서 데이터베이스에 키값과 저자를 삽입하는 SQL `insert` 문장을 생성한다.
+2.  프로그램을 변경해서 데이터베이스에 키값과 저자를 삽입하는 SQL `insert` 문장을 생성한다.
 
-3. SQL 쿼리를 사용해서 최초 질문에 답한다.
-
+3.  SQL 쿼리를 사용해서 최초 질문에 답한다.
 
 ::: callout-note
 ### 바흐라이(Bahlai) 법칙
@@ -71,13 +202,13 @@ Z4X6DT6N Ratcliff, R.
 "다른 사람의 데이터는 항상 일관성이 없고 잘못된 형식으로 되어 있다. ("Other people's data is always inconsistent and in the wrong format.")
 :::
 
-
 ## 데이터셋
 
-다음 간단한 예제를 통해서 데이터(스프레드쉬트에 내장된 참고문헌정보)를 어떻게 받아서 유용한 것으로 변경할지 살펴보자. 출발점은 다음과 같은 2,937행을 갖는 `bibliography.csv` 라는 스프레드쉬트(엑셀) 파일이다.
+다음 간단한 예제를 통해서 데이터(스프레드쉬트에 내장된 참고문헌정보)를 어떻게 받아서 유용한 것으로 변경할지 살펴보자.
+출발점은 다음과 같은 2,937행을 갖는 `bibliography.csv` 라는 스프레드쉬트(엑셀) 파일이다.
 
 | key      | type           | year | authors                                               | title                                                                                                                                                                  | journal              |
-|---------|---------|-------|----------|---------------------------|-----------|
+|------------|------------|------------|------------|------------|------------|
 | 8SW85SQM | journalArticle | 2013 | McClelland, James L                                   | Incorporating Rapid Neocortical Learning of New Schema-Consistent Information Into Complementary Learning Systems Theory.                                              | J Exp Psychol Gen    |
 | 85QV9X5F | journalArticle | 1995 | McClelland, J. L.; McNaughton, B. L.; O'Reilly, R. C. | Why There are Complementary Learning Systems in the Hippocampus and Neocortex: Insights from the Successes and Failures of Connectionist Models of Learning and Memory | Psychological Review |
 | Z4X6DT6N | journalArticle | 1990 | Ratcliff, R.                                          | Connectionist models of recognition memory: constraints imposed by learning and forgetting functions.                                                                  | Psychological review |
@@ -90,7 +221,7 @@ Z4X6DT6N Ratcliff, R.
 전체 분석작업의 99%를 틀리지 않게 하는데, 손으로하는 전사작업은 얼마나 정확성이 있을까?
 즉, 행당 오류율이 얼마나 되어야 전체 작업을 올바르게 완수하는데 0.99 확률이 될까?
 
----
+------------------------------------------------------------------------
 
 ```{r}
 # 전체 행의 수
@@ -106,7 +237,7 @@ row_error_rate <- 1 - (desired_accuracy ^ (1/total_rows))
 scales::percent(row_error_rate, accuracy = 0.000001)
 ```
 
-```bash
+``` bash
 "0.000342%"
 ```
 
@@ -120,117 +251,26 @@ scales::percent(row_error_rate, accuracy = 0.000001)
 프로그래밍이 실질적으로 얼마나 시간을 절약해줄까?
 얼마나 확신이 되나요?
 
----
+------------------------------------------------------------------------
 
 이 문제를 해결하기 위해, 현재 수작업으로 진행 중인 작업을 선정하고, 그 작업에 대한 다음 정보들을 추정해야 한다.
 
-1. **작업에 소요되는 시간**: 각 작업 수행에 걸리는 평균 시간을 추정한다.
-2. **작업의 빈도**: 이 작업이 얼마나 자주 수행되는지 추정한다. 예를 들어, 일주일에 몇 번 또는 한 달에 몇번 등이 된다.
-3. **프로그램 작성에 소요되는 시간**: 동일한 작업을 자동화하는 프로그램을 작성하는 데 필요한 시간을 추정한다.
+1.  **작업에 소요되는 시간**: 각 작업 수행에 걸리는 평균 시간을 추정한다.
+2.  **작업의 빈도**: 이 작업이 얼마나 자주 수행되는지 추정한다. 예를 들어, 일주일에 몇 번 또는 한 달에 몇번 등이 된다.
+3.  **프로그램 작성에 소요되는 시간**: 동일한 작업을 자동화하는 프로그램을 작성하는 데 필요한 시간을 추정한다.
 
-상기 정보를 바탕으로 프로그래밍이 실질적으로 시간을 절약해주는지를 평가할 수 있다. 시간 절약의 계산은 다음과 같은 간단한 공식으로 이루어집니다:
+상기 정보를 바탕으로 프로그래밍이 실질적으로 시간을 절약해주는지를 평가할 수 있다.
+시간 절약의 계산은 다음과 같은 간단한 공식으로 이루어집니다:
 
-
-> 총 절약시간 = (수작업 시간 * 작업 빈도 * 기간) - 프로그램 작성 시간
-
+> 총 절약시간 = (수작업 시간 \* 작업 빈도 \* 기간) - 프로그램 작성 시간
 
 여기서, "기간"은 프로그램이 사용될 예상 기간이 된다.
 
-예를 들어, 매주 2시간 걸리는 작업이 있고, 이를 자동화하는 프로그램을 작성하는 데 10시간이 걸린다고 가정해 보자. 프로그램이 1년 동안 사용될 것이라고 가정하면, 총 절약 시간은 다음과 같습니다:
+예를 들어, 매주 2시간 걸리는 작업이 있고, 이를 자동화하는 프로그램을 작성하는 데 10시간이 걸린다고 가정해 보자.
+프로그램이 1년 동안 사용될 것이라고 가정하면, 총 절약 시간은 다음과 같습니다:
 
-
-> 총 절약시간 = (2시간/주 * 52주) - 10시간 = 94시간
+> 총 절약시간 = (2시간/주 \* 52주) - 10시간 = 94시간
 
 프로그램 작성에 들인 시간을 고려하더라도 연간 94시간을 절약할 수 있음을 의미한다.
 
-유념할 점은 이러한 추정은 작업의 복잡성, 작업 빈도 및 프로그래밍 능력에 따라 달라질 수 있으므로, 여러가지 요소들을 고려하여 신중하게 추정해야 한다. 
-
-
-## 엑셀 문제점
-
-
-### 1. 스프레드쉬트를 버려야 하는 6가지 이유 [^stop-excel]
-
-엑셀은 작은 데이터를 가지고 임의 분석과 계산을 하는데 최적화 되었지만, 데이터베이스 기능으로 사용하는 것은 자제하여야 한다.
-아주 많은 기업이나 조직에서 마이크로소프트 엑셀 스프레드쉬트에 매우 중요한 데이터로 보관하고 작업을 해서,
-사소한 실수로 중요한 의사결정이 왜곡되는 위험에 처해 있다.
-
-> #### 스프레드쉬트를 사용하는 이유 {.callout}
-> 
-> * 항상 엑셀을 사용했다: 항상 데이터를 엑셀로 저장하고 분석해서 사용했다. 하지만, 버튼 하나로 데이터를 내보내기 쉽다.
-> * 데이터베이스를 사용할 만큼 데이터가 충분하지 않다: 데이터가 작아서 데이터베이스를 사용할 이유를 찾지 못하지만,
-사업이 커지고, 업무량이 늘어나면서 엑셀 작업량이 높아지고, 복잡성도 커지고, 엑셀 자체에서 처리되는 시간도 늘어난다.
-
-#### 1.1. 한번에 한사람만 작업이 가능하다.
-
-해당 시간에 한번만 엑셀로 작업이 가능하다. 만약 다른 직원이 엑셀을 열어 작업을 하게 되면 "읽기 전용(Read-Only)"으로만 볼 수만 있다.
-
-#### 1.2. 데이터 감사는 데이터베이스에서만 가능
-
-보통 한 사람만 엑셀 스프레드쉬트 파일을 생성하고 유지보수한다. 이 직원이 다른 부서로 전보되거나 회사를 떠나게 되면, 모든 지식이 직원과 함께 날아간다.
-고로, 해당 업무를 담고 있는 엑셀 스프레드쉬트를 익히는데 수개월이 소요된다.
-
-이와 비교하여 감사 기능이 제공되는 데이터베이스는 주기적으로 사용자 활동을 기록해서 엑셀 스프레드쉬트가 담고 있는 정보 및 직관도 전달한다.
-
-#### 1.3. 데이터베이스는 정형화된 작업흐름을 지원한다.
-
-업무 프로세스를 엑셀 스프레드쉬트로 정의할 경우, 엑셀 스프레드쉬트 파일을 전자우편으로 다수 개발자, 검토자, 승인자에게 셀 수 없이 많이 전달해야 한다.
-더 큰 문제는 이를 취합해서 수작업으로 정리해야 된다.
-
-하지만, 업무 프로세스를 데이터베이스로 정의할 경우, 특정 사업 요구사항을 해결하는데 작업을 매핑하고, 추적하고 관리하기 편하다.
-효과적으로 중앙에서 체계적으로 관리되는 스프레드쉬트, 데이터베이스로 할당된 작업에 대응하기 좋다.
-
-#### 1.4. 데이터베이스는 엑셀보다 모형을 보다 잘 지원한다.
-
-엑셀 스프레드쉬트 업무가 늘어나고 크기가 커지게 되면, 오류에 취약해 진다.
-예를 들어, 새로운 수식을 새로운 곳에 복사해서 넣게 되면 셀참조가 엉클어져서 엉뚱한 값이 반영되는 경우도 흔히 발견된다.
-
-#### 1.5. 데이터베이스로 보고서 생성이 수월하다.
-
-데이터베이스에서 쿼리, 쿼리에 기반한 보고서를 작성하기 더 쉽다.
-정적 스프레드쉬트와 반대로 관계형 환경에서 데이터를 정렬, 매칭, 조합하기 더 좋다.
-
-#### 1.6.  데이터베이스는 보안이 강력하고 규제하기 좋다.
-
-스프레드쉬트는 규제를 가하고 보안기능을 두기가 마땅치 않는다. 보안과 제한 기능은 완전히 사용자 몫으로 남겨진다.
-엑셀 사용자가 수작업으로 모든 것을 식별해서 작업해야 되고 실수한 것도 고쳐야 된다.
-스프레드쉬트에 이러한 기능이 거의 전무하기 때문에, 실수한 것도 알아차리지 못한 상태로 그냥 넘어가는 경우가 상당히 많다.
-
-### 2. 스프레드쉬트 참사 [^excel-disaster]
-
-|     회사      | 참사 비용 |   발생일 |        영향           |               참사 개요                         | 
-|---------------|-----------|----------|-----------------------|-------------------------------------------------|
-| 옥스포드 대학 | 미확인    | '11.12월 | 학생 인터뷰 일정 지연 | 엑셀이 수식이 꼬여 인터뷰 일정이 뒤죽박죽 [^12] |
-|      MI5      | 미확인    |   '11년  | 잘못된 전화번호 작업  | 엑셀 서식 수식이 꼬여 엉뚱한 전화번호 작업 [^11] |
-| '12년 런던 올림픽 | £ 0.5백만  |  '12.01월  | 티켓 환불 소동  | 수영장 10,000 티켓이 초과 판매 (엑셀 입력 오류) [^10] |
-|     Mouchel   |  £ 4.3백만  |  '10.11월  | CEO 사임, 주가폭락 | 연금펀드평가 £ 4.3백만 엑셀 오류 [^09] |
-|   C&C Group   |  £ 9 백만  |  '09.7월  | 주가 15% 하락 등 | 매출 3% 상승이 아니고 5% 하락, 엑셀 오류 [^08] |
-|   UK 교통부   | 최소 £ 50 백만 |  '12.10월  | 영국민 추가 세금 부담 | 영국 철도 입찰 오류 [^07] |
-|   King 펀드   | £ 130 백만 |  '11.05월  | 브래드 이미지 하락 | 웨일즈 지방 NHS 지출 엑셀 오류 [^06] |
-| AXA Rosenberg | £ 150 백만 |  '11.02월  | 은폐, 벌금, 브래드 이미지 하락 | 엑셀 오류를 감춰서 $242 백만 벌금 |
-| JP Morgan Chase | £ 250 백만 |  '13.01월  | 명성, 고객 신뢰도 저하 | 바젤 II VaR 위험 평가 엑셀 오류 [^04] |
-| Fidelity Magellan 펀드 | £ 1.6 십억 |  '95.01월  | 투자자에게 약속한 배당금 지급 못함 | 음수 부호 누락으로 자본이득 과대계상 [^03] |
-| 미연방준비위원회 | £ 2.5 십억 |  '10.10월  | 명확하지 않음 | 리볼빙 카드 신용액 산출 과정에 엑셀 오류 [^02] |
-|  하버드 대학  | 평가 불능 | '13.04월  | 유럽 정부 긴축예산 편성 근거 | GDP 대비 정부 부채 영향도 분석 엑셀 오류 [^01] |
-
-
-
-[^12]: [Test errors impede History applications](http://www.cherwell.org/2011/12/07/test-errors-impede-history-applications/)
-[^11]: [MI5 makes 1,061 bugging errors](http://national-security.governmentcomputing.com/news/2011/jul/01/mi5-data-collection-errors)
-[^10]: [London 2012 Olympics - lucky few to get 100m final tickets after synchronised swimming was overbooked by 10,000](http://www.telegraph.co.uk/sport/olympics/8992490/London-2012-Olympics-lucky-few-to-get-100m-final-tickets-after-synchronised-swimming-was-overbooked-by-10000.html)
-[^09]: [Mouchel profits blow](http://www.express.co.uk/finance/city/276053/Mouchel-profits-blow)
-[^08]: [C&C Group admit to mistake in revenue results](http://drinksdaily.com/2009/07/cc-group-admit-to-mistake-in-revenue-results/)
-[^07]: [West Coast Main Line franchise fiasco 'to cost at least £50m'](http://www.bbc.com/news/uk-politics-21577826)
-[^06]: [King’s Fund apologise for “error” in figures on health spending in Wales](http://leftfootforward.org/2011/05/kings-fund-apologise-for-error-on-health-spending-in-wales/)
-[^04]: [Report of JPMorgan Chase & Co. Management Task Force Regarding 2012 CIO Losses](http://files.shareholder.com/downloads/ONE/2261602328x0x628656/4cb574a0-0bf5-4728-9582-625e4519b5ab/Task_Force_Report.pdf)
-[^03]: [Computing error at Fidelity's Magellan fund](http://catless.ncl.ac.uk/Risks/16.72.html#subj1)
-[^02]: [Blatant Data Error At The Federal Reserve](http://www.zerohedge.com/article/blatant-data-error-federal-reserve)
-[^01]: [Is the evidence for austerity based on an Excel spreadsheet error?](https://www.washingtonpost.com/news/wonk/wp/2013/04/16/is-the-best-evidence-for-austerity-based-on-an-excel-spreadsheet-error/)
-
-
-
-[^excel-disaster]: [THE DIRTY DOZEN 12 MODELLING HORROR STORIES & SPREADSHEET DISASTERS](http://blogs.mazars.com/the-model-auditor/files/2014/01/12-Modelling-Horror-Stories-and-Spreadsheet-Disasters-Mazars-UK.pdf)
-
-[^stop-excel]: [6 Reasons It’s Time To Stop Using Excel As A Database](http://venasolutions.com/blog/2014/08/6-reasons-its-time-to-stop-using-excel-as-a-database/)
-
-
+유념할 점은 이러한 추정은 작업의 복잡성, 작업 빈도 및 프로그래밍 능력에 따라 달라질 수 있으므로, 여러가지 요소들을 고려하여 신중하게 추정해야 한다.
