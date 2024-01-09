@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 12&nbsp; 데이터베이스 프로그래밍</title>
+<title>챗GPT SQL - 11&nbsp; 데이터베이스 프로그래밍</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./21-application.html" rel="next">
+<link href="./prog-r.html" rel="next">
 <link href="./create.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">환경설정</span></a>
+ <span class="menu-text">SQL</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -169,8 +169,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
+  <a href="./select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./null.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./create.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -178,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">활용사례</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -186,62 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">집계</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prog.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+  <a href="./etl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,11 +291,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link active" data-scroll-target="#연습문제"><span class="header-section-number">12.1</span> 연습문제</a>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link active" data-scroll-target="#연습문제"><span class="header-section-number">11.1</span> 연습문제</a>
   <ul class="collapse">
-  <li><a href="#테이블-채우기-vs.-값-출력하기" id="toc-테이블-채우기-vs.-값-출력하기" class="nav-link" data-scroll-target="#테이블-채우기-vs.-값-출력하기"><span class="header-section-number">12.1.1</span> 테이블 채우기 vs.&nbsp;값 출력하기</a></li>
-  <li><a href="#sql-필터링-vs.-파이썬-필터링" id="toc-sql-필터링-vs.-파이썬-필터링" class="nav-link" data-scroll-target="#sql-필터링-vs.-파이썬-필터링"><span class="header-section-number">12.1.2</span> SQL 필터링 vs.&nbsp;파이썬 필터링</a></li>
-  <li><a href="#삽입문-생성" id="toc-삽입문-생성" class="nav-link" data-scroll-target="#삽입문-생성"><span class="header-section-number">12.1.3</span> 삽입문 생성</a></li>
+  <li><a href="#테이블-채우기-vs.-값-출력하기" id="toc-테이블-채우기-vs.-값-출력하기" class="nav-link" data-scroll-target="#테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
+  <li><a href="#sql-필터링-vs.-파이썬-필터링" id="toc-sql-필터링-vs.-파이썬-필터링" class="nav-link" data-scroll-target="#sql-필터링-vs.-파이썬-필터링">SQL 필터링 vs.&nbsp;파이썬 필터링</a></li>
+  <li><a href="#삽입문-생성" id="toc-삽입문-생성" class="nav-link" data-scroll-target="#삽입문-생성"><span class="header-section-number">11.1.1</span> 삽입문 생성</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -291,9 +303,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></h1>
 </div>
 
 
@@ -312,16 +324,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>마무리 하면서, 파이썬 같은 범용 프로그래밍 언어에서 데이터베이스를 어떻게 접근하는지 살펴보자. 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만, 개념은 동일한다.</p>
 <p><code>survey.db</code>라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는 짧은 파이썬 프로그램이 다음에 있다.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"survey.db"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">"SELECT Site.lat, Site.long FROM Site;"</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> r <span class="kw">in</span> results:</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(r)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>cursor.close()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>connection.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">import sqlite3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">connection = sqlite3.connect("survey.db")</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">cursor = connection.cursor()</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in">cursor.execute("SELECT Site.lat, Site.long FROM Site;")</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">results = cursor.fetchall()</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">for r in results:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">    print(r)</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">cursor.close()</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">connection.close()</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="shell"><code>(-49.85, -128.57)
 (-47.15, -126.72)
 (-48.87, -123.4)</code></pre>
@@ -332,205 +346,206 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>다섯 번째 줄에서 <code>cursor.fetchall</code> 호출에 응답하여 데이터베이스가 쿼리 결과를 반환한다. 결과는 각 레코드마다 하나의 항목을 가진 결과집합(result set) 리스트다. 리스트를 반복하여 각 항목을 출력하면(여섯 번째, 일곱 번째 줄), 각각이 각 필드에 하나의 요소를 갖는 튜플(tuple)임을 알 수 있다.</p>
 <p>마지막으로, 여덟 번째와 아홉 번째 줄에서 커서와 데이터베이스 연결을 종료한다. 데이터베이스는 한 번에 열 수 있는 연결과 커서의 수가 제한되어 있기 때문이다. 연결을 설정하는 데 시간이 걸리기 때문에, 연결을 열고 하나의 작업을 수행한 후 연결을 닫았다가 몇 마이크로초 후에 다른 작업을 위해 다시 연결하는 것은 피해야 한다. 대신, 프로그램이 수행되는 동안 하나의 연결을 생성하고 유지하는 것이 일반적이다.</p>
 <p>실제 응용 프로그램에서 쿼리는 사용자가 제공하는 값에 따라 달라진다. 예를 들어, 다음 함수는 사용자 ID를 매개변수로 받아 이름을 반환한다.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"SELECT personal || ' ' || family FROM Person WHERE id='"</span> <span class="op">+</span> person_id <span class="op">+</span> <span class="st">"';"</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full name for dyer:"</span>, get_name(<span class="st">'survey.db'</span>, <span class="st">'dyer'</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="in">import sqlite3</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="in">def get_name(database_file, person_id):</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="in">    query = "SELECT personal || ' ' || family FROM Person WHERE id='" + person_id + "';"</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="in">    connection = sqlite3.connect(database_file)</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor = connection.cursor()</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.execute(query)</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="in">    results = cursor.fetchall()</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.close()</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="in">    connection.close()</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="in">    return results[0][0]</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="in">print("Full name for dyer:", get_name('survey.db', 'dyer'))</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="shell"><code>Full name for dyer: William Dyer</code></pre>
 <p>함수의 첫번째 행에 문자열 결함을 사용해서 사용자가 넘겨준 사용자 ID를 포함하는 쿼리를 완성한다. 단순하게 보일지 모르지만, 만약 누군가 다음 문자열을 입력값으로 준다면 무슨 일이 일어날까?</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dyer<span class="st">'; DROP TABLE Survey; SELECT '</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>``</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>프로젝트 이름 뒤에는 쓰레기(garbage)처럼 보이지만, 매우 주의깊게 고른 쓰레기다.</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>만약 이 문자열을 쿼리에 삽입하면, 결과는 다음과 같다.</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>``` sql</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> personal <span class="op">||</span> <span class="st">' '</span> <span class="op">||</span> family <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span><span class="op">=</span><span class="st">'dyer'</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> Survey; <span class="kw">SELECT</span> <span class="st">''</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>dyer<span class="st">'; DROP TABLE Survey; SELECT '</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>프로젝트 이름 뒤에는 쓰레기(garbage)처럼 보이지만, 매우 주의깊게 고른 쓰레기다. 만약 이 문자열을 쿼리에 삽입하면, 결과는 다음과 같다.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> personal <span class="op">||</span> <span class="st">' '</span> <span class="op">||</span> family <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span><span class="op">=</span><span class="st">'dyer'</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> Survey; <span class="kw">SELECT</span> <span class="st">''</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>만약 쿼리를 실행하게 된다면, 데이터베이스에 있는 테이블 중의 하나를 삭제한다.</p>
 <p>이것을 <strong>SQL 주입 공격(SQL injection attack)</strong>이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다.</p>
-<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <a href="../../gloss.html#prepared-statement">준비된 문장(prepared statement)</a>를 사용해서 작업할 수 있다. 만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"SELECT personal || ' ' || family FROM Person WHERE id=?;"</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, [person_id])</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full name for dyer:"</span>, get_name(<span class="st">'survey.db'</span>, <span class="st">'dyer'</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Full name for dyer</span><span class="kw">:</span><span class="at"> William Dyer</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <strong>준비된 문장(prepared statement)</strong>를 사용해서 작업할 수 있다. 만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"SELECT personal || ' ' || family FROM Person WHERE id=?;"</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, [person_id])</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> cursor.fetchall()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results[<span class="dv">0</span>][<span class="dv">0</span>]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full name for dyer:"</span>, get_name(<span class="st">'survey.db'</span>, <span class="st">'dyer'</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>Full name for dyer: William Dyer</code></pre>
 <p>주요 변경사항은 쿼리 문자열과 <code>execute</code> 호출에 있다. 직접 쿼리를 포맷하는 대신, 값을 삽입하고 싶은 쿼리 템플릿에 물음표를 넣는다. <code>execute</code>를 호출할 때, 쿼리에 있는 물음표 수만큼의 값을 포함하는 리스트를 제공한다. 라이브러리는 순서대로 값과 물음표를 매칭하고, 값의 특수 문자를 이스케이프된 대응물로 변환하여 사용하기 안전하게 만든다.</p>
 <p><code>sqlite3</code>의 커서를 사용하여 데이터베이스에 변경을 가할 수도 있다. 예를 들어, 새로운 이름을 삽입하는 것과 같이. 예를 들어, <code>add_name</code>이라는 새로운 함수를 다음과 같이 정의할 수 있다:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_name(database_file, new_person):</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"INSERT INTO Person (id, personal, family) VALUES (?, ?, ?);"</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, <span class="bu">list</span>(new_person))</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"SELECT personal || ' ' || family FROM Person WHERE id=?;"</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, [person_id])</span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a new name</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>add_name(<span class="st">'survey.db'</span>, (<span class="st">'barrett'</span>, <span class="st">'Mary'</span>, <span class="st">'Barrett'</span>))</span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Check it exists</span></span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full name for barrett:"</span>, get_name(<span class="st">'survey.db'</span>, <span class="st">'barrett'</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in">import sqlite3</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="in">def add_name(database_file, new_person):</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in">    query = "INSERT INTO Person (id, personal, family) VALUES (?, ?, ?);"</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">    connection = sqlite3.connect(database_file)</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor = connection.cursor()</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.execute(query, list(new_person))</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.close()</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="in">    connection.close()</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">def get_name(database_file, person_id):</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="in">    query = "SELECT personal || ' ' || family FROM Person WHERE id=?;"</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">    connection = sqlite3.connect(database_file)</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor = connection.cursor()</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.execute(query, [person_id])</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="in">    results = cursor.fetchall()</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.close()</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="in">    connection.close()</span></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="in">    return results[0][0]</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="in"># Insert a new name</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="in">add_name('survey.db', ('barrett', 'Mary', 'Barrett'))</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="in"># Check it exists</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="in">print("Full name for barrett:", get_name('survey.db', 'barrett'))</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="shell"><code>IndexError: list index out of range</code></pre>
 <p>SQLite3 버전 2.5 이상에서는 앞서 설명한 <code>get_name</code> 함수가 <code>IndexError: list index out of range</code> 오류를 발생시킨다. <code>add_name</code>을 사용하여 테이블에 Mary의 항목을 추가했음에도 불구하고 발생된다. 이유는 데이터베이스에 변경사항을 저장하기 위해 연결을 종료하기 전에 <code>connection.commit()</code>을 수행해야 하기 때문이다.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_name(database_file, new_person):</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"INSERT INTO Person (id, personal, family) VALUES (?, ?, ?);"</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, <span class="bu">list</span>(new_person))</span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    connection.commit()</span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    query <span class="op">=</span> <span class="st">"SELECT personal || ' ' || family FROM Person WHERE id=?;"</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(database_file)</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, [person_id])</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    results <span class="op">=</span> cursor.fetchall()</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    cursor.close()</span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    connection.close()</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> results[<span class="dv">0</span>][<span class="dv">0</span>]</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Insert a new name</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>add_name(<span class="st">'survey.db'</span>, (<span class="st">'barrett'</span>, <span class="st">'Mary'</span>, <span class="st">'Barrett'</span>))</span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Check it exists</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Full name for barrett:"</span>, get_name(<span class="st">'survey.db'</span>, <span class="st">'barrett'</span>))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="in">import sqlite3</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="in">def add_name(database_file, new_person):</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="in">    query = "INSERT INTO Person (id, personal, family) VALUES (?, ?, ?);"</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="in">    connection = sqlite3.connect(database_file)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor = connection.cursor()</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.execute(query, list(new_person))</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.close()</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="in">    connection.commit()</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="in">    connection.close()</span></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="in">def get_name(database_file, person_id):</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="in">    query = "SELECT personal || ' ' || family FROM Person WHERE id=?;"</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a><span class="in">    connection = sqlite3.connect(database_file)</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor = connection.cursor()</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.execute(query, [person_id])</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a><span class="in">    results = cursor.fetchall()</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="in">    cursor.close()</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="in">    connection.close()</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a><span class="in">    return results[0][0]</span></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="in"># Insert a new name</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="in">add_name('survey.db', ('barrett', 'Mary', 'Barrett'))</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a><span class="in"># Check it exists</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">print("Full name for barrett:", get_name('survey.db', 'barrett'))</span></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="shell"><code>Full name for barrett: Mary Barrett</code></pre>
-<section id="연습문제" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">12.1</span> 연습문제</h2>
-<section id="테이블-채우기-vs.-값-출력하기" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기"><span class="header-section-number">12.1.1</span> 테이블 채우기 vs.&nbsp;값 출력하기</h3>
+<section id="연습문제" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">11.1</span> 연습문제</h2>
+<section id="테이블-채우기-vs.-값-출력하기" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</h3>
 <p><code>Pressure</code>라는 테이블 하나로 구성된 <code>original.db</code>라는 파일에 새로운 데이터베이스를 생성하는 파이썬 프로그램을 작성해보자. 테이블에는 <code>reading</code>이라는 단일 필드가 있으며, 10.0에서 25.0 사이의 100,000개의 무작위 숫자를 삽입한다. 이 프로그램을 실행하는 데 얼마나 걸리는가? 단순히 이 무작위 숫자를 파일에 쓰는 프로그램을 실행하는 데는 얼마나 걸리는가?</p>
 <p>이를 위해 먼저 <code>sqlite3</code> 모듈과 <code>random</code> 모듈을 사용할 수 있다. 데이터베이스와 테이블을 생성하고, 무작위 숫자를 생성하여 테이블에 삽입하는 코드를 작성한다. 그리고 이 프로세스가 얼마나 걸리는지 측정한다. 파일에 숫자를 쓰는 프로그램도 비슷한 방식으로 작성하고 실행 시간을 비교한다.</p>
 <hr>
-<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import random number generator</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform(low<span class="op">=</span><span class="fl">10.0</span>, high<span class="op">=</span><span class="fl">25.0</span>, size<span class="op">=</span><span class="dv">100000</span>)</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> connection.cursor()</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> random_numbers:</span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, [number])</span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>cursor.close()</span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="co"># save changes to file for next exercise</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>connection.commit()</span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>connection.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># import random number generator</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform(low<span class="op">=</span><span class="fl">10.0</span>, high<span class="op">=</span><span class="fl">25.0</span>, size<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>connection <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>cursor <span class="op">=</span> connection.cursor()</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>cursor.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> number <span class="kw">in</span> random_numbers:</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>    cursor.execute(query, [number])</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>cursor.close()</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># save changes to file for next exercise</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>connection.commit()</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>connection.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>비교를 위해, 다음 프로그램은 무작위 숫자를 <code>random_numbers.txt</code> 파일에 저장한다.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform(low<span class="op">=</span><span class="fl">10.0</span>, high<span class="op">=</span><span class="fl">25.0</span>, size<span class="op">=</span><span class="dv">100000</span>)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'random_numbers.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> outfile:</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> number <span class="kw">in</span> random_numbers:</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># need to add linebreak \n</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        outfile.write(<span class="st">"</span><span class="sc">{}</span><span class="ch">\n</span><span class="st">"</span>.<span class="bu">format</span>(number))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy.random <span class="im">import</span> uniform</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>random_numbers <span class="op">=</span> uniform(low<span class="op">=</span><span class="fl">10.0</span>, high<span class="op">=</span><span class="fl">25.0</span>, size<span class="op">=</span><span class="dv">100000</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">'random_numbers.txt'</span>, <span class="st">'w'</span>) <span class="im">as</span> outfile:</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> number <span class="kw">in</span> random_numbers:</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># need to add linebreak \n</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>        outfile.write(<span class="st">"</span><span class="sc">{}</span><span class="ch">\n</span><span class="st">"</span>.<span class="bu">format</span>(number))</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="sql-필터링-vs.-파이썬-필터링" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="sql-필터링-vs.-파이썬-필터링"><span class="header-section-number">12.1.2</span> SQL 필터링 vs.&nbsp;파이썬 필터링</h3>
-<p><code>original.db</code>와 동일한 구조를 가진 새 데이터베이스 backup.db를 생성하는 파이썬 프로그램을 작성하고, original.db에서 20.0보다 큰 모든 값을 backup.db로 복사한다. 어느 것이 더 빠른가? 쿼리에서 값을 필터링하는 것, 아니면 모든 것을 메모리에 읽어 파이썬에서 필터링하는 것?</p>
+<section id="sql-필터링-vs.-파이썬-필터링" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="sql-필터링-vs.-파이썬-필터링">SQL 필터링 vs.&nbsp;파이썬 필터링</h3>
+<p><code>original.db</code>와 동일한 구조를 가진 새 데이터베이스 backup.db를 생성하는 파이썬 프로그램을 작성하고, original.db에서 20.0보다 큰 모든 값을 backup.db로 복사한다. 어느 것이 더 빠른가? 쿼리에서 값을 필터링하는 것, 아니면 모든 것을 메모리에 읽어 파이썬에서 필터링하는 것.</p>
 <hr>
 <p>첫 번째 예시는 모든 데이터를 메모리로 읽어들이고 파이썬의 if문을 사용하여 숫자를 필터링한다.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>connection_original <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>cursor_original <span class="op">=</span> connection_original.cursor()</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>cursor_original.execute(<span class="st">"SELECT * FROM Pressure;"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor_original.fetchall()</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>cursor_original.close()</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>connection_original.close()</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>connection_backup <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"backup.db"</span>)</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>cursor_backup <span class="op">=</span> connection_backup.cursor()</span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>cursor_backup.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> results:</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># number is saved in first column of the table</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> entry[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="fl">20.0</span>:</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>        cursor_backup.execute(query, entry)</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>cursor_backup.close()</span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>connection_backup.commit()</span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>connection_backup.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>반대로 다음 예제는 조건부 <code>SELECT</code> 문을 사용하여 SQL에서 숫자를 필터링한다. 변경된 부분은 오직 5번째 줄에서 <code>original.db</code>에서 값을 가져오는 부분과 15번째 줄에서 시작하는 <code>backup.db</code>에 숫자를 삽입하는 for 루프다. 이 버전에서는 파이썬의 if문이 필요하지 않다는 점에 주목하자.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co"># original.db에서 20.0보다 큰 데이터 읽기</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>conn_orig <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'original.db'</span>)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>cursor_orig <span class="op">=</span> conn_orig.cursor()</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>cursor_orig.execute(<span class="st">'SELECT reading FROM Pressure WHERE reading &gt; 20.</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="er">```python</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>connection_original <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>cursor_original <span class="op">=</span> connection_original.cursor()</span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>cursor_original.execute(<span class="st">"SELECT * FROM Pressure WHERE reading &gt; 20.0;"</span>)</span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor_original.fetchall()</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>cursor_original.close()</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>connection_original.close()</span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>connection_backup <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"backup.db"</span>)</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>cursor_backup <span class="op">=</span> connection_backup.cursor()</span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>cursor_backup.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> results:</span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    cursor_backup.execute(query, entry)</span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>cursor_backup.close()</span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>connection_backup.commit()</span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>connection_backup.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>connection_original <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>cursor_original <span class="op">=</span> connection_original.cursor()</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>cursor_original.execute(<span class="st">"SELECT * FROM Pressure;"</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor_original.fetchall()</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>cursor_original.close()</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>connection_original.close()</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>connection_backup <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"backup.db"</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>cursor_backup <span class="op">=</span> connection_backup.cursor()</span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>cursor_backup.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> results:</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    <span class="co"># number is saved in first column of the table</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> entry[<span class="dv">0</span>] <span class="op">&gt;</span> <span class="fl">20.0</span>:</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>        cursor_backup.execute(query, entry)</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>cursor_backup.close()</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>connection_backup.commit()</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>connection_backup.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>반대로 다음 예제는 조건부 <code>SELECT</code> 문을 사용하여 SQL에서 숫자를 필터링한다. 변경된 부분은 오직 5번째 줄에서 <code>original.db</code>에서 값을 가져오는 부분과 15번째 줄에서 시작하는 <code>backup.db</code>에 숫자를 삽입하는 for 루프다. 이 버전에서는 파이썬의 if문이 필요하지 않다는 점에 주목하자.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># original.db에서 20.0보다 큰 데이터 읽기</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>conn_orig <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'original.db'</span>)</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>cursor_orig <span class="op">=</span> conn_orig.cursor()</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>cursor_orig.execute(<span class="st">'SELECT reading FROM Pressure WHERE reading &gt; 20.</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="er">```python</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>connection_original <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>cursor_original <span class="op">=</span> connection_original.cursor()</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>cursor_original.execute(<span class="st">"SELECT * FROM Pressure WHERE reading &gt; 20.0;"</span>)</span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor_original.fetchall()</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>cursor_original.close()</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>connection_original.close()</span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>connection_backup <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"backup.db"</span>)</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>cursor_backup <span class="op">=</span> connection_backup.cursor()</span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>cursor_backup.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
+<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
+<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> results:</span>
+<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    cursor_backup.execute(query, entry)</span>
+<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>cursor_backup.close()</span>
+<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>connection_backup.commit()</span>
+<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>connection_backup.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="삽입문-생성" class="level3" data-number="12.1.3">
-<h3 data-number="12.1.3" class="anchored" data-anchor-id="삽입문-생성"><span class="header-section-number">12.1.3</span> 삽입문 생성</h3>
+<section id="삽입문-생성" class="level3" data-number="11.1.1">
+<h3 data-number="11.1.1" class="anchored" data-anchor-id="삽입문-생성"><span class="header-section-number">11.1.1</span> 삽입문 생성</h3>
 <p>동료중의 한명이 Robert Olmstead가 측정한 온도 측정치를 포함하는 다음과 같은 형식의 <strong>CSV</strong> 파일을 보내왔다.</p>
 <pre class="shell"><code>Taken,Temp
 619,-21.5
@@ -942,12 +957,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./create.html" class="pagination-link  aria-label=" &lt;span="" 생성과="" 변형&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./21-application.html" class="pagination-link" aria-label="<span class='chapter-number'>13</span>&nbsp; <span class='chapter-title'>DVD 대여 데이터베이스</span>">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prog-r.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>데이터베이스 프로그래밍</span>">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

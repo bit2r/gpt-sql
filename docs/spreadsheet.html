@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 14&nbsp; 엑셀에서 데이터베이스로</title>
+<title>챗GPT SQL - 13&nbsp; 엑셀에서 데이터베이스로</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./etl.html" rel="next">
-<link href="./database.html" rel="prev">
+<link href="./prog-r.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,7 +135,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./database.html">활용사례</a></li><li class="breadcrumb-item"><a href="./spreadsheet.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spreadsheet.html">활용사례</a></li><li class="breadcrumb-item"><a href="./spreadsheet.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -266,20 +266,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -296,7 +290,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -317,14 +311,14 @@ div.csl-indent {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#엑셀-사용" id="toc-엑셀-사용" class="nav-link active" data-scroll-target="#엑셀-사용"><span class="header-section-number">14.1</span> 엑셀 사용</a></li>
-  <li><a href="#엑셀의-한계" id="toc-엑셀의-한계" class="nav-link" data-scroll-target="#엑셀의-한계"><span class="header-section-number">14.2</span> 엑셀의 한계</a></li>
-  <li><a href="#스프레드쉬트-이해하기" id="toc-스프레드쉬트-이해하기" class="nav-link" data-scroll-target="#스프레드쉬트-이해하기"><span class="header-section-number">14.3</span> 스프레드쉬트 이해하기</a></li>
-  <li><a href="#데이터베이스-도입" id="toc-데이터베이스-도입" class="nav-link" data-scroll-target="#데이터베이스-도입"><span class="header-section-number">14.4</span> 데이터베이스 도입</a></li>
-  <li><a href="#데이터셋" id="toc-데이터셋" class="nav-link" data-scroll-target="#데이터셋"><span class="header-section-number">14.5</span> 데이터셋</a>
+  <li><a href="#엑셀-사용" id="toc-엑셀-사용" class="nav-link active" data-scroll-target="#엑셀-사용"><span class="header-section-number">13.1</span> 엑셀 사용</a></li>
+  <li><a href="#엑셀의-한계" id="toc-엑셀의-한계" class="nav-link" data-scroll-target="#엑셀의-한계"><span class="header-section-number">13.2</span> 엑셀의 한계</a></li>
+  <li><a href="#스프레드쉬트-이해하기" id="toc-스프레드쉬트-이해하기" class="nav-link" data-scroll-target="#스프레드쉬트-이해하기"><span class="header-section-number">13.3</span> 스프레드쉬트 이해하기</a></li>
+  <li><a href="#데이터베이스-도입" id="toc-데이터베이스-도입" class="nav-link" data-scroll-target="#데이터베이스-도입"><span class="header-section-number">13.4</span> 데이터베이스 도입</a></li>
+  <li><a href="#데이터셋" id="toc-데이터셋" class="nav-link" data-scroll-target="#데이터셋"><span class="header-section-number">13.5</span> 데이터셋</a>
   <ul class="collapse">
-  <li><a href="#확률이-얼마나-될까" id="toc-확률이-얼마나-될까" class="nav-link" data-scroll-target="#확률이-얼마나-될까"><span class="header-section-number">14.5.1</span> 확률이 얼마나 될까?</a></li>
-  <li><a href="#손익분기점" id="toc-손익분기점" class="nav-link" data-scroll-target="#손익분기점"><span class="header-section-number">14.5.2</span> 손익분기점</a></li>
+  <li><a href="#확률이-얼마나-될까" id="toc-확률이-얼마나-될까" class="nav-link" data-scroll-target="#확률이-얼마나-될까"><span class="header-section-number">13.5.1</span> 확률이 얼마나 될까?</a></li>
+  <li><a href="#손익분기점" id="toc-손익분기점" class="nav-link" data-scroll-target="#손익분기점"><span class="header-section-number">13.5.2</span> 손익분기점</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -332,9 +326,9 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./database.html">활용사례</a></li><li class="breadcrumb-item"><a href="./spreadsheet.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spreadsheet.html">활용사례</a></li><li class="breadcrumb-item"><a href="./spreadsheet.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></h1>
 </div>
 
 
@@ -359,13 +353,13 @@ div.csl-indent {
 <li><p><strong>구글 시트(Google Sheets)</strong>: 구글 시트는 클라우드 기반 스프레드시트 프로그램으로, 여러 사용자의 실시간 협업을 가능하게 한다. 2006년에 처음 출시된 이후, 접근성과 공유 기능으로 인기를 끌었다.</p></li>
 <li><p><strong>캘크(Calc)</strong>: 오픈 소스 스프레드시트 프로그램들은 각각 Apache OpenOffice와 LibreOffice 스위트의 일부로 엑셀과 유사한 기능을 제공하며, 무료로 사용할 수 있는 대안으로 많이 사용된다.</p></li>
 </ol>
-<section id="엑셀-사용" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="엑셀-사용"><span class="header-section-number">14.1</span> 엑셀 사용</h2>
+<section id="엑셀-사용" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="엑셀-사용"><span class="header-section-number">13.1</span> 엑셀 사용</h2>
 <p>회계부정으로 파산한 엔론(Enron)은 많은 유산<span class="citation" data-cites="hermans2015">(Hermans 와/과 Murphy-Hill 2015)</span>을 남겼다. 유산중에 대기업에서 스프레드쉬트 엑셀을 어떻게 사용했는지에 대한 다양한 사례를 파악할 수 있다. 엑셀 코퍼스 분석 결과에 따르면, 엔론 스프레드시트 중 24%에서 엑셀 오류가 발견되었다. 사용된 함수들 중 핵심적인 15개의 함수가 전체 스프레드시트의 76%를 차지했고, 매일 100개의 스프레드시트가 이메일에 첨부되어 유통되었으며, 전체 전자주편 중 10%에서 스프레드시트가 첨부되거나 주제로 전달되었다.</p>
 <div id="tbl-functions" class="anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-functions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-표&nbsp;14.1: 엑셀 빈도수 높은 함수
+표&nbsp;13.1: 엑셀 빈도수 높은 함수
 </figcaption>
 <div aria-describedby="tbl-functions-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
@@ -474,8 +468,8 @@ div.csl-indent {
 </figure>
 </div>
 </section>
-<section id="엑셀의-한계" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="엑셀의-한계"><span class="header-section-number">14.2</span> 엑셀의 한계</h2>
+<section id="엑셀의-한계" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="엑셀의-한계"><span class="header-section-number">13.2</span> 엑셀의 한계</h2>
 <p>엑셀은 작은 데이터 분석과 계산에 최적화되어 있지만, 데이터베이스로 사용하는 것에는 제약이 있다. 많은 기업과 조직이 중요한 데이터를 엑셀 스프레드시트에 보관하고 작업하는데, 이는 사소한 실수로 중요한 의사결정이 왜곡될 위험이 있다.</p>
 <p>엑셀을 사용하는 주된 이유는 엑셀 사용 습관으로 데이터를 엑셀로 저장하고 분석하는 습관이 있으며, 데이터 내보내기가 쉽기 때문이다. 또한, 데이터가 작아서 데이터베이스가 필요 없다고 생각하지만, 사업이 커지고 업무량이 늘면서 엑셀의 작업량과 복잡성이 증가한다.</p>
 <p>엑셀 스프레드시트의 단점으로 다음이 많이 언급된다.</p>
@@ -491,7 +485,7 @@ div.csl-indent {
 <div id="tbl-disaster" class="anchored">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-disaster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-표&nbsp;14.2: 역대 엑셀 참사 사례
+표&nbsp;13.2: 역대 엑셀 참사 사례
 </figcaption>
 <div aria-describedby="tbl-disaster-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <table class="table">
@@ -610,18 +604,18 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="스프레드쉬트-이해하기" class="level2" data-number="14.3">
-<h2 data-number="14.3" class="anchored" data-anchor-id="스프레드쉬트-이해하기"><span class="header-section-number">14.3</span> 스프레드쉬트 이해하기</h2>
+<section id="스프레드쉬트-이해하기" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="스프레드쉬트-이해하기"><span class="header-section-number">13.3</span> 스프레드쉬트 이해하기</h2>
 <p>데이터 분석을 위해, 사람과 컴퓨터 모두 읽을 수 있는 프로그램들이 많이 존재한다. 컴퓨터 프로그램을 열어보면, 컴퓨터가 실행하는 코드와 함께, 컴퓨터에서는 무시되지만 사람에게 매우 중요한 주석이 포함되어 있다. 따라서 컴퓨터와 사람 모두가 읽을 수 있는 코드는 데이터 과학에 필수적이다.</p>
 <p><strong>코드</strong>는 사람과 컴퓨터 모두에게 가독성을 제공해야 한다. 그러나 <strong>데이터</strong> 역시 사람과 컴퓨터 모두에게 가독성을 제공해야 한다는 것이 문제다. 특히 스프레드시트는 사람과 컴퓨터 양쪽 모두에게 가독성을 제공하지 않는 경우가 많다. 스프레드시트는 처음에는 쉽게 접근할 수 있지만, 1주일 지난 후 해독하기 어려운 복잡성을 종종 경험하게 된다.</p>
-<p>“ALGORITHMS BY COMPLEXITY” <a href="#fig-algo" class="quarto-xref">그림&nbsp;<span>14.1</span></a> 제목 아래에 다양한 알고리즘과 시스템이 복잡도에 따라 나열되어 있으며, 왼쪽에서 오른쪽으로 갈수록 복잡도가 증가한다. 가장 왼쪽에는 “LEFTPAD”와 “QUICKSORT”가 있고, 그 오른쪽에는 “GIT MERGE”가 있다. 그 다음에는 “SELF-DRIVING CAR”과 “GOOGLE SEARCH BACKEND”가 위치하고 있으며 오른쪽 끝에 “SPRAWLING EXCEL SPREADSHEET BUILT UP OVER 20 YEARS BY A CHURCH GROUP IN NEBRASKA TO COORDINATE THEIR SCHEDULING”이라는 문구가 있고, 20년 동안 네브래스카의 한 교회 그룹이 그들의 스케줄링을 조정하기 위해 만들어온 방대한 엑셀 스프레드시트 복잡성을 강조하고 있다.</p>
+<p>“ALGORITHMS BY COMPLEXITY” <a href="#fig-algo" class="quarto-xref">그림&nbsp;<span>13.1</span></a> 제목 아래에 다양한 알고리즘과 시스템이 복잡도에 따라 나열되어 있으며, 왼쪽에서 오른쪽으로 갈수록 복잡도가 증가한다. 가장 왼쪽에는 “LEFTPAD”와 “QUICKSORT”가 있고, 그 오른쪽에는 “GIT MERGE”가 있다. 그 다음에는 “SELF-DRIVING CAR”과 “GOOGLE SEARCH BACKEND”가 위치하고 있으며 오른쪽 끝에 “SPRAWLING EXCEL SPREADSHEET BUILT UP OVER 20 YEARS BY A CHURCH GROUP IN NEBRASKA TO COORDINATE THEIR SCHEDULING”이라는 문구가 있고, 20년 동안 네브래스카의 한 교회 그룹이 그들의 스케줄링을 조정하기 위해 만들어온 방대한 엑셀 스프레드시트 복잡성을 강조하고 있다.</p>
 <div id="fig-algo" class="quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-algo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/ds-xls-algo-complexity.png" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-algo-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;14.1: 엑셀 알고리즘 복잡성
+그림&nbsp;13.1: 엑셀 알고리즘 복잡성
 </figcaption>
 </figure>
 </div>
@@ -632,7 +626,7 @@ div.csl-indent {
 <img src="images/excel_complexity.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="541">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-excel-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;14.2: 엑셀 구성요소
+그림&nbsp;13.2: 엑셀 구성요소
 </figcaption>
 </figure>
 </div>
@@ -668,8 +662,8 @@ div.csl-indent {
 </tbody>
 </table>
 </section>
-<section id="데이터베이스-도입" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="데이터베이스-도입"><span class="header-section-number">14.4</span> 데이터베이스 도입</h2>
+<section id="데이터베이스-도입" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="데이터베이스-도입"><span class="header-section-number">13.4</span> 데이터베이스 도입</h2>
 <p>데이터 복잡성이 일반적으로 처리할 수 있는 것을 넘어서면 “추출(Extract), 변환(Transform), 로드(Load)”라고 하는 과정을 수행해야 한다. 예를 들어 서지학 데이터에서 다음과 같은 질문에 답을 하고자 한다고 가정해 보자.</p>
 <ul>
 <li>각 사람이 기여한 논문의 수는 얼마인가?</li>
@@ -711,8 +705,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="데이터셋" class="level2" data-number="14.5">
-<h2 data-number="14.5" class="anchored" data-anchor-id="데이터셋"><span class="header-section-number">14.5</span> 데이터셋</h2>
+<section id="데이터셋" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="데이터셋"><span class="header-section-number">13.5</span> 데이터셋</h2>
 <p>다음 간단한 예제를 통해서 데이터(스프레드쉬트에 내장된 참고문헌정보)를 어떻게 받아서 유용한 것으로 변경할지 살펴보자. 출발점은 다음과 같은 2,937행을 갖는 <code>bibliography.csv</code> 라는 스프레드쉬트(엑셀) 파일이다.</p>
 <table class="table">
 <colgroup>
@@ -761,8 +755,8 @@ div.csl-indent {
 </tbody>
 </table>
 <p>본격적인 개발에 들어가기 전에 프로그램을 개발하는 것이 시간을 얼마나 절약할 수 있고 정확도를 높이는지 살펴보자.</p>
-<section id="확률이-얼마나-될까" class="level3" data-number="14.5.1">
-<h3 data-number="14.5.1" class="anchored" data-anchor-id="확률이-얼마나-될까"><span class="header-section-number">14.5.1</span> 확률이 얼마나 될까?</h3>
+<section id="확률이-얼마나-될까" class="level3" data-number="13.5.1">
+<h3 data-number="13.5.1" class="anchored" data-anchor-id="확률이-얼마나-될까"><span class="header-section-number">13.5.1</span> 확률이 얼마나 될까?</h3>
 <p>스프레드쉬트는 2,937행을 담고 있다. 전체 분석작업의 99%를 틀리지 않게 하는데, 손으로하는 전사작업은 얼마나 정확성이 있을까? 즉, 행당 오류율이 얼마나 되어야 전체 작업을 올바르게 완수하는데 0.99 확률이 될까?</p>
 <hr>
 <div class="cell">
@@ -781,8 +775,8 @@ div.csl-indent {
 </div>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="st">"0.000342%"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="손익분기점" class="level3" data-number="14.5.2">
-<h3 data-number="14.5.2" class="anchored" data-anchor-id="손익분기점"><span class="header-section-number">14.5.2</span> 손익분기점</h3>
+<section id="손익분기점" class="level3" data-number="13.5.2">
+<h3 data-number="13.5.2" class="anchored" data-anchor-id="손익분기점"><span class="header-section-number">13.5.2</span> 손익분기점</h3>
 <p>수작업으로 5분만 소요되는 작업을 (전산화해서) 10분 걸려 프로그램 작성한다면, 해당 작업을 두번 이상 수행한다면, 프로그램으로 작성할 가치가 있다. 유사하게, 특정한 저자와 공저자가 누구인지만 알아내려고 하고, 다른 질문은 전혀 없을 것이거나, 반복작업을 할 필요가 없다면, 수작업으로 스프레드쉬트를 검색하는 것이 데이터를 데이터베이스로 옮기는 프로그램을 작성하는 것보다 아마도 더 빠를 것이다.</p>
 <p>현재 수작업으로 하고 있는 작업을 선택하라. 매번 얼마의 시간이 소요되고, 얼마나 자주 수행하는지 추정하고, 대신에 작업을 프로그램으로 만드는데 얼마나 소요되는지 추정하라. 프로그래밍이 실질적으로 얼마나 시간을 절약해줄까? 얼마나 확신이 되나요?</p>
 <hr>
@@ -1230,13 +1224,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./database.html" class="pagination-link  aria-label=" &lt;span="" sql&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span>
+      <a href="./prog-r.html" class="pagination-link  aria-label=" &lt;span="" 프로그래밍&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./etl.html" class="pagination-link" aria-label="<span class='chapter-number'>15</span>&nbsp; <span class='chapter-title'>ETL 데이터베이스</span>">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./etl.html" class="pagination-link" aria-label="<span class='chapter-number'>14</span>&nbsp; <span class='chapter-title'>ETL 데이터베이스</span>">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

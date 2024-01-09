@@ -256,6 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./etl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -270,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -302,10 +308,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#survey.db-생성" id="toc-survey.db-생성" class="nav-link" data-scroll-target="#survey.db-생성"><span class="header-section-number">1.2.1</span> <code>survey.db</code> 생성</a></li>
   </ul></li>
-  <li><a href="#db-브라우저" id="toc-db-브라우저" class="nav-link" data-scroll-target="#db-브라우저"><span class="header-section-number">1.3</span> DB 브라우저</a></li>
-  <li><a href="#sqlite-db-연결" id="toc-sqlite-db-연결" class="nav-link" data-scroll-target="#sqlite-db-연결"><span class="header-section-number">1.4</span> SQLite DB 연결</a>
+  <li><a href="#db-브라우저" id="toc-db-브라우저" class="nav-link" data-scroll-target="#db-브라우저"><span class="header-section-number">1.3</span> DB 브라우저</a>
   <ul class="collapse">
-  <li><a href="#sqlite3-빠져-나오기" id="toc-sqlite3-빠져-나오기" class="nav-link" data-scroll-target="#sqlite3-빠져-나오기"><span class="header-section-number">1.4.1</span> SQLite3 빠져 나오기</a></li>
+  <li><a href="#sqlite-db-브라우저" id="toc-sqlite-db-브라우저" class="nav-link" data-scroll-target="#sqlite-db-브라우저"><span class="header-section-number">1.3.1</span> SQLite DB 브라우저</a></li>
+  </ul></li>
+  <li><a href="#r-db-firefox" id="toc-r-db-firefox" class="nav-link" data-scroll-target="#r-db-firefox"><span class="header-section-number">1.4</span> 파이어폭스 SQLite 관리자</a></li>
+  <li><a href="#sqlite-db-연결" id="toc-sqlite-db-연결" class="nav-link" data-scroll-target="#sqlite-db-연결"><span class="header-section-number">1.5</span> SQLite DB 연결</a>
+  <ul class="collapse">
+  <li><a href="#sqlite3-빠져-나오기" id="toc-sqlite3-빠져-나오기" class="nav-link" data-scroll-target="#sqlite3-빠져-나오기"><span class="header-section-number">1.5.1</span> SQLite3 빠져 나오기</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -432,13 +442,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="db-브라우저" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="db-브라우저"><span class="header-section-number">1.3</span> DB 브라우저</h2>
+<section id="sqlite-db-브라우저" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="sqlite-db-브라우저"><span class="header-section-number">1.3.1</span> SQLite DB 브라우저</h3>
 <p>SQLite용 DB 브라우저를 여러분의 운영 체제에 맞게 https://sqlitebrowser.org/dl/ 에서 다운로드한다. SQLite용 DB 브라우저는 SQLite 데이터베이스를 생성, 편집 및 쿼리하는 시각적 도구다. SQLite는 SQLite용 DB 브라우저에 포함되어 있으므로 별도로 설치할 필요가 없습니다.</p>
 <p>Windows를 위한 몇 가지 옵션이 있지만, 대부분의 현대 컴퓨터는 64비트 Windows 버전을 위한 표준 설치 프로그램을 사용할 수 있다. <code>.zip</code>(설치 프로그램 없음) 버전은 zip 파일의 내용을 추출한 후 폴더에서 직접 실행할 수 있지만 이렇게 설치할 경우 시작 메뉴에 표시되지 않는다.</p>
 <p>SQLite용 DB 브라우저를 실행하여 설치가 완료되었는지 확인한다.</p>
 <p><img src="images/sql_dbbrowser.jpg" class="img-fluid"></p>
 </section>
-<section id="sqlite-db-연결" class="level2" data-number="1.4">
-<h2 data-number="1.4" class="anchored" data-anchor-id="sqlite-db-연결"><span class="header-section-number">1.4</span> SQLite DB 연결</h2>
+</section>
+<section id="r-db-firefox" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="r-db-firefox"><span class="header-section-number">1.4</span> 파이어폭스 SQLite 관리자</h2>
+<p>SQLite 데이터베이스 파일에 있는 데이터를 다루기 위해서 이번장에서 주로 R 사용에 집중을 하지만, 다음 웹사이트에서 무료로 이용 가능한 SQLite 데이터베이스 매니저(SQLite Database Manager)로 불리는 <strong>파이어폭스 애드온(add-on)</strong>을 사용해서 좀더 쉽게 많은 작업을 수행할 수 있다. 파이어폭스 애드온은 크롬 확장 프로그램과 유사한 개념으로 파이어폭스는 개발자들이 많이 사용하는 웹브라우져 중 하나다.</p>
+<ul>
+<li><a href="https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/">https://addons.mozilla.org/en-us/firefox/addon/sqlite-manager/</a></li>
+</ul>
+<p>브라우져를 사용해서 쉽게 테이블을 생성하고, 데이터를 삽입, 편집하고 데이터베이스 데이터에 대해 간단한 SQL 질의를 실행할 수 있다.</p>
+<p>이러한 점에서 데이터베이스 매니저는 텍스트 파일을 작업할 때 사용하는 텍스트 편집기와 유사하다. 텍스트 파일에 하나 혹은 몇개 작업만 수행하고자 하면, 텍스트 편집기에서 파일을 열어 필요한 수정작업을 하고 닫으면 된다. 텍스트 파일에 작업할 사항이 많은 경우는 종종 간단한 R 프로그램을 작성하여 수행한다. 데이터베이스로 작업할 때도 동일한 패턴이 발견된다. 간단한 작업은 데이터베이스 매니저를 통해서 수행하고, 좀더 복잡한 작업은 R로 수행하는 것이 더 편리하다.</p>
+</section>
+<section id="sqlite-db-연결" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="sqlite-db-연결"><span class="header-section-number">1.5</span> SQLite DB 연결</h2>
 <p>생성된 데이터베이스에 연결하기 위해서, 데이터베이스를 생성한 디렉토리 안에서 SQLite를 시작한다. 그래서 <code>~/swc/sql</code> 디렉토리에서 다음과 같이 타이핑한다.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>“sqlite3 survey.db” 명령문이 데이터베이스를 열고 데이터베이스 명령-라인 프롬프트로 안내한다. SQLite에서 데이터베이스는 플랫 파일(flat file)로 명시적으로 열 필요가 있다. 그리고 나서 SQLite 시작되고 “sqlite”로 명령-라인 프롬프트로 다음과 같이 변경되어 표시된다.</p>
@@ -457,8 +479,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .tables</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Person</span>   Site     Survey   Visited</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이제, 설치를 완료해서 다음 학습으로 진행할 수 있다. 현재 명령-라인 SQLite 세션에서 다음 연습을 수행할 수 있다.</p>
-<section id="sqlite3-빠져-나오기" class="level3" data-number="1.4.1">
-<h3 data-number="1.4.1" class="anchored" data-anchor-id="sqlite3-빠져-나오기"><span class="header-section-number">1.4.1</span> SQLite3 빠져 나오기</h3>
+<section id="sqlite3-빠져-나오기" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="sqlite3-빠져-나오기"><span class="header-section-number">1.5.1</span> SQLite3 빠져 나오기</h3>
 <p>SQLite3를 빠져나오기 위해서, 다음과 같이 타이핑한다.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .quit</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -121,7 +155,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">환경설정</span></a>
+ <span class="menu-text">SQL</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -135,8 +169,68 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
+  <a href="./select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./null.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./create.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -144,7 +238,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">활용사례</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -152,56 +246,14 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">집계</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./18-create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형(Creating and Modifying Data)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./19-prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스로 프로그래밍</span></span></a>
+  <a href="./etl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -218,7 +270,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -235,7 +287,16 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#r-db-what-it-is" id="toc-r-db-what-it-is" class="nav-link active" data-scroll-target="#r-db-what-it-is">데이터베이스가 뭔가요?</a></li>
+  <li><a href="#r-db-concept" id="toc-r-db-concept" class="nav-link" data-scroll-target="#r-db-concept">데이터베이스 개념</a></li>
+  <li><a href="#r-db-create-table" id="toc-r-db-create-table" class="nav-link" data-scroll-target="#r-db-create-table">데이터베이스 테이블 생성</a></li>
+  <li><a href="#r-db-sql" id="toc-r-db-sql" class="nav-link" data-scroll-target="#r-db-sql">SQL 요약</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -261,8 +322,127 @@ ul.task-list li input[type="checkbox"] {
 
 <p>엑셀로 대표되는 스프레드시트를 사용하는 것은 많은 사람들에게 익숙한 경험이다. 이들은 데이터를 쉽게 조작하고 분석할 수 있는 기본적인 도구로 활용되지만, 데이터셋이 복잡해지면서 한계에 부딪힌다. 이때 스프레드시트의 한계를 넘어서 데이터베이스의 역할이 중요해진다. 간단한 수치 연산에는 스프레드시트가 충분할 수 있지만, 복잡하고 큰 데이터셋을 빠르고 효율적으로 처리하려면 데이터베이스가 필요하다. SQL(Structured Query Language)은 데이터베이스를 관리하고 조작하는 데 있어 중요한 역할을 한다. 데이터베이스가 어떻게 작동하는지 이해하는 것은 단순한 데이터 조작 능력을 넘어서, 우리가 사용하는 다양한 시스템들이 왜 그런 방식으로 작동하는지, 그리고 왜 데이터를 특정한 방식으로 구조화하는지에 대한 깊은 이해를 제공한다.</p>
 <p>이 책은 데이터베이스의 기본 개념과 SQL을 다룬다. 데이터베이스의 기본 개념을 이해하고 SQL을 사용하는 방법을 익히면, 데이터베이스를 사용하는 다양한 시스템들을 쉽게 이해할 수 있다. 또한 데이터베이스를 사용하는 다양한 시스템들을 이해하면, 데이터베이스 기본 개념과 SQL을 더 깊게 이해할 수 있다.</p>
+<section id="r-db-what-it-is" class="level2">
+<h2 class="anchored" data-anchor-id="r-db-what-it-is">데이터베이스가 뭔가요?</h2>
+<p><strong>데이터베이스(database)</strong>는 데이터를 저장하기 위한 목적으로 조직된 파일이다. 대부분의 데이터베이스는 <strong>키(key)</strong>와 <strong>값(value)</strong>를 매핑한다는 의미에서 딕셔너리처럼 조직되었다. 가장 큰 차이점은 데이터베이스는 디스크(혹은 다른 영구 저장소)에 위치하고 있어서, 프로그램 종료 후에도 정보가 계속 저장된다. 데이터베이스가 영구 저장소에 저장되어서, 컴퓨터 주기억장치(memory) 크기에 제한받는 딕셔너리보다 훨씬 더 많은 정보를 저장할 수 있다.</p>
+<p>딕셔너리처럼, 데이터베이스 소프트웨어는 엄청난 양의 데이터 조차도 매우 빠르게 삽입하고 접근하도록 설계되었다. 컴퓨터가 특정 항목으로 빠르게 찾아갈 수 있도록 데이터베이스에 <strong>인덱스(indexes)</strong>를 추가한다. 데이터베이스 소프트웨어는 인덱스를 구축하여 성능을 보장한다.</p>
+<p>다양한 목적에 맞춰 서로 다른 많은 데이터베이스 시스템이 개발되어 사용되고 있다. Oracle, MySQL, Microsoft SQL Server, PostgreSQL, SQLite이 여기에 포함된다. 이 책에서는 SQLite를 집중해서 살펴볼 것이다. 왜냐하면 매우 일반적인 데이터베이스이며 파이썬에 이미 내장되어 있기 때문이다. 응용프로그램 내부에서 데이터베이스 기능을 제공하도록 SQLite가 다른 응용프로그램 내부에 내장(embedded)되도록 설계되었다. 예를 들어, 다른 많은 소프트웨어 제품이 그렇듯이, 파이어폭스 브라우져도 SQLite를 사용한다.</p>
+<ul>
+<li><a href="http://sqlite.org/">http://sqlite.org/</a></li>
+</ul>
+<p>이번 장에서 기술하는 트위터 스파이더링 응용프로그램처럼 정보과학(Informatics)에서 마주치는 몇몇 데이터 조작 문제에 SQLite가 적합하다.</p>
+</section>
+<section id="r-db-concept" class="level2">
+<h2 class="anchored" data-anchor-id="r-db-concept">데이터베이스 개념</h2>
+<p>처음 데이터베이스를 볼때 드는 생각은 마치 엑셀같은 다중 시트를 지닌 스프레드쉬트(spreadsheet)같다는 것이다. 데이터베이스에서 주요 데이터 구조물은 테이블(tables), 행(rows), and 열(columns)이 된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/db-concept.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>데이터베이스 개념</figcaption>
+</figure>
+</div>
+<p>관계형 데이터베이스의 기술적인 면을 설명하면 테이블, 행, 열의 개념은 <strong>관계(relation)</strong>, <strong>튜플(tuple)</strong>, <strong>속성(attribute)</strong> 각각 형식적으로 매칭된다. 이번 장에서는 조금 덜 형식 용어를 사용한다.</p>
+</section>
+<section id="r-db-create-table" class="level2">
+<h2 class="anchored" data-anchor-id="r-db-create-table">데이터베이스 테이블 생성</h2>
+<p>데이터베이스는 R 리스트 혹은 딕셔너리보다 좀더 명확히 정의된 구조를 요구한다. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>데이터베이스에 테이블(table)을 생성할 때, 열(column)의 명칭과 각 열(column)에 저장하는 테이터 형식을 사전에 정의해야 한다. 데이터베이스 소프트웨어가 각 열의 데이터 형식을 인식하게 되면, 데이터 형식에 따라 데이터를 저장하고 찾아오는 방법을 가장 효율적인 방식을 선택할 수 있다.</p>
+<p>다음 url에서 SQLite에서 지원되는 다양한 데이터 형식을 살펴볼 수 있다.</p>
+<ul>
+<li><a href="http://www.sqlite.org/datatypes.html">http://www.sqlite.org/datatypes.html</a></li>
+</ul>
+<p>처음에는 데이터 구조를 사전에 정의하는 것이 불편하게 보이지만, 대용량의 데이터가 데이터베이스에 포함되더라도 데이터의 빠른 접근을 보장하는 잇점이 있다.</p>
+<p>데이터베이스 파일과 데이터베이스에 두개의 열을 가진 <code>Tracks</code> 이름의 테이블을 생성하는 코드는 다음과 같다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>music_db  <span class="ot">&lt;-</span> <span class="st">"data/music.sqlite"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">SQLite</span>(), <span class="at">dbname=</span> music_db)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, <span class="fu">c</span>(<span class="st">'Thunderstruck'</span>, <span class="dv">20</span>))</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, <span class="fu">c</span>(<span class="st">'My Way'</span>, <span class="dv">15</span>))</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>연결 (connect)</strong> 연산은 현재 디렉토리 <code>data/music.sqlite3</code> 파일에 저장된 데이터베이스에 “연결(connection)”한다. 파일이 존재하지 않으면, 자동 생성된다. “연결(connection)”이라고 부르는 이유는 때때로 데이터베이스가 응용프로그램이 실행되는 서버로부터 분리된 “데이터베이스 서버(database server)”에 저장되기 때문이다. 지금 간단한 예제 파일의 경우에 데이터베이스가 로컬 파일 형태로 R 코드 마찬가지로 동일한 디렉토리에 있다.</p>
+<p>파일을 다루는 <strong>파일 핸들(file handle)</strong>처럼 데이터베이스에 저장된 파일에 연산을 수행하기 위해서 <strong>커서(cursor)</strong>를 사용한다. <code>cursor()</code>를 호출하는 것은 개념적으로 텍스트 파일을 다룰 때 <code>readLines()</code>을 호출하는 것과 개념적으로 매우 유사하다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/db-cursor.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<figcaption>데이터베이스 커서</figcaption>
+</figure>
+</div>
+<p>커서가 생성되면, <code>dbGetQuery()</code> 함수를 사용하여 데이터베이스 콘텐츠에 명령어 실행을 할 수 있다.</p>
+<p>데이터베이스 명령어는 특별한 언어로 표현된다. 단일 데이터베이스 언어를 학습하도록 서로 다른 많은 데이터베이스 업체 사이에서 표준화되었다.</p>
+<p>데이터베이스 언어를 <strong>SQL(Structured Query Language 구조적 질의 언어)</strong>로 부른다.</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/SQL">http://en.wikipedia.org/wiki/SQL</a></li>
+</ul>
+<p>상기 예제에서, 데이터베이스에 두개의 SQL 명령어를 실행했다. 관습적으로 데이터베이스 키워드는 대문자로 표기한다. 테이블명이나 열의 명칭처럼 사용자가 추가한 명령어 부분은 소문자로 표기한다.</p>
+<p>첫 SQL 명령어는 만약 존재한다면 데이터베이스에서 <code>Tracks</code> 테이블을 삭제한다. 동일한 프로그램을 실행해서 오류 없이 반복적으로 <code>Tracks</code> 테이블을 생성하도록하는 패턴이다. <code>DROP TABLE</code> 명령어는 데이터베이스 테이블 및 테이블 콘텐츠 전부를 삭제하니 주의한다. (즉, “실행취소(undo)”가 없다.)</p>
+<pre><code>`dbGetQuery(conn, 'DROP TABLE IF EXISTS Tracks ') `</code></pre>
+<p>두번째 명령어는 title 문자형 열과 plays 정수형 열을 가진 Tracks으로 명명된 테이블을 생성한다.</p>
+<pre><code>`dbGetQuery(conn, 'CREATE TABLE Tracks (title TEXT, plays INTEGER)')`</code></pre>
+<p>이제 Tracks으로 명명된 테이블을 생성했으니, SQL INSERT 연산을 통해 테이블에 데이터를 넣을 수 있다. 다시 한번, 데이터베이스에 연결하여 커서(cursor)를 얻어 작업을 시작한다. 그리고 나서 커서를 사용해서 SQL 명령어를 수행한다.</p>
+<p>SQL <code>INSERT</code> 명령어는 어느 테이블을 사용할지 특정한다. 그리고 나서 <code>(title, plays)</code> 포함할 필드 목록과 테이블 새로운 행에 저장될 VALUES 나열해서 신규 행을 정의를 마친다. 실제 값이 <code>execute()</code> 호출의 두번째 매개변수로 튜플 <code>('My Way', 15)</code> 로 넘겨는 것을 표기하기 위해서 값을 물음표 <code>(?, ?)</code>로 명기한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>music_db  <span class="ot">&lt;-</span> <span class="st">"data/music.sqlite"</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">SQLite</span>(), <span class="at">dbname=</span> music_db)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, </span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">'Thunderstruck'</span>, <span class="dv">20</span>))</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">'My Way'</span>, <span class="dv">15</span>))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'Tracks:'</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">'SELECT title, plays FROM Tracks'</span>)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"DELETE FROM Tracks WHERE plays &lt; 100"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>먼저 테이블에 두개 열을 삽입(INSERT)하여 데이터를 데이터베이스에 저장되도록 했다. 그리고 나서, <code>SELECT</code> 명령어를 사용하여 테이블에 방금 전에 삽입한 행을 불러왔다. <code>SELECT</code> 명령어에서 데이터를 어느 열<code>(title, plays)</code>에서, 어느 테이블<code>Tracks</code>에서 가져올지 명세한다. 프로그램 실행결과는 다음과 같다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">'SELECT title, plays FROM Tracks'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          title plays</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Thunderstruck    <span class="dv">20</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>        My Way    <span class="dv">15</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>프로그램 마지막에 SQL 명령어를 실행 사용해서 방금전에 생성한 행을 모두 삭제(<code>DELETE</code>)했기 때문에 프로그램을 반복해서 실행할 수 있다. 삭제(<code>DELETE</code>) 명령어는 <code>WHERE</code> 문을 사용하여 선택 조건을 표현할 수 있다. 따라서 명령문에 조건을 충족하는 행에만 명령문을 적용한다. 이번 예제에서 기준이 모든 행에 적용되어 테이블에 아무 것도 없게 된다. 따라서 프로그램을 반복적으로 실행할 수 있다. 삭제(DELETE)를 실행한 후에 데이터베이스에서 데이터를 완전히 제거했다.</p>
+</section>
+<section id="r-db-sql" class="level2">
+<h2 class="anchored" data-anchor-id="r-db-sql">SQL 요약</h2>
+<p>지금까지, R 예제를 통해서 SQL(Structured Query Language)을 사용했고, SQL 명령어에 대한 기본을 다루었다. 이번 장에서는 SQL 언어를 보고 SQL 구문 개요를 살펴본다.</p>
+<p>대단히 많은 데이터베이스 업체가 존재하기 때문에 호환성의 문제로 SQL(Structured Query Language)이 표준화되었다. 그래서, 여러 업체가 개발한 데이터베이스 시스템 사이에 호환하는 방식으로 커뮤니케이션 가능하다.</p>
+<p>관계형 데이터베이스는 테이블, 행과 열로 구성된다. 열(column)은 일반적으로 텍스트, 숫자, 혹은 날짜 자료형을 갖는다. 테이블을 생성할 때, 열의 명칭과 자료형을 지정한다.</p>
+<pre><code>CREATE TABLE Tracks (title TEXT, plays INTEGER)</code></pre>
+<p>테이블에 행을 삽입하기 위해서 SQL <code>INSERT</code> 명령어를 사용한다.</p>
+<pre><code>INSERT INTO Tracks (title, plays) VALUES ('My Way', 15)</code></pre>
+<p><code>INSERT</code> 문장은 테이블 이름을 명기한다. 그리고 나서 새로운 행에 놓고자 하는 열/필드 리스트를 명시한다. 그리고 나서 키워드 <code>VALUES</code>와 각 필드 별로 해당하는 값을 넣는다.</p>
+<p>SQL <code>SELECT</code> 명령어는 데이터베이스에서 행과 열을 가져오기 위해 사용된다. <code>SELECT</code> 명령문은 가져오고자 하는 행과 <code>WHERE</code>절을 사용하여 어느 행을 가져올지 지정한다. 선택 사항으로 <code>ORDER BY</code> 절을 이용하여 반환되는 행을 정렬할 수도 있다.</p>
+<pre><code>SELECT * FROM Tracks WHERE title = 'My Way'</code></pre>
+<p><code>*</code> 을 사용하여 <code>WHERE</code> 절에 매칭되는 각 행의 모든 열을 데이터베이스에서 가져온다.</p>
+<p>주목할 점은 R과 달리 SQL <code>WHERE</code> 절은 등식을 시험하기 위해서 두개의 등치 기호 대신에 단일 등치 기호를 사용한다. WHERE에서 인정되는 다른 논리 연산자는 <code>&lt;,&gt;,&lt;=,&gt;=,!=</code> 이고, 논리 표현식을 생성하는데 <code>AND</code>, <code>OR</code>, 괄호를 사용한다.</p>
+<p>다음과 같이 반환되는 행이 필드값 중 하나에 따라 정렬할 수도 있다.</p>
+<pre><code>SELECT title,plays FROM Tracks ORDER BY title</code></pre>
+<p>행을 제거하기 위해서, SQL <code>DELETE</code> 문장에 <code>WHERE</code> 절이 필요하다. <code>WHERE</code> 절이 어느 행을 삭제할지 결정한다.</p>
+<pre><code>SELECT title,plays FROM Tracks ORDER BY title</code></pre>
+<p>다음과 같이 SQL <code>UPDATE</code> 문장을 사용해서 테이블에 하나 이상의 행 내에 있는 하나 이상의 열을 갱신(UPDATE)할 수 있다.</p>
+<pre><code>UPDATE Tracks SET plays = 16 WHERE title = 'My Way'</code></pre>
+<p><code>UPDATE</code> 문장은 먼저 테이블을 명시한다. 그리고 나서, <code>SET</code> 키워드 다음에 변경할 필드 리스트 와 값을 명시한다. 그리고 선택사항으로 갱신될 행을 <code>WHERE</code>절에 지정한다. 단일 <code>UPDATE</code> 문장은 <code>WHERE</code>절에서 매칭되는 모든 행을 갱신한다. 혹은 만약 <code>WHERE</code>절이 지정되지 않으면,테이블 모든 행에 대해서 갱신(UPDATE)을 한다.</p>
+<p>네가지 기본 SQL 명령문(<strong>INSERT</strong>, <strong>SELECT</strong>, <strong>UPDATE</strong>, <strong>DELETE</strong>)은 데이터를 생성하고 유지 관리하는데 필요한 기본적인 4가지 작업을 가능케 한다.</p>
 
 
+</section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>실질적으로 SQLite는 열에 저장되는 데이터 형식에 대해서 좀더 많은 유연성을 부여하지만, 이번 장에서는 데이터 형식을 엄격하게 적용해서 MySQL 같은 다른 관계형 데이터베이스 시스템에도 동일한 개념이 적용되게 한다.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

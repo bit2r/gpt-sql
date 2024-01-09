@@ -36,7 +36,6 @@ book:
         
     - part: "활용사례"
       chapters:
-        - database.qmd
         - spreadsheet.qmd
         - etl.qmd        
 
