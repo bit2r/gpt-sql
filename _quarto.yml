@@ -41,7 +41,7 @@ book:
 
     - part: "챗GPT SQL"
       chapters:
-        - 21-application.qmd
+        - application.qmd
 
     - references.qmd
 
