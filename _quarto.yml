@@ -42,6 +42,8 @@ book:
     - part: "챗GPT SQL"
       chapters:
         - application.qmd
+        - crime_db.qmd
+        - lang2sql.qmd        
 
     - references.qmd
 
