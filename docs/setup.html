@@ -246,20 +246,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -275,8 +269,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  <a href="./application.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
       </ul>
@@ -385,6 +391,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>설치가 완료되면, 명령 프롬프트나 터미널에서 <code>sqlite3 --version</code> 명령을 실행하여 설치된 SQLite의 버전을 확인할 수 있다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 <span class="at">--version</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">3.40.1</span> 2022-12-28 14:03:47 df5c253c0b3dd24916e4ec7cf77d3db5294cc9fd45ae7b9c5e82ad8197f38a24</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>윈도우 환경에서 SQLite 다운로드한 후에, 압축을 풀면 몇개 <code>.exe</code> 파일이 존재하는데 설치가 완료되었다. 뭔가 복잡하고 대단한 것을 기대했을 수도 있지만 이러한 단순함이 SQLite의 장점이다.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">gen-survey-database.sql</span>  sqlite3.exe           survey.db</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">sqldiff.exe</span>              sqlite3_analyzer.exe</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>sqlite3.exe: sqlite 실행파일</li>
+<li>gen-survey-database.sql: <code>survey.db</code> sqlite 데이터베이스를 생성시키는데 사용되는 스크립트</li>
+<li>survey.db: <code>sqlite3.exe</code> 명령어를 실행해서 <code>gen-survey-database.sql</code> 스크립트를 통해 생성된 데이터베이스</li>
+</ul>
 </section>
 </section>
 <section id="데이터베이스-설치" class="level2" data-number="1.2">
@@ -404,11 +419,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>명령 라인 터미널 윈도우를 연다.</p></li>
 <li><p>다음과 같이 타이핑한다.</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir ~/swc/sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> mkdir ~/swc/sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>생성한 디렉토리로 현재 작업 디렉토리를 변경한다.</li>
 </ol>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/swc/sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd ~/swc/sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="1">
 <li>GitHub에서 “gen-survey-database.sql” 파일을 다운로드 한다.</li>
 </ol>
@@ -421,23 +436,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <blockquote class="blockquote">
 <p>만약 cURL을 선호한다면, 다음 명령문에서 “wget”을 “curl -O”로 대체한다.</p>
 </blockquote>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wget https://raw.githubusercontent.com/swcarpentry/bc/master/novice/sql/gen-survey-database.sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> wget https://raw.githubusercontent.com/swcarpentry/bc/master/novice/sql/gen-survey-database.sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>상기 명령문으로 Wget은 HTTP 요청을 생성해서 github 저장소의 “gen-survey-database.sql” 파일만 현재 작업 디렉토리로 가져온다. 성공적으로 완료되면 터미널은 다음 출력결과를 화면에 표시한다.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">--2024-01-01</span> 11:49:13--  https://raw.githubusercontent.com/swcarpentry/bc/master/novice/sql/gen-survey-database.sql</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Loaded</span> CA certificate <span class="st">'/usr/ssl/certs/ca-bundle.crt'</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Resolving</span> raw.githubusercontent.com <span class="er">(</span><span class="ex">raw.githubusercontent.com</span><span class="kw">)</span><span class="ex">...</span> 185.199.110.133, 185.199.109.133, 185.199.108.133, ...</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Connecting</span> to raw.githubusercontent.com <span class="er">(</span><span class="ex">raw.githubusercontent.com</span><span class="kw">)|</span><span class="ex">185.199.110.133</span><span class="kw">|</span><span class="ex">:443...</span> connected.</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">HTTP</span> request sent, awaiting response... 200 OK</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Length:</span> 3297 <span class="er">(</span><span class="ex">3.2K</span><span class="kw">)</span> <span class="ex">[text/plain]</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Saving</span> to: ‘gen-survey-database.sql’</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>     <span class="ex">0K</span> ...                                                   100% 4.15M=0.001s</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-01-01</span> 11:49:13 <span class="er">(</span><span class="ex">4.15</span> MB/s<span class="kw">)</span> <span class="ex">-</span> ‘gen-survey-database.sql’ saved <span class="pp">[</span><span class="ss">3297/3297</span><span class="pp">]</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">--2024-01-01</span> 11:49:13--  https://raw.githubusercontent.com/swcarpentry/bc/master/novice/sql/gen-survey-database.sql</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Loaded</span> CA certificate <span class="st">'/usr/ssl/certs/ca-bundle.crt'</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Resolving</span> raw.githubusercontent.com <span class="er">(</span><span class="ex">raw.githubusercontent.com</span><span class="kw">)</span><span class="ex">...</span> 185.199.110.133, 185.199.109.133, 185.199.108.133, ...</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Connecting</span> to raw.githubusercontent.com <span class="er">(</span><span class="ex">raw.githubusercontent.com</span><span class="kw">)|</span><span class="ex">185.199.110.133</span><span class="kw">|</span><span class="ex">:443...</span> connected.</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="ex">HTTP</span> request sent, awaiting response... 200 OK</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Length:</span> 3297 <span class="er">(</span><span class="ex">3.2K</span><span class="kw">)</span> <span class="ex">[text/plain]</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Saving</span> to: ‘gen-survey-database.sql’</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>     <span class="ex">0K</span> ...                                                   100% 4.15M=0.001s</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="ex">2024-01-01</span> 11:49:13 <span class="er">(</span><span class="ex">4.15</span> MB/s<span class="kw">)</span> <span class="ex">-</span> ‘gen-survey-database.sql’ saved <span class="pp">[</span><span class="ss">3297/3297</span><span class="pp">]</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>sqlite3 survey.db &lt; gen-survey-database.sql</code> 명령어는 SQLite3 데이터베이스 엔진을 사용하여 <code>survey.db</code>라는 데이터베이스 파일에 <code>gen-survey-database.sql</code> 파일에 포함된 SQL 명령들을 실행한다. 참고로, <code>gen-survey-database.sql</code> 파일에는 데이터베이스 구조를 정의하고 데이터를 삽입하는 SQL 명령들을 포함하고 있다. 예를 들어, <code>Person</code> 테이블 에는 ‘ident’, ‘personal’, ‘family’라는 세 개의 열이 정의되어 있고, 여러 사람의 정보를 테이블에 삽입하는 명령이 포함되어 있으며, ’dyer’, ‘William’, ’Dyer’와 같은 사람이 각각의 열에 맞추어 삽입된다.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db <span class="op">&lt;</span> gen-survey-database.sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db <span class="op">&lt;</span> gen-survey-database.sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="db-브라우저" class="level2" data-number="1.3">
@@ -462,27 +477,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="sqlite-db-연결" class="level2" data-number="1.5">
 <h2 data-number="1.5" class="anchored" data-anchor-id="sqlite-db-연결"><span class="header-section-number">1.5</span> SQLite DB 연결</h2>
 <p>생성된 데이터베이스에 연결하기 위해서, 데이터베이스를 생성한 디렉토리 안에서 SQLite를 시작한다. 그래서 <code>~/swc/sql</code> 디렉토리에서 다음과 같이 타이핑한다.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>“sqlite3 survey.db” 명령문이 데이터베이스를 열고 데이터베이스 명령-라인 프롬프트로 안내한다. SQLite에서 데이터베이스는 플랫 파일(flat file)로 명시적으로 열 필요가 있다. 그리고 나서 SQLite 시작되고 “sqlite”로 명령-라인 프롬프트로 다음과 같이 변경되어 표시된다.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">SQLite</span> version 3.34.1 2021-01-20 14:10:07</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> <span class="st">".help"</span> for usage hints.</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3 survey.db </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">SQLite</span> version 3.34.1 2021-01-20 14:10:07</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Enter</span> <span class="st">".help"</span> for usage hints.</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>다음 출력결과가 보여주듯이 <code>.databases</code> 명령문으로 소속된 데이터베이스 이름과 파일 목록을 확인한다.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .databases</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>  name             file                                                      </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span>  <span class="at">---------------</span>  <span class="at">----------------------------------------------------------</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span>    main             ~/swc/sql/survey.db <span class="op">&lt;</span>/code<span class="op">&gt;&lt;</span>/pre<span class="op">&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .databases</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>  name             file                                                      </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">---</span>  <span class="at">---------------</span>  <span class="at">----------------------------------------------------------</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">0</span>    main             ~/swc/sql/survey.db <span class="op">&lt;</span>/code<span class="op">&gt;&lt;</span>/pre<span class="op">&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>다음과 같이 타이핑해서 필요한 “Person”, “Survey”, “Site” “Visited” 테이블이 존재하는 것을 확인한다.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .tables</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .tables</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>그리고 “.table”의 출력결과는 다음과 같다.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .tables</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Person</span>   Site     Survey   Visited</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .tables</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Person</span>   Site     Survey   Visited</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이제, 설치를 완료해서 다음 학습으로 진행할 수 있다. 현재 명령-라인 SQLite 세션에서 다음 연습을 수행할 수 있다.</p>
 <section id="sqlite3-빠져-나오기" class="level3" data-number="1.5.1">
 <h3 data-number="1.5.1" class="anchored" data-anchor-id="sqlite3-빠져-나오기"><span class="header-section-number">1.5.1</span> SQLite3 빠져 나오기</h3>
 <p>SQLite3를 빠져나오기 위해서, 다음과 같이 타이핑한다.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .quit</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> .quit</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -494,7 +509,7 @@ SQLite3 CLI 대신 IPython notebook 사용방법
 </div>
 <div class="callout-body-container callout-body">
 <p>만약 실습으로 IPython notebook 사용을 선호한다면, IPython이 로컬 컴퓨터에 설치되었는지 점검하라. 만약 설치되어 있지 않다면, <a href="http://ipython.org/install.html">설치 방법</a>을 참고하여 설치한다. 만약 IPython이 이미 로컬 컴퓨터에 설치되어 있다면 notebook을 열기 위해서 작업 폴더 <code>~/swc/sql</code>으로 이동해서 “ipython notebook”을 타이핑한다.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ipython notebook</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ipython notebook</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>상기 명령어가 IPython 커널을 구동해서 디폴트 브라우져에 인터랙티브 노트북을 화면에 표시해서 편집할 수 있게 된다. 작업이 종료되면 변경사항을 간직하기 위해 노트북 저장을 기억하다.</p>
 </div>
 </div>

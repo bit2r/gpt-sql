@@ -59,6 +59,20 @@ $ sqlite3 --version
 3.40.1 2022-12-28 14:03:47 df5c253c0b3dd24916e4ec7cf77d3db5294cc9fd45ae7b9c5e82ad8197f38a24
 ```
 
+윈도우 환경에서 SQLite 다운로드한 후에, 압축을 풀면 몇개 `.exe` 파일이 존재하는데 설치가 완료되었다.
+뭔가 복잡하고 대단한 것을 기대했을 수도 있지만 이러한 단순함이 SQLite의 장점이다.
+
+``` bash
+$ ls
+gen-survey-database.sql  sqlite3.exe           survey.db
+sqldiff.exe              sqlite3_analyzer.exe
+```
+
+- sqlite3.exe: sqlite 실행파일
+- gen-survey-database.sql: `survey.db` sqlite 데이터베이스를 생성시키는데 사용되는 스크립트
+- survey.db: `sqlite3.exe` 명령어를 실행해서 `gen-survey-database.sql` 스크립트를 통해 생성된 데이터베이스
+
+
 
 ## 데이터베이스 설치
 
@@ -125,6 +139,8 @@ Saving to: ‘gen-survey-database.sql’
 ```bash
 $ sqlite3 survey.db < gen-survey-database.sql
 ```
+
+
 
 ## DB 브라우저
 

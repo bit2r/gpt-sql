@@ -328,6 +328,23 @@ div.csl-indent {
   <li><a href="#survey.db" id="toc-survey.db" class="nav-link" data-scroll-target="#survey.db"><span class="header-section-number">18</span> <code>survey.db</code></a>
   <ul class="collapse">
   <li><a href="#프로그래밍" id="toc-프로그래밍" class="nav-link" data-scroll-target="#프로그래밍"><span class="header-section-number">18.1</span> 프로그래밍</a></li>
+  <li><a href="#dplyr-연결" id="toc-dplyr-연결" class="nav-link" data-scroll-target="#dplyr-연결"><span class="header-section-number">18.2</span> <code>dplyr</code> 연결</a></li>
+  <li><a href="#r-sql" id="toc-r-sql" class="nav-link" data-scroll-target="#r-sql"><span class="header-section-number">18.3</span> R에서 바라본 SQL</a>
+  <ul class="collapse">
+  <li><a href="#sql-basic" id="toc-sql-basic" class="nav-link" data-scroll-target="#sql-basic"><span class="header-section-number">18.3.1</span> SQL 자료처리</a></li>
+  <li><a href="#sqlite" id="toc-sqlite" class="nav-link" data-scroll-target="#sqlite"><span class="header-section-number">18.3.2</span> SQLite와 실습 데이터베이스</a></li>
+  </ul></li>
+  <li><a href="#install-sqlite" id="toc-install-sqlite" class="nav-link" data-scroll-target="#install-sqlite"><span class="header-section-number">18.4</span> SQLite 설치 </a></li>
+  <li><a href="#connect-sqlite" id="toc-connect-sqlite" class="nav-link" data-scroll-target="#connect-sqlite"><span class="header-section-number">18.5</span> SQLite DB 연결/설치 테스트</a></li>
+  </ul></li>
+  <li><a href="#sql-dplyr" id="toc-sql-dplyr" class="nav-link" data-scroll-target="#sql-dplyr"><span class="header-section-number">19</span> <code>dplyr</code> 동사로 데이터베이스 작업</a>
+  <ul class="collapse">
+  <li><a href="#db-connection" id="toc-db-connection" class="nav-link" data-scroll-target="#db-connection"><span class="header-section-number">19.1</span> 데이터베이스 연결</a></li>
+  <li><a href="#dplyr-sql" id="toc-dplyr-sql" class="nav-link" data-scroll-target="#dplyr-sql"><span class="header-section-number">19.2</span> SQL을 직접 던지기</a></li>
+  <li><a href="#dplyr-dplyr" id="toc-dplyr-dplyr" class="nav-link" data-scroll-target="#dplyr-dplyr"><span class="header-section-number">19.3</span> dplyr 동사 활용</a></li>
+  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">19.4</span> 데이터프레임 변환</a></li>
+  <li><a href="#conversion" id="toc-conversion" class="nav-link" data-scroll-target="#conversion"><span class="header-section-number">19.5</span> SQL 변환 과정 살펴보기</a></li>
+  <li><a href="#disconnect" id="toc-disconnect" class="nav-link" data-scroll-target="#disconnect"><span class="header-section-number">19.6</span> 데이터베이스 연결 끊기</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -451,7 +468,7 @@ div.csl-indent {
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() duckdb<span class="sc">::</span><span class="fu">dbWriteTable</span>(con_dd, <span class="st">"crime_tbl"</span>, crime_tbl, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.67</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.7</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_dd, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span>))</span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -462,7 +479,7 @@ div.csl-indent {
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>con_sqlite <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>())</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() RSQLite<span class="sc">::</span><span class="fu">dbWriteTable</span>(con_sqlite, <span class="st">"crime_tbl"</span>, crime_tbl, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.7</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.72</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>crime_schema <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_dd, <span class="st">'SELECT * FROM duckdb_tables;'</span>)</span>
@@ -515,10 +532,10 @@ div.csl-indent {
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_dd, complex_query) )</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.14</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.23</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_sqlite, complex_query) )</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.54</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.47</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="survey.db" class="level1" data-number="18">
@@ -789,6 +806,208 @@ div.csl-indent {
 <span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>translate_sql(query <span class="op">=</span> <span class="st">'aggregate the hours for each scientist separately'</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="st">'SELECT person, SUM(reading) AS total_hours\nFROM Survey\nGROUP BY person;'</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="dplyr-연결" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="dplyr-연결"><span class="header-section-number">18.2</span> <code>dplyr</code> 연결</h2>
+</section>
+<section id="r-sql" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="r-sql"><span class="header-section-number">18.3</span> R에서 바라본 SQL</h2>
+<p>NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 <code>DBI</code> 패키지를 사용해 <code>dplyr</code>과 연결하여 활용하는 방법을 살펴볼 수 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/dplyr-dbi-sqlite.png" class="img-fluid figure-img"></p>
+<figcaption>dplyr, dbi, sqlite3 변환</figcaption>
+</figure>
+</div>
+<p>R 개발자들은 데이터 분석을 할 때 <code>dplyr</code>을 사용하고, 데이터베이스 작업을 할 때는 <code>SQL</code>을 사용하는 것이 일반적인 작업 흐름이었다. 이렇게 두 가지 다른 도구를 사용하는 것은 동일한 작업을 중복해서 수행한다는 불편함을 가져왔다. 그러나 <code>dplyr</code>을 다양한 데이터베이스 시스템에 <code>DBI</code>와 <code>odbc</code>와 연결하면 문제를 해결할 수 있다. 즉, <code>dplyr</code> 동사를 직접 사용하여 SQL 작업을 수행할 수 있어 <code>dplyr</code> 동사를 데이터베이스에 직접 던져서 작업을 수행할 수 있는 중간 통역이 제공되어 보다 효율적으로 작업을 진행할 수 있게 된다.</p>
+<section id="sql-basic" class="level3" data-number="18.3.1">
+<h3 data-number="18.3.1" class="anchored" data-anchor-id="sql-basic"><span class="header-section-number">18.3.1</span> SQL 자료처리</h3>
+<p>자료를 원하는 방향으로 처리하기 위해서는 다음과 같은 다양한 기본적인 자료 처리 방법을 조합하여 사용한다.</p>
+<ul>
+<li>데이터 선택하기</li>
+<li>정렬과 중복 제거하기</li>
+<li>필터링(filtering)</li>
+<li>새로운 값 계산하기</li>
+<li>결측 데이터 (Missing Data)</li>
+<li>집합 (Aggregation)</li>
+<li>데이터 조합하기 (Combining Data)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 칼럼과 행 선택</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>SELECT 칼럼명1, 칼럼명2....칼럼명N</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>FROM   테이블명</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>WHERE  조건;</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 그룹에 따른 정렬 및 총계(aggregation)</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>SELECT <span class="fu">SUM</span>(칼럼명)</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>FROM   테이블명</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>WHERE  조건</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>ORDER BY 칼럼명 {오름차순<span class="sc">|</span>내림차순};</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>GROUP BY 칼럼명;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="sqlite" class="level3" data-number="18.3.2">
+<h3 data-number="18.3.2" class="anchored" data-anchor-id="sqlite"><span class="header-section-number">18.3.2</span> SQLite와 실습 데이터베이스</h3>
+<p>먼저 이론을 이해하는 것과 더블어 예제 데이터베이스를 설치하고 실습을 진행하기 위해서 먼저 명령-라인을 사용하여 어떻게 디렉토리 여기저기 이동하는지와 명령-라인에서 명령문을 어떻게 실행하는지 숙지할 필요가 있다.</p>
+<p>이런 주제와 친숙하지 않다면, <a href="http://software-carpentry.org/v5/novice/shell/index.html">유닉스 쉘(Unix Shell)</a> 학습을 참조한다. 우선, <code>SQLite</code> 데이터베이스가 어떻게 동작하는지 설명을 할 필요가 있다.</p>
+<p>인터랙티브하게 학습을 수행하기 위해서는 <a href="http://software-carpentry.org/v5/setup.html">설치 방법</a>에 언급된 SQLite 를 참조하여 설치하고, 학습자가 선택한 위치에 “software_carpentry_sql” 디렉토리를 생성한다. 예를 들어,</p>
+<ol type="1">
+<li>명령-라인 터미널 윈도우를 연다.</li>
+<li>다음과 같이 명령어를 타이핑해서 디렉토리를 생성한다.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> mkdir <span class="sc">~</span><span class="er">/</span>swc<span class="sc">/</span>sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li>생성한 디렉토리로 현재 작업 디렉토리를 변경한다.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> cd <span class="sc">~</span><span class="er">/</span>swc<span class="sc">/</span>sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="install-sqlite" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="install-sqlite"><span class="header-section-number">18.4</span> SQLite 설치 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+느긋한 계산법
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>데이터베이스를 다룰 때, <code>dplyr</code>은 가능한 느긋(laziness)하게 동작한다.</p>
+<ul>
+<li>명시적으로 요청하지 않는 한, 데이터를 R 환경으로 바로 가져오지 않는다.</li>
+<li>가능한 마지막 순간까지 작업을 지연시킨다 - 작업하고 싶은 모든 것을 모아 한 단계로 데이터베이스로 보낸다.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="connect-sqlite" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="connect-sqlite"><span class="header-section-number">18.5</span> SQLite DB 연결/설치 테스트</h2>
+<p>생성된 데이터베이스에 연결하기 위해서, 데이터베이스를 생성한 디렉토리 안에서 SQLite를 시작한다. 그래서 <code>~/swc/sql</code> 디렉토리에서 다음과 같이 타이핑한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>root<span class="sc">@</span>hangul<span class="sc">:</span><span class="er">~/</span>swc<span class="sc">/</span>sql<span class="sc">$</span> sqlite3 survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>sqlite3 survey.db</code> 명령문이 데이터베이스를 열고 데이터베이스 명령-라인 프롬프트로 안내한다. SQLite에서 데이터베이스는 플랫 파일(flat file)로 명시적으로 열 필요가 있다. 그리고 나서 SQLite 시작되고 <code>sqlite</code>로 명령-라인 프롬프트가 다음과 같이 변경되어 표시된다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>SQLite version <span class="dv">3</span>.<span class="fl">20.0</span> <span class="dv">2017-08-01</span> <span class="dv">13</span><span class="sc">:</span><span class="dv">24</span><span class="sc">:</span><span class="dv">15</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>Enter <span class="st">".help"</span> <span class="cf">for</span> usage hints.</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>Connected to a transient <span class="cf">in</span><span class="sc">-</span>memory database.</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>Use <span class="st">".open FILENAME"</span> to reopen on a persistent database.</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>sqlite<span class="sc">&gt;</span>  </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음 출력결과가 보여주듯이 <code>.databases</code> 명령문으로 소속된 데이터베이스 이름과 파일 목록을 확인한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>sqlite<span class="sc">&gt;</span> .databases</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>seq  name             file                                                      </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span>  <span class="sc">---------------</span>  <span class="sc">----------------------------------------------------------</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span>    main             <span class="sc">~</span><span class="er">/</span>novice<span class="sc">/</span>sql<span class="sc">/</span>survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>다음과 같이 타이핑해서 필요한 “Person”, “Survey”, “Site” “Visited” 테이블이 존재하는 것을 확인한다. <code>.table</code>의 출력결과는 다음과 같다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>sqlite<span class="sc">&gt;</span> .tables</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>Person   Site     Survey   Visited</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="sql-dplyr" class="level1" data-number="19">
+<h1 data-number="19"><span class="header-section-number">19</span> <code>dplyr</code> 동사로 데이터베이스 작업</h1>
+<section id="db-connection" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="db-connection"><span class="header-section-number">19.1</span> 데이터베이스 연결</h2>
+<p>가장 먼저 앞에서 생성한 sqlite3 데이터베이스에 R과 연결시킨다. 그리고 연결된 데이터베이스에 들어있는 테이블을 살펴본다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0. 환경설정 -----------------------</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 데이터 연결 -----------------------</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>survey_con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data/survey.db"</span>)</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(survey_con)</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Person"  "Site"    "Survey"  "Visited"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dplyr-sql" class="level2" data-number="19.2">
+<h2 data-number="19.2" class="anchored" data-anchor-id="dplyr-sql"><span class="header-section-number">19.2</span> SQL을 직접 던지기</h2>
+<p><code>dbGetQuery</code> 명령어를 통해 연결된 <code>con</code>을 통해 데이터베이스에 질의문(query)를 직접 던질 수 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. SQL 활용 -----------------------</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(survey_con, <span class="st">'SELECT * FROM Person LIMIT 5'</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         id  personal   family</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     dyer   William     Dyer</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2       pb     Frank  Pabodie</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     lake  Anderson     Lake</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      roe Valentina  Roerich</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 danforth     Frank Danforth</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dplyr-dplyr" class="level2" data-number="19.3">
+<h2 data-number="19.3" class="anchored" data-anchor-id="dplyr-dplyr"><span class="header-section-number">19.3</span> dplyr 동사 활용</h2>
+<p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. dplyr 방식 -----------------------</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>survey_df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(survey_con, <span class="st">"Survey"</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey_df)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Source:   SQL [6 x 4]</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Database: sqlite 3.41.2 [D:\tcs\gpt-sql\data\survey.db]</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   taken person quant reading</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   619 dyer   rad      9.82</span></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   619 dyer   sal      0.13</span></span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   622 dyer   rad      7.8 </span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   622 dyer   sal      0.09</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   734 pb     rad      8.41</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6   734 lake   sal      0.05</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="dataframe" class="level2" data-number="19.4">
+<h2 data-number="19.4" class="anchored" data-anchor-id="dataframe"><span class="header-section-number">19.4</span> 데이터프레임 변환</h2>
+<p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸 상태는 아직 R에서 작업이 가능한 데이터프레임이 아니라 <code>collect</code> 함수를 활용해서 데이터프레임으로 변환시켜 후속 작업을 R에서 실행한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. 데이터프레임 변환 -----------------------</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>survey_df <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> quant, <span class="at">y=</span>reading)) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lang2sql_files/figure-html/convert-to-dataframe-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="conversion" class="level2" data-number="19.5">
+<h2 data-number="19.5" class="anchored" data-anchor-id="conversion"><span class="header-section-number">19.5</span> SQL 변환 과정 살펴보기</h2>
+<p><code>show_query</code> 함수를 사용해서 <code>dplyr</code> 동사가 SQL 질의문으로 변환된 상황을 살펴볼 수도 있다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 내부 SQL 변환과정 살펴보기 --------------</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>survey_df <span class="sc">|&gt;</span> </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(quant <span class="sc">==</span> <span class="st">"sal"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT *</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM `Survey`</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (`quant` = 'sal')</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="disconnect" class="level2" data-number="19.6">
+<h2 data-number="19.6" class="anchored" data-anchor-id="disconnect"><span class="header-section-number">19.6</span> 데이터베이스 연결 끊기</h2>
+<p>데이터베이스는 혼자 사용하는 것이 아니라 사용하지 않는 경우 필히 연결시켜 놓은 <code>con</code>을 반듯이 끊어 놓는다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. 연결 끊기 -----------------------</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(survey_con)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -798,6 +1017,12 @@ Pandey, Ainesh. 2023. <span>“Text to SQL Benchmarks and the Current State of t
 </div>
 </section>
 </section>
+<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="http://blog.simplism.kr/?p=2329">SQLite3 설치 및 간단한 사용법</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</aside>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

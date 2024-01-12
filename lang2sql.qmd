@@ -484,4 +484,205 @@ translate_sql(query = 'aggregate the hours for each scientist separately')
 'SELECT person, SUM(reading) AS total_hours\nFROM Survey\nGROUP BY person;'
 ```
 
+## `dplyr` 연결
+
+## R에서 바라본 SQL  {#r-sql}
+
+NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 `DBI` 패키지를 사용해 `dplyr`과 연결하여 활용하는 방법을 살펴볼 수 있다.
+
+![dplyr, dbi, sqlite3 변환](images/dplyr-dbi-sqlite.png)
+
+
+R 개발자들은 데이터 분석을 할 때 `dplyr`을 사용하고, 데이터베이스 작업을 할 때는 `SQL`을 사용하는 것이 일반적인 작업 흐름이었다. 이렇게 두 가지 다른 도구를 사용하는 것은 동일한 작업을 중복해서 수행한다는 불편함을 가져왔다. 그러나 `dplyr`을 다양한 데이터베이스 시스템에 `DBI`와 `odbc`와 연결하면 문제를 해결할 수 있다. 즉, `dplyr` 동사를 직접 사용하여 SQL 작업을 수행할 수 있어 `dplyr` 동사를 데이터베이스에 직접 던져서 작업을 수행할 수 있는 중간 통역이 제공되어 보다 효율적으로 작업을 진행할 수 있게 된다.
+
+### SQL 자료처리 {#sql-basic}
+
+자료를 원하는 방향으로 처리하기 위해서는 다음과 같은 다양한 기본적인 자료 처리 방법을 조합하여 사용한다.
+
+ - 데이터 선택하기
+ - 정렬과 중복 제거하기
+ - 필터링(filtering)
+ - 새로운 값 계산하기
+ - 결측 데이터 (Missing Data)
+ - 집합 (Aggregation)
+ - 데이터 조합하기 (Combining Data)
+
+``` {r}
+#| label: sql-select
+#| eval: false
+
+# 칼럼과 행 선택
+SELECT 칼럼명1, 칼럼명2....칼럼명N
+FROM   테이블명
+WHERE  조건;
+
+# 그룹에 따른 정렬 및 총계(aggregation)
+SELECT SUM(칼럼명)
+FROM   테이블명
+WHERE  조건
+ORDER BY 칼럼명 {오름차순|내림차순};
+GROUP BY 칼럼명;
+```
+
+### SQLite와 실습 데이터베이스 {#sqlite}
+
+먼저 이론을 이해하는 것과 더블어 예제 데이터베이스를 설치하고 실습을 진행하기 위해서 
+먼저 명령-라인을 사용하여 어떻게 디렉토리 여기저기 이동하는지와 명령-라인에서 명령문을 어떻게 실행하는지 숙지할 필요가 있다.
+
+이런 주제와 친숙하지 않다면, [유닉스 쉘(Unix Shell)](http://software-carpentry.org/v5/novice/shell/index.html) 학습을 참조한다. 
+우선, `SQLite` 데이터베이스가 어떻게 동작하는지 설명을 할 필요가 있다.
+
+인터랙티브하게 학습을 수행하기 위해서는 [설치 방법](http://software-carpentry.org/v5/setup.html)에 언급된 SQLite 를 참조하여 설치하고, 
+학습자가 선택한 위치에 "software_carpentry_sql" 디렉토리를 생성한다. 예를 들어,
+
+1. 명령-라인 터미널 윈도우를 연다.
+2. 다음과 같이 명령어를 타이핑해서 디렉토리를 생성한다.
+
+``` {r create-directory, eval=FALSE}
+$ mkdir ~/swc/sql
+```
+
+3. 생성한 디렉토리로 현재 작업 디렉토리를 변경한다.
+
+``` {r change-directory, eval=FALSE}
+$ cd ~/swc/sql
+```
+
+## SQLite 설치 [^install-sqlite3] {#install-sqlite}
+
+[^install-sqlite3]: [SQLite3 설치 및 간단한 사용법](http://blog.simplism.kr/?p=2329)
+
+
+
+
+
+:::{.callout-note}
+### 느긋한 계산법
+
+데이터베이스를 다룰 때, `dplyr`은 가능한 느긋(laziness)하게 동작한다.
+
+- 명시적으로 요청하지 않는 한, 데이터를 R 환경으로 바로 가져오지 않는다.
+- 가능한 마지막 순간까지 작업을 지연시킨다 - 작업하고 싶은 모든 것을 모아 한 단계로 데이터베이스로 보낸다.
+
+:::
+
+## SQLite DB 연결/설치 테스트 {#connect-sqlite}
+
+생성된 데이터베이스에 연결하기 위해서, 
+데이터베이스를 생성한 디렉토리 안에서 SQLite를 시작한다. 
+그래서 `~/swc/sql` 디렉토리에서 다음과 같이 타이핑한다.
+
+``` {r run-survey-db, eval=FALSE}
+root@hangul:~/swc/sql$ sqlite3 survey.db
+```
+
+`sqlite3 survey.db` 명령문이 데이터베이스를 열고 데이터베이스 명령-라인 프롬프트로 안내한다. 
+SQLite에서 데이터베이스는 플랫 파일(flat file)로 명시적으로 열 필요가 있다. 
+그리고 나서 SQLite 시작되고 `sqlite`로 명령-라인 프롬프트가 다음과 같이 변경되어 표시된다.
+
+
+``` {r run-survey-db-output, eval=FALSE}
+SQLite version 3.20.0 2017-08-01 13:24:15
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>  
+```
+
+다음 출력결과가 보여주듯이 `.databases` 명령문으로 소속된 데이터베이스 이름과 파일 목록을 확인한다.
+
+``` {r check-database, eval=FALSE}
+sqlite> .databases
+seq  name             file                                                      
+---  ---------------  ----------------------------------------------------------
+0    main             ~/novice/sql/survey.db
+```
+
+다음과 같이 타이핑해서 필요한 "Person", "Survey", "Site" "Visited" 테이블이 존재하는 것을 확인한다.
+`.table`의 출력결과는 다음과 같다.
+
+``` {r check-tables, eval=FALSE}
+sqlite> .tables
+Person   Site     Survey   Visited
+```
+
+# `dplyr` 동사로 데이터베이스 작업 {#sql-dplyr}
+
+## 데이터베이스 연결 {#db-connection}
+
+가장 먼저 앞에서 생성한 sqlite3 데이터베이스에 R과 연결시킨다. 
+그리고 연결된 데이터베이스에 들어있는 테이블을 살펴본다.
+
+``` {r}
+# 0. 환경설정 -----------------------
+
+library(dbplyr)
+library(tidyverse)
+
+# 1. 데이터 연결 -----------------------
+
+survey_con <- DBI::dbConnect(RSQLite::SQLite(), "data/survey.db")
+dbListTables(survey_con)
+```
+
+## SQL을 직접 던지기 {#dplyr-sql}
+
+`dbGetQuery` 명령어를 통해 연결된 `con`을 통해 데이터베이스에 질의문(query)를 직접 던질 수 있다.
+
+``` {r sql-query}
+# 2. SQL 활용 -----------------------
+dbGetQuery(survey_con, 'SELECT * FROM Person LIMIT 5')
+```
+
+## dplyr 동사 활용 {#dplyr-dplyr}
+
+`tbl` 함수로 `con` 으로 연결된 데이터베이스의 특정 테이블 "Survey"를 뽑아낸다.
+
+``` {r}
+#| label: extract-table
+
+# 3. dplyr 방식 -----------------------
+
+survey_df <- tbl(survey_con, "Survey")
+head(survey_df)
+```
+
+## 데이터프레임 변환 {#dataframe}
+
+`tbl` 함수로 `con` 으로 연결된 데이터베이스의 특정 테이블 "Survey"를 뽑아낸 상태는 아직
+R에서 작업이 가능한 데이터프레임이 아니라 `collect` 함수를 활용해서 데이터프레임으로 변환시켜 
+후속 작업을 R에서 실행한다.
+
+``` {r convert-to-dataframe}
+# 4. 데이터프레임 변환 -----------------------
+
+survey_df %>% collect() %>% 
+    ggplot(aes(x= quant, y=reading)) +
+    geom_boxplot()
+```
+
+## SQL 변환 과정 살펴보기 {#conversion}
+
+`show_query` 함수를 사용해서 `dplyr` 동사가 SQL 질의문으로 변환된 상황을 살펴볼 수도 있다.
+
+``` {r show-query}
+# 5. 내부 SQL 변환과정 살펴보기 --------------
+
+
+survey_df |> 
+  filter(quant == "sal") |> 
+  show_query()
+```
+
+## 데이터베이스 연결 끊기 {#disconnect}
+
+데이터베이스는 혼자 사용하는 것이 아니라 사용하지 않는 경우 필히 연결시켜 놓은 `con`을 반듯이 끊어 놓는다.
+
+``` {r}
+#| label: db-disconnect
+
+# 7. 연결 끊기 -----------------------
+
+dbDisconnect(survey_con)
+```
 
