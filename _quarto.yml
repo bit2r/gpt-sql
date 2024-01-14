@@ -43,7 +43,8 @@ book:
       chapters:
         - application.qmd
         - crime_db.qmd
-        - lang2sql.qmd        
+        - lang2sql.qmd
+        - llm.qmd
 
     - references.qmd
 

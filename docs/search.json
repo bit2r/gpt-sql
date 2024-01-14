@@ -1151,5 +1151,16 @@
       "챗GPT SQL",
       "<span class='chapter-number'>17</span>  <span class='chapter-title'>SQL 데이터셋</span>"
     ]
+  },
+  {
+    "objectID": "llm.html",
+    "href": "llm.html",
+    "title": "18  오픈 LLM 리더보드",
+    "section": "",
+    "text": "mkdir AI_Projects\nconda create -n sql python=3.11\nconda activate sql\n\n```{python}\n\n# Example: reuse your existing OpenAI setup\nfrom openai import OpenAI\n\n# Point to the local server\nclient = OpenAI(base_url = \"http://localhost:1234/v1\", \n                api_key  = \"not-needed\")\n\nsystem_message = \"\"\"\nYou are an expert in SQL. The following table definitions have been provided to you. Please convert my query into an appropriate SQL statement. \\n\n    \n    CREATE TABLE Person(\n            ident    text,\n            personal text,\n            family   text\n    );\n    CREATE TABLE Site(\n            name text,\n            lat  real,\n            long real\n    );\n    CREATE TABLE Visited(\n            ident integer,\n            site  text,\n            dated text\n    );\n    CREATE TABLE Survey(\n            taken   integer,\n            person  text,\n            quant   text,\n            reading real\n    ); \\n\n\"\"\"    \n\ncompletion = client.chat.completions.create(\n  model=\"local-model\", # this field is currently unused\n  messages=[\n    {\"role\": \"system\", \n    \"content\": system_message},\n    {\"role\": \"user\", \n    \"content\": \"No explanation. Write only SQL query that returns - display the names of scientists\"}\n  ],\n  temperature=0.7,\n)\n\nprint(completion.choices[0].message.content)\n```\nSELECT DISTINCT p.ident FROM person p JOIN visited v ON p.ident = v.ident JOIN survey s ON p.ident = s.person WHERE s.quant ILIKE '%radiation%';",
+    "crumbs": [
+      "챗GPT SQL",
+      "<span class='chapter-number'>18</span>  <span class='chapter-title'>오픈 LLM 리더보드</span>"
+    ]
   }
 ]

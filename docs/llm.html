@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="이광춘">
 
-<title>챗GPT SQL</title>
+<title>챗GPT SQL - 18&nbsp; 오픈 LLM 리더보드</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -31,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./intro.html" rel="next">
+<link href="./references.html" rel="next">
+<link href="./lang2sql.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +115,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">감사의 글</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./application.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +142,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">감사의 글</span></a>
   </div>
 </li>
@@ -253,7 +287,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./llm.html" class="sidebar-item-text sidebar-link">
+  <a href="./llm.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
@@ -271,47 +305,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">목차</h2>
-   
-  <ul>
-  <li><a href="#감사의-글" id="toc-감사의-글" class="nav-link active" data-scroll-target="#감사의-글">감사의 글</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./application.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">챗GPT SQL</h1>
-<p class="subtitle lead">범용 데이터 과학 도구</p>
+<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></h1>
 </div>
 
 
-<div class="quarto-title-meta-author">
-  <div class="quarto-title-meta-heading">저자</div>
-  <div class="quarto-title-meta-heading">소속</div>
-  
-    <div class="quarto-title-meta-contents">
-    <p class="author">이광춘 </p>
-  </div>
-  <div class="quarto-title-meta-contents">
-        <p class="affiliation">
-            비영리법인 한국 R 사용자회
-          </p>
-      </div>
-  </div>
 
 <div class="quarto-title-meta">
 
-      
-    <div>
-    <div class="quarto-title-meta-heading">공개</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">2024년 01월 14일</p>
-    </div>
-  </div>
+    
   
     
   </div>
@@ -321,19 +329,62 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<ol type="1">
+<li>mkdir AI_Projects</li>
+<li>conda create -n sql python=3.11</li>
+<li>conda activate sql</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Example: reuse your existing OpenAI setup</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="in">from openai import OpenAI</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="in"># Point to the local server</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">client = OpenAI(base_url = "http://localhost:1234/v1", </span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="in">                api_key  = "not-needed")</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">system_message = """</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">You are an expert in SQL. The following table definitions have been provided to you. Please convert my query into an appropriate SQL statement. \n</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">    CREATE TABLE Person(</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="in">            ident    text,</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="in">            personal text,</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">            family   text</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="in">    );</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">    CREATE TABLE Site(</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="in">            name text,</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="in">            lat  real,</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">            long real</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="in">    );</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="in">    CREATE TABLE Visited(</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="in">            ident integer,</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="in">            site  text,</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="in">            dated text</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">    );</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="in">    CREATE TABLE Survey(</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="in">            taken   integer,</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="in">            person  text,</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="in">            quant   text,</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="in">            reading real</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="in">    ); \n</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="in">"""    </span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="in">completion = client.chat.completions.create(</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="in">  model="local-model", # this field is currently unused</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="in">  messages=[</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="in">    {"role": "system", </span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="in">    "content": system_message},</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="in">    {"role": "user", </span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="in">    "content": "No explanation. Write only SQL query that returns - display the names of scientists"}</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="in">  ],</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="in">  temperature=0.7,</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="in">)</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="in">print(completion.choices[0].message.content)</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> DISTINCT p.ident FROM person p JOIN visited v ON p.ident = v.ident JOIN survey s ON p.ident = s.person WHERE s.quant ILIKE <span class="st">'%radiation%'</span><span class="kw">;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<section id="감사의-글" class="level1 unnumbered">
-<h1 class="unnumbered">감사의 글</h1><p><img src="images/cover.png" title="챗GPT SQL" class="quarto-cover-image img-fluid"></p>
-<p>이 책이 탄생할 수 있도록 도움을 주신 여러분께 깊은 감사의 마음을 표합니다.</p>
-<p>기술적인 부분에서 깊은 통찰력을 제공해주신 한국 R 사용자회 유충현 회장님, 챗GPT가 국내에 소개된 후 가장 먼저 챗GPT를 세밀하게 조명할 수 있도록 교육 기회를 주신 경기도의회 문승호, 이자영, 장한별 의원님, 광명시 박승원 시장님, 김규식 부시장님, 김종업 센터장님, 지방행정연구원 최인수, 전대욱, 김필 박사님, 경기도청 AI빅데이터 산업과 이수재 과장님, 원금동, 최정환, 윤여찬 팀장님, 안양시청 엄순용 주무관님, 순천향대학교 박여진 팀장님, 경기도 인재개발원 박선현 주무관님, 나이스 디앤알 박정우 대표님, 남영민 본부장님, 우민호 실장님, 씨지인사이드 박선춘 대표님, 서울교육청 조희연 교육감님, 양신호 원장님, 김선자 장학관님, 서울고 학부모회 오혜석님, 디플래닉스 김범진 전대표님, 장석호 대표님, 이용빈님, 경기도 경제과학진흥원 임문영 상임이사님, 건국대 미래지식교육원 이영범 원장님께 감사드립니다.</p>
-<p>이 책의 공개와 출판이 가능했던 것은 한국 R 사용자회의 지원 덕분입니다. 행정사법인 광화문 최순영 대표님, 한채민 과장님, 법무법인 평안 김형주 변호사님, 법률사무소 하우림 정병운 변호사님, 홍성학 감사님, 김호성님, 김현철님, 형환희님, 한국텍학회 김강수님, 경상국립대 백원희 교수님께 진심으로 감사드립니다.</p>
-<p>한국 R 사용자회 활동에서 소프트웨어 카펜트리의 영향은 결코 무시할 수 없습니다. 소프트웨어 카펜트리를 설립한 Greg Wilson 박사님, 카펜트리 재단의 Kari Jordan 박사님, AsiaR 커뮤니티를 이끌고 계신 Janani Ravi 박사님, 서울 R 미트업에서 발표해주신 제빈 웨스트 교수님, 그리고 곽수영, 장연훈, 김송규, 나성호, 안영찬, 박남호, 공병규, 김용우, 이현진 교수님께 감사의 말씀을 드립니다.</p>
-<p>지적 자극을 주시고 더 넓은 세상을 보게 해주신 국가교육위원회 이배용 위원장님, 정대화 상임위원님, 김수환 전문위원님, 삼정 KPMG 장지수 부대표님, 박문구 전무님, 가톨릭 의대 문건웅 교수님, 성균관대 최재성 교수님, 국무조정실 장명헌 사무관님, 제주대 안도현 교수님, 명지대 박순만 교수님, 이희정 전대표님, 고길곤 교수님, 이원일 교수님에게 깊은 감사의 말씀을 전합니다.</p>
-<p>공공정책분야의 빅데이터 분석 활성화를 격려해주신 노웅래 의원님, 김병욱 의원님, 성남시의회 조정식 의원님, 환경보전협회 남광우 전 상근부회장님, 공공의창 최정묵 박사님, 조원씨앤아이 김대진 대표님, 그리고 이 책 출판에 관심이 많으신 오마이뉴스의 김지현 기자님, 나눔국민운동본부 위정희 이사님에게 감사의 인사를 전합니다.</p>
-<p>이 책이 출간되는데 있어 이들 모든 분들의 도움 없이는 어려웠을 것입니다. 그동안의 관심과 지원에 깊은 감사를 드리며, 이 책이 데이터 과학의 발전과 독자들에게 도움이 될 수 있기를 바라는 마음으로 마무리하겠습니다.</p>
 
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -735,10 +786,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./lang2sql.html" class="pagination-link  aria-label=" &lt;span="" 데이터셋&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="들어가며">
-        <span class="nav-page-text">들어가며</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="참고문헌">
+        <span class="nav-page-text">참고문헌</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
