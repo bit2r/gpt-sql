@@ -12,16 +12,16 @@ book:
   subtitle: "범용 데이터 과학 도구"
   author:
     - name: "이광춘"
-      affiliations: "비영리법인 한국 R 사용자회"
+      affiliations: "공익법인 한국 R 사용자회"
   date: last-modified
   date-format: "YYYY년 MM월 DD일"
   chapters:
     # - acknowledgments.qmd
     - index.qmd
     - intro.qmd
+    - setup.qmd    
     - part: "SQL 기본"
       chapters:
-        - setup.qmd
         - select.qmd
         - sort-dup.qmd
         - filter.qmd
