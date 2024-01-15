@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 18&nbsp; 오픈 LLM 리더보드</title>
+<title>챗GPT SQL - 17&nbsp; 오픈 LLM 리더보드</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./application.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lang2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">SQL 기본</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -256,6 +256,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -269,26 +275,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
       </ul>
@@ -305,14 +299,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#lm-스튜디오-설치" id="toc-lm-스튜디오-설치" class="nav-link active" data-scroll-target="#lm-스튜디오-설치"><span class="header-section-number">17.1</span> LM 스튜디오 설치</a></li>
+  <li><a href="#survey.db-쿼리" id="toc-survey.db-쿼리" class="nav-link" data-scroll-target="#survey.db-쿼리"><span class="header-section-number">17.2</span> <code>survey.db</code> 쿼리</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./application.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lang2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></h1>
 </div>
 
 
@@ -334,6 +335,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>conda create -n sql python=3.11</li>
 <li>conda activate sql</li>
 </ol>
+<section id="lm-스튜디오-설치" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="lm-스튜디오-설치"><span class="header-section-number">17.1</span> LM 스튜디오 설치</h2>
+<p>LM Studio는 사용자가 다양한 오픈 소스 거대 언어 모델(LLM)을 실험할 수 있는 데스크톱 앱으로 로컬 컴퓨터에서 비용 걱정 없이 LM Studio를 사용해서 OpenAI 호환 로컬 LLM 서버를 업무에 활용할 수 있다. LM Studio에서 오픈소스 LLM 모델을 로컬 서버에 배포하고 OpenAI에서 개발한 <code>openai</code> 패키지를 사용해서 OpenAI API와 동일한 방식으로 로컬 LLM 서버에 접근할 수 있기 때문에 기존 OpenAI API를 가정하고 제작한 소스코드를 재사용할 수 있다는 점에서 매우 유용하다.</p>
+<p>먼저 LM Studio를 설치하기 위해서는 <a href="https://lmstudio.ai/">LM Studio 웹사이트</a>에서 운영체제에 맞게 앱을 다운로드 받아서 설치한다. 좌측 돋보기 모양 아이콘을 클릭하여 검색창에 <code>sql</code>을 입력하면 <code>sql</code>을 학습한 LLM 모델을 찾을 수 있고 안내에 따라 다운로드하면 SQL 코드를 생성하는 AI 모델을 로컬 컴퓨터에 설치하게 된다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/llm_studio_sql.jpg" class="img-fluid figure-img"></p>
+<figcaption>SQL 코드 생성 LLM 검색</figcaption>
+</figure>
+</div>
+<p>좌측 메뉴에서 채팅 아이콘을 클릭하면, 다운로드 받은 LLM 모델을 상단 “Select a model to load”에서 골라 로드하면 OpenAI 챗GPT 서비스처럼 대화형으로 SQL 코드를 작성해 나갈 수 있다.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/llm_sqlcoder_chat.jpg" class="img-fluid figure-img"></p>
+<figcaption><code>sqlcoder</code> 34B LLM 모형 채팅</figcaption>
+</figure>
+</div>
+<p>좌측 채팅 아이콘 아래 양방향 화살표(↔︎)를 클릭하면 “Local Inference Server” 아래 “Start Server” 버튼이 있고 이를 클릭하면 오픈소스 LLM 모델을 서버로 배포하여 OpenAI 호환 API를 사용하는 것처럼 로컬 LLM 서버에 접근할 수 있게 된다. “Client Code Example”에서 <code>curl</code>, 파이썬(<code>chat</code>, <code>ai assistant</code>, <code>vision</code>) 예제 코드가 주석과 함께 제시되어 있어 이를 참고하여 후속 개발작업에 유용하게 활용할 수 있다.</p>
+<p><img src="images/llm_studio_code.jpg" class="img-fluid"></p>
+</section>
+<section id="survey.db-쿼리" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="survey.db-쿼리"><span class="header-section-number">17.2</span> <code>survey.db</code> 쿼리</h2>
+<p>앞서 개발자가 직접 SQL 쿼리를 직접 작성하는 대신 SQL 특화된 LLM 모델을 사용하여 SQL 쿼리를 생성하는 것도 가능하다. 정확도 높은 SQL 쿼리를 작성하기 위해 명확하게 역할도 부여하고 데이터베이스 스키마 정보도 함께 제공하여 LLM 모델이 SQL 쿼리를 생성할 수 있도록 환경을 설정하고 자연어로 원하는 바를 지정하면 SQL 쿼리를 생성하고 관련 설명도 함께 출력하다.</p>
+<p>주목할 점은 4GB 전후 크기를 갖는 SQL LLM은 생각보다 SQL 쿼리 생성이 눈높이에 맞게 되는 것은 아닌 것으로 보이며, 35.86 GB 크기를 갖는 <code>sqlcoder</code> LLM 모델은 SQL 쿼리 생성에 있어서 더욱 정확한 결과를 보여주고 있다. 물론, OpenAI GPT-4와 비교하면 속도를 비롯하여 여러가지 면에서 부족한 것으로 보이지만 가격이 무료이며, 다른 제약조건이 없다는 점을 생각하면 충분히 사용할 만한 수준이라고 생각된다. 또한, 오픈소스 SQL LLM은 지속적으로 발전을 할 것이기 때문에 작년과 비교하여 올해 비약적인 발전이 이뤄질 것으로 예상된다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in"># Example: reuse your existing OpenAI setup</span></span>
@@ -385,6 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> DISTINCT p.ident FROM person p JOIN visited v ON p.ident = v.ident JOIN survey s ON p.ident = s.person WHERE s.quant ILIKE <span class="st">'%radiation%'</span><span class="kw">;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -787,7 +813,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./lang2sql.html" class="pagination-link  aria-label=" &lt;span="" 데이터셋&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

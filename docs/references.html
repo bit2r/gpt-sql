@@ -49,7 +49,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./21-application.html" rel="prev">
+<link href="./llm.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -139,7 +139,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">SQL 기본</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -230,20 +230,20 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -259,8 +259,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,10 +309,17 @@ div.csl-indent {
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-hermans2015" class="csl-entry" role="listitem">
-Hermans, Felienne, and Emerson Murphy-Hill. n.d. <span>“Enron’s
+Hermans, Felienne, and Emerson Murphy-Hill. 2015. <span>“Enron’s
 Spreadsheets and Related Emails: A Dataset and Analysis.”</span> In
 <em>37th International Conference on Software Engineering,
 <span>ICSE</span> ’15</em>.
+</div>
+<div id="ref-dataherald2023texttosql" class="csl-entry" role="listitem">
+Pandey, Ainesh. 2023. <span>“Text to SQL Benchmarks and the Current
+State of the Art.”</span> <em>Medium</em>. <a href="https://medium.com/dataherald/text-to-sql-benchmarks-and-the-current-state-of-the-art-63dd3b3943fe">https://medium.com/dataherald/text-to-sql-benchmarks-and-the-current-state-of-the-art-63dd3b3943fe</a>.
+</div>
+<div id="ref-leeshin2023" class="csl-entry" role="listitem">
+이광춘, and 신종화. 2023. <em>챗gpt 유닉스쉘</em>. "한국 R 사용자회".
 </div>
 </div>
 
@@ -712,8 +725,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./21-application.html" class="pagination-link  aria-label=" &lt;span="" 대여="" 데이터베이스&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span>
+      <a href="./llm.html" class="pagination-link  aria-label=" &lt;span="" llm="" 리더보드&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

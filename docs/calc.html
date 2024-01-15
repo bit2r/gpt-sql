@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 6&nbsp; 새로운 값 계산</title>
+<title>챗GPT SQL - 5&nbsp; 새로운 값 계산</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./calc.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./calc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,7 +155,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">환경설정</span></a>
+ <span class="menu-text">SQL 기본</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -169,8 +169,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./database.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터베이스와 SQL</span></span></a>
+  <a href="./select.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./calc.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./null.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./join.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./create.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -178,7 +238,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">활용사례</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -186,56 +246,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  <a href="./etl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">집계</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./18-create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형(Creating and Modifying Data)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./19-prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스로 프로그래밍</span></span></a>
+  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -251,8 +275,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./21-application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./llm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
       </ul>
@@ -273,12 +303,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#합집합" id="toc-합집합" class="nav-link active" data-scroll-target="#합집합"><span class="header-section-number">6.1</span> 합집합</a></li>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">6.2</span> 연습문제</a>
+  <li><a href="#합집합" id="toc-합집합" class="nav-link active" data-scroll-target="#합집합"><span class="header-section-number">5.1</span> 합집합</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">5.2</span> 연습문제</a>
   <ul class="collapse">
-  <li><a href="#염도-측정치-수정" id="toc-염도-측정치-수정" class="nav-link" data-scroll-target="#염도-측정치-수정"><span class="header-section-number">6.2.1</span> 염도 측정치 수정</a></li>
-  <li><a href="#통합-측정목록" id="toc-통합-측정목록" class="nav-link" data-scroll-target="#통합-측정목록"><span class="header-section-number">6.2.2</span> 통합 측정목록</a></li>
-  <li><a href="#주요-사이트-식별자" id="toc-주요-사이트-식별자" class="nav-link" data-scroll-target="#주요-사이트-식별자"><span class="header-section-number">6.2.3</span> 주요 사이트 식별자</a></li>
+  <li><a href="#염도-측정치-수정" id="toc-염도-측정치-수정" class="nav-link" data-scroll-target="#염도-측정치-수정"><span class="header-section-number">5.2.1</span> 염도 측정치 수정</a></li>
+  <li><a href="#통합-측정목록" id="toc-통합-측정목록" class="nav-link" data-scroll-target="#통합-측정목록"><span class="header-section-number">5.2.2</span> 통합 측정목록</a></li>
+  <li><a href="#주요-사이트-식별자" id="toc-주요-사이트-식별자" class="nav-link" data-scroll-target="#주요-사이트-식별자"><span class="header-section-number">5.2.3</span> 주요 사이트 식별자</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -286,9 +316,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL</a></li><li class="breadcrumb-item"><a href="./calc.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./calc.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></h1>
 </div>
 
 
@@ -460,8 +490,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 <p>분명하게, 심지어 ’personal’과 ’family’라는 두 부분으로 나누는 것만으로는 충분하지 않다.</p>
-<section id="합집합" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="합집합"><span class="header-section-number">6.1</span> 합집합</h2>
+<section id="합집합" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="합집합"><span class="header-section-number">5.1</span> 합집합</h2>
 <p><code>UNION</code> 연산자는 두 개의 쿼리 결과를 결합한다.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">'dyer'</span> <span class="kw">UNION</span> <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">'roe'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
@@ -487,10 +517,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p><code>UNION ALL</code> 명령은 <code>UNION</code> 연산자와 동일하지만, <code>UNION ALL</code>은 모든 값을 선택한다는 점에서 차이가 있다. 차이점은 <code>UNION ALL</code>이 중복 행을 제거하지 않는다는 것이다. 대신, <code>UNION ALL</code>은 쿼리의 모든 행을 가져와서 하나의 테이블로 결합한다. <code>UNION</code> 명령은 결과 세트에 대해 <code>SELECT DISTINCT</code>를 수행한다. 만약 합병할 모든 레코드가 고유하다면, <code>DISTINCT</code> 단계를 건너뛰므로 더 빠른 결과를 얻기 위해 <code>UNION ALL</code>을 사용한다.</p>
 </section>
-<section id="연습문제" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">6.2</span> 연습문제</h2>
-<section id="염도-측정치-수정" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="염도-측정치-수정"><span class="header-section-number">6.2.1</span> 염도 측정치 수정</h3>
+<section id="연습문제" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">5.2</span> 연습문제</h2>
+<section id="염도-측정치-수정" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="염도-측정치-수정"><span class="header-section-number">5.2.1</span> 염도 측정치 수정</h3>
 <p>추가로 정보를 살펴본 결과, 발렌티나 로에리히(Valentina Roerich)가 염도를 백분율로 보고했다는 것을 알게 되었다. <code>Survey</code> 테이블에서 모든 염도 측정치를 100으로 나눈 값으로 반환하는 쿼리를 작성하시오.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> taken, reading <span class="op">/</span> <span class="dv">100</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">=</span> <span class="st">'roe'</span> <span class="kw">AND</span> quant <span class="op">=</span> <span class="st">'sal'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
@@ -512,8 +542,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="통합-측정목록" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="통합-측정목록"><span class="header-section-number">6.2.2</span> 통합 측정목록</h3>
+<section id="통합-측정목록" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="통합-측정목록"><span class="header-section-number">5.2.2</span> 통합 측정목록</h3>
 <p><code>UNION</code>을 사용하여 발렌티나 로에리히(Roerich가)의 염도 측정치를 앞선 도전과제에서 설명한 대로 수정하고, 발렌티나 로에리히만의 측정치로 통합된 염도 측정치 목록을 만든다. 출력 결과는 다음과 같아야 한다.</p>
 <table class="table">
 <thead>
@@ -559,8 +589,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> taken, reading <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">!=</span> <span class="st">'roe'</span> <span class="kw">AND</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">UNION</span> <span class="kw">SELECT</span> taken, reading <span class="op">/</span> <span class="dv">100</span> <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> person <span class="op">=</span> <span class="st">'roe'</span> <span class="kw">AND</span> quant <span class="op">=</span> <span class="st">'sal'</span> <span class="kw">ORDER</span> <span class="kw">BY</span> taken <span class="kw">ASC</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="주요-사이트-식별자" class="level3" data-number="6.2.3">
-<h3 data-number="6.2.3" class="anchored" data-anchor-id="주요-사이트-식별자"><span class="header-section-number">6.2.3</span> 주요 사이트 식별자</h3>
+<section id="주요-사이트-식별자" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="주요-사이트-식별자"><span class="header-section-number">5.2.3</span> 주요 사이트 식별자</h3>
 <p><code>Visited</code> 테이블의 사이트 식별자는 ’-’로 구분된 두 부분으로 이루어져 있다.</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> site <span class="kw">FROM</span> Visited;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
@@ -989,12 +1019,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./filter.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">필터</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./null.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>결측 데이터</span>">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">결측 데이터</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./null.html" class="pagination-link" aria-label="<span class='chapter-number'>6</span>&nbsp; <span class='chapter-title'>결측 데이터</span>">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

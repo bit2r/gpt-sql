@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 17&nbsp; SQL 데이터셋</title>
+<title>챗GPT SQL - 16&nbsp; SQL 데이터셋</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -135,7 +135,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./application.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./lang2sql.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lang2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./lang2sql.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -175,7 +175,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL</span></a>
+ <span class="menu-text">SQL 기본</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -276,6 +276,12 @@ div.csl-indent {
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -289,26 +295,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./application.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./lang2sql.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
       </ul>
@@ -329,28 +323,28 @@ div.csl-indent {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#sqlite3와-duckdb" id="toc-sqlite3와-duckdb" class="nav-link active" data-scroll-target="#sqlite3와-duckdb"><span class="header-section-number">17.1</span> Sqlite3와 DuckDB</a></li>
-  <li><a href="#시카고-범죄-데이터" id="toc-시카고-범죄-데이터" class="nav-link" data-scroll-target="#시카고-범죄-데이터"><span class="header-section-number">17.2</span> 시카고 범죄 데이터</a></li>
-  <li><a href="#survey.db" id="toc-survey.db" class="nav-link" data-scroll-target="#survey.db"><span class="header-section-number">18</span> <code>survey.db</code></a>
+  <li><a href="#sqlite3와-duckdb" id="toc-sqlite3와-duckdb" class="nav-link active" data-scroll-target="#sqlite3와-duckdb"><span class="header-section-number">16.1</span> Sqlite3와 DuckDB</a></li>
+  <li><a href="#시카고-범죄-데이터" id="toc-시카고-범죄-데이터" class="nav-link" data-scroll-target="#시카고-범죄-데이터"><span class="header-section-number">16.2</span> 시카고 범죄 데이터</a></li>
+  <li><a href="#survey.db" id="toc-survey.db" class="nav-link" data-scroll-target="#survey.db"><span class="header-section-number">17</span> <code>survey.db</code></a>
   <ul class="collapse">
-  <li><a href="#프로그래밍" id="toc-프로그래밍" class="nav-link" data-scroll-target="#프로그래밍"><span class="header-section-number">18.1</span> 프로그래밍</a></li>
-  <li><a href="#dplyr-연결" id="toc-dplyr-연결" class="nav-link" data-scroll-target="#dplyr-연결"><span class="header-section-number">18.2</span> <code>dplyr</code> 연결</a></li>
-  <li><a href="#r-sql" id="toc-r-sql" class="nav-link" data-scroll-target="#r-sql"><span class="header-section-number">18.3</span> R에서 바라본 SQL</a>
+  <li><a href="#프로그래밍" id="toc-프로그래밍" class="nav-link" data-scroll-target="#프로그래밍"><span class="header-section-number">17.1</span> 프로그래밍</a></li>
+  <li><a href="#dplyr-연결" id="toc-dplyr-연결" class="nav-link" data-scroll-target="#dplyr-연결"><span class="header-section-number">17.2</span> <code>dplyr</code> 연결</a></li>
+  <li><a href="#r-sql" id="toc-r-sql" class="nav-link" data-scroll-target="#r-sql"><span class="header-section-number">17.3</span> R에서 바라본 SQL</a>
   <ul class="collapse">
-  <li><a href="#sql-basic" id="toc-sql-basic" class="nav-link" data-scroll-target="#sql-basic"><span class="header-section-number">18.3.1</span> SQL 자료처리</a></li>
-  <li><a href="#sqlite" id="toc-sqlite" class="nav-link" data-scroll-target="#sqlite"><span class="header-section-number">18.3.2</span> SQLite와 실습 데이터베이스</a></li>
+  <li><a href="#sql-basic" id="toc-sql-basic" class="nav-link" data-scroll-target="#sql-basic"><span class="header-section-number">17.3.1</span> SQL 자료처리</a></li>
+  <li><a href="#sqlite" id="toc-sqlite" class="nav-link" data-scroll-target="#sqlite"><span class="header-section-number">17.3.2</span> SQLite와 실습 데이터베이스</a></li>
   </ul></li>
-  <li><a href="#install-sqlite" id="toc-install-sqlite" class="nav-link" data-scroll-target="#install-sqlite"><span class="header-section-number">18.4</span> SQLite 설치 </a></li>
-  <li><a href="#connect-sqlite" id="toc-connect-sqlite" class="nav-link" data-scroll-target="#connect-sqlite"><span class="header-section-number">18.5</span> SQLite DB 연결/설치 테스트</a></li>
+  <li><a href="#install-sqlite" id="toc-install-sqlite" class="nav-link" data-scroll-target="#install-sqlite"><span class="header-section-number">17.4</span> SQLite 설치 </a></li>
+  <li><a href="#connect-sqlite" id="toc-connect-sqlite" class="nav-link" data-scroll-target="#connect-sqlite"><span class="header-section-number">17.5</span> SQLite DB 연결/설치 테스트</a></li>
   </ul></li>
-  <li><a href="#sql-dplyr" id="toc-sql-dplyr" class="nav-link" data-scroll-target="#sql-dplyr"><span class="header-section-number">19</span> <code>dplyr</code> 동사로 데이터베이스 작업</a>
+  <li><a href="#sql-dplyr" id="toc-sql-dplyr" class="nav-link" data-scroll-target="#sql-dplyr"><span class="header-section-number">18</span> <code>dplyr</code> 동사로 데이터베이스 작업</a>
   <ul class="collapse">
-  <li><a href="#db-connection" id="toc-db-connection" class="nav-link" data-scroll-target="#db-connection"><span class="header-section-number">19.1</span> 데이터베이스 연결</a></li>
-  <li><a href="#dplyr-sql" id="toc-dplyr-sql" class="nav-link" data-scroll-target="#dplyr-sql"><span class="header-section-number">19.2</span> SQL을 직접 던지기</a></li>
-  <li><a href="#dplyr-dplyr" id="toc-dplyr-dplyr" class="nav-link" data-scroll-target="#dplyr-dplyr"><span class="header-section-number">19.3</span> dplyr 동사 활용</a></li>
-  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">19.4</span> 데이터프레임 변환</a></li>
-  <li><a href="#conversion" id="toc-conversion" class="nav-link" data-scroll-target="#conversion"><span class="header-section-number">19.5</span> SQL 변환 과정 살펴보기</a></li>
-  <li><a href="#disconnect" id="toc-disconnect" class="nav-link" data-scroll-target="#disconnect"><span class="header-section-number">19.6</span> 데이터베이스 연결 끊기</a></li>
+  <li><a href="#db-connection" id="toc-db-connection" class="nav-link" data-scroll-target="#db-connection"><span class="header-section-number">18.1</span> 데이터베이스 연결</a></li>
+  <li><a href="#dplyr-sql" id="toc-dplyr-sql" class="nav-link" data-scroll-target="#dplyr-sql"><span class="header-section-number">18.2</span> SQL을 직접 던지기</a></li>
+  <li><a href="#dplyr-dplyr" id="toc-dplyr-dplyr" class="nav-link" data-scroll-target="#dplyr-dplyr"><span class="header-section-number">18.3</span> dplyr 동사 활용</a></li>
+  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">18.4</span> 데이터프레임 변환</a></li>
+  <li><a href="#conversion" id="toc-conversion" class="nav-link" data-scroll-target="#conversion"><span class="header-section-number">18.5</span> SQL 변환 과정 살펴보기</a></li>
+  <li><a href="#disconnect" id="toc-disconnect" class="nav-link" data-scroll-target="#disconnect"><span class="header-section-number">18.6</span> 데이터베이스 연결 끊기</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -358,9 +352,9 @@ div.csl-indent {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./application.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./lang2sql.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./lang2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./lang2sql.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></h1>
 </div>
 
 
@@ -380,14 +374,14 @@ div.csl-indent {
 <p><span class="citation" data-cites="dataherald2023texttosql">(Pandey 2023)</span></p>
 <p>GPT-4와 Bard 같은 AI 모델의 자연어 처리 능력이 급격히 향상되면서, 자연어로 질문된 내용에 대한 SQL 쿼리를 생성하는 ’텍스트-투-SQL’과 같은 다양한 NLP 사용 사례에 대한 발전이 가속화되고 있다. 여러 접근 방식과 솔루션이 시장에 나오면서 어느 것이 가장 효율적인지, 어느 것이 정확한 답을 더 신뢰성 있게 생성하는지, 어느 것이 다양한 데이터셋에 가장 잘 적응하는지 평가하는 문제가 생겼다. 이 질문들에 답하기 위해 오픈소스 산업과 학계는 여러 벤치마크를 제시했지만, 오늘날 가장 많이 사용되는 세 가지는 WikiSQL, Spider, BIRD(BIg Bench for LaRge-scale Database Grounded Text-to-SQL Evaluation)이다. WikiSQL은 Salesforce에 의해 2017년 말에 소개된 최초의 대규모 텍스트-투-SQL 데이터 집합이지만, 단순함이라는 큰 단점이 있다. 제공되는 모든 SQL 쿼리는 SELECT, FROM, WHERE 절만을 포함하는 매우 간단하며, 데이터셋 내의 테이블들은 다른 테이블과의 연결이 없다. WikiSQL로 훈련된 모델은 새로운 데이터베이스에서도 작동할 수 있지만, 간단한 자연어 질문에 대해서만 답할 수 있다. 이러한 이유로 최근 텍스트-투-SQL 분야의 연구는 더 복잡한 벤치마크에 초점을 맞추고 있다. 실제로 WikiSQL 리더보드에는 2021년 이전의 제출물만 있으며, 테스트 정확도 90% 이상을 달성한 여러 제출물들이 있지만(가장 성능이 좋은 제출물은 93%에 도달함), 이제 실무자들은 WikiSQL로는 턱없이 부족한 훨씬 더 복잡한 쿼리 생성에 초점을 맞추고 있다.</p>
 <p>Spider 데이터셋은 WikiSQL 데이터셋의 단점 중 일부를 보완하려고 한다. 예일 대학의 11명 학생들이 1,000시간 이상의 노력을 통해 개발된 Spider 데이터셋은 복잡성과 교차 도메인성이라는 두 가지 중요한 요소를 도입한다. 복잡성 측면에서 SQL 쿼리는 WikiSQL이 한정된 간단한 SELECT와 WHERE 절을 넘어서, 더 복잡한 GROUP BY, ORDER BY, HAVING 절과 중첩된 쿼리를 포함한다. 또한, 모든 데이터베이스는 외래 키를 통해 여러 테이블이 연결되어 있어 테이블 간에 조인하는 복잡한 쿼리를 가능하게 한다. 교차 도메인성 측면에서 Spider는 200개의 복잡한 데이터베이스를 많은 도메인에 걸쳐 포함하여, 테스트 세트에서 본 적 없는 데이터베이스를 포함시켜 모델의 일반화 가능성을 테스트할 수 있게 한다.</p>
-<section id="sqlite3와-duckdb" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="sqlite3와-duckdb"><span class="header-section-number">17.1</span> Sqlite3와 DuckDB</h2>
+<section id="sqlite3와-duckdb" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="sqlite3와-duckdb"><span class="header-section-number">16.1</span> Sqlite3와 DuckDB</h2>
 <p>SQLite3와 DuckDB는 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing) 관점으로 살펴보면, SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션 거래 처리(transaction)를 위한 운영 데이터 관리에 사용되고, 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장이 필요한 환경에 맞게 설계되었다. 특히, SQLite는 가벼운 구조와 서버리스 아키텍처로 인해 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터를 저장하고 관리하는 데 자주 사용된다.</p>
 <p>반면, DuckDB는 OLAP에 더 적합하며 데이터 분석 작업에 최적화된 데이터베이스로, 큰 규모 데이터셋에 대한 복잡한 쿼리와 데이터 분석을 빠르게 수행할 수 있다. DuckDB의 벡터화 쿼리 처리와 멀티 코어 시스템에서 병렬 처리 능력은 대용량 데이터 분석, 보고서 생성, 데이터 마이닝과 같은 작업에 탁월한 성능을 제공한다. DuckDB는 주로 데이터 과학자들과 분석가들이 사용하는 도구로써, 빅데이터의 효율적인 처리와 복잡한 분석 쿼리를 빠르게 실행시킬 수 있다.</p>
 <p><img src="images/two_database.jpg" class="img-fluid"></p>
 </section>
-<section id="시카고-범죄-데이터" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="시카고-범죄-데이터"><span class="header-section-number">17.2</span> 시카고 범죄 데이터</h2>
+<section id="시카고-범죄-데이터" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="시카고-범죄-데이터"><span class="header-section-number">16.2</span> 시카고 범죄 데이터</h2>
 <ul>
 <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2021/dwme-t96c">2021년</a></li>
 <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2022/9hwr-2zxp">2022년</a></li>
@@ -544,8 +538,8 @@ div.csl-indent {
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.47</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="survey.db" class="level1" data-number="18">
-<h1 data-number="18"><span class="header-section-number">18</span> <code>survey.db</code></h1>
+<section id="survey.db" class="level1" data-number="17">
+<h1 data-number="17"><span class="header-section-number">17</span> <code>survey.db</code></h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">프롬프트</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">출력결과</a></li></ul>
 <div class="tab-content">
@@ -608,12 +602,12 @@ div.csl-indent {
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prompt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;18.1: 챗GPT 자연어 질의와 SQL 쿼리 생성
+그림&nbsp;17.1: 챗GPT 자연어 질의와 SQL 쿼리 생성
 </figcaption>
 </figure>
 </div>
-<section id="프로그래밍" class="level2" data-number="18.1">
-<h2 data-number="18.1" class="anchored" data-anchor-id="프로그래밍"><span class="header-section-number">18.1</span> 프로그래밍</h2>
+<section id="프로그래밍" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="프로그래밍"><span class="header-section-number">17.1</span> 프로그래밍</h2>
 <p>GUI 챗팅 인터페이스 대신 프로그래밍을 통해 파악해보자. 자연어로 SQL 프로그래밍 들어가기 전에 기본적인 설정을 다음과 같이 설정한다. 파이썬에서 OpenAI의 GPT 모델을 사용해 사용자 질문에 자동으로 답하는 스크립트를 작성한다.</p>
 <ol type="1">
 <li><strong>모듈 가져오기</strong>:
@@ -813,11 +807,11 @@ div.csl-indent {
 </div>
 <div class="sourceCode" id="cb20"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="st">'SELECT person, SUM(reading) AS total_hours\nFROM Survey\nGROUP BY person;'</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="dplyr-연결" class="level2" data-number="18.2">
-<h2 data-number="18.2" class="anchored" data-anchor-id="dplyr-연결"><span class="header-section-number">18.2</span> <code>dplyr</code> 연결</h2>
+<section id="dplyr-연결" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="dplyr-연결"><span class="header-section-number">17.2</span> <code>dplyr</code> 연결</h2>
 </section>
-<section id="r-sql" class="level2" data-number="18.3">
-<h2 data-number="18.3" class="anchored" data-anchor-id="r-sql"><span class="header-section-number">18.3</span> R에서 바라본 SQL</h2>
+<section id="r-sql" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="r-sql"><span class="header-section-number">17.3</span> R에서 바라본 SQL</h2>
 <p>NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 <code>DBI</code> 패키지를 사용해 <code>dplyr</code>과 연결하여 활용하는 방법을 살펴볼 수 있다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -826,8 +820,8 @@ div.csl-indent {
 </figure>
 </div>
 <p>R 개발자들은 데이터 분석을 할 때 <code>dplyr</code>을 사용하고, 데이터베이스 작업을 할 때는 <code>SQL</code>을 사용하는 것이 일반적인 작업 흐름이었다. 이렇게 두 가지 다른 도구를 사용하는 것은 동일한 작업을 중복해서 수행한다는 불편함을 가져왔다. 그러나 <code>dplyr</code>을 다양한 데이터베이스 시스템에 <code>DBI</code>와 <code>odbc</code>와 연결하면 문제를 해결할 수 있다. 즉, <code>dplyr</code> 동사를 직접 사용하여 SQL 작업을 수행할 수 있어 <code>dplyr</code> 동사를 데이터베이스에 직접 던져서 작업을 수행할 수 있는 중간 통역이 제공되어 보다 효율적으로 작업을 진행할 수 있게 된다.</p>
-<section id="sql-basic" class="level3" data-number="18.3.1">
-<h3 data-number="18.3.1" class="anchored" data-anchor-id="sql-basic"><span class="header-section-number">18.3.1</span> SQL 자료처리</h3>
+<section id="sql-basic" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="sql-basic"><span class="header-section-number">17.3.1</span> SQL 자료처리</h3>
 <p>자료를 원하는 방향으로 처리하기 위해서는 다음과 같은 다양한 기본적인 자료 처리 방법을 조합하여 사용한다.</p>
 <ul>
 <li>데이터 선택하기</li>
@@ -852,8 +846,8 @@ div.csl-indent {
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>GROUP BY 칼럼명;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="sqlite" class="level3" data-number="18.3.2">
-<h3 data-number="18.3.2" class="anchored" data-anchor-id="sqlite"><span class="header-section-number">18.3.2</span> SQLite와 실습 데이터베이스</h3>
+<section id="sqlite" class="level3" data-number="17.3.2">
+<h3 data-number="17.3.2" class="anchored" data-anchor-id="sqlite"><span class="header-section-number">17.3.2</span> SQLite와 실습 데이터베이스</h3>
 <p>먼저 이론을 이해하는 것과 더블어 예제 데이터베이스를 설치하고 실습을 진행하기 위해서 먼저 명령-라인을 사용하여 어떻게 디렉토리 여기저기 이동하는지와 명령-라인에서 명령문을 어떻게 실행하는지 숙지할 필요가 있다.</p>
 <p>이런 주제와 친숙하지 않다면, <a href="http://software-carpentry.org/v5/novice/shell/index.html">유닉스 쉘(Unix Shell)</a> 학습을 참조한다. 우선, <code>SQLite</code> 데이터베이스가 어떻게 동작하는지 설명을 할 필요가 있다.</p>
 <p>인터랙티브하게 학습을 수행하기 위해서는 <a href="http://software-carpentry.org/v5/setup.html">설치 방법</a>에 언급된 SQLite 를 참조하여 설치하고, 학습자가 선택한 위치에 “software_carpentry_sql” 디렉토리를 생성한다. 예를 들어,</p>
@@ -872,8 +866,8 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="install-sqlite" class="level2" data-number="18.4">
-<h2 data-number="18.4" class="anchored" data-anchor-id="install-sqlite"><span class="header-section-number">18.4</span> SQLite 설치 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
+<section id="install-sqlite" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="install-sqlite"><span class="header-section-number">17.4</span> SQLite 설치 <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -892,8 +886,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="connect-sqlite" class="level2" data-number="18.5">
-<h2 data-number="18.5" class="anchored" data-anchor-id="connect-sqlite"><span class="header-section-number">18.5</span> SQLite DB 연결/설치 테스트</h2>
+<section id="connect-sqlite" class="level2" data-number="17.5">
+<h2 data-number="17.5" class="anchored" data-anchor-id="connect-sqlite"><span class="header-section-number">17.5</span> SQLite DB 연결/설치 테스트</h2>
 <p>생성된 데이터베이스에 연결하기 위해서, 데이터베이스를 생성한 디렉토리 안에서 SQLite를 시작한다. 그래서 <code>~/swc/sql</code> 디렉토리에서 다음과 같이 타이핑한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>root<span class="sc">@</span>hangul<span class="sc">:</span><span class="er">~/</span>swc<span class="sc">/</span>sql<span class="sc">$</span> sqlite3 survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -920,10 +914,10 @@ div.csl-indent {
 </div>
 </section>
 </section>
-<section id="sql-dplyr" class="level1" data-number="19">
-<h1 data-number="19"><span class="header-section-number">19</span> <code>dplyr</code> 동사로 데이터베이스 작업</h1>
-<section id="db-connection" class="level2" data-number="19.1">
-<h2 data-number="19.1" class="anchored" data-anchor-id="db-connection"><span class="header-section-number">19.1</span> 데이터베이스 연결</h2>
+<section id="sql-dplyr" class="level1" data-number="18">
+<h1 data-number="18"><span class="header-section-number">18</span> <code>dplyr</code> 동사로 데이터베이스 작업</h1>
+<section id="db-connection" class="level2" data-number="18.1">
+<h2 data-number="18.1" class="anchored" data-anchor-id="db-connection"><span class="header-section-number">18.1</span> 데이터베이스 연결</h2>
 <p>가장 먼저 앞에서 생성한 sqlite3 데이터베이스에 R과 연결시킨다. 그리고 연결된 데이터베이스에 들어있는 테이블을 살펴본다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0. 환경설정 -----------------------</span></span>
@@ -938,8 +932,8 @@ div.csl-indent {
 <span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Person"  "Site"    "Survey"  "Visited"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dplyr-sql" class="level2" data-number="19.2">
-<h2 data-number="19.2" class="anchored" data-anchor-id="dplyr-sql"><span class="header-section-number">19.2</span> SQL을 직접 던지기</h2>
+<section id="dplyr-sql" class="level2" data-number="18.2">
+<h2 data-number="18.2" class="anchored" data-anchor-id="dplyr-sql"><span class="header-section-number">18.2</span> SQL을 직접 던지기</h2>
 <p><code>dbGetQuery</code> 명령어를 통해 연결된 <code>con</code>을 통해 데이터베이스에 질의문(query)를 직접 던질 수 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. SQL 활용 -----------------------</span></span>
@@ -952,8 +946,8 @@ div.csl-indent {
 <span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 danforth     Frank Danforth</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dplyr-dplyr" class="level2" data-number="19.3">
-<h2 data-number="19.3" class="anchored" data-anchor-id="dplyr-dplyr"><span class="header-section-number">19.3</span> dplyr 동사 활용</h2>
+<section id="dplyr-dplyr" class="level2" data-number="18.3">
+<h2 data-number="18.3" class="anchored" data-anchor-id="dplyr-dplyr"><span class="header-section-number">18.3</span> dplyr 동사 활용</h2>
 <p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. dplyr 방식 -----------------------</span></span>
@@ -972,8 +966,8 @@ div.csl-indent {
 <span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6   734 lake   sal      0.05</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="dataframe" class="level2" data-number="19.4">
-<h2 data-number="19.4" class="anchored" data-anchor-id="dataframe"><span class="header-section-number">19.4</span> 데이터프레임 변환</h2>
+<section id="dataframe" class="level2" data-number="18.4">
+<h2 data-number="18.4" class="anchored" data-anchor-id="dataframe"><span class="header-section-number">18.4</span> 데이터프레임 변환</h2>
 <p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸 상태는 아직 R에서 작업이 가능한 데이터프레임이 아니라 <code>collect</code> 함수를 활용해서 데이터프레임으로 변환시켜 후속 작업을 R에서 실행한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. 데이터프레임 변환 -----------------------</span></span>
@@ -990,8 +984,8 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="conversion" class="level2" data-number="19.5">
-<h2 data-number="19.5" class="anchored" data-anchor-id="conversion"><span class="header-section-number">19.5</span> SQL 변환 과정 살펴보기</h2>
+<section id="conversion" class="level2" data-number="18.5">
+<h2 data-number="18.5" class="anchored" data-anchor-id="conversion"><span class="header-section-number">18.5</span> SQL 변환 과정 살펴보기</h2>
 <p><code>show_query</code> 함수를 사용해서 <code>dplyr</code> 동사가 SQL 질의문으로 변환된 상황을 살펴볼 수도 있다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 내부 SQL 변환과정 살펴보기 --------------</span></span>
@@ -1006,8 +1000,8 @@ div.csl-indent {
 <span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (`quant` = 'sal')</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="disconnect" class="level2" data-number="19.6">
-<h2 data-number="19.6" class="anchored" data-anchor-id="disconnect"><span class="header-section-number">19.6</span> 데이터베이스 연결 끊기</h2>
+<section id="disconnect" class="level2" data-number="18.6">
+<h2 data-number="18.6" class="anchored" data-anchor-id="disconnect"><span class="header-section-number">18.6</span> 데이터베이스 연결 끊기</h2>
 <p>데이터베이스는 혼자 사용하는 것이 아니라 사용하지 않는 경우 필히 연결시켜 놓은 <code>con</code>을 반듯이 끊어 놓는다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. 연결 끊기 -----------------------</span></span>
@@ -1431,12 +1425,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./crime_db.html" class="pagination-link  aria-label=" &lt;span="" 범죄="" 데이터&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">시카고 범죄 데이터</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./llm.html" class="pagination-link" aria-label="<span class='chapter-number'>18</span>&nbsp; <span class='chapter-title'>오픈 LLM 리더보드</span>">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./llm.html" class="pagination-link" aria-label="<span class='chapter-number'>17</span>&nbsp; <span class='chapter-title'>오픈 LLM 리더보드</span>">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
