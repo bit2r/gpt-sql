@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 11&nbsp; 데이터베이스 프로그래밍</title>
+<title>챗GPT SQL - 10&nbsp; 데이터베이스 프로그래밍</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./prog-r.html" rel="next">
+<link href="./spreadsheet.html" rel="next">
 <link href="./create.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -146,16 +146,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">감사의 글</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">들어가며</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL 기본</span></a>
+ <span class="menu-text">들어가며</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -163,44 +157,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">SQL 쿼리</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,55 +216,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prog.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">활용사례</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">챗GPT SQL</span></a>
+ <span class="menu-text">활용사례</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -275,14 +239,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./etl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">챗GPT SQL</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,11 +296,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link active" data-scroll-target="#연습문제"><span class="header-section-number">11.1</span> 연습문제</a>
+  <li><a href="#파이썬" id="toc-파이썬" class="nav-link active" data-scroll-target="#파이썬"><span class="header-section-number">10.1</span> 파이썬</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">10.2</span> 연습문제</a>
   <ul class="collapse">
   <li><a href="#테이블-채우기-vs.-값-출력하기" id="toc-테이블-채우기-vs.-값-출력하기" class="nav-link" data-scroll-target="#테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
   <li><a href="#sql-필터링-vs.-파이썬-필터링" id="toc-sql-필터링-vs.-파이썬-필터링" class="nav-link" data-scroll-target="#sql-필터링-vs.-파이썬-필터링">SQL 필터링 vs.&nbsp;파이썬 필터링</a></li>
-  <li><a href="#삽입문-생성" id="toc-삽입문-생성" class="nav-link" data-scroll-target="#삽입문-생성"><span class="header-section-number">11.1.1</span> 삽입문 생성</a></li>
+  <li><a href="#삽입문-생성" id="toc-삽입문-생성" class="nav-link" data-scroll-target="#삽입문-생성"><span class="header-section-number">10.2.1</span> 삽입문 생성</a></li>
+  </ul></li>
+  <li><a href="#r-언어" id="toc-r-언어" class="nav-link" data-scroll-target="#r-언어"><span class="header-section-number">10.3</span> R 언어</a>
+  <ul class="collapse">
+  <li><a href="#r-도우미-함수" id="toc-r-도우미-함수" class="nav-link" data-scroll-target="#r-도우미-함수"><span class="header-section-number">10.3.1</span> R 도우미 함수</a></li>
+  </ul></li>
+  <li><a href="#연습문제-1" id="toc-연습문제-1" class="nav-link" data-scroll-target="#연습문제-1">연습문제</a>
+  <ul class="collapse">
+  <li><a href="#테이블-채우기-vs.-값-출력하기-1" id="toc-테이블-채우기-vs.-값-출력하기-1" class="nav-link" data-scroll-target="#테이블-채우기-vs.-값-출력하기-1">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
+  <li><a href="#sql-필터링-vs.-r-필터링" id="toc-sql-필터링-vs.-r-필터링" class="nav-link" data-scroll-target="#sql-필터링-vs.-r-필터링">SQL 필터링 vs.&nbsp;R 필터링</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,9 +318,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></h1>
 </div>
 
 
@@ -334,6 +337,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="파이썬" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="파이썬"><span class="header-section-number">10.1</span> 파이썬</h2>
 <p>마무리 하면서, 파이썬 같은 범용 프로그래밍 언어에서 데이터베이스를 어떻게 접근하는지 살펴보자. 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만, 개념은 동일한다.</p>
 <p><code>survey.db</code>라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는 짧은 파이썬 프로그램이 다음에 있다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -465,8 +470,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">print("Full name for barrett:", get_name('survey.db', 'barrett'))</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="shell"><code>Full name for barrett: Mary Barrett</code></pre>
-<section id="연습문제" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">11.1</span> 연습문제</h2>
+</section>
+<section id="연습문제" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">10.2</span> 연습문제</h2>
 <section id="테이블-채우기-vs.-값-출력하기" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</h3>
 <p><code>Pressure</code>라는 테이블 하나로 구성된 <code>original.db</code>라는 파일에 새로운 데이터베이스를 생성하는 파이썬 프로그램을 작성해보자. 테이블에는 <code>reading</code>이라는 단일 필드가 있으며, 10.0에서 25.0 사이의 100,000개의 무작위 숫자를 삽입한다. 이 프로그램을 실행하는 데 얼마나 걸리는가? 단순히 이 무작위 숫자를 파일에 쓰는 프로그램을 실행하는 데는 얼마나 걸리는가?</p>
@@ -532,37 +538,149 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co"># original.db에서 20.0보다 큰 데이터 읽기</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>conn_orig <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">'original.db'</span>)</span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>cursor_orig <span class="op">=</span> conn_orig.cursor()</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>cursor_orig.execute(<span class="st">'SELECT reading FROM Pressure WHERE reading &gt; 20.</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="er">```python</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>connection_original <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>cursor_original <span class="op">=</span> connection_original.cursor()</span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>cursor_original.execute(<span class="st">"SELECT * FROM Pressure WHERE reading &gt; 20.0;"</span>)</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor_original.fetchall()</span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>cursor_original.close()</span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>connection_original.close()</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>connection_backup <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"backup.db"</span>)</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>cursor_backup <span class="op">=</span> connection_backup.cursor()</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>cursor_backup.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
-<span id="cb16-22"><a href="#cb16-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-23"><a href="#cb16-23" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> results:</span>
-<span id="cb16-24"><a href="#cb16-24" aria-hidden="true" tabindex="-1"></a>    cursor_backup.execute(query, entry)</span>
-<span id="cb16-25"><a href="#cb16-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-26"><a href="#cb16-26" aria-hidden="true" tabindex="-1"></a>cursor_backup.close()</span>
-<span id="cb16-27"><a href="#cb16-27" aria-hidden="true" tabindex="-1"></a>connection_backup.commit()</span>
-<span id="cb16-28"><a href="#cb16-28" aria-hidden="true" tabindex="-1"></a>connection_backup.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>cursor_orig.execute(<span class="st">'SELECT reading FROM Pressure WHERE reading &gt; 20.</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>connection_original <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"original.db"</span>)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>cursor_original <span class="op">=</span> connection_original.cursor()</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>cursor_original.execute(<span class="st">"SELECT * FROM Pressure WHERE reading &gt; 20.0;"</span>)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> cursor_original.fetchall()</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>cursor_original.close()</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>connection_original.close()</span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>connection_backup <span class="op">=</span> sqlite3.<span class="ex">connect</span>(<span class="st">"backup.db"</span>)</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>cursor_backup <span class="op">=</span> connection_backup.cursor()</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a>cursor_backup.execute(<span class="st">"CREATE TABLE Pressure (reading float not null)"</span>)</span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a>query <span class="op">=</span> <span class="st">"INSERT INTO Pressure (reading) VALUES (?);"</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> entry <span class="kw">in</span> results:</span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>    cursor_backup.execute(query, entry)</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>cursor_backup.close()</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>connection_backup.commit()</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>connection_backup.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="삽입문-생성" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="삽입문-생성"><span class="header-section-number">11.1.1</span> 삽입문 생성</h3>
+<section id="삽입문-생성" class="level3" data-number="10.2.1">
+<h3 data-number="10.2.1" class="anchored" data-anchor-id="삽입문-생성"><span class="header-section-number">10.2.1</span> 삽입문 생성</h3>
 <p>동료중의 한명이 Robert Olmstead가 측정한 온도 측정치를 포함하는 다음과 같은 형식의 <strong>CSV</strong> 파일을 보내왔다.</p>
 <pre class="shell"><code>Taken,Temp
 619,-21.5
 622,-15.5</code></pre>
 <p><code>survey</code> 데이터베이스에 레코드로 추가하려고 CSV 파일을 읽고 SQL <code>insert</code>문을 출력하는 작은 파이썬 프로그램을 작성하세요. <code>Person</code> 테이블에 Olmstead 항목을 추가할 필요가 있을 것이다. 반복적으로 프로그램을 테스트하려면, SQL <code>INSERT or REPLACE</code> 문을 자세히 살펴볼 필요도 있다.</p>
+</section>
+</section>
+<section id="r-언어" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="r-언어"><span class="header-section-number">10.3</span> R 언어</h2>
+<p>마무리 하면서, R 같은 범용 프로그래밍 언어에서 데이터베이스를 어떻게 접근하는지 살펴보자. 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만, 개념은 동일한다.</p>
+<p><code>survey.db</code>라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는 짧은 R 프로그램이 다음에 있다.</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(RSQLite)</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="in">connection &lt;- dbConnect(SQLite(), "data/survey.db")</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="in">results &lt;- dbGetQuery(connection, "SELECT Site.lat, Site.long FROM Site;")</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="in">print(results)</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="in">dbDisconnect(connection)</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="output"><code>     lat    long
+1 -49.85 -128.57
+2 -47.15 -126.72
+3 -48.87 -123.40</code></pre>
+<p><code>RSQLite</code> 라이브러리를 가져오면서 프로그램이 시작된다. MySQL, DB2 또는 다른 데이터베이스에 접속한다면 다른 라이브러리를 사용할 것이지만, 기능은 동일하다. 따라서 데이터베이스 A에서 데이터베이스 B로 변경한다면 프로그램의 다른 부분은 많이 변경할 필요가 없다.</p>
+<p>두 번째 줄은 데이터베이스 연결을 설정한다. SQLite를 사용하므로 필요한 것은 데이터베이스 파일 이름뿐이다. 일반적인 다른 데이터베이스 시스템은 사용자 이름과 비밀번호를 전달해야 한다.</p>
+<p>세 번째 줄은 연결을 통해 커서를 생성한다. 편집기 커서처럼, 데이터베이스의 어느 위치에 있는지를 추적하는 것이 커서의 역할이다.</p>
+<p>네 번째 줄에서 커서를 사용하여 사용자 대신 데이터베이스에 쿼리를 실행하도록 요청한다. 쿼리는 SQL로 작성되며 문자열 형태로 <code>cursor.execute</code>에 전달된다. SQL이 제대로 작성되었는지 확인하는 것은 사용자 귀책이다. 제대로 작성되지 않았거나 실행 중 문제가 발생하면 데이터베이스가 오류를 출력한다.</p>
+<p>다섯 번째 줄에서 <code>cursor.fetchall</code> 호출에 응답하여 데이터베이스가 쿼리 결과를 반환한다. 결과는 각 레코드마다 하나의 항목을 가진 결과집합(result set) 리스트다. 리스트를 반복하여 각 항목을 출력하면(여섯 번째, 일곱 번째 줄), 각각이 각 필드에 하나의 요소를 갖는 튜플(tuple)임을 알 수 있다.</p>
+<p>마지막으로, 여덟 번째와 아홉 번째 줄에서 커서와 데이터베이스 연결을 종료한다. 데이터베이스는 한 번에 열 수 있는 연결과 커서의 수가 제한되어 있기 때문이다. 연결을 설정하는 데 시간이 걸리기 때문에, 연결을 열고 하나의 작업을 수행한 후 연결을 닫았다가 몇 마이크로초 후에 다른 작업을 위해 다시 연결하는 것은 피해야 한다. 대신, 프로그램이 수행되는 동안 하나의 연결을 생성하고 유지하는 것이 일반적이다.</p>
+<p>실제 응용 프로그램에서 쿼리는 사용자가 제공하는 값에 따라 달라진다. 예를 들어, 다음 함수는 사용자 ID를 매개변수로 받아 이름을 반환한다.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(RSQLite)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="in">connection &lt;- dbConnect(SQLite(), "data/survey.db")</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="in">getName &lt;- function(personID) {</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a><span class="in">  query &lt;- paste0("SELECT personal || ' ' || family FROM Person WHERE id =='",</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a><span class="in">                  personID, "';")</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a><span class="in">  return(dbGetQuery(connection, query))</span></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="in">print(paste("full name for dyer:", getName('dyer')))</span></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="in">dbDisconnect(connection)</span></span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>full name for dyer: William Dyer</code></pre>
+<p>함수의 첫번째 행에 문자열 결함을 사용해서 사용자가 넘겨준 사용자 ID를 포함하는 쿼리를 완성한다. 단순하게 보일지 모르지만, 만약 누군가 다음 문자열을 입력값으로 준다면 무슨 일이 일어날까?</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dyer<span class="st">'; DROP TABLE Survey; SELECT '</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>프로젝트 이름 뒤에는 쓰레기(garbage)처럼 보이지만, 매우 주의깊게 고른 쓰레기다. 만약 이 문자열을 쿼리에 삽입하면, 결과는 다음과 같다.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> personal <span class="op">||</span> <span class="st">' '</span> <span class="op">||</span> family <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span><span class="op">=</span><span class="st">'dyer'</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> Survey; <span class="kw">SELECT</span> <span class="st">''</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>만약 쿼리를 실행하게 된다면, 데이터베이스에 있는 테이블 중의 하나를 삭제한다.</p>
+<p>이것을 <strong>SQL 주입 공격(SQL injection attack)</strong>이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다.</p>
+<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <strong>준비된 문장(prepared statement)</strong>를 사용해서 작업할 수 있다. 만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.번</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(RSQLite)</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="in">connection &lt;- dbConnect(SQLite(), "data/survey.db")</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="in">getName &lt;- function(personID) {</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="in">  query &lt;- "SELECT personal || ' ' || family FROM Person WHERE id == ?"</span></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="in">  return(dbGetPreparedQuery(connection, query, data.frame(personID)))</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="in">print(paste("full name for dyer:", getName('dyer')))</span></span>
+<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-12"><a href="#cb25-12" aria-hidden="true" tabindex="-1"></a><span class="in">dbDisconnect(connection)</span></span>
+<span id="cb25-13"><a href="#cb25-13" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>full name for dyer: William Dyer</code></pre>
+<p>The key changes are in the query string and the <code>dbGetQuery</code> call (we use dbGetPreparedQuery instead). Instead of formatting the query ourselves, we put question marks in the query template where we want to insert values. When we call <code>dbGetPreparedQuery</code>, we provide a dataframe that contains as many values as there are question marks in the query. The library matches values to question marks in order, and translates any special characters in the values into their escaped equivalents so that they are safe to use.</p>
+<p>주요 변경사항은 쿼리 문자열과 <code>dbGetQuery</code> 호출에 있다. (대신 <code>dbGetPreparedQuery</code>을 사용 ) 직접 쿼리를 포맷하는 대신, 값을 삽입하고 싶은 쿼리 템플릿에 물음표를 넣는다. <code>dbGetPreparedQuery</code>를 호출할 때, 쿼리에 있는 물음표 수만큼의 값을 포함하는 데이터프레임을 제공한다. 라이브러리는 순서대로 값과 물음표를 매칭하고, 값의 특수 문자를 이스케이프된 대응물로 변환하여 사용하기 안전하게 만든다.</p>
+<section id="r-도우미-함수" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="r-도우미-함수"><span class="header-section-number">10.3.1</span> R 도우미 함수</h3>
+<p>R의 데이터베이스 인터페이스 패키지들(예: <code>RSQLite</code>)은 데이터베이스를 탐색하고 전체 테이블을 한 번에 읽거나 쓰는 데 유용한 공통된 도우미 함수(helper function)들을 공유한다.</p>
+<p>데이터베이스의 모든 테이블을 보기 위해서는 <code>dbListTables()</code>를 사용한다.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="in">connection &lt;- dbConnect(SQLite(), "survey.db")</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="in">dbListTables(connection)</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>"Person"  "Site"    "Survey"  "Visited"</code></pre>
+<p>테이블 모든 칼럼 이름을 보려면 <code>dbListFields()</code>를 사용한다.</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbListFields(connection, "Survey")</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>"taken"   "person"  "quant"   "reading"</code></pre>
+<p>전체 테이블을 데이터프레임으로 읽으려면 <code>dbReadTable()</code>을 사용한다.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbReadTable(connection, "Person")</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>        id  personal   family
+1     dyer   William     Dyer
+2       pb     Frank  Pabodie
+3     lake  Anderson     Lake
+4      roe Valentina  Roerich
+5 danforth     Frank Danforth</code></pre>
+<p>데이터베이스에 전체 테이블을 쓰기 위해 <code>dbWriteTable()</code>을 사용한다. R이 행 이름을 별도 열로 쓰는 것을 방지하고자 할 경우, <code>row.names = FALSE</code> 인수를 설정한다. 예시에서 R에 내장된 <code>iris</code> 데이터셋을 <code>survey.db</code> 데이터베이스에 테이블로 쓰는 방법은 다음과 같다.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbWriteTable(connection, "iris", iris, row.names = FALSE)</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="in">head(dbReadTable(connection, "iris"))</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<pre class="shell"><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<p>그리고 항상 그렇듯이 완료되면 데이터베이스 연결을 닫는 것을 잊지 말자.</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbDisconnect(connection)</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="연습문제-1" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="연습문제-1">연습문제</h2>
+<section id="테이블-채우기-vs.-값-출력하기-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기-1">테이블 채우기 vs.&nbsp;값 출력하기</h3>
+<p><code>Pressure</code>라는 테이블 하나로 구성된 <code>original.db</code>라는 파일에 새로운 데이터베이스를 생성하는 R 프로그램을 작성해보자. 테이블에는 <code>reading</code>이라는 단일 필드가 있으며, 10.0에서 25.0 사이의 100,000개의 무작위 숫자를 삽입한다. 이 프로그램을 실행하는 데 얼마나 걸리는가? 단순히 이 무작위 숫자를 파일에 쓰는 프로그램을 실행하는 데는 얼마나 걸리는가?</p>
+</section>
+<section id="sql-필터링-vs.-r-필터링" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="sql-필터링-vs.-r-필터링">SQL 필터링 vs.&nbsp;R 필터링</h3>
+<p><code>original.db</code>와 동일한 구조를 가진 새 데이터베이스 <code>backup.db</code>를 생성하는 R 프로그램을 작성하고, <code>original.db</code>에서 20.0보다 큰 모든 값을 <code>backup.db</code>로 복사한다. 어느 것이 더 빠른가? 쿼리에서 값을 필터링하는 것, 아니면 모든 것을 메모리에 읽어 R에서 필터링하는 것.</p>
 
 
 </section>
@@ -969,12 +1087,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./create.html" class="pagination-link  aria-label=" &lt;span="" 생성과="" 변형&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prog-r.html" class="pagination-link" aria-label="<span class='chapter-number'>12</span>&nbsp; <span class='chapter-title'>데이터베이스 프로그래밍</span>">
-        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./spreadsheet.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>엑셀에서 데이터베이스로</span>">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

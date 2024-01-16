@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 2&nbsp; 데이터 선택하기</title>
+<title>챗GPT SQL - 4&nbsp; 데이터 선택하기</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./sort-dup.html" rel="next">
+<link href="./sort-filter.html" rel="next">
 <link href="./setup.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./select.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./select.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -146,16 +146,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">감사의 글</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">들어가며</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL 기본</span></a>
+ <span class="menu-text">들어가며</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -163,38 +157,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">SQL 쿼리</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,8 +216,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
+  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -237,13 +242,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">활용사례</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
@@ -258,7 +263,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+  <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
@@ -266,16 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">챗GPT SQL</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
+  <a href="./advanced_db.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
@@ -303,10 +308,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#기본-지식" id="toc-기본-지식" class="nav-link active" data-scroll-target="#기본-지식"><span class="header-section-number">2.1</span> 기본 지식</a></li>
-  <li><a href="#조사-데이터베이스" id="toc-조사-데이터베이스" class="nav-link" data-scroll-target="#조사-데이터베이스"><span class="header-section-number">2.2</span> 조사 데이터베이스</a></li>
-  <li><a href="#데이터-유무-확인하기" id="toc-데이터-유무-확인하기" class="nav-link" data-scroll-target="#데이터-유무-확인하기"><span class="header-section-number">2.3</span> 데이터 유무 확인하기</a></li>
-  <li><a href="#sql-헬로월드" id="toc-sql-헬로월드" class="nav-link" data-scroll-target="#sql-헬로월드"><span class="header-section-number">2.4</span> SQL 헬로월드</a></li>
+  <li><a href="#기본-지식" id="toc-기본-지식" class="nav-link active" data-scroll-target="#기본-지식"><span class="header-section-number">4.1</span> 기본 지식</a></li>
+  <li><a href="#조사-데이터베이스" id="toc-조사-데이터베이스" class="nav-link" data-scroll-target="#조사-데이터베이스"><span class="header-section-number">4.2</span> 조사 데이터베이스</a></li>
+  <li><a href="#데이터-유무-확인하기" id="toc-데이터-유무-확인하기" class="nav-link" data-scroll-target="#데이터-유무-확인하기"><span class="header-section-number">4.3</span> 데이터 유무 확인하기</a></li>
+  <li><a href="#sql-헬로월드" id="toc-sql-헬로월드" class="nav-link" data-scroll-target="#sql-헬로월드"><span class="header-section-number">4.4</span> SQL 헬로월드</a></li>
   <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a>
   <ul class="collapse">
   <li><a href="#create-쿼리문" id="toc-create-쿼리문" class="nav-link" data-scroll-target="#create-쿼리문"><code>CREATE</code> 쿼리문</a></li>
@@ -319,9 +324,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./select.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./select.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></h1>
 </div>
 
 
@@ -340,8 +345,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>1920년 후반, 1930년 초반 William Dyer, Frank Pabodie,Valentina Roerich는 남태평양 <a href="http://en.wikipedia.org/wiki/Pole_of_inaccessibility">도달불가능한 극(Pole of Inaccessibility)</a>과 이어서 남극 대륙을 탐험했다. 2년 전에 이들의 탐험 기록이 Miskatonic 대학 창고 사물함에서 발견됐다. 기록을 스캔해서 OCR로 저장했고, 이제는 검색가능하고 분석이 용히한 방식으로 정보를 저장하고자 한다.</p>
 <p>기본적으로 3가지 선택 옵션(텍스트 파일, 스프레드쉬트, 데이터베이스)이 있다. 텍스트 파일은 생성하기 가장 쉽고 버젼 제어와 궁합이 맞지만, 검색과 분석 도구를 별도로 구축해야한다. 스프레드쉬트는 단순한 분석에는 적합하지만, 크고 복잡한 데이터셋을 매우 잘 다루지는 못한다. 그래서 데이터를 데이터베이스에 넣어서 어떻게 검색과 분석을 하는지 이번 학습에서 배울 것이다.</p>
-<section id="기본-지식" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="기본-지식"><span class="header-section-number">2.1</span> 기본 지식</h2>
+<section id="기본-지식" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="기본-지식"><span class="header-section-number">4.1</span> 기본 지식</h2>
 <p><strong>관계형 데이터베이스(relational database)</strong>는 <strong>테이블(tables)</strong>로 정렬된 정보를 저장하고 다루는 방식이다. 각 테이블은 데이터를 기술하는 <strong>필드(fields)</strong>로도 알려진 열(column)과 데이터를 담고 있는 <strong>레코드(records)</strong>로 알려진 행(row)으로 구성된다.</p>
 <p>스프레드쉬트를 사용할 때, 이전 값에 기초하여 새로운 값을 계산할 때 공식을 셀(cell)에 넣어서 구한다. 데이터베이스를 사용할 때는 <strong>쿼리(queries, 질의)</strong>로 불리는 명령문을 <strong>데이터베이스 관리자(database manager)</strong>에게 보낸다. 데이터베이스 관리자는 사용자를 대신해서 데이터베이스를 조작하는 프로그램이다. 데이터베이스 관리자는 쿼리가 명기하는 임의의 조회작업과 계산작업을 수행하고 다음 쿼리작업 시작점으로 사용될 수 있는 테이블 형식으로 결과값을 반환한다.</p>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -359,8 +364,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>쿼리는 <strong>SQL</strong>로 불리는 언어로 작성된다. SQL 은 “Structured Query Language”(구조적 질의 언어)의 약자다. SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다. 본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다.</p>
 </section>
-<section id="조사-데이터베이스" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="조사-데이터베이스"><span class="header-section-number">2.2</span> 조사 데이터베이스</h2>
+<section id="조사-데이터베이스" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="조사-데이터베이스"><span class="header-section-number">4.2</span> 조사 데이터베이스</h2>
 <p>SQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자.</p>
 <div class="row">
 <div class="col-md-6" data-markdown="1">
@@ -625,8 +630,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>3개 항목 (<code>Visited</code> 테이블에서 1개, <code>Survey</code> 테이블에서 2개)은 실제 데이터가 아닌 특별한 -null- 항목을 가지고 있다. 왜냐하면 어떠한 값도 담고 있지 않아서 그렇다. 뒤에서 결측값(missing)을 다시 다룰 것이다.</p>
 </section>
-<section id="데이터-유무-확인하기" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="데이터-유무-확인하기"><span class="header-section-number">2.3</span> 데이터 유무 확인하기</h2>
+<section id="데이터-유무-확인하기" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="데이터-유무-확인하기"><span class="header-section-number">4.3</span> 데이터 유무 확인하기</h2>
 <p>쉘 명령으로, <code>survey.db</code>를 저장한 디렉토리로 작업 디렉토리를 변경한다. 만약 바탕화면에 저장했다면 다음 명령어를 사용해야 한다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> cd Desktop</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> ls <span class="kw">|</span> <span class="fu">grep</span> survey.db</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -679,8 +684,8 @@ CREATE TABLE Survey(
 <p>또 다른 방법으로, <code>.sqliterc</code> 파일을 생성하여 설정사항을 자동으로 가져올 수 있다. 위의 명령어를 추가하고 SQLite를 다시 연다. 윈도우에서는 <code>C:\Users\&lt;yourusername&gt;.sqliterc</code>를 사용한다. 리눅스와 맥(Linux/MacOS)에서는 <code>/Users/&lt;yourusername&gt;/.sqliterc</code>를 사용한다.</p>
 <p>SQLite를 종료하고 쉘 명령줄로 돌아가려면, <code>.quit</code> 또는 <code>.exit</code>를 사용하여 종료한다.</p>
 </section>
-<section id="sql-헬로월드" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="sql-헬로월드"><span class="header-section-number">2.4</span> SQL 헬로월드</h2>
+<section id="sql-헬로월드" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="sql-헬로월드"><span class="header-section-number">4.4</span> SQL 헬로월드</h2>
 <p>과학자의 이름을 화면에 표시하는 SQL 쿼리문을 작성해 보자. SQL <code>SELECT</code> 문을 사용해서 원하는 칼럼의 이름과 해당 열이 있는 테이블을 지정한다. 쿼리와 결과는 다음과 같다.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> family, personal <span class="kw">FROM</span> Person;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
@@ -1322,13 +1327,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./setup.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span>
+      <a href="./setup.html" class="pagination-link  aria-label=" &lt;span="" 설정&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./sort-dup.html" class="pagination-link" aria-label="<span class='chapter-number'>3</span>&nbsp; <span class='chapter-title'>정렬과 중복제거</span>">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./sort-filter.html" class="pagination-link" aria-label="<span class='chapter-number'>5</span>&nbsp; <span class='chapter-title'>정렬과 필터</span>">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

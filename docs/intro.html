@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 들어가며</title>
+<title>챗GPT SQL - 1&nbsp; 들어가며</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 /* CSS for citations */
 div.csl-bib-body { }
@@ -84,7 +50,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./setup.html" rel="next">
+<link href="./theory.html" rel="next">
 <link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -135,7 +101,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">들어가며</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">들어가며</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -166,22 +132,10 @@ div.csl-indent {
  <span class="menu-text">감사의 글</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">들어가며</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL 기본</span></a>
+ <span class="menu-text">들어가며</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -189,32 +143,49 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">SQL 쿼리</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -231,8 +202,8 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
+  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -257,13 +228,13 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
  <span class="menu-text">활용사례</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
@@ -278,7 +249,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
+  <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
@@ -286,16 +257,16 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
  <span class="menu-text">챗GPT SQL</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
+  <a href="./advanced_db.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
@@ -319,34 +290,14 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">목차</h2>
-   
-  <ul>
-  <li><a href="#classify-data" id="toc-classify-data" class="nav-link active" data-scroll-target="#classify-data">데이터 구분</a></li>
-  <li><a href="#oltp-vs-olap" id="toc-oltp-vs-olap" class="nav-link" data-scroll-target="#oltp-vs-olap">OLTP vs.&nbsp;OLAP</a></li>
-  <li><a href="#database-warehouse-lake" id="toc-database-warehouse-lake" class="nav-link" data-scroll-target="#database-warehouse-lake">DW, Data Lake </a></li>
-  <li><a href="#etl-vs-elt" id="toc-etl-vs-elt" class="nav-link" data-scroll-target="#etl-vs-elt">ETL과 ELT </a></li>
-  <li><a href="#database-integration" id="toc-database-integration" class="nav-link" data-scroll-target="#database-integration">데이터 통합(integration)</a></li>
-  <li><a href="#table-partition" id="toc-table-partition" class="nav-link" data-scroll-target="#table-partition">테이블 분할과 샤딩</a></li>
-  <li><a href="#db-design" id="toc-db-design" class="nav-link" data-scroll-target="#db-design">데이터베이스 설계</a>
-  <ul class="collapse">
-  <li><a href="#db-design-in-practice" id="toc-db-design-in-practice" class="nav-link" data-scroll-target="#db-design-in-practice">데이터 모형(Data Modeling)</a></li>
-  <li><a href="#data-normalization" id="toc-data-normalization" class="nav-link" data-scroll-target="#data-normalization">데이터 정규화 </a></li>
-  <li><a href="#r-db-what-it-is" id="toc-r-db-what-it-is" class="nav-link" data-scroll-target="#r-db-what-it-is">데이터베이스가 뭔가요?</a></li>
-  <li><a href="#r-db-concept" id="toc-r-db-concept" class="nav-link" data-scroll-target="#r-db-concept">데이터베이스 개념</a></li>
-  <li><a href="#r-db-create-table" id="toc-r-db-create-table" class="nav-link" data-scroll-target="#r-db-create-table">데이터베이스 테이블 생성</a></li>
-  <li><a href="#r-db-sql" id="toc-r-db-sql" class="nav-link" data-scroll-target="#r-db-sql">SQL 요약</a></li>
-  </ul></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">들어가며</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">들어가며</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></h1>
 </div>
 
 
@@ -373,325 +324,6 @@ div.csl-indent {
 <li><p><strong>현장 데이터베이스 시스템 실습</strong>: 시카고 범죄 데이터를 사용해 분석형 데이터베이스 DuckDB, DVD 렌털 데이터를 활용해 오픈소스 PostgreSQL을 설치하고 실습함으로써 실제 현장에서 사용되는 데이터베이스 시스템 작동 원리를 실습을 통해 이해한다.</p></li>
 <li><p><strong>생성형 AI 챗GPT와의 연계</strong>: 마지막으로, OpenAI API와 오픈소스 SQL LLM을 활용하여 생성형 AI 챗GPT를 경험함으로써, 데이터베이스 기술과 AI의 결합을 통해 현재 진행되고 있는 기술의 미래를 탐색한다.</p></li>
 </ol>
-<section id="classify-data" class="level2">
-<h2 class="anchored" data-anchor-id="classify-data">데이터 구분</h2>
-<p>데이터는 정형데이터(RDBMS), 비정형 데이터, 반정형 데이터로 크게 나눌 수 있다. 각 자료형에 따라 장단점이 있는 것은 명확하다. 정형데이터는 분석하기 용이한 반면 확장성과 유연성이 떨어지고, 비정형 데이터는 분석하기는 다소 어려움이 있으나 확장성과 용이성에서는 장점을 갖는다. <code>.csv</code>, <code>.xml</code>, <code>.json</code> 파일은 그 중간적인 특성을 갖는 반정형 데이터로 분류도힌다.</p>
-<p><img src="images/classify-data.png" class="img-fluid"></p>
-</section>
-<section id="oltp-vs-olap" class="level2">
-<h2 class="anchored" data-anchor-id="oltp-vs-olap">OLTP vs.&nbsp;OLAP</h2>
-<p><strong>OLTP</strong> (OnLine Transaction Processing)는 데이터 자체 처리에 중점을 둔 개념인데 반해, <strong>OLAP</strong> (OnLine Analytical Processing)은 저장된 데이터를 분석하여 꿰뚤어 볼 수 있는 능력(Insight)를 도출하는데 중심을 두고 있다.</p>
-<p>OLAP의 대표적인 예로 편의점 판매시점 정보관리(Point-Of-Sales, POS) 기계를 들어보자. 편의점에서 물건을 구매한 경우 다음과 같은 거래가 발생된다.</p>
-<ul>
-<li>고객 카드에서 현금 10,000원 인출</li>
-<li>편의점 통장에 10,000 지급</li>
-<li>명세표 출력</li>
-</ul>
-<p>상기 3건의 작업 프로세스가 하나의 트랜잭션(transaction) 묶어 모두 성공적으로 처리가 되어야 편의점 물건구매가 완료되도록 개발한다.</p>
-<p>반면에 OLAP은 데이터를 체계적으로 저장하여 데이터에 기반한 의사결정지원을 할 수 있도록 주안점을 두고 있다.</p>
-<table class="table">
-<colgroup>
-<col style="width: 5%">
-<col style="width: 47%">
-<col style="width: 46%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: left;">OLAP</th>
-<th style="text-align: left;">OLTP</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>목적</td>
-<td style="text-align: left;">트랜젝션 처리</td>
-<td style="text-align: left;">데이터 분석과 보고서 작성, 대쉬보드 시각화</td>
-</tr>
-<tr class="even">
-<td>설계</td>
-<td style="text-align: left;">앱 기능 지향</td>
-<td style="text-align: left;">비즈니스 주제 지향</td>
-</tr>
-<tr class="odd">
-<td>데이터</td>
-<td style="text-align: left;">운영계, 실시간 최신 데이터</td>
-<td style="text-align: left;">정보계, 통합/이력 데이터</td>
-</tr>
-<tr class="even">
-<td>크기</td>
-<td style="text-align: left;">기가 바이트, 스냅샷</td>
-<td style="text-align: left;">테라데이터, 아카이브</td>
-</tr>
-<tr class="odd">
-<td>SQL 쿼리</td>
-<td style="text-align: left;">단순 트랜잭션, 빈번한 갱신</td>
-<td style="text-align: left;">복잡한 집계 쿼리</td>
-</tr>
-<tr class="even">
-<td>사용자</td>
-<td style="text-align: left;">아주 많음</td>
-<td style="text-align: left;">분석가 포함 일부</td>
-</tr>
-</tbody>
-</table>
-<p>따라서, OLTP는 운영 데이터베이스(Operational Database)로 적합하여 쓰기 업무(Write-intensive)가 많은 경우 빠르고 안전하게 레코드를 삽입(insert)하는데 특화된 반면, OLAP은 데이터 창고(Data Warehouse) 업무에 적합한데 다양한 분석업무를 수행할 때 쿼리 작업을 속도감있게 진행할 수 있어 읽기 업무(Read-intensive)에 특화되어 있다.</p>
-</section>
-<section id="database-warehouse-lake" class="level2">
-<h2 class="anchored" data-anchor-id="database-warehouse-lake">DW, Data Lake <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></h2>
-<p>전통적인 데이터베이스(Database)는 관계형 데이터베이스를 통해서 실시간 정형데이터를 빠르고 신뢰성있게 처리하는데 운영계를 지탱하는 주된 쓰임새가 있으며, 데이터 창고(Data Warehouse)는 이력 데이터를 통합하여 꿰뚤어 볼 수 있는 능력(Insight)을 제공함은 물론 보고서와 전체적인 현황을 대쉬보드를 통해 제공하는데 큰 의미가 있다. 데이터 호수(Data Lake)는 정형, 반정형, 비정형 데이터를 모두 저장하고 관리한다는 측면에서 유연성과 확장성을 내재하고 있으며 빅데이터를 분석하여 OLAP에서 추구하는 바를 한단계 더 넓혔다는 점에서 의의를 둘 수 있다.</p>
-<p><img src="images/database-dw-dl.png" class="img-fluid"></p>
-<p>데이터 호수(Data Lake)는 특정한 구조가 없기 때문에 접근하기 용이하고 쉽게 수정하기도 용이한 반면에 데이터 창고(Data Warehouse)는 상대적으로 유연성이 떨어진다. 뿐만 아니라 데이터 과학자는 아직 결정되지 않는 비즈니스 활용 사례를 데이터 문제로 바꿔 모형을 만들고 시각화를 하는데 데이터 호수를 적합한 데 반해 비즈니스 현업전문가는 일단 전처리가 된 데이터를 데이터 창고에 넣어 특정 목적을 달성하는데 활용된다는 점에서 비교가 된다.</p>
-<table class="table">
-<colgroup>
-<col style="width: 10%">
-<col style="width: 45%">
-<col style="width: 45%">
-</colgroup>
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: left;">데이터 호수</th>
-<th style="text-align: left;">데이터 창고</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>자료구조</td>
-<td style="text-align: left;">원천 데이터 (Raw Data)</td>
-<td style="text-align: left;">전처리 된 데이터</td>
-</tr>
-<tr class="even">
-<td>데이터 활용 목적</td>
-<td style="text-align: left;">미결정 상태</td>
-<td style="text-align: left;">현재 사용 중</td>
-</tr>
-<tr class="odd">
-<td>사용자</td>
-<td style="text-align: left;">데이터 과학자</td>
-<td style="text-align: left;">비즈니스 현업전문가</td>
-</tr>
-<tr class="even">
-<td>접근성</td>
-<td style="text-align: left;">접근성 높고 신속한 업데이트</td>
-<td style="text-align: left;">변경하기 쉽지 않고 비용도 많이 소요됨.</td>
-</tr>
-</tbody>
-</table>
-<p>클라우드 서비스도 데이터 창고(Data Warehouse)를 기능으로 제공하고 있는데 상품명은 다음과 같다.</p>
-<ul>
-<li>AWS: 아마존 Redshift</li>
-<li>MS Azure: Azure SQL Data Warehouse</li>
-<li>구글: 구글 빅쿼리(Big Query)</li>
-</ul>
-<p>데이터 호수도 클라우드 서비스에서 제공된다. Object Storage와 함께 하둡/스파크 빅데이터 소프트웨어와 함께 검토된다.</p>
-<ul>
-<li>AWS: AWS S3</li>
-<li>MS Azure: Blob Storage / Azure Data Lake Storage</li>
-<li>구글: Cloud Storage</li>
-<li>네이버: Object Storage</li>
-</ul>
-</section>
-<section id="etl-vs-elt" class="level2">
-<h2 class="anchored" data-anchor-id="etl-vs-elt">ETL과 ELT <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></h2>
-<p>ETL은 추출, 변환, 적재(Extract, Transform, Load)의 약자로 동일 기종 혹은 이기종의 원천데이터로부터 데이터 웨어하우스에서 쌓는 과정을 뜻하는데 변환(Transform) 과정이 무척 많은 노력이 투여된다. 반면에 ELT는 데이터를 먼저 적재한 후에 필요에 따라 변환과정을 거쳐 후속 작업에 사용한다. 데이터 호수 ELT 프로세스가 매력적으로 보이지만 데이터 카탈로그가 잘 관리되지 않는다면 <strong>데이터 늪(Data Swamp)</strong>가 될 수 있다.</p>
-<p><img src="images/etl-vs-elt.png" class="img-fluid"></p>
-<p>데이터 호수를 잘 관리하지 않는다면 데이터 늪에 빠질 수 있는데 메타데이터를 잘 관리하고 거버넌스를 확립해야 되고 비정형데이터도 많이 다루기 때문에 데이터 전문가 과학자를 확보하여 효율성을 높인다.</p>
-</section>
-<section id="database-integration" class="level1">
-<h1>데이터 통합(integration)</h1>
-<p>원천데이터가 서로 다른 형태로 다양하게 존재하는 상황에서 데이터를 통합한다는 것은 시스템을 맞추는 것을 넘어 개념적인 데이터 모델로 정립하여야 하고 관련하여 파생된느 다양한 문제를 조화롭게 해결하는 것으로 정의할 수 있다.</p>
-<p>먼저 데이터를 한곳에 모은다고 하면 어떤 데이터를 모을 것인지 정의하고 클라우드 서비스를 사용한다고 하면 AWS Redshift 혹은 S3를 상정하고 혹시나 포함될 수 있는 개인정보도 사전에 식별하여 마스킹 등을 통해 익명화시켜야 되며 데이터 혈통(Data Lineage)도 구축하여 투명성과 가시성도 확보한다.</p>
-<p><img src="images/data-integration.png" class="img-fluid"></p>
-</section>
-<section id="table-partition" class="level1">
-<h1>테이블 분할과 샤딩</h1>
-<p>지금은 빅데이터 시대라 데이터가 커지게 되면 테이블에 담을 수 없는 상황이 온다. 이런 문제를 해결하기 위해 도입된 개념이 <strong>분할(Partition)</strong> 이다. 테이블 크기가 예를 들어 100GB 혹은 1TB가 되면 인덱스도 커져서 메모리에 적재가 되지 않아 쿼리 속도와 업데이트 속도가 현격히 늦어지게 된다. 이런 경우 테이블을 더 작은 단위로 쪼개는데 이를 <strong>분할(Partition)</strong>이라고 한다.</p>
-<p>테이블을 분할하게 될 경우 개념과 논리 데이터 모형은 동일하지만 물리 데이터 모형이 분할에 영향을 받게 된다.</p>
-<ol type="1">
-<li>개념 데이터 모형(Concept Data Model): Entity, Relationship, Attributes
-<ul>
-<li>ERD(Entity Relational Diagram), UML 다이어그램</li>
-</ul></li>
-<li>논리 데이터 모형(Logical Data Model): 테이블, 칼럼, 관계
-<ul>
-<li>데이터베이스 스키마와 모형: 관계형 모형, 스타 스키마(Star Sceman)</li>
-<li><strong>분할(Partition)</strong> 혹은 <strong>샤딩(Sharding)</strong>에 영향을 받음</li>
-</ul></li>
-<li>물리 데이터 모형(Physical Data Model): 물리적 저장장치
-<ul>
-<li>백업 시스템, 파티션, CPU, 저장공간 등</li>
-<li><strong>분할(Partition)</strong> 혹은 <strong>샤딩(Sharding)</strong>의 영향을 받음.</li>
-</ul></li>
-</ol>
-<p>테이블을 분할하는 방법은 수평 분할 (Horizontal Partitioning)과 수직 분할 (Vertical Partitioning) 두가지 방법이 있다.</p>
-<p><img src="images/table-partitioning.png" class="img-fluid"></p>
-<p><strong>데이터베이스 샤딩(databae sharding)</strong>은 테이블이 동일한 데이터베이스에 있지 않고 다른 기계에 있다는 점에서 차이가 난다. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
-<p><img src="images/db-sharding.png" class="img-fluid"></p>
-</section>
-<section id="db-design" class="level1">
-<h1>데이터베이스 설계</h1>
-<p>데이터베이스 설계(Database Design)는 데이터를 논리적으로 저장하는 방식으로 데이터베이스 모델(Database Model)을 사용한다. 데이터베이스 모델(Database Model)은 데이터베이스 구조에 대한 최상위 사양서의 역할을 한다. 일반적으로 관계형 데이터베이스 모형(Relational Database Model)을 사용하지만 NoSQL, 객체지향 DB 모형, 네트워크 DB 모델 등이 있다. 데이터베이스의 청사진으로 스키마를 사용해서 테이블, 필드, 관계, 인덱스, 뷰로 구성하여 작성한다.</p>
-<ol type="1">
-<li>데이터 (Data) ← 논리 모형</li>
-<li>데이터베이스 모형 ← 데이터 구조에 대한 사양서</li>
-<li>스키마 ← 레고 블럭(Table, Field, Relation, Index, View 등)으로 데이터베이스 설계</li>
-</ol>
-<p>즉, 데이터를 체계적으로 구조화하는 논리모형을 먼저 구상하고 나서 사양서를 작성하고 실제 데이터베이스 설계로 들어간다.</p>
-<section id="db-design-in-practice" class="level2">
-<h2 class="anchored" data-anchor-id="db-design-in-practice">데이터 모형(Data Modeling)</h2>
-<p>데이터를 저장하는 방식에 대해 데이터 모형(Data Model)을 제작하는 단계는 다음과 같다.</p>
-<ol type="1">
-<li>개념 데이터 모형(Concept Data Model): Entity, Relationship, Attributes
-<ul>
-<li>ERD(Entity Relational Diagram), UML 다이어그램</li>
-</ul></li>
-<li>논리 데이터 모형(Logical Data Model): 테이블, 칼럼, 관계
-<ul>
-<li>데이터베이스 스키마와 모형: 관계형 모형, 스타 스키마(Star Sceman)</li>
-</ul></li>
-<li>물리 데이터 모형(Physical Data Model): 물리적 저장장치
-<ul>
-<li>백업 시스템, 파티션, CPU, 저장공간 등</li>
-</ul></li>
-</ol>
-</section>
-<section id="data-normalization" class="level2">
-<h2 class="anchored" data-anchor-id="data-normalization">데이터 정규화 <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a></h2>
-<p>관계형 데이터베이스의 설계에서 <strong>정규화(normalization)</strong>는 중복을 최소화하도록 데이터를 구조화하는 프로세스를 지칭한다. 관계형 모델의 발견자인 에드거 F. 커드는 1970년에 제 1 정규형(1NF)로 알려진 정규화의 개념을 도입하였고, 에드거 F. 커드는 이어서 제 2 정규형(2NF)과 제 3 정규형(3NF)을 1971년에 정의하였으며, 1974년에는 레이먼드 F. 보이스와 함께 보이스-코드 정규화(BCNF)를 정의하였다. 통상 관계형 데이터베이스 테이블이 제 3 정규(3NF)형이 되었으면 <strong>정규화(Normalization)</strong> 되었다고 한다. 따라서, 데이터 정규형(Normal Forms)은 1NF 부터 3NF까지가 많이 회자된다.</p>
-<ul>
-<li>제 1 정규형 (1 NF)
-<ul>
-<li>각 레코드는 유일무이(unique)해야 한다. 즉, 중복(duplication)이 없어야 함.</li>
-<li>각 셀은 하나의 값만 가져야 함.</li>
-</ul></li>
-<li>제 2 정규형 (2 NF)
-<ul>
-<li>제 1 정규형을 만족한다.</li>
-<li>기본키(primary key)가 한 칼럼이면 자동으로 제 2 정규형을 만족한다.</li>
-<li>기본키가 아닌 모든 속성이 기본키에 완전 함수 종속되어야 한다.</li>
-</ul></li>
-<li>제 3 정규형 (3 NF)
-<ul>
-<li>제 2 정규형을 만족한다.</li>
-<li>기본키가 아닌 모든 속성이 기본키에 이행적 함수 종속이 되지 않아야 한다.</li>
-<li>즉, 이행(移行)적 함수 종속 (Transitive Functional Dependency)이 없어야 한다.</li>
-<li>함수 종속 사례로 X, Y, Z 에 대해 X → Y 이고 Y → Z 이면 X → Z 가 성립한다. 이를 Z 가 X 에 이행적으로 함수 종속되었다고 함.</li>
-</ul></li>
-</ul>
-</section>
-<section id="r-db-what-it-is" class="level2">
-<h2 class="anchored" data-anchor-id="r-db-what-it-is">데이터베이스가 뭔가요?</h2>
-<p><strong>데이터베이스(database)</strong>는 데이터를 저장하기 위한 목적으로 조직된 파일이다. 대부분의 데이터베이스는 <strong>키(key)</strong>와 <strong>값(value)</strong>를 매핑한다는 의미에서 딕셔너리처럼 조직되었다. 가장 큰 차이점은 데이터베이스는 디스크(혹은 다른 영구 저장소)에 위치하고 있어서, 프로그램 종료 후에도 정보가 계속 저장된다. 데이터베이스가 영구 저장소에 저장되어서, 컴퓨터 주기억장치(memory) 크기에 제한받는 딕셔너리보다 훨씬 더 많은 정보를 저장할 수 있다.</p>
-<p>딕셔너리처럼, 데이터베이스 소프트웨어는 엄청난 양의 데이터 조차도 매우 빠르게 삽입하고 접근하도록 설계되었다. 컴퓨터가 특정 항목으로 빠르게 찾아갈 수 있도록 데이터베이스에 <strong>인덱스(indexes)</strong>를 추가한다. 데이터베이스 소프트웨어는 인덱스를 구축하여 성능을 보장한다.</p>
-<p>다양한 목적에 맞춰 서로 다른 많은 데이터베이스 시스템이 개발되어 사용되고 있다. Oracle, MySQL, Microsoft SQL Server, PostgreSQL, SQLite이 여기에 포함된다. 이 책에서는 SQLite를 집중해서 살펴볼 것이다. 왜냐하면 매우 일반적인 데이터베이스이며 파이썬에 이미 내장되어 있기 때문이다. 응용프로그램 내부에서 데이터베이스 기능을 제공하도록 SQLite가 다른 응용프로그램 내부에 내장(embedded)되도록 설계되었다. 예를 들어, 다른 많은 소프트웨어 제품이 그렇듯이, 파이어폭스 브라우져도 SQLite를 사용한다.</p>
-<ul>
-<li><a href="http://sqlite.org/">http://sqlite.org/</a></li>
-</ul>
-<p>이번 장에서 기술하는 트위터 스파이더링 응용프로그램처럼 정보과학(Informatics)에서 마주치는 몇몇 데이터 조작 문제에 SQLite가 적합하다.</p>
-</section>
-<section id="r-db-concept" class="level2">
-<h2 class="anchored" data-anchor-id="r-db-concept">데이터베이스 개념</h2>
-<p>처음 데이터베이스를 볼때 드는 생각은 마치 엑셀같은 다중 시트를 지닌 스프레드쉬트(spreadsheet)같다는 것이다. 데이터베이스에서 주요 데이터 구조물은 테이블(tables), 행(rows), and 열(columns)이 된다.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/db-concept.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>데이터베이스 개념</figcaption>
-</figure>
-</div>
-<p>관계형 데이터베이스의 기술적인 면을 설명하면 테이블, 행, 열의 개념은 <strong>관계(relation)</strong>, <strong>튜플(tuple)</strong>, <strong>속성(attribute)</strong> 각각 형식적으로 매칭된다. 이번 장에서는 조금 덜 형식 용어를 사용한다.</p>
-</section>
-<section id="r-db-create-table" class="level2">
-<h2 class="anchored" data-anchor-id="r-db-create-table">데이터베이스 테이블 생성</h2>
-<p>데이터베이스는 R 리스트 혹은 딕셔너리보다 좀더 명확히 정의된 구조를 요구한다. <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></p>
-<p>데이터베이스에 테이블(table)을 생성할 때, 열(column)의 명칭과 각 열(column)에 저장하는 테이터 형식을 사전에 정의해야 한다. 데이터베이스 소프트웨어가 각 열의 데이터 형식을 인식하게 되면, 데이터 형식에 따라 데이터를 저장하고 찾아오는 방법을 가장 효율적인 방식을 선택할 수 있다.</p>
-<p>다음 url에서 SQLite에서 지원되는 다양한 데이터 형식을 살펴볼 수 있다.</p>
-<ul>
-<li><a href="http://www.sqlite.org/datatypes.html">http://www.sqlite.org/datatypes.html</a></li>
-</ul>
-<p>처음에는 데이터 구조를 사전에 정의하는 것이 불편하게 보이지만, 대용량의 데이터가 데이터베이스에 포함되더라도 데이터의 빠른 접근을 보장하는 잇점이 있다.</p>
-<p>데이터베이스 파일과 데이터베이스에 두개의 열을 가진 <code>Tracks</code> 이름의 테이블을 생성하는 코드는 다음과 같다.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>music_db  <span class="ot">&lt;-</span> <span class="st">"data/music.sqlite"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">SQLite</span>(), <span class="at">dbname=</span> music_db)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, <span class="fu">c</span>(<span class="st">'Thunderstruck'</span>, <span class="dv">20</span>))</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, <span class="fu">c</span>(<span class="st">'My Way'</span>, <span class="dv">15</span>))</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>연결 (connect)</strong> 연산은 현재 디렉토리 <code>data/music.sqlite3</code> 파일에 저장된 데이터베이스에 “연결(connection)”한다. 파일이 존재하지 않으면, 자동 생성된다. “연결(connection)”이라고 부르는 이유는 때때로 데이터베이스가 응용프로그램이 실행되는 서버로부터 분리된 “데이터베이스 서버(database server)”에 저장되기 때문이다. 지금 간단한 예제 파일의 경우에 데이터베이스가 로컬 파일 형태로 R 코드 마찬가지로 동일한 디렉토리에 있다.</p>
-<p>파일을 다루는 <strong>파일 핸들(file handle)</strong>처럼 데이터베이스에 저장된 파일에 연산을 수행하기 위해서 <strong>커서(cursor)</strong>를 사용한다. <code>cursor()</code>를 호출하는 것은 개념적으로 텍스트 파일을 다룰 때 <code>readLines()</code>을 호출하는 것과 개념적으로 매우 유사하다.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/db-cursor.png" class="img-fluid figure-img" style="width:100.0%"></p>
-<figcaption>데이터베이스 커서</figcaption>
-</figure>
-</div>
-<p>커서가 생성되면, <code>dbGetQuery()</code> 함수를 사용하여 데이터베이스 콘텐츠에 명령어 실행을 할 수 있다.</p>
-<p>데이터베이스 명령어는 특별한 언어로 표현된다. 단일 데이터베이스 언어를 학습하도록 서로 다른 많은 데이터베이스 업체 사이에서 표준화되었다.</p>
-<p>데이터베이스 언어를 <strong>SQL(Structured Query Language 구조적 질의 언어)</strong>로 부른다.</p>
-<ul>
-<li><a href="http://en.wikipedia.org/wiki/SQL">http://en.wikipedia.org/wiki/SQL</a></li>
-</ul>
-<p>상기 예제에서, 데이터베이스에 두개의 SQL 명령어를 실행했다. 관습적으로 데이터베이스 키워드는 대문자로 표기한다. 테이블명이나 열의 명칭처럼 사용자가 추가한 명령어 부분은 소문자로 표기한다.</p>
-<p>첫 SQL 명령어는 만약 존재한다면 데이터베이스에서 <code>Tracks</code> 테이블을 삭제한다. 동일한 프로그램을 실행해서 오류 없이 반복적으로 <code>Tracks</code> 테이블을 생성하도록하는 패턴이다. <code>DROP TABLE</code> 명령어는 데이터베이스 테이블 및 테이블 콘텐츠 전부를 삭제하니 주의한다. (즉, “실행취소(undo)”가 없다.)</p>
-<pre><code>`dbGetQuery(conn, 'DROP TABLE IF EXISTS Tracks ') `</code></pre>
-<p>두번째 명령어는 title 문자형 열과 plays 정수형 열을 가진 Tracks으로 명명된 테이블을 생성한다.</p>
-<pre><code>`dbGetQuery(conn, 'CREATE TABLE Tracks (title TEXT, plays INTEGER)')`</code></pre>
-<p>이제 Tracks으로 명명된 테이블을 생성했으니, SQL INSERT 연산을 통해 테이블에 데이터를 넣을 수 있다. 다시 한번, 데이터베이스에 연결하여 커서(cursor)를 얻어 작업을 시작한다. 그리고 나서 커서를 사용해서 SQL 명령어를 수행한다.</p>
-<p>SQL <code>INSERT</code> 명령어는 어느 테이블을 사용할지 특정한다. 그리고 나서 <code>(title, plays)</code> 포함할 필드 목록과 테이블 새로운 행에 저장될 VALUES 나열해서 신규 행을 정의를 마친다. 실제 값이 <code>execute()</code> 호출의 두번째 매개변수로 튜플 <code>('My Way', 15)</code> 로 넘겨는 것을 표기하기 위해서 값을 물음표 <code>(?, ?)</code>로 명기한다.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>music_db  <span class="ot">&lt;-</span> <span class="st">"data/music.sqlite"</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="at">drv =</span> <span class="fu">SQLite</span>(), <span class="at">dbname=</span> music_db)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, </span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">'Thunderstruck'</span>, <span class="dv">20</span>))</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"INSERT INTO Tracks (title, plays) VALUES ( ?, ? )"</span>, </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>            <span class="fu">c</span>(<span class="st">'My Way'</span>, <span class="dv">15</span>))</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">'Tracks:'</span>)</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(conn, <span class="st">'SELECT title, plays FROM Tracks'</span>)</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendQuery</span>(conn, <span class="st">"DELETE FROM Tracks WHERE plays &lt; 100"</span>)</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(conn)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>먼저 테이블에 두개 열을 삽입(INSERT)하여 데이터를 데이터베이스에 저장되도록 했다. 그리고 나서, <code>SELECT</code> 명령어를 사용하여 테이블에 방금 전에 삽입한 행을 불러왔다. <code>SELECT</code> 명령어에서 데이터를 어느 열<code>(title, plays)</code>에서, 어느 테이블<code>Tracks</code>에서 가져올지 명세한다. 프로그램 실행결과는 다음과 같다.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dbGetQuery</span>(conn, <span class="st">'SELECT title, plays FROM Tracks'</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>          title plays</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> Thunderstruck    <span class="dv">20</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span>        My Way    <span class="dv">15</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>프로그램 마지막에 SQL 명령어를 실행 사용해서 방금전에 생성한 행을 모두 삭제(<code>DELETE</code>)했기 때문에 프로그램을 반복해서 실행할 수 있다. 삭제(<code>DELETE</code>) 명령어는 <code>WHERE</code> 문을 사용하여 선택 조건을 표현할 수 있다. 따라서 명령문에 조건을 충족하는 행에만 명령문을 적용한다. 이번 예제에서 기준이 모든 행에 적용되어 테이블에 아무 것도 없게 된다. 따라서 프로그램을 반복적으로 실행할 수 있다. 삭제(DELETE)를 실행한 후에 데이터베이스에서 데이터를 완전히 제거했다.</p>
-</section>
-<section id="r-db-sql" class="level2">
-<h2 class="anchored" data-anchor-id="r-db-sql">SQL 요약</h2>
-<p>지금까지, R 예제를 통해서 SQL(Structured Query Language)을 사용했고, SQL 명령어에 대한 기본을 다루었다. 이번 장에서는 SQL 언어를 보고 SQL 구문 개요를 살펴본다.</p>
-<p>대단히 많은 데이터베이스 업체가 존재하기 때문에 호환성의 문제로 SQL(Structured Query Language)이 표준화되었다. 그래서, 여러 업체가 개발한 데이터베이스 시스템 사이에 호환하는 방식으로 커뮤니케이션 가능하다.</p>
-<p>관계형 데이터베이스는 테이블, 행과 열로 구성된다. 열(column)은 일반적으로 텍스트, 숫자, 혹은 날짜 자료형을 갖는다. 테이블을 생성할 때, 열의 명칭과 자료형을 지정한다.</p>
-<pre><code>CREATE TABLE Tracks (title TEXT, plays INTEGER)</code></pre>
-<p>테이블에 행을 삽입하기 위해서 SQL <code>INSERT</code> 명령어를 사용한다.</p>
-<pre><code>INSERT INTO Tracks (title, plays) VALUES ('My Way', 15)</code></pre>
-<p><code>INSERT</code> 문장은 테이블 이름을 명기한다. 그리고 나서 새로운 행에 놓고자 하는 열/필드 리스트를 명시한다. 그리고 나서 키워드 <code>VALUES</code>와 각 필드 별로 해당하는 값을 넣는다.</p>
-<p>SQL <code>SELECT</code> 명령어는 데이터베이스에서 행과 열을 가져오기 위해 사용된다. <code>SELECT</code> 명령문은 가져오고자 하는 행과 <code>WHERE</code>절을 사용하여 어느 행을 가져올지 지정한다. 선택 사항으로 <code>ORDER BY</code> 절을 이용하여 반환되는 행을 정렬할 수도 있다.</p>
-<pre><code>SELECT * FROM Tracks WHERE title = 'My Way'</code></pre>
-<p><code>*</code> 을 사용하여 <code>WHERE</code> 절에 매칭되는 각 행의 모든 열을 데이터베이스에서 가져온다.</p>
-<p>주목할 점은 R과 달리 SQL <code>WHERE</code> 절은 등식을 시험하기 위해서 두개의 등치 기호 대신에 단일 등치 기호를 사용한다. WHERE에서 인정되는 다른 논리 연산자는 <code>&lt;,&gt;,&lt;=,&gt;=,!=</code> 이고, 논리 표현식을 생성하는데 <code>AND</code>, <code>OR</code>, 괄호를 사용한다.</p>
-<p>다음과 같이 반환되는 행이 필드값 중 하나에 따라 정렬할 수도 있다.</p>
-<pre><code>SELECT title,plays FROM Tracks ORDER BY title</code></pre>
-<p>행을 제거하기 위해서, SQL <code>DELETE</code> 문장에 <code>WHERE</code> 절이 필요하다. <code>WHERE</code> 절이 어느 행을 삭제할지 결정한다.</p>
-<pre><code>SELECT title,plays FROM Tracks ORDER BY title</code></pre>
-<p>다음과 같이 SQL <code>UPDATE</code> 문장을 사용해서 테이블에 하나 이상의 행 내에 있는 하나 이상의 열을 갱신(UPDATE)할 수 있다.</p>
-<pre><code>UPDATE Tracks SET plays = 16 WHERE title = 'My Way'</code></pre>
-<p><code>UPDATE</code> 문장은 먼저 테이블을 명시한다. 그리고 나서, <code>SET</code> 키워드 다음에 변경할 필드 리스트 와 값을 명시한다. 그리고 선택사항으로 갱신될 행을 <code>WHERE</code>절에 지정한다. 단일 <code>UPDATE</code> 문장은 <code>WHERE</code>절에서 매칭되는 모든 행을 갱신한다. 혹은 만약 <code>WHERE</code>절이 지정되지 않으면,테이블 모든 행에 대해서 갱신(UPDATE)을 한다.</p>
-<p>네가지 기본 SQL 명령문(<strong>INSERT</strong>, <strong>SELECT</strong>, <strong>UPDATE</strong>, <strong>DELETE</strong>)은 데이터를 생성하고 유지 관리하는데 필요한 기본적인 4가지 작업을 가능케 한다.</p>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -699,19 +331,6 @@ div.csl-indent {
 이광춘, 와/과 신종화. 2023. <em>챗GPT 유닉스쉘</em>. "한국 R 사용자회".
 </div>
 </div>
-</section>
-</section>
-<aside id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p><a href="https://www.talend.com/resources/data-lake-vs-data-warehouse/">talend, ““Four key differences between a data lake and a data warehouse</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p><a href="https://medium.com/@thenortonsetup/dont-let-your-data-lake-turn-into-a-data-swamp-44dba717126b">thenortonsetup (Jan 10, 2017), “Don’t Let Your Data Lake Turn Into A Data Swamp”</a><a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p><a href="https://www.cubrid.org/manual/ko/9.3.0/shard.html">CUBRID SHARD, “Database Sharding”</a><a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p><a href="https://ko.wikipedia.org/wiki/%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4_%EC%A0%95%EA%B7%9C%ED%99%94">위키 백과, “데이터베이스 정규화”</a><a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn5"><p><a href="https://yaboong.github.io/database/2018/03/09/database-normalization-1/">YABOONG (MARCH 9, 2018), “데이터베이스 정규화 - 1NF, 2NF, 3NF”</a><a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6"><p>실질적으로 SQLite는 열에 저장되는 데이터 형식에 대해서 좀더 많은 유연성을 부여하지만, 이번 장에서는 데이터 형식을 엄격하게 적용해서 MySQL 같은 다른 관계형 데이터베이스 시스템에도 동일한 개념이 적용되게 한다.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</aside>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1118,8 +737,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./setup.html" class="pagination-link" aria-label="<span class='chapter-number'>1</span>&nbsp; <span class='chapter-title'>SQLite3</span>">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./theory.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>기본 개념</span>">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

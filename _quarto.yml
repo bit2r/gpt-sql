@@ -18,33 +18,43 @@ book:
   chapters:
     # - acknowledgments.qmd
     - index.qmd
-    - intro.qmd
-    - setup.qmd    
-    - part: "SQL 기본"
+
+    - part: "들어가며"
+      chapters:    
+        - intro.qmd      
+        - theory.qmd      
+        - setup.qmd
+        
+    - part: "SQL 쿼리"
       chapters:
         - select.qmd
-        - sort-dup.qmd
-        - filter.qmd
-        - calc.qmd
-        - null.qmd
-        - agg.qmd
+        - sort-filter.qmd
+        # - sort-dup.qmd
+        # - filter.qmd
+        - null-hygene.qmd
+        # - hygene.qmd        
+        # - null.qmd
+        - calc-agg.qmd
+        # - calc.qmd
+        # - agg.qmd
         - join.qmd
-        - hygene.qmd        
         - create.qmd
-        - prog.qmd
-        - prog-r.qmd
+        - prog.qmd        
+        # - prog-py.qmd
+        # - prog-r.qmd
         
     - part: "활용사례"
       chapters:
         - spreadsheet.qmd
         - etl.qmd        
-        - crime_db.qmd
+        - case_dvd.qmd
         
     - part: "챗GPT SQL"
       chapters:
-        - lang2sql.qmd
+        - advanced_db.qmd
         - llm.qmd
 
+        
     - references.qmd
 
 format:

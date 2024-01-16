@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 6&nbsp; 결측 데이터</title>
+<title>챗GPT SQL - 6&nbsp; 데이터 결측과 위생</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./agg.html" rel="next">
-<link href="./calc.html" rel="prev">
+<link href="./calc-agg.html" rel="next">
+<link href="./sort-filter.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -115,7 +115,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./null.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./null-hygene.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -146,16 +146,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">감사의 글</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">들어가며</span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">SQL 기본</span></a>
+ <span class="menu-text">들어가며</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -163,44 +157,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">SQLite3</span></span></a>
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./theory.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./setup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">SQL 쿼리</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./sort-dup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">정렬과 중복제거</span></span></a>
+  <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">필터</span></span></a>
+  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -211,55 +216,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 위생</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">활용사례</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="토글 섹션">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./crime_db.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -267,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">챗GPT SQL</span></a>
+ <span class="menu-text">활용사례</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -275,14 +239,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lang2sql.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+  <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./etl.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">챗GPT SQL</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="토글 섹션">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./advanced_db.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,11 +296,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link active" data-scroll-target="#연습문제"><span class="header-section-number">6.1</span> 연습문제</a>
+  <li><a href="#데이터-위생" id="toc-데이터-위생" class="nav-link active" data-scroll-target="#데이터-위생"><span class="header-section-number">6.1</span> 데이터 위생</a></li>
+  <li><a href="#db-three-keys" id="toc-db-three-keys" class="nav-link" data-scroll-target="#db-three-keys"><span class="header-section-number">6.2</span> 세 종류 키</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">6.3</span> 연습문제</a>
   <ul class="collapse">
-  <li><a href="#알려진-날짜별로-정렬" id="toc-알려진-날짜별로-정렬" class="nav-link" data-scroll-target="#알려진-날짜별로-정렬"><span class="header-section-number">6.1.1</span> 알려진 날짜별로 정렬</a></li>
-  <li><a href="#집합에서-null" id="toc-집합에서-null" class="nav-link" data-scroll-target="#집합에서-null"><span class="header-section-number">6.1.2</span> 집합에서 NULL</a></li>
-  <li><a href="#표식값-장단점" id="toc-표식값-장단점" class="nav-link" data-scroll-target="#표식값-장단점"><span class="header-section-number">6.1.3</span> 표식값 장단점</a></li>
+  <li><a href="#알려진-날짜별로-정렬" id="toc-알려진-날짜별로-정렬" class="nav-link" data-scroll-target="#알려진-날짜별로-정렬"><span class="header-section-number">6.3.1</span> 알려진 날짜별로 정렬</a></li>
+  <li><a href="#집합에서-null" id="toc-집합에서-null" class="nav-link" data-scroll-target="#집합에서-null"><span class="header-section-number">6.3.2</span> 집합에서 NULL</a></li>
+  <li><a href="#표식값-장단점" id="toc-표식값-장단점" class="nav-link" data-scroll-target="#표식값-장단점"><span class="header-section-number">6.3.3</span> 표식값 장단점</a></li>
+  <li><a href="#원자-값-식별하기" id="toc-원자-값-식별하기" class="nav-link" data-scroll-target="#원자-값-식별하기"><span class="header-section-number">6.3.4</span> 원자 값 식별하기</a></li>
+  <li><a href="#기본-키-식별하기" id="toc-기본-키-식별하기" class="nav-link" data-scroll-target="#기본-키-식별하기"><span class="header-section-number">6.3.5</span> 기본 키 식별하기</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -315,9 +312,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./setup.html">SQL 기본</a></li><li class="breadcrumb-item"><a href="./null.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./null-hygene.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">결측 데이터</span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></h1>
 </div>
 
 
@@ -607,10 +604,90 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </table>
 <p>여전히 이러한 접근법이 맞는 것인지 아닌 것인지 판단할 필요가 있다. 만약 절대적으로 결과에 Lake가 측정한 어떠한 값도 포함하지 않는다고 확신한다면, 누가 작업을 한 것인지 모르는 모든 레코드를 제외할 필요가 있다.</p>
 <p>산술 또는 부울 연산자와 달리, <code>min</code>, <code>max</code> 또는 <code>avg</code>와 같은 여러 값을 결합하는 집계 함수는 <code>null</code> 값을 <em>무시한다</em>. 대부분의 경우, 이는 바람직한 결과이다. 예를 들어, 알려지지 않은 값들이 평균을 낼 때 <code>null</code>값은 데이터에 영향을 주지 않는다. 집계 함수는 다음 장에서 더 자세히 다룰 것이다.</p>
-<section id="연습문제" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">6.1</span> 연습문제</h2>
-<section id="알려진-날짜별로-정렬" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="알려진-날짜별로-정렬"><span class="header-section-number">6.1.1</span> 알려진 날짜별로 정렬</h3>
+<section id="데이터-위생" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="데이터-위생"><span class="header-section-number">6.1</span> 데이터 위생</h2>
+<p><strong>데이터 위생(data hygiene)</strong>은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자.</p>
+<p>첫번째 규칙은 모든 값은 독립 요소로 분해될 수 없는 <strong>원자(atomic)</strong>적 속성을 지녀야 한다. 하나의 칼럼에 전체 이름을 넣는 대신에 별도로 구별되는 칼럼에 이름과 성을 저장해서 이름 컴포넌트를 뽑아내는 부분 문자열 연산(substring operation)을 사용할 필요가 없다. 좀더 중요하게는, 이름을 두 부분으로 저장한다. 왜냐하면, 공백으로 쪼개는 것은 신뢰성이 약하다. “Eloise St.&nbsp;Cyr” 혹은 “Jan Mikkel Steubart” 같은 이름을 생각하면 쉽게 알 수 있다.</p>
+<p>두번째 규칙은 모든 레코드는 유일한 기본키를 가져야한다. 내재적인 의미가 전혀없는 일련번호가 될 수도 있고, 레코드 값중의 하나 (<code>Person</code> 테이블의 <code>ident</code> 필드), 혹은 <code>Survey</code> 테이블에서 심지어 모든 측정값을 유일하게 식별하는 <code>(taken, person, quant)</code> 삼중값의 조합도 될 수 있다.</p>
+<p>세번째 규칙은 불필요한 정보가 없어야 한다. 예를 들어, <code>Site</code>테이블을 제거하고 다음과 같이 <code>Visited</code> 테이블을 다시 작성할 수 있다.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>lat</th>
+<th>long</th>
+<th>dated</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>619</td>
+<td>-49.85</td>
+<td>-128.57</td>
+<td>1927-02-08</td>
+</tr>
+<tr class="even">
+<td>622</td>
+<td>-49.85</td>
+<td>-128.57</td>
+<td>1927-02-10</td>
+</tr>
+<tr class="odd">
+<td>734</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>1930-01-07</td>
+</tr>
+<tr class="even">
+<td>735</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>1930-01-12</td>
+</tr>
+<tr class="odd">
+<td>751</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>1930-02-26</td>
+</tr>
+<tr class="even">
+<td>752</td>
+<td>-47.15</td>
+<td>-126.72</td>
+<td>-null-</td>
+</tr>
+<tr class="odd">
+<td>837</td>
+<td>-48.87</td>
+<td>-123.40</td>
+<td>1932-01-14</td>
+</tr>
+<tr class="even">
+<td>844</td>
+<td>-49.85</td>
+<td>-128.57</td>
+<td>1932-03-22</td>
+</tr>
+</tbody>
+</table>
+<p>사실, 스프레드쉬트와 마찬가지로 각 행에 각 측정값에 관한 모든 정보를 기록하는 하나의 테이블을 사용할 수도 있다. 문제는 이와 같은 방식으로 조직된 데이터를 일관성있게 관리하는 것은 매우 어렵다. 만약 특정한 사이트의 특정한 방문 날짜가 잘못된다면, 데이터베이스에 다수의 레코드를 변경해야한다. 더 안좋은 것은 다른 사이트도 그 날짜에 방문되었기 때문에 어느 레코드를 변경할지 추정해야하는 것이다.</p>
+<p>네번째 규칙은 모든 값의 단위는 명시적으로 저장되어야 한다. 예제 데이터베이스는 그렇지 못해서 문제다. 로에리히(Roerich)의 염도 측정치는 다른 사람들보다 몇 배나 더 높지만, 천분율(parts per thousand) 대신 백만분율(parts per million)을 사용했는지, 아니면 1932년 그 사이트에서 실제로 염분 이상 현상이 있었는지 알 수 없습니다.</p>
+<p>한걸음 물러나서 생각하자, 데이터와 저장하는데 사용되는 도구는 공생관계다. 테이블과 조인은 데이터가 특정 방식으로 잘 조직되었다면 매우 효과적이다. 하지만, 만약 특정 형태로 되어 있다면 효과적으로 다룰 수 있는 도구가 있기 때문에 데이터를 그와 같은 방식으로 조직하기도 한다. 인류학자가 말했듯이, 도구는 도구를 만드는 손을 만든다. (the tool shapes the hand that shapes the tool) 즉, 도구(기술, 방법론 등)가 사용자(인간, 조직 등)에게 영향을 미치며, 동시에 사용자가 그 도구를 개선하거나 변형시키는 과정을 의미한다. 결과적으로, 도구와 사용자는 서로 영향을 주고받으며 발전해 나간다는 개념을 내포하고 있다.</p>
+</section>
+<section id="db-three-keys" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="db-three-keys"><span class="header-section-number">6.2</span> 세 종류 키</h2>
+<p>지금까지 데이터를 다중 연결된 테이블에 넣고 <strong>키(keys)</strong>를 사용하여 행을 연결하는 방식으로 데이터 모델을 생성했는데, 키와 관련된 몇몇 용어를 살펴볼 필요가 있다. 일반적으로 데이터베이스 모델에서 세가지 종류의 키가 사용된다.</p>
+<ul>
+<li><p><strong>논리 키(logical key)</strong>는 “실제 세상”이 행을 찾기 위해서 사용하는 키다. 데이터 모델 예제에서, <code>name</code> 필드는 논리키다. 사용자에 대해서 <code>screen_name</code>이고, <code>name</code> 필드를 사용하여 프로그램에서 여러번 사용자 행을 찾을 수 있다. 논리 키에 <code>UNIQUE</code> 제약 사항을 추가하는 것이 의미있다는 것을 종종 이해하게 된다. 논리 키는 어떻게 바깥 세상에서 행을 찾는지 다루기 때문에, 테이블에 동일한 값을 가진 다중 행이 존재한다는 것은 의미가 없다.</p></li>
+<li><p><strong>주키(primary key)</strong>는 통상적으로 데이터베이스에서 자동 대입되는 숫자다. 프로그램 밖에서는 일반적으로 의미가 없고, 단지 서로 다른 테이블에서 행을 열결할 때만 사용된다. 테이블에 행을 찾을 때, 통상적으로 주키를 사용해서 행을 찾는 것이 가장 빠르게 행을 찾는 방법이다. 주키는 정수형이어서, 매우 적은 저장공간을 차지하고 매우 빨리 비교 혹은 정렬할 수 있다. 이번에 사용된 데이터 모델에서 <code>id</code> 필드가 주키의 한 예가 된다.</p></li>
+<li><p><strong>외부 키(foreign key)</strong>는 일반적으로 다른 테이블에 연관된 행의 주키를 가리키는 숫자다. 이번에 사용된 데이터 모델의 외부 키의 사례는 <code>from_id</code>다.</p></li>
+</ul>
+<p>주키 <code>id</code>필드명을 호출하고, 항상 외부키에 임의 필드명에 접미사로 <code>_id</code> 붙이는 명명규칙을 사용한다.</p>
+</section>
+<section id="연습문제" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">6.3</span> 연습문제</h2>
+<section id="알려진-날짜별로-정렬" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="알려진-날짜별로-정렬"><span class="header-section-number">6.3.1</span> 알려진 날짜별로 정렬</h3>
 <p>날짜가 알려지지 않은 (즉 <code>null</code>) 항목은 빼고, 날짜 순으로 <code>Visited</code> 테이블에 있는 레코드를 정렬한</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">ORDER</span> <span class="kw">BY</span> dated <span class="kw">ASC</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
@@ -660,8 +737,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="집합에서-null" class="level3" data-number="6.1.2">
-<h3 data-number="6.1.2" class="anchored" data-anchor-id="집합에서-null"><span class="header-section-number">6.1.2</span> 집합에서 NULL</h3>
+<section id="집합에서-null" class="level3" data-number="6.3.2">
+<h3 data-number="6.3.2" class="anchored" data-anchor-id="집합에서-null"><span class="header-section-number">6.3.2</span> 집합에서 NULL</h3>
 <p>다음 쿼리가 어떤 결과를 생성할 것으로 예상하는가?</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IN</span> (<span class="st">'1927-02-08'</span>, <span class="kw">NULL</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>실제로 어떤 결과를 생성하는가?</p>
@@ -673,12 +750,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb13"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">=</span> <span class="st">'1927-02-08'</span> <span class="kw">OR</span> dated <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이 쿼리는 ’dated’가 ’1927-02-08’이거나 NULL인 행을 모두 반환한다.</p>
 </section>
-<section id="표식값-장단점" class="level3" data-number="6.1.3">
-<h3 data-number="6.1.3" class="anchored" data-anchor-id="표식값-장단점"><span class="header-section-number">6.1.3</span> 표식값 장단점</h3>
+<section id="표식값-장단점" class="level3" data-number="6.3.3">
+<h3 data-number="6.3.3" class="anchored" data-anchor-id="표식값-장단점"><span class="header-section-number">6.3.3</span> 표식값 장단점</h3>
 <p>일부 데이터베이스 설계자들은 <code>null</code> 대신 표식값(sentienl value)을 사용하여 누락된 데이터를 표시하는 것을 선호한다. 예를 들어, 누락된 날짜에 “0000-00-00”을 사용하거나, 염도나 방사능 측정치가 누락된 경우 -1.0을 사용한다(실제 측정치는 음수가 될 수 없으므로). 이러한 접근방법이 단순화시킨 것은 무엇인가? 어떤 부담이나 위험을 도입하는가?</p>
 <hr>
 <p>표식값은 누락된 데이터의 존재를 명확히 표현한다. <code>null</code>보다 직관적으로 이해될 수 있고, 특정 값으로 데이터를 표시하면 null 값을 다룰 때 발생할 수 있는 복잡성(예: IS NULL 조건)을 피할 수 있다.</p>
 <p>표식값은 실제 데이터와 혼동될 위험이 있다. 예를 들어, “0000-00-00”이나 -1.0이 실제 측정치로 잘못 해석될 수 있다. 센티넬 값은 데이터 분석 시 추가적인 검증 단계를 필요로 한다. 예를 들어, 평균을 계산할 때 -1.0과 같은 표식값을 제외해야 한다. 센티넬 값의 사용은 데이터베이스 설계 및 유지 관리를 더 복잡하게 만들 수 있다. 모든 사용자 및 개발자가 표식값의 의미를 정확히 이해하고 있어야 한다.</p>
+</section>
+<section id="원자-값-식별하기" class="level3" data-number="6.3.4">
+<h3 data-number="6.3.4" class="anchored" data-anchor-id="원자-값-식별하기"><span class="header-section-number">6.3.4</span> 원자 값 식별하기</h3>
+<p>다음 중 어떤 것이 원자 값인가? 어떤 것이 아닌가? 그 이유는 무엇인가?</p>
+<ul>
+<li>뉴질랜드 (New Zealand)</li>
+<li>87 튜링 애비뉴 (87 Turing Avenue)</li>
+<li>1971년 1월 25일 (January 25, 1971)</li>
+<li>XY 좌표 (0.5, 3.3)</li>
+</ul>
+<hr>
+<p>뉴질랜드는 명확한 원자 값이다.</p>
+<p>주소와 XY 좌표는 별도로 저장되야 하는 여러 정보를 포함하고 있다.</p>
+<ul>
+<li>주소, 거리명</li>
+<li>X 좌표, Y 좌표</li>
+</ul>
+<p>날짜 항목은 월, 일, 연도 요소를 포함하고 있어 덜 명확하다. 그러나 SQL에는 <code>DATE</code> 데이터 유형이 있으며, 날짜는 이 형식을 사용하여 저장되어야 한다. 월, 일 또는 연도를 별도로 작업해야 하는 경우, 데이터베이스 소프트웨어에서 사용 가능한 SQL 함수를 사용할 수 있다(예: SQLite <a href="https://docs.oracle.com/cd/B19306_01/server.102/b14200/functions050.htm"><code>EXTRACT</code></a> 또는 <a href="https://www.sqlite.org/lang_datefunc.html"><code>STRFTIME</code></a>).</p>
+</section>
+<section id="기본-키-식별하기" class="level3" data-number="6.3.5">
+<h3 data-number="6.3.5" class="anchored" data-anchor-id="기본-키-식별하기"><span class="header-section-number">6.3.5</span> 기본 키 식별하기</h3>
+<p>다음 테이블에 기본 키는 무엇인가? 즉, 어떤 값 혹은 값들을 조합해야 레코드를 유일무이하게 식별해낼 수 있을까?</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>latitude</th>
+<th>longitude</th>
+<th>date</th>
+<th>temperature</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>57.3</td>
+<td>-22.5</td>
+<td>2015-01-09</td>
+<td>-14.2</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>위도, 경도 및 날짜는 모두 온도 기록을 고유하게 식별하는 데 필요하다.</p>
 
 
 </section>
@@ -1084,13 +1203,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./calc.html" class="pagination-link  aria-label=" &lt;span="" 값="" 계산&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span>
+      <a href="./sort-filter.html" class="pagination-link  aria-label=" &lt;span="" 필터&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./agg.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>집계</span>">
-        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./calc-agg.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>새로운 필드와 집계</span>">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
