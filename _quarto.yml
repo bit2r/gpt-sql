@@ -60,7 +60,7 @@ book:
 format:
   html:
     theme: cosmo
-    cover-image: images/cover.png
+    cover-image: images/logo.png
     number-depth: 3
     number-sections: true
     colorlinks: true
