@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 17&nbsp; 오픈 LLM 리더보드</title>
+<title>챗GPT SQL - 15&nbsp; 오픈소스 SQL LLM</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -85,7 +85,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./references.html" rel="next">
-<link href="./advanced_db.html" rel="prev">
+<link href="./text2sql.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -135,7 +135,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./advanced_db.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -169,7 +169,7 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">들어가며</span></a>
+ <span class="menu-text">시작을 위한 준비</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -218,14 +218,14 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./calc.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 값 계산</span></span></a>
+  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">집계</span></span></a>
+  <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -236,26 +236,14 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./prog-r.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -272,19 +260,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -300,14 +288,14 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced_db.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+  <a href="./text2sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">자연어 SQL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
   </div>
 </li>
       </ul>
@@ -328,18 +316,18 @@ div.csl-indent {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#lm-스튜디오-설치" id="toc-lm-스튜디오-설치" class="nav-link active" data-scroll-target="#lm-스튜디오-설치"><span class="header-section-number">17.1</span> LM 스튜디오 설치</a></li>
-  <li><a href="#survey.db-쿼리" id="toc-survey.db-쿼리" class="nav-link" data-scroll-target="#survey.db-쿼리"><span class="header-section-number">17.2</span> <code>survey.db</code> 쿼리</a></li>
-  <li><a href="#sql-데이터셋" id="toc-sql-데이터셋" class="nav-link" data-scroll-target="#sql-데이터셋"><span class="header-section-number">17.3</span> SQL 데이터셋</a></li>
+  <li><a href="#lm-스튜디오" id="toc-lm-스튜디오" class="nav-link active" data-scroll-target="#lm-스튜디오"><span class="header-section-number">15.1</span> LM 스튜디오</a></li>
+  <li><a href="#자동화-프로그래밍" id="toc-자동화-프로그래밍" class="nav-link" data-scroll-target="#자동화-프로그래밍"><span class="header-section-number">15.2</span> 자동화 프로그래밍</a></li>
+  <li><a href="#sql-데이터셋" id="toc-sql-데이터셋" class="nav-link" data-scroll-target="#sql-데이터셋"><span class="header-section-number">15.3</span> SQL 데이터셋</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./advanced_db.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./llm.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></h1>
 </div>
 
 
@@ -356,13 +344,21 @@ div.csl-indent {
 </header>
 
 
-<ol type="1">
-<li>mkdir AI_Projects</li>
-<li>conda create -n sql python=3.11</li>
-<li>conda activate sql</li>
-</ol>
-<section id="lm-스튜디오-설치" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="lm-스튜디오-설치"><span class="header-section-number">17.1</span> LM 스튜디오 설치</h2>
+<p>OpenAI 챗GPT는 2022년 11월 30일에 첫 공개되어 압도적인 성능에 모두가 놀랐으며, 이에 따라 GPT 기술을 개발한 구글도 서둘러 2023년 2월에 ’바드(Bard)’를 출시했으나, 기대에 미치지 못하는 성능으로 주가가 7% 하락하는 사건이 발생했다. 마이크로소프트는 OpenAI와 전략적 파트너십을 맺어 큰 성공을 거두었고, 페이스북으로 유명한 메타는 오픈소스 LLM, ’라마 모델(Llama Model)’을 출시하며 새로운 장을 열었다.</p>
+<p>OpenAI GPT 모델은 뛰어난 성능을 자랑하지만, 모델을 호출할 때마다 상당한 비용이 들고, 특히 한국어는 토큰에서 상대적인 불이익을 받고 있다. 2023년 7월 기준으로 OpenAI는 GPT 언어 모델, 달리(DALL-E)로 대표되는 이미지 생성 모델, 위스퍼(Whisper) 오디오 모델, 임베딩 모델로 크게 나뉘며, 인기 있는 언어 모델은 성능은 다소 낮지만 빠르고 저렴한 GPT-3.5 터보와 성능은 높지만 느리고 비싼 GPT-4로 이원화되어 운영되고 있다. <a href="#fig-openai-pricing" class="quarto-xref">그림&nbsp;<span>15.1</span></a> 에서 1,000 토큰당 1달러, 환율 1,300원을 기준으로 가장 저렴한 임베딩 모델부터 GPT-4까지의 가격이 비교되어 있다.</p>
+<p>OpenAI를 비롯한 마이크로소프트, 구글, 아마존, 애플, 엔비디아 등 극소수 거대 기술 기업을 제외하고, 메타가 촉발시킨 오픈소스 LLM은 전 세계 많은 테크 기업과 개발자에게 영감을 주어 OpenAI의 GPT 모델을 따라잡기 위해 경주한 결과 현재 몇몇 분야에서는 사용하기 적합한 성능을 갖춘 GPT 모델이 등장하고 있다.</p>
+<div id="fig-openai-pricing" class="quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-openai-pricing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/pricing_20230621_g.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-openai-pricing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+그림&nbsp;15.1: OpenAI API 호출가격
+</figcaption>
+</figure>
+</div>
+<section id="lm-스튜디오" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="lm-스튜디오"><span class="header-section-number">15.1</span> LM 스튜디오</h2>
 <p>LM Studio는 사용자가 다양한 오픈 소스 거대 언어 모델(LLM)을 실험할 수 있는 데스크톱 앱으로 로컬 컴퓨터에서 비용 걱정 없이 LM Studio를 사용해서 OpenAI 호환 로컬 LLM 서버를 업무에 활용할 수 있다. LM Studio에서 오픈소스 LLM 모델을 로컬 서버에 배포하고 OpenAI에서 개발한 <code>openai</code> 패키지를 사용해서 OpenAI API와 동일한 방식으로 로컬 LLM 서버에 접근할 수 있기 때문에 기존 OpenAI API를 가정하고 제작한 소스코드를 재사용할 수 있다는 점에서 매우 유용하다.</p>
 <p>먼저 LM Studio를 설치하기 위해서는 <a href="https://lmstudio.ai/">LM Studio 웹사이트</a>에서 운영체제에 맞게 앱을 다운로드 받아서 설치한다. 좌측 돋보기 모양 아이콘을 클릭하여 검색창에 <code>sql</code>을 입력하면 <code>sql</code>을 학습한 LLM 모델을 찾을 수 있고 안내에 따라 다운로드하면 SQL 코드를 생성하는 AI 모델을 로컬 컴퓨터에 설치하게 된다.</p>
 <div class="quarto-figure quarto-figure-center">
@@ -381,8 +377,8 @@ div.csl-indent {
 <p>좌측 채팅 아이콘 아래 양방향 화살표(↔︎)를 클릭하면 “Local Inference Server” 아래 “Start Server” 버튼이 있고 이를 클릭하면 오픈소스 LLM 모델을 서버로 배포하여 OpenAI 호환 API를 사용하는 것처럼 로컬 LLM 서버에 접근할 수 있게 된다. “Client Code Example”에서 <code>curl</code>, 파이썬(<code>chat</code>, <code>ai assistant</code>, <code>vision</code>) 예제 코드가 주석과 함께 제시되어 있어 이를 참고하여 후속 개발작업에 유용하게 활용할 수 있다.</p>
 <p><img src="images/llm_studio_code.jpg" class="img-fluid"></p>
 </section>
-<section id="survey.db-쿼리" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="survey.db-쿼리"><span class="header-section-number">17.2</span> <code>survey.db</code> 쿼리</h2>
+<section id="자동화-프로그래밍" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="자동화-프로그래밍"><span class="header-section-number">15.2</span> 자동화 프로그래밍</h2>
 <p>앞서 개발자가 직접 SQL 쿼리를 직접 작성하는 대신 SQL 특화된 LLM 모델을 사용하여 SQL 쿼리를 생성하는 것도 가능하다. 정확도 높은 SQL 쿼리를 작성하기 위해 명확하게 역할도 부여하고 데이터베이스 스키마 정보도 함께 제공하여 LLM 모델이 SQL 쿼리를 생성할 수 있도록 환경을 설정하고 자연어로 원하는 바를 지정하면 SQL 쿼리를 생성하고 관련 설명도 함께 출력하다.</p>
 <p>주목할 점은 4GB 전후 크기를 갖는 SQL LLM은 생각보다 SQL 쿼리 생성이 눈높이에 맞게 되는 것은 아닌 것으로 보이며, 35.86 GB 크기를 갖는 <code>sqlcoder</code> LLM 모델은 SQL 쿼리 생성에 있어서 더욱 정확한 결과를 보여주고 있다. 물론, OpenAI GPT-4와 비교하면 속도를 비롯하여 여러가지 면에서 부족한 것으로 보이지만 가격이 무료이며, 다른 제약조건이 없다는 점을 생각하면 충분히 사용할 만한 수준이라고 생각된다. 또한, 오픈소스 SQL LLM은 지속적으로 발전을 할 것이기 때문에 작년과 비교하여 올해 비약적인 발전이 이뤄질 것으로 예상된다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -435,10 +431,11 @@ div.csl-indent {
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">SELECT</span> DISTINCT p.ident FROM person p JOIN visited v ON p.ident = v.ident JOIN survey s ON p.ident = s.person WHERE s.quant ILIKE <span class="st">'%radiation%'</span><span class="kw">;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="sql-데이터셋" class="level2" data-number="17.3">
-<h2 data-number="17.3" class="anchored" data-anchor-id="sql-데이터셋"><span class="header-section-number">17.3</span> SQL 데이터셋</h2>
-<p><span class="citation" data-cites="dataherald2023texttosql">(Pandey 2023)</span></p>
-<p>GPT-4와 Bard 같은 AI 모델의 자연어 처리 능력이 급격히 향상되면서, 자연어로 질문된 내용에 대한 SQL 쿼리를 생성하는 ’텍스트-투-SQL’과 같은 다양한 NLP 사용 사례에 대한 발전이 가속화되고 있다. 여러 접근 방식과 솔루션이 시장에 나오면서 어느 것이 가장 효율적인지, 어느 것이 정확한 답을 더 신뢰성 있게 생성하는지, 어느 것이 다양한 데이터셋에 가장 잘 적응하는지 평가하는 문제가 생겼다. 이 질문들에 답하기 위해 오픈소스 산업과 학계는 여러 벤치마크를 제시했지만, 오늘날 가장 많이 사용되는 세 가지는 WikiSQL, Spider, BIRD(BIg Bench for LaRge-scale Database Grounded Text-to-SQL Evaluation)이다. WikiSQL은 Salesforce에 의해 2017년 말에 소개된 최초의 대규모 텍스트-투-SQL 데이터 집합이지만, 단순함이라는 큰 단점이 있다. 제공되는 모든 SQL 쿼리는 SELECT, FROM, WHERE 절만을 포함하는 매우 간단하며, 데이터셋 내의 테이블들은 다른 테이블과의 연결이 없다. WikiSQL로 훈련된 모델은 새로운 데이터베이스에서도 작동할 수 있지만, 간단한 자연어 질문에 대해서만 답할 수 있다. 이러한 이유로 최근 텍스트-투-SQL 분야의 연구는 더 복잡한 벤치마크에 초점을 맞추고 있다. 실제로 WikiSQL 리더보드에는 2021년 이전의 제출물만 있으며, 테스트 정확도 90% 이상을 달성한 여러 제출물들이 있지만(가장 성능이 좋은 제출물은 93%에 도달함), 이제 실무자들은 WikiSQL로는 턱없이 부족한 훨씬 더 복잡한 쿼리 생성에 초점을 맞추고 있다.</p>
+<section id="sql-데이터셋" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="sql-데이터셋"><span class="header-section-number">15.3</span> SQL 데이터셋</h2>
+<p>GPT-4와 Bard 같은 AI 모델의 자연어 처리 능력이 급격히 향상되면서, 자연어로 질문된 내용에 대한 SQL 쿼리를 생성하는 ’텍스트-투-SQL’과 같은 다양한 NLP 사용 사례에 대한 발전이 가속화되고 있다. 여러 접근 방식과 솔루션이 시장에 나오면서 어느 것이 가장 효율적인지, 어느 것이 정확한 답을 더 신뢰성 있게 생성하는지, 어느 것이 다양한 데이터셋에 가장 잘 적응하는지 평가하는 문제가 생겼다. 이 질문들에 답하기 위해 오픈소스 산업과 학계는 여러 벤치마크를 제시했지만, 오늘날 가장 많이 사용되는 세 가지는 WikiSQL, Spider, BIRD(BIg Bench for LaRge-scale Database Grounded Text-to-SQL Evaluation)이다. <span class="citation" data-cites="dataherald2023texttosql">(Pandey 2023)</span></p>
+<p>WikiSQL은 Salesforce에 의해 2017년 말에 소개된 최초의 대규모 텍스트-투-SQL 데이터 집합이지만, 단순함이라는 큰 단점이 있다. 제공되는 모든 SQL 쿼리는 SELECT, FROM, WHERE 절만을 포함하는 매우 간단하며, 데이터셋 내의 테이블들은 다른 테이블과의 연결이 없다. WikiSQL로 훈련된 모델은 새로운 데이터베이스에서도 작동할 수 있지만, 간단한 자연어 질문에 대해서만 답할 수 있다. 이러한 이유로 최근 텍스트-투-SQL 분야의 연구는 더 복잡한 벤치마크에 초점을 맞추고 있다.</p>
+<p>실제로 WikiSQL 리더보드에는 2021년 이전의 제출물만 있으며, 테스트 정확도 90% 이상을 달성한 여러 제출물들이 있지만(가장 성능이 좋은 제출물은 93%에 도달함), 이제 실무자들은 WikiSQL로는 턱없이 부족한 훨씬 더 복잡한 쿼리 생성에 초점을 맞추고 있다.</p>
 <p>Spider 데이터셋은 WikiSQL 데이터셋의 단점 중 일부를 보완하려고 한다. 예일 대학의 11명 학생들이 1,000시간 이상의 노력을 통해 개발된 Spider 데이터셋은 복잡성과 교차 도메인성이라는 두 가지 중요한 요소를 도입한다. 복잡성 측면에서 SQL 쿼리는 WikiSQL이 한정된 간단한 SELECT와 WHERE 절을 넘어서, 더 복잡한 GROUP BY, ORDER BY, HAVING 절과 중첩된 쿼리를 포함한다. 또한, 모든 데이터베이스는 외래 키를 통해 여러 테이블이 연결되어 있어 테이블 간에 조인하는 복잡한 쿼리를 가능하게 한다. 교차 도메인성 측면에서 Spider는 200개의 복잡한 데이터베이스를 많은 도메인에 걸쳐 포함하여, 테스트 세트에서 본 적 없는 데이터베이스를 포함시켜 모델의 일반화 가능성을 테스트할 수 있게 한다.</p>
 
 
@@ -849,8 +846,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./advanced_db.html" class="pagination-link  aria-label=" &lt;span="" 데이터셋&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span>
+      <a href="./text2sql.html" class="pagination-link  aria-label=" &lt;span="" sql&lt;="" span&gt;"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">자연어 SQL</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

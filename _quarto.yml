@@ -19,7 +19,7 @@ book:
     # - acknowledgments.qmd
     - index.qmd
 
-    - part: "들어가며"
+    - part: "시작을 위한 준비"
       chapters:    
         - intro.qmd      
         - theory.qmd      
@@ -43,15 +43,16 @@ book:
         # - prog-py.qmd
         # - prog-r.qmd
         
-    - part: "활용사례"
+    - part: "현장활용법"
       chapters:
         - spreadsheet.qmd
-        - etl.qmd        
+        - etl.qmd
+        - duck_postgreSQL.qmd
         - case_dvd.qmd
         
     - part: "챗GPT SQL"
       chapters:
-        - advanced_db.qmd
+        - text2sql.qmd
         - llm.qmd
 
         
