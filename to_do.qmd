@@ -1,0 +1,6 @@
+# Todo list
+
+1. `text2sql.qmd`
+  - 프롬프트 공학
+  - 연습문제
+  

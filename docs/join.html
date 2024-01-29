@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>챗GPT SQL - 7&nbsp; 조인(Join)</title>
+<title>챗GPT SQL - 8&nbsp; 조인(Join)</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,7 +64,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./null-hygene.html" rel="next">
+<link href="./create.html" rel="next">
 <link href="./calc-agg.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./join.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">조인(Join)</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./join.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">들어가며</span></a>
+ <span class="menu-text">시작을 위한 준비</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -202,20 +202,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./join.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
- <span class="menu-text">활용사례</span></a>
+ <span class="menu-text">현장활용법</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="토글 섹션">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -244,19 +244,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀에서 데이터베이스로</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">ETL 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./duck_postgreSQL.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -272,14 +278,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./advanced_db.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">SQL 데이터셋</span></span></a>
+  <a href="./text2sql.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">오픈 LLM 리더보드</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
   </div>
 </li>
       </ul>
@@ -300,13 +306,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#sqlite3-survey-model" id="toc-sqlite3-survey-model" class="nav-link active" data-scroll-target="#sqlite3-survey-model"><span class="header-section-number">7.1</span> 데이터모델 - <code>datamodelr</code></a></li>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">7.2</span> 연습문제</a>
+  <li><a href="#sqlite3-survey-model" id="toc-sqlite3-survey-model" class="nav-link active" data-scroll-target="#sqlite3-survey-model"><span class="header-section-number">8.1</span> 데이터모델 - <code>datamodelr</code></a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">8.2</span> 연습문제</a>
   <ul class="collapse">
-  <li><a href="#방사능-측정값-목록" id="toc-방사능-측정값-목록" class="nav-link" data-scroll-target="#방사능-측정값-목록"><span class="header-section-number">7.2.1</span> 방사능 측정값 목록</a></li>
-  <li><a href="#프랭크-위치" id="toc-프랭크-위치" class="nav-link" data-scroll-target="#프랭크-위치"><span class="header-section-number">7.2.2</span> 프랭크 위치</a></li>
-  <li><a href="#쿼리-독해" id="toc-쿼리-독해" class="nav-link" data-scroll-target="#쿼리-독해"><span class="header-section-number">7.2.3</span> 쿼리 독해</a></li>
-  <li><a href="#누가-어디에-방문했는가" id="toc-누가-어디에-방문했는가" class="nav-link" data-scroll-target="#누가-어디에-방문했는가"><span class="header-section-number">7.2.4</span> 누가 어디에 방문했는가?</a></li>
+  <li><a href="#방사능-측정값-목록" id="toc-방사능-측정값-목록" class="nav-link" data-scroll-target="#방사능-측정값-목록"><span class="header-section-number">8.2.1</span> 방사능 측정값 목록</a></li>
+  <li><a href="#프랭크-위치" id="toc-프랭크-위치" class="nav-link" data-scroll-target="#프랭크-위치"><span class="header-section-number">8.2.2</span> 프랭크 위치</a></li>
+  <li><a href="#쿼리-독해" id="toc-쿼리-독해" class="nav-link" data-scroll-target="#쿼리-독해"><span class="header-section-number">8.2.3</span> 쿼리 독해</a></li>
+  <li><a href="#누가-어디에-방문했는가" id="toc-누가-어디에-방문했는가" class="nav-link" data-scroll-target="#누가-어디에-방문했는가"><span class="header-section-number">8.2.4</span> 누가 어디에 방문했는가?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -314,9 +320,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./join.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">조인(Join)</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./join.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">조인(Join)</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></h1>
 </div>
 
 
@@ -348,8 +354,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figcaption>조사 데이터베이스 구조</figcaption>
 </figure>
 </div>
-<section id="sqlite3-survey-model" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="sqlite3-survey-model"><span class="header-section-number">7.1</span> 데이터모델 - <code>datamodelr</code></h2>
+<section id="sqlite3-survey-model" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="sqlite3-survey-model"><span class="header-section-number">8.1</span> 데이터모델 - <code>datamodelr</code></h2>
 <p><code>survey.db</code> 데이터베이스의 정보를 이용해 데이터프레임을 추출하고, 이를 <code>datamodelr</code>에 넣어 데이터베이스 모델을 시각화한다. <a href="https://github.com/bergant/datamodelr"><code>datamodelr</code></a> 패키지 <code>nycflights13</code> 사례를 참조하여 유사한 방식으로 제작한다. <code>datamodelr</code>는 <a href="https://github.com/bergant/datamodelr">R에서 데이터 모델 다이어그램을 그리는 방법</a>을 제공한다. 먼저 데이터프레임만 시각화하는 작업을 진행한다.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0. 환경설정 -----------------------</span></span>
@@ -943,10 +949,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="연습문제" class="level2" data-number="7.2">
-<h2 data-number="7.2" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">7.2</span> 연습문제</h2>
-<section id="방사능-측정값-목록" class="level3" data-number="7.2.1">
-<h3 data-number="7.2.1" class="anchored" data-anchor-id="방사능-측정값-목록"><span class="header-section-number">7.2.1</span> 방사능 측정값 목록</h3>
+<section id="연습문제" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">8.2</span> 연습문제</h2>
+<section id="방사능-측정값-목록" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="방사능-측정값-목록"><span class="header-section-number">8.2.1</span> 방사능 측정값 목록</h3>
 <p><code>DR-1</code> 사이트의 모든 방사선 측정치를 출력하는 쿼리를 작성하세요.</p>
 <hr>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
@@ -981,8 +987,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="프랭크-위치" class="level3" data-number="7.2.2">
-<h3 data-number="7.2.2" class="anchored" data-anchor-id="프랭크-위치"><span class="header-section-number">7.2.2</span> 프랭크 위치</h3>
+<section id="프랭크-위치" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="프랭크-위치"><span class="header-section-number">8.2.2</span> 프랭크 위치</h3>
 <p>“Frank” 가 방문한 모든 사이트를 출력하는 쿼리를 작성하세요.</p>
 <hr>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
@@ -1009,14 +1015,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tbody>
 </table>
 </section>
-<section id="쿼리-독해" class="level3" data-number="7.2.3">
-<h3 data-number="7.2.3" class="anchored" data-anchor-id="쿼리-독해"><span class="header-section-number">7.2.3</span> 쿼리 독해</h3>
+<section id="쿼리-독해" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="쿼리-독해"><span class="header-section-number">8.2.3</span> 쿼리 독해</h3>
 <p>다음 쿼리가 무슨 결과를 산출하는지 말로 기술하세요.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> Site.name <span class="kw">FROM</span> Site <span class="kw">JOIN</span> Visited</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">ON</span> Site.lat <span class="op">&lt;</span> <span class="op">-</span><span class="fl">49.0</span> <span class="kw">AND</span> Site.name <span class="op">=</span> Visited.site <span class="kw">AND</span> Visited.dated <span class="op">&gt;=</span> <span class="st">'1932-01-01'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="누가-어디에-방문했는가" class="level3" data-number="7.2.4">
-<h3 data-number="7.2.4" class="anchored" data-anchor-id="누가-어디에-방문했는가"><span class="header-section-number">7.2.4</span> 누가 어디에 방문했는가?</h3>
+<section id="누가-어디에-방문했는가" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="누가-어디에-방문했는가"><span class="header-section-number">8.2.4</span> 누가 어디에 방문했는가?</h3>
 <p>각 사이트의 정확한 위치(위도, 경도)와 방문 날짜별로 정렬된 목록을 작성하고, 사이트를 방문한 사람의 개인 이름과 성, 그리고 측정 유형 및 측정값을 나타내는 쿼리를 작성한다. <code>null</code> 값은 모두 피한다. 힌트: 15개의 레코드와 8개의 필드를 얻어야 한다.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> Site.name, Site.lat, Site.<span class="dt">long</span>, Person.personal, Person.family, Survey.quant, Survey.reading, Visited.dated</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span></span>
@@ -1617,12 +1623,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./calc-agg.html" class="pagination-link  aria-label=" &lt;span="" 필드와="" 집계&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./null-hygene.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>데이터 결측과 위생</span>">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./create.html" class="pagination-link" aria-label="<span class='chapter-number'>9</span>&nbsp; <span class='chapter-title'>데이터 생성과 변형</span>">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

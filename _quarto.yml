@@ -2,8 +2,10 @@ project:
   type: book
   output-dir: docs
   preview:
-    port: 7771
+    port: 7772
     browser: true
+  render:
+    - "!to_do.qmd"
 
 lang: ko-KR
 
@@ -29,20 +31,12 @@ book:
       chapters:
         - select.qmd
         - sort-filter.qmd
-        # - sort-dup.qmd
-        # - filter.qmd
         - null-hygene.qmd
-        # - hygene.qmd        
-        # - null.qmd
         - calc-agg.qmd
-        # - calc.qmd
-        # - agg.qmd
         - join.qmd
         - create.qmd
         - prog.qmd        
-        # - prog-py.qmd
-        # - prog-r.qmd
-        
+
     - part: "현장활용법"
       chapters:
         - spreadsheet.qmd
@@ -78,8 +72,14 @@ knitr:
     message: false
     warning: false
     collapse: true
+    code-overflow: code-overflow
     comment: "#>"
     R.options:
       knitr.graphics.auto_pdf: true
 editor_options:
   chunk_output_type: console
+
+editor: 
+  markdown: 
+    wrap: 72
+    
