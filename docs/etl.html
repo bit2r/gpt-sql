@@ -302,12 +302,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#자료-추출" id="toc-자료-추출" class="nav-link active" data-scroll-target="#자료-추출"><span class="header-section-number">12.1</span> 자료 추출</a>
-  <ul class="collapse">
-  <li><a href="#버전-관리" id="toc-버전-관리" class="nav-link" data-scroll-target="#버전-관리"><span class="header-section-number">12.1.1</span> 버전 관리</a></li>
-  </ul></li>
+  <li><a href="#자료-추출" id="toc-자료-추출" class="nav-link active" data-scroll-target="#자료-추출"><span class="header-section-number">12.1</span> 자료 추출</a></li>
   <li><a href="#자료-변환" id="toc-자료-변환" class="nav-link" data-scroll-target="#자료-변환"><span class="header-section-number">12.2</span> 자료 변환</a></li>
-  <li><a href="#적재-load" id="toc-적재-load" class="nav-link" data-scroll-target="#적재-load"><span class="header-section-number">12.3</span> 적재 (Load)</a></li>
+  <li><a href="#자료-적재" id="toc-자료-적재" class="nav-link" data-scroll-target="#자료-적재"><span class="header-section-number">12.3</span> 자료 적재</a></li>
   <li><a href="#쿼리-작성" id="toc-쿼리-작성" class="nav-link" data-scroll-target="#쿼리-작성"><span class="header-section-number">12.4</span> 쿼리 작성</a>
   <ul class="collapse">
   <li><a href="#다작-저자" id="toc-다작-저자" class="nav-link" data-scroll-target="#다작-저자"><span class="header-section-number">12.4.1</span> 다작 저자</a></li>
@@ -361,23 +358,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="자료-추출" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="자료-추출"><span class="header-section-number">12.1</span> 자료 추출</h2>
 <p>첫번째 단계는 스프레드쉬트 행을 (키값, 저자명) 짝으로 추출(extract)하는 것이다. 파이썬이 올바르게 스프레드쉬트를 읽어들이는지 확인하는 것부터 시작된다. 윈도우에서 파이썬으로 CSV 파일을 읽어드리게 되면 인코딩 오류가 발생하는 경우가 있다. 이를 방지하기 위해 인코딩을 <code>UTF-8</code>으로 설정한다.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in"># count-lines.py</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="in"># 스프레드쉬트에 얼마나 많은 줄이 있는지 계수한다.</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="in">filename = sys.argv[1]</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="in">reader = open(filename, 'r', encoding='UTF-8')</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="in">count = 0</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">for line in reader:</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">    count += 1</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="in">reader.close()</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="in">print(count)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># count-lines.py</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 스프레드쉬트에 얼마나 많은 줄이 있는지 계수한다.</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>filename <span class="op">=</span> sys.argv[<span class="dv">1</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> <span class="bu">open</span>(filename, <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'UTF-8'</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>reader.close()</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(count)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>상기 코드가 이제는 칙숙해보여야 된다: 파일명이 첫번째 명령라인 인자(<code>sys.argv[1]</code>)로 주어졌다. 따라서, 파일을 열고, <code>for</code> 루프를 사용해서 한줄씩 읽어들인다. 매번 루프가 실행될 때, 1을 <code>count</code> 변수에 더한다; 루프가 종류될 때, 파일을 닫고 계수 결과를 출력한다.</p>
 <p>상기 프로그램을 다음과 같이 실행한다:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python code/count-lines.py data/bibliography.csv</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -386,23 +381,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>그래서, 파이썬이 모든 행을 읽어들인 것을 알게된다.</p>
 <p>다음 단계는 각 줄을 필드로 쪼개서 각 항목에 대한 키값과 저자명을 얻게된다. 필드는 콤마로 구분된다. 그래서 <code>str.split</code> 사용해서 시도해볼 수 있다. 하지만, 동작하지는 않는데 이유는 저자명에도 콤마가 포함되어서 그렇다(“성, 이름”같은 형식으로 되어 있어서 그렇다).</p>
 <p>대신에 취할 수 있는 조치는 선호하는 검색엔진에 도움을 청한다. 물론, “python csv”에 대한 검색결과는 <a href="https://docs.python.org/2/library/csv.html"><code>csv</code> 라이브러리</a>가 나오고, 표준 파이썬 배포판의 일부이기도 하다. 라이브러리 문서에 일부 예제가 포함되어 있다. 몇번 실험을 한 뒤에, 다음과 같은 결과가 나오게 된다:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="in"># read-fields.py</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="in"># CSV 파일에서 필드값을 제대로 읽어 오는지 확인한다.</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># read-fields.py</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># CSV 파일에서 필드값을 제대로 읽어 오는지 확인한다.</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="in">raw = open(sys.argv[1], 'r', encoding='utf-8')</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="in">reader = csv.reader(raw);</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="in">for line in reader:</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="in">    print(line)</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="in">raw.close()</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(line)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>raw.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>작성한 프로그램은 참고문헌 파일을 열어서 시작한다(다시 한번, 첫번째 명령-라인 인자로 파일명을 넘긴다) 그리고 나서, <code>csv.reader</code> 메쏘드를 호출해서 파일주위에 래퍼를 생성한다. <code>open</code>으로 생성된 기본 파일 객체가 한번에 한줄씩 읽어올 때, <code>csv.reader</code>에 의해서 생성된 래퍼가 해당 라인을 올바른 지점에서 필드로 쪼갠다. <code>csv.reader</code>는 해당 필드에 내장된 콤마, 특수문자, 신경쓰지 않아도 되는 다른 엄청난 것에 대해 어떻게 처리하는지 알고 있다.</p>
 <p>올바르게 동작하는지 점검하려면, <code>csv.reader</code>에 의한 처리가 끝난 후에 각 줄을 출력하면 된다. 출력결과 중 첫 몇줄이 다음에 나와 있다:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python code/read-fields.py data/bibliography.csv <span class="kw">|</span> <span class="fu">head</span> <span class="at">-5</span></span>
@@ -413,24 +406,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[</span><span class="st">'F5DGU3Q4'</span><span class="ex">,</span> <span class="st">'bookSection'</span>, <span class="st">'1989'</span>, <span class="st">'McCloskey, M.; Cohen, N. J.'</span>, <span class="st">'Catastrophic Interference in Connectionist Networks: The Sequential Learning Problem'</span>, <span class="st">'The Psychology of Learning and Motivation, Vol. 24'</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>]</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[</span><span class="st">'PNGQMCP5'</span><span class="ex">,</span> <span class="st">'conferencePaper'</span>, <span class="st">'2006'</span>, <span class="st">'Bucilu\xc7\x8e, Cristian; Caruana, Rich; Niculescu-Mizil, Alexandru'</span>, <span class="st">'Model compression'</span>, <span class="st">'Proceedings of the 12th ACM SIGKDD international conference on Knowledge discovery and data mining'</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>, <span class="st">''</span>]</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(프로그램 출력결과를 <code>head</code> 명령어로 실행해서 출력결과를 스크롤해서 다시 위로 올라가기 보다 첫 몇줄만 화면에 출력함에 주목한다.) 상기 결과는 정확하게 필요한 결과다: 키값이 각 리스트 첫번째 구성요소로 있고, 저자는 모두 네번째에 몰려있따. 프로그램을 변경해서, 단지 두 필드만 출력하게 변경하자:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="in"># display-fields.py</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="in"># 키값과 저자 모두를 화면에 출력한다.</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># display-fields.py</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 키값과 저자 모두를 화면에 출력한다.</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="in">raw = open(sys.argv[1], 'r', encoding='utf-8')</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="in">reader = csv.reader(raw);</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span> (line[<span class="dv">0</span>], line[<span class="dv">3</span>])</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="in">for line in reader:</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="in">    print (line[0], line[3])</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="in">raw.close()</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="in">    </span></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>raw.close()</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>출력결과는 다음과 같다:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">8SW85SQM</span> McClelland, James L</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span> McClelland, J. L.<span class="kw">;</span> <span class="ex">McNaughton,</span> B. L.<span class="kw">;</span> <span class="ex">O</span><span class="st">'Reilly, R. C.</span></span>
@@ -451,28 +442,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Caruana, Rich</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Niculescu-Mizil, Alexandru</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>이제 원하는 바에 가까워졌다. 하지만, 꼭 그렇지는 않다; 저자명은 실제로 세미콜론과 공백으로 구분되는데 세미콜론만으로 구분했기 때문에, 각 줄마다 두번째와 이어진 명칭에 원치않는 공백이 앞에 온다. 세미콜론과 공백으로 쪼개면 어떻게 될까?</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="in"># display-authors-2.py</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="in"># (키값, 저자명) 짝을 화면에 출력한다.</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># display-authors-2.py</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (키값, 저자명) 짝을 화면에 출력한다.</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="in">raw = open(sys.argv[1], 'r', encoding='utf-8')</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="in">reader = csv.reader(raw);</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="in">try:</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="in">    for line in reader:</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="in">      key, authors = line[0], line[3]</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="in">      for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="in">          print (key, auth)</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="in">except BrokenPipeError:</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="in">  sys.stderr.close()</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="in">          </span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a><span class="in">raw.close()</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>      key, authors <span class="op">=</span> line[<span class="dv">0</span>], line[<span class="dv">3</span>]</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> auth <span class="kw">in</span> authors.split(<span class="st">'; '</span>): <span class="co"># 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span> (key, auth)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">BrokenPipeError</span>:</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  sys.stderr.close()</span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>raw.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">8SW85SQM</span> McClelland, James L</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span> McClelland, J. L.</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span> McNaughton, B. L.</span>
@@ -483,8 +472,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Buciluǎ, Cristian</span></span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Caruana, Rich</span></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Niculescu-Mizil, Alexandru</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="버전-관리" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="버전-관리"><span class="header-section-number">12.1.1</span> 버전 관리</h3>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+버전 관리
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>이로써 데이터 추출의 첫 번째 단계가 완료되어, 재사용 가능한 유용한 코드를 얻었기 때문에, 후속 작업을 위해서 저장한다. 깃(Git) 버전 제어는 데이터 처리 및 분석의 복잡성과 변화에 대응하는 데 있어 핵심적인 역할을 한다. ETL 과정은 데이터의 추출, 변환 및 로드 과정에서 수많은 쿼리와 스크립트를 포함하며, 이러한 작업들은 지속적으로 수정 및 개선이 필요하다. Git을 사용하면 이러한 변경사항을 효과적으로 추적하고 관리할 수 있다. 오류 발생시 이전 버전으로 쉽게 되돌릴 수 있게 해주며, 팀원 간의 협업에서도 변경 사항을 쉽게 공유하고 통합할 수 있게 한다. 또한, Git은 작업의 히스토리를 기록하여 프로젝트의 진행 상황을 명확하게 파악할 수 있도록 해주어 프로젝트 관리에도 큰 도움이 된다.</p>
 <p><code>git init .</code> 명령어를 사용하여 현재 디렉토리에서 새로운 Git 저장소를 초기화하는데 <code>.git</code> 폴더를 생성하여 Git 관련 데이터를 저장할 수 있는 토대를 만든다. 다음 단계로 <code>git add -A</code> 명령어는 작업 디렉토리의 모든 변경사항(새로운 파일, 수정된 파일 등)을 Git 스테이징 영역에 추가하여 커밋할 파일을 준비한다. <code>git status</code> 명령어는 현재 Git 저장소의 상태를 보여주는데 스테이징 영역에 추가된 변경사항, 커밋되지 않은 변경사항 등이 포함된 것이 확인된다. <code>git commit -m "메시지"</code> 명령어는 스테이징 영역에 추가된 변경사항을 저장소의 이력에 기록한다. <code>-m</code> 옵션 뒤에는 커밋에 대한 설명을 추가한다. 예시로 “Extracting (key, author) pairs from bibliography”라는 메시지와 함께 커밋이 이루어졌으며, 6개의 파일이 변경되었고 2996개의 추가되었다.</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> git init .</span>
@@ -518,7 +515,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 code/display-fields.py</span>
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 code/read-fields.py</span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a> <span class="ex">create</span> mode 100644 data/bibliography.csv</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
+</div>
+</div>
 </section>
 <section id="자료-변환" class="level2" data-number="12.2">
 <h2 data-number="12.2" class="anchored" data-anchor-id="자료-변환"><span class="header-section-number">12.2</span> 자료 변환</h2>
@@ -530,28 +528,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>시간이 있다면 서지학 데이터에 대한 정규화 방법을 면밀히 검토할 수 있지만 빠르고 간단한 해결책에 집중해보자.</p>
 <p>앞선 데이터 추출 작업으로 짝(키값, 저자명) 데이터를 갖게 되었다. 다음 단계는 관계형 데이터베이스에 데이터를 삽입하는 것이다. 데이터가 데이터베이스에 입력되면, 쿼리를 전송해서 질의 응답을 할 수 있다. 시작점으로 이전 학습과정에서 나온 최종 스크립트를 바탕으로 시작해보자.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="in"># display-authors-2.py</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="in"># (키값, 저자명) 짝을 화면에 출력한다.</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># display-authors-2.py</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co"># (키값, 저자명) 짝을 화면에 출력한다.</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="in">raw = open(sys.argv[1], 'r', encoding='utf-8')</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="in">reader = csv.reader(raw);</span></span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="in">try:</span></span>
-<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="in">    for line in reader:</span></span>
-<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="in">      key, authors = line[0], line[3]</span></span>
-<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a><span class="in">      for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
-<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a><span class="in">          print (key, auth)</span></span>
-<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="in">except BrokenPipeError:</span></span>
-<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a><span class="in">  sys.stderr.close()</span></span>
-<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a><span class="in">          </span></span>
-<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a><span class="in">raw.close()</span></span>
-<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      key, authors <span class="op">=</span> line[<span class="dv">0</span>], line[<span class="dv">3</span>]</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> auth <span class="kw">in</span> authors.split(<span class="st">'; '</span>): <span class="co"># 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>          <span class="bu">print</span> (key, auth)</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">BrokenPipeError</span>:</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>  sys.stderr.close()</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>          </span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>raw.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>상기 프로그램 실행결과는 다음과 같다:</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">8SW85SQM</span> McClelland, James L</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span> McClelland, J. L.</span>
@@ -564,32 +560,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Caruana, Rich</span></span>
 <span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5 Niculescu-Mizil, Alexandru</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>데이터베이스에 넣을 수 있는 CSV 파일을 생성해보자.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in"># convert-1.py</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="in"># 데이터베이스에 로드할 수 있는 CSV로 출력결과 전송</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert-1.py</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터베이스에 로드할 수 있는 CSV로 출력결과 전송</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="in">output_rows=[]</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="in">with open(sys.argv[1], 'r') as raw:</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="in">    reader = csv.reader(raw);</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="in">    for line in reader:</span></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">        key, authors = line[0], line[3]</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="in">        for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="in">            output_rows.append([key, auth])</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="in"># 출력 파일에 대해 두 번째 인수가 필요</span></span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="in">with open(sys.argv[2], 'w') as csvout:</span></span>
-<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="in">    writer = csv.writer(csvout) # 두 번째 인수로 csv 파일 생성</span></span>
-<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="in">    writer.writerow(["Key", "Author"]) # 칼럼명 헤더 생성</span></span>
-<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a><span class="in">    writer.writerows(output_rows) # output_rows를 파일에 쓰기</span></span>
-<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a><span class="in">print(len(output_rows)) # rows output_rows 행수를 알아야 데이터베이스에 확실하게 적재되었는지 확인 가능.</span></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>output_rows<span class="op">=</span>[]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>) <span class="im">as</span> raw:</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>        key, authors <span class="op">=</span> line[<span class="dv">0</span>], line[<span class="dv">3</span>]</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> auth <span class="kw">in</span> authors.split(<span class="st">'; '</span>): <span class="co"># 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>            output_rows.append([key, auth])</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># 출력 파일에 대해 두 번째 인수가 필요</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(sys.argv[<span class="dv">2</span>], <span class="st">'w'</span>) <span class="im">as</span> csvout:</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    writer <span class="op">=</span> csv.writer(csvout) <span class="co"># 두 번째 인수로 csv 파일 생성</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    writer.writerow([<span class="st">"Key"</span>, <span class="st">"Author"</span>]) <span class="co"># 칼럼명 헤더 생성</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>    writer.writerows(output_rows) <span class="co"># output_rows를 파일에 쓰기</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="bu">len</span>(output_rows)) <span class="co"># rows output_rows 행수를 알아야 데이터베이스에 확실하게 적재되었는지 확인 가능.</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>상기 프로그램을 실행하면, 다음과 같은 결과를 얻게 된다. 6,587개 키-저자 쌍이 존재함을 확인하고 데이터베이스에 적재할 준비가 되었다.</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python code/convert-db-1.py data/bibliography.csv data/key_author.csv</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">6587</span></span>
@@ -618,24 +612,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="적재-load" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="적재-load"><span class="header-section-number">12.3</span> 적재 (Load)</h2>
-<p>이제 데이터를 적재하기 위해 스크립트를 만들어 <code>load_bibliography.sql</code> 파일을 호출한다. <code>key_author.csv</code> 파일이 현재 작업디렉토리 아래 <code>data</code> 폴더 아래 저장되어 있기 대문에 다음과 같이 SQL 코드를 작성한다.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{sql}</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="in"># load_bibliography.sql</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="in">.mode csv</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="in">.import key_author.csv key_author</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="in">.header on</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="in">.mode column</span></span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="in">SELECT *</span></span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="in">  FROM key_author</span></span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="in"> LIMIT 10;</span></span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="in">SELECT count(*)</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="in">  FROM key_author;</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="자료-적재" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="자료-적재"><span class="header-section-number">12.3</span> 자료 적재</h2>
+<p>이제 데이터를 적재(Load)하기 위해 스크립트를 만들어 <code>load_bibliography.sql</code> 파일을 호출한다. <code>key_author.csv</code> 파일이 현재 작업디렉토리 아래 <code>data</code> 폴더 아래 저장되어 있기 대문에 다음과 같이 SQL 코드를 작성한다.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a># load_bibliography.sql</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> csv</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>.import key_author.csv key_author</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>.<span class="kw">header</span> <span class="kw">on</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> <span class="kw">column</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> key_author</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a> <span class="kw">LIMIT</span> <span class="dv">10</span>;</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">count</span>(<span class="op">*</span>)</span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> key_author;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p><code>load_bibliography.sql</code> 파일을 실행하게 되면 다음 결과를 얻게 된다.</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> sqlite3</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">SQLite</span> version 3.34.1 2021-01-20 14:10:07</span>
@@ -667,13 +661,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="다작-저자" class="level3" data-number="12.4.1">
 <h3 data-number="12.4.1" class="anchored" data-anchor-id="다작-저자"><span class="header-section-number">12.4.1</span> 다작 저자</h3>
 <p>먼저, 가장 활발히 논문을 저술한 저자를 찾아보자. SQL 쿼리문을 작성해서 가장 빈도수가 높은 저자를 찾아 상위 10명을 추려보자.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{sql}</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="in">sqlite&gt; SELECT author, count(*)</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="in">   ...&gt; FROM key_author</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="in">   ...&gt; GROUP BY author</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="in">   ...&gt; ORDER BY count(*) desc</span></span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="in">   ...&gt; LIMIT 10;</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>sqlite<span class="op">&gt;</span> <span class="kw">SELECT</span> author, <span class="fu">count</span>(<span class="op">*</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>   <span class="op">..</span>.<span class="op">&gt;</span> <span class="kw">FROM</span> key_author</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>   <span class="op">..</span>.<span class="op">&gt;</span> <span class="kw">GROUP</span> <span class="kw">BY</span> author</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>   <span class="op">..</span>.<span class="op">&gt;</span> <span class="kw">ORDER</span> <span class="kw">BY</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">desc</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>   <span class="op">..</span>.<span class="op">&gt;</span> <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>그동안 노력이 결실을 맺은 첫번째 결과로, 단 하나의 명령으로 가장 많이 저술한 저자들을 알아낼 수 있다는 것이다. 두번째로 알게 된 것은 작업이 아직 끝나지 않았다는 점이다. “Bengio, Yoshua”와 “Bengio, Y.”는 거의 확실히 동일 인물이며, “LeCun, Yann”과 “LeCun, Y.”도 마찬가지다. 정말로 누가 가장 많은 논문을 썼는지 알고 싶다면, 동일 인물에 대한 식별작업을 별도로 수행해야 한다.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Author</span>                 count<span class="er">(</span><span class="ex">*</span><span class="kw">)</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">---------------------</span>  <span class="at">--------</span></span>
@@ -704,13 +698,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="공저자" class="level3" data-number="12.4.2">
 <h3 data-number="12.4.2" class="anchored" data-anchor-id="공저자"><span class="header-section-number">12.4.2</span> 공저자</h3>
 <p>파이썬 데이터 전처리 단계의 일부로 이름을 정규화하고 데이터를 정제하는 작업은 별도로 하지 않고, 다른 질문에 답할 수 있는지 살펴봅시다. 먼저, 공저자로 가장 많이 참여한 저자를 찾아보자.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{sql}</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="in">SELECT a.author, b.author </span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">  FROM key_author a </span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="in">  JOIN key_author b USING(key) </span></span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="in"> WHERE a.author &gt; b.author</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="in"> LIMIT 10;</span></span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.author, b.author </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> key_author a </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">JOIN</span> key_author b <span class="kw">USING</span>(<span class="kw">key</span>) </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> a.author <span class="op">&gt;</span> b.author</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a> <span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Author</span>             Author           </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="ex">-----------------</span>  <span class="at">-----------------</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="ex">McNaughton,</span> B. L.  McClelland, J. L.</span>
@@ -724,15 +718,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a><span class="ex">Rigamonti,</span> Robert  Lepetit, Vincent </span>
 <span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a><span class="ex">Sironi,</span> Amos       Fua, Pascal </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(<code>a.author &gt; b.author</code>를 사용하여 각기 다른 저자 쌍이 한 번만 나타나도록 한다.) 만약 다른 저자들이 얼마나 자주 함께 작업했는지 알고 싶다면 어떻게 해야 할까?</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{sql}</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">SELECT a.author, b.author, count(*)</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">  FROM key_author a </span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="in">  JOIN key_author b USING(key) </span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="in"> WHERE a.author &gt; b.author</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="in"> GROUP BY a.author, b.author</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="in"> ORDER BY count(*) desc</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="in">limit 10;</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.author, b.author, <span class="fu">count</span>(<span class="op">*</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> key_author a </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">JOIN</span> key_author b <span class="kw">USING</span>(<span class="kw">key</span>) </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a> <span class="kw">WHERE</span> a.author <span class="op">&gt;</span> b.author</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a> <span class="kw">GROUP</span> <span class="kw">BY</span> a.author, b.author</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a> <span class="kw">ORDER</span> <span class="kw">BY</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">desc</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">10</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="sourceCode" id="cb23"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Author</span>           Author          count<span class="er">(</span><span class="ex">*</span><span class="kw">)</span>  </span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="ex">---------------</span>  <span class="at">--------------</span>  <span class="at">----------</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Vincent,</span> Pascal  Bengio, Yoshua  27        </span>
@@ -796,31 +790,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="12.5.2" class="anchored" data-anchor-id="쉘-프로그래밍"><span class="header-section-number">12.5.2</span> 쉘 프로그래밍</h3>
 <p>쉘 기반 파이썬 프로그래밍으로 SQL 데이터베이스를 제작하는 방식은 명령줄 인터페이스(CLI)를 통해 파이썬 스크립트를 실행하여 데이터베이스와 테이블을 생성하고 데이터를 조작하는 것이다. 파이썬 <code>sqlite3</code> 라이브러리를 사용하여 데이터베이스 파일을 생성하고 연결을 설정한다. 연결 객체를 사용하여 커서 객체를 생성하고, SQL 명령어를 커서를 통해 실행하여 데이터베이스 테이블을 생성하고 데이터를 삽입한다. 예를 들어, <code>CREATE TABLE</code> SQL 명령어로 테이블을 생성하고, <code>INSERT INTO</code> 명령어로 데이터를 삽입한다. 모든 작업이 끝나면 데이터베이스 연결을 커밋하고 닫아서 변경사항을 저장한다. 이러한 방식을 통해 쉘 환경에서 파이썬 스크립트를 실행하여 데이터베이스를 제어하고 데이터를 처리함으로써, 데이터베이스 작업을 자동화하고 프로그래밍적으로 접근할 수 있는 장점을 제공한다.</p>
 <p>CSV 파일에서 행을 데이터베이스 레코드로 SQL <code>INSERT</code> 문장 통해 삽입한다. 먼저, SQL <code>INSERT</code> 코드를 다음과 같이 작성한다.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">data</span> <span class="kw">VALUES</span> (<span class="st">'8SW85SQM'</span>, <span class="st">'McClelland, James L'</span>);</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">data</span> <span class="kw">VALUES</span> (<span class="st">'8SW85SQM'</span>, <span class="st">'McClelland, James L'</span>);</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">data</span> <span class="kw">VALUES</span> (<span class="st">'85QV9X5F'</span>, <span class="st">'McClelland, J. L.'</span>);</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> <span class="kw">data</span> <span class="kw">VALUES</span> (<span class="st">'85QV9X5F'</span>, <span class="st">'McNaughton, B. L.'</span>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>그래서, 대신에 상기 데이터를 출력하도록 프로그램을 변경하자:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="in"># convert-1.py</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="in"># 데이터베이스에 (키값, 저자명) 짝을 집어넣는 SQL 문장을 생성한다.</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert-1.py</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 데이터베이스에 (키값, 저자명) 짝을 집어넣는 SQL 문장을 생성한다.</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>INSERT <span class="op">=</span> <span class="st">"INSERT INTO data VALUES('</span><span class="sc">{0}</span><span class="st">', '</span><span class="sc">{1}</span><span class="st">');"</span></span>
 <span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="in">INSERT = "INSERT INTO data VALUES('{0}', '{1}');"</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>)</span>
 <span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="in">raw = open(sys.argv[1], 'r', encoding='utf-8')</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
 <span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="in">reader = csv.reader(raw);</span></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="in">for line in reader:</span></span>
-<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="in">  key, authors = line[0], line[3]</span></span>
-<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="in">  for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
-<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="in">    print(INSERT.format(key, auth))</span></span>
-<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="in">        </span></span>
-<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="in">raw.close()</span></span>
-<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>  key, authors <span class="op">=</span> line[<span class="dv">0</span>], line[<span class="dv">3</span>]</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> auth <span class="kw">in</span> authors.split(<span class="st">'; '</span>): <span class="co"># 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(INSERT.<span class="bu">format</span>(key, auth))</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>raw.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>첫번째 변경사항이 <code>INSERT</code> 정의로, 삽입 문장에 대한 형식 문자열(format string)이 된다. 두번째 변경사항은 키값과 저자명을 직접적으로 출력하는 대신에, 데이터 값을 <code>str.format</code> 을 사용하는 <code>INSERT</code> 안으로 삽입하는 것이다.</p>
 <p>잘 동작한다, 하지만 “동작한다”라는 말은 단지 “분명한 오류없이 작업완료가 되도록 동작한다”라는 의미다. 더 가까이 검사하면, 문제가 두가지가 보인다:</p>
 <ol type="1">
@@ -828,31 +823,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>저자명에 단일 인용부호를 포함할 수 있다.</li>
 </ol>
 <p>첫번째 문제는 풀기 쉽다. 프로그램 시작부분에 다음 코드를 추가한다.</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="op">=</span> <span class="st">'CREATE TABLE data(key text not null, author text not null);'</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="op">=</span> <span class="st">'CREATE TABLE data(key text not null, author text not null);'</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>어떤 <code>insert</code> 문장을 출력하기 전에 출력한다. 두번째 문제는 더 까다롭다: 만약 “O’Mear, Fiona” 같은 저자명을 <code>INSERT</code>해서 끼워넣으려면, 결과가 다음과 같이 된다:</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ot">"INSERT INTO data VALUES('RJS8QDC4', 'O'Mear, Fiona');"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ot">"INSERT INTO data VALUES('RJS8QDC4', 'O'Mear, Fiona');"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>상기 방식은 적법한 파이썬 방법이 아니다. 문제 해결방식은 단일 인용부호 대신에 문자열 주위를 이중 인용부호를 사용하는 것이다. 왜냐하면 사람 이름에 이중 인용부호는 포함될 수 없기 때문이다. 변경사항을 마치고 나면, 전체 프로그램은 다음과 같다:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="in"># convert-2.py</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="in"># 키값과 저자명에 대한 데이터베이스 생성.</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="in"># -*- coding: utf-8 -*-</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="in">import sys</span></span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="in">import csv</span></span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="in">CREATE = 'CREATE TABLE data(key text not null, author text not null);'</span></span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="in">INSERT = 'INSERT INTO data VALUES("{0}", "{1}");'</span></span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># convert-2.py</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 키값과 저자명에 대한 데이터베이스 생성.</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>CREATE <span class="op">=</span> <span class="st">'CREATE TABLE data(key text not null, author text not null);'</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>INSERT <span class="op">=</span> <span class="st">'INSERT INTO data VALUES("</span><span class="sc">{0}</span><span class="st">", "</span><span class="sc">{1}</span><span class="st">");'</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(CREATE)</span>
 <span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="in">print(CREATE)</span></span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="in">raw = open(sys.argv[1], 'r')</span></span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="in">reader = csv.reader(raw);</span></span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="in">for line in reader:</span></span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="in">    key, authors = line[0], line[3]</span></span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="in">    for auth in authors.split('; '): # 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="in">        print INSERT.format(key, auth)</span></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="in">raw.close()</span></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>raw <span class="op">=</span> <span class="bu">open</span>(sys.argv[<span class="dv">1</span>], <span class="st">'r'</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>reader <span class="op">=</span> csv.reader(raw)<span class="op">;</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> reader:</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>    key, authors <span class="op">=</span> line[<span class="dv">0</span>], line[<span class="dv">3</span>]</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> auth <span class="kw">in</span> authors.split(<span class="st">'; '</span>): <span class="co"># 세미콜론 대신에, 세미콜론과 공백 사용</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span> INSERT.<span class="bu">format</span>(key, auth)</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>raw.close()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>프로그램을 실행해보자:</p>
 <div class="sourceCode" id="cb31"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="ex">$</span> python code/convert-2.py data/bibliography.csv <span class="kw">|</span> <span class="fu">head</span> <span class="at">-5</span></span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">CREATE</span> TABLE data<span class="er">(</span><span class="ex">key</span> text not null, author text not null<span class="kw">);</span></span>
@@ -871,69 +869,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="ex">CREATE</span> TABLE data<span class="er">(</span><span class="ex">key</span> text not null, author text not null<span class="kw">);</span></span>
 <span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="ex">sqlite</span><span class="op">&gt;</span> SELECT <span class="pp">*</span> FROM data LIMIT 10<span class="kw">;</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="ex">8SW85SQM</span><span class="kw">|</span><span class="ex">McClelland,</span> James L</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span><span class="kw">|</span><span class="ex">McClelland,</span> J. L.</span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span><span class="kw">|</span><span class="ex">McNaughton,</span> B. L.</span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span><span class="kw">|</span><span class="ex">O</span><span class="st">'Reilly, R. C.</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="st">Z4X6DT6N|Ratcliff, R.</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="st">F5DGU3Q4|McCloskey, M.</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="st">F5DGU3Q4|Cohen, N. J.</span></span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5|Buciluǎ, Cristian</span></span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5|Caruana, Rich</span></span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5|Niculescu-Mizil, Alexandru</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="ex">8SW85SQM</span><span class="kw">|</span><span class="ex">McClelland,</span> James L</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span><span class="kw">|</span><span class="ex">McClelland,</span> J. L.</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span><span class="kw">|</span><span class="ex">McNaughton,</span> B. L.</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="ex">85QV9X5F</span><span class="kw">|</span><span class="ex">O</span><span class="st">'Reilly, R. C.</span></span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="st">Z4X6DT6N|Ratcliff, R.</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="st">F5DGU3Q4|McCloskey, M.</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="st">F5DGU3Q4|Cohen, N. J.</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5|Buciluǎ, Cristian</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5|Caruana, Rich</span></span>
+<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="st">PNGQMCP5|Niculescu-Mizil, Alexandru</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>결과가 좋아보인다. 그래서, 질의를 던져보자:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> author, <span class="fu">COUNT</span>(<span class="op">*</span>)</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> author, <span class="fu">COUNT</span>(<span class="op">*</span>)</span>
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> <span class="kw">data</span></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> author</span>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> <span class="fu">COUNT</span>(<span class="op">*</span>) <span class="kw">DESC</span></span>
-<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span>
-<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>Bengio, Yoshua|<span class="dv">122</span></span>
-<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>Bengio, Y.|<span class="dv">111</span></span>
-<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>Hinton, Geoffrey E.|<span class="dv">78</span></span>
-<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>LeCun, Yann|<span class="dv">56</span></span>
-<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>Hinton, G. E.|<span class="dv">45</span></span>
-<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>Salakhutdinov, Ruslan|<span class="dv">34</span></span>
-<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>LeCun, Y.|<span class="dv">31</span></span>
-<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>Vincent, Pascal|<span class="dv">29</span></span>
-<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>Jordan, M. I.|<span class="dv">27</span></span>
-<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>Frasconi, P.|<span class="dv">25</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Bengio,</span> Yoshua<span class="kw">|</span><span class="ex">122</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Bengio,</span> Y.<span class="kw">|</span><span class="ex">111</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Hinton,</span> Geoffrey E.<span class="kw">|</span><span class="ex">78</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="ex">LeCun,</span> Yann<span class="kw">|</span><span class="ex">56</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Hinton,</span> G. E.<span class="kw">|</span><span class="ex">45</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Salakhutdinov,</span> Ruslan<span class="kw">|</span><span class="ex">34</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="ex">LeCun,</span> Y.<span class="kw">|</span><span class="ex">31</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Vincent,</span> Pascal<span class="kw">|</span><span class="ex">29</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Jordan,</span> M. I.<span class="kw">|</span><span class="ex">27</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Frasconi,</span> P.<span class="kw">|</span><span class="ex">25</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>첫번째로 보이는 것은 프로그램 작업이 성과를 내고 있다는 것이다: 누가 가장 다작하는 저자인지 명령문 하나로 이제는 알아낼 수 있다. 두번째로 보이는 것이 아직 작업을 완수한 것은 아니라는 것이다: “Bengio, Yoshua”와 “Bengio, Y.”는 거의 확실히 동일한 사람이다. 마찬가지로 “LeCun, Yann”와 “LeCun, Y.”도 동일인이다. 정말로 누가 가장 많은 논문을 썼는지 알아내려고 한다면, 동일인에 대한 다른 이름을 맞출 필요가 있다.</p>
 <p>저자명을 정규화하는 대신에, 대답할 수 있는 다른 질문을 살펴보자. 누가 누구와 공동으로 논문을 썼을까?</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.author, b.author</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> <span class="kw">data</span> a</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> <span class="kw">data</span> b <span class="kw">ON</span> a.<span class="kw">key</span> <span class="op">=</span> b.<span class="kw">key</span> <span class="kw">AND</span> a.author <span class="op">&gt;</span> b.author</span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>McNaughton, B. L.|McClelland, J. L.</span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>O<span class="st">'Reilly, R. C.|McClelland, J. L.</span></span>
-<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="st">O'</span>Reilly, R. C.|McNaughton, B. L.</span>
-<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>McCloskey, M.|Cohen, N. J.</span>
-<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>Caruana, Rich|Buciluǎ, Cristian</span>
-<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>Niculescu<span class="op">-</span>Mizil, Alexandru|Buciluǎ, Cristian</span>
-<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>Niculescu<span class="op">-</span>Mizil, Alexandru|Caruana, Rich</span>
-<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a>Rigamonti, Roberto|Fua, Pascal</span>
-<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a>Rigamonti, Roberto|Lepetit, Vincent</span>
-<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a>Sironi, Amos|Fua, Pascal</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> a.author, b.author</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> <span class="kw">data</span> a</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="kw">JOIN</span> <span class="kw">data</span> b <span class="kw">ON</span> a.<span class="kw">key</span> <span class="op">=</span> b.<span class="kw">key</span> <span class="kw">AND</span> a.author <span class="op">&gt;</span> b.author</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="kw">LIMIT</span> <span class="dv">10</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">McNaughton,</span> B. L.<span class="kw">|</span><span class="ex">McClelland,</span> J. L.</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">O</span><span class="st">'Reilly, R. C.|McClelland, J. L.</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="st">O'</span><span class="ex">Reilly,</span> R. C.<span class="kw">|</span><span class="ex">McNaughton,</span> B. L.</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="ex">McCloskey,</span> M.<span class="kw">|</span><span class="ex">Cohen,</span> N. J.</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Caruana,</span> Rich<span class="kw">|</span><span class="ex">Buciluǎ,</span> Cristian</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Niculescu-Mizil,</span> Alexandru<span class="kw">|</span><span class="ex">Buciluǎ,</span> Cristian</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Niculescu-Mizil,</span> Alexandru<span class="kw">|</span><span class="ex">Caruana,</span> Rich</span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Rigamonti,</span> Roberto<span class="kw">|</span><span class="ex">Fua,</span> Pascal</span>
+<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Rigamonti,</span> Roberto<span class="kw">|</span><span class="ex">Lepetit,</span> Vincent</span>
+<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Sironi,</span> Amos<span class="kw">|</span><span class="ex">Fua,</span> Pascal</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>(<code>a.author &gt; b.author</code> 을 사용하게 되면, 완전히 다른 저자명 짝이 한번만 나오게 한다.) 다른 저자 짝이 얼마나 자주 함께 논문을 작성했는지 알고자 한다면 어떨까?</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> a.author, b.author, <span class="fu">count</span>(<span class="op">*</span>)</span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> <span class="kw">data</span> a <span class="kw">join</span> <span class="kw">data</span> b</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="kw">on</span> a.<span class="kw">key</span><span class="op">=</span>b.<span class="kw">key</span> <span class="kw">and</span> a.author <span class="op">&gt;</span> b.author</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="kw">group</span> <span class="kw">by</span> a.author, b.author</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">desc</span></span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">10</span>;</span>
-<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>Vincent, Pascal|Bengio, Yoshua|<span class="dv">27</span></span>
-<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>Roux, Nicolas Le|Bengio, Yoshua|<span class="dv">20</span></span>
-<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>Delalleau, Olivier|Bengio, Yoshua|<span class="dv">19</span></span>
-<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>Bengio, Y.|Bengio, S.|<span class="dv">18</span></span>
-<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>Larochelle, Hugo|Bengio, Yoshua|<span class="dv">15</span></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>Roux, Nicolas Le|Delalleau, Olivier|<span class="dv">15</span></span>
-<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>Vincent, P.|Bengio, Y.|<span class="dv">15</span></span>
-<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a>Chapados, N.|Bengio, Y.|<span class="dv">14</span></span>
-<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>Gori, M.|Frasconi, P.|<span class="dv">14</span></span>
-<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>Salakhutdinov, Ruslan|Hinton, Geoffrey E.|<span class="dv">14</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="kw">select</span> a.author, b.author, <span class="fu">count</span>(<span class="op">*</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="kw">from</span> <span class="kw">data</span> a <span class="kw">join</span> <span class="kw">data</span> b</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="kw">on</span> a.<span class="kw">key</span><span class="op">=</span>b.<span class="kw">key</span> <span class="kw">and</span> a.author <span class="op">&gt;</span> b.author</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="kw">group</span> <span class="kw">by</span> a.author, b.author</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="kw">order</span> <span class="kw">by</span> <span class="fu">count</span>(<span class="op">*</span>) <span class="kw">desc</span></span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="kw">limit</span> <span class="dv">10</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Vincent,</span> Pascal<span class="kw">|</span><span class="ex">Bengio,</span> Yoshua<span class="kw">|</span><span class="ex">27</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Roux,</span> Nicolas Le<span class="kw">|</span><span class="ex">Bengio,</span> Yoshua<span class="kw">|</span><span class="ex">20</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Delalleau,</span> Olivier<span class="kw">|</span><span class="ex">Bengio,</span> Yoshua<span class="kw">|</span><span class="ex">19</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Bengio,</span> Y.<span class="kw">|</span><span class="ex">Bengio,</span> S.<span class="kw">|</span><span class="ex">18</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="ex">Larochelle,</span> Hugo<span class="kw">|</span><span class="ex">Bengio,</span> Yoshua<span class="kw">|</span><span class="ex">15</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Roux,</span> Nicolas Le<span class="kw">|</span><span class="ex">Delalleau,</span> Olivier<span class="kw">|</span><span class="ex">15</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="ex">Vincent,</span> P.<span class="kw">|</span><span class="ex">Bengio,</span> Y.<span class="kw">|</span><span class="ex">15</span></span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="ex">Chapados,</span> N.<span class="kw">|</span><span class="ex">Bengio,</span> Y.<span class="kw">|</span><span class="ex">14</span></span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="ex">Gori,</span> M.<span class="kw">|</span><span class="ex">Frasconi,</span> P.<span class="kw">|</span><span class="ex">14</span></span>
+<span id="cb39-10"><a href="#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="ex">Salakhutdinov,</span> Ruslan<span class="kw">|</span><span class="ex">Hinton,</span> Geoffrey E.<span class="kw">|</span><span class="ex">14</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="db-debugging" class="level2" data-number="12.6">

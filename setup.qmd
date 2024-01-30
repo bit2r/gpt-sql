@@ -74,7 +74,10 @@ sqldiff.exe              sqlite3_analyzer.exe
 
 ## 데이터베이스 설치
 
-SQLite3를 설치했다면, 이제 데이터베이스(database)를 설치해야 한다. 데이터베이스는 테이블(table)과 뷰(view) 등의 객체가 포함된 파일이다. SQLite3는 데이터베이스를 생성할 때, 확장자를 지정하지 않는다. 데이터베이스 파일의 이름만 지정해도 되지만, 일반적으로 `.db`, `.sqlite`, `.sqlite3` 등 확장자를 사용하여 데이터베이스 파일임을 명확히 하는 것을 권장한다.
+SQLite3를 설치했다면, 이제 데이터베이스(database)를 설치해야 한다. 데이터베이스는 테이블(table)과 뷰(view) 등의 객체가 포함된 파일이다. SQLite3는 데이터베이스를 생성할 때, 확장자를 지정하지 않는다. 데이터베이스 파일의 이름만 지정해도 되지만, 일반적으로 `.db`, `.sqlite`, `.sqlite3` 등 확장자를 사용하여 데이터베이스 파일임을 명확히 하는 것을 권장한다. [^duck_postgresql-1]
+
+[^duck_postgresql-1]: [SQLite3 설치 및 간단한 사용법](http://blog.simplism.kr/?p=2329)
+
 
 ### `survey.db` 생성
 
@@ -138,6 +141,41 @@ Saving to: ‘gen-survey-database.sql’
 $ sqlite3 survey.db < gen-survey-database.sql
 ```
 
+### DB 연결/설치 점검 {#connect-sqlite}
+
+생성된 데이터베이스에 연결하기 위해서, 데이터베이스를 생성한 디렉토리 안에서 SQLite를 시작한다. 
+
+```bash
+$ sqlite3 survey.db
+```
+
+`sqlite3 survey.db` 명령문이 데이터베이스를 열고 데이터베이스 명령-라인 프롬프트로 안내한다.
+SQLite에서 데이터베이스는 플랫 파일(flat file)로 명시적으로 열 필요가 있다.
+그리고 나서 SQLite 시작되고 `sqlite`로 명령-라인 프롬프트가 다음과 같이 변경되어 표시된다.
+
+```bash
+SQLite version 3.20.0 2017-08-01 13:24:15
+Enter ".help" for usage hints.
+Connected to a transient in-memory database.
+Use ".open FILENAME" to reopen on a persistent database.
+sqlite>  
+```
+
+다음 출력결과가 보여주듯이 `.databases` 명령문으로 소속된 데이터베이스 이름과 파일 목록을 확인한다.
+
+```bash
+sqlite> .databases
+seq  name             file                                                      
+---  ---------------  ----------------------------------------------------------
+0    main             ~/novice/sql/survey.db
+```
+
+다음과 같이 타이핑해서 필요한 "Person", "Survey", "Site" "Visited" 테이블이 존재하는 것을 확인한다. `.table`의 출력결과는 다음과 같다.
+
+```bash
+sqlite> .tables
+Person   Site     Survey   Visited
+```
 
 
 ## DB 브라우저
