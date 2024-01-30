@@ -54,3 +54,6 @@ rsconnect/
 data/crime/
 
 .env
+
+publishing/
+
