@@ -66,6 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./text2sql.html" rel="next">
 <link href="./duck_postgreSQL.html" rel="prev">
+<link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,6 +104,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-229551680-1', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+
 
 </head>
 
@@ -131,6 +146,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">챗GPT SQL</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/bit2r/gpt-sql/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="리더 모드 전환">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -317,7 +340,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#db-summary" id="toc-db-summary" class="nav-link" data-scroll-target="#db-summary"><span class="header-section-number">14.3</span> 요약</a></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/case_dvd.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -354,14 +377,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/postgreSQL-shell.png" class="img-fluid figure-img" width="315"></p>
+<p><img src="images/postgreSQL-shell.png" class="img-fluid figure-img" width="200"></p>
 <figcaption>postgreSQL 설치</figcaption>
 </figure>
 </div>
 <p><code>PostgreSQL 16</code> → <code>SQL Shell (psql)</code>을 클릭한 후에 postgreSQL 헬로월드를 찍어본다. 설치과정에서 등록한 비번만 넣어주고 나머지는 로컬호스트와 기본 디폴트 설정된 데이터베이스를 사용할 것이라 <code>postgres</code> 사용자 비밀번호만 넣어준다. 그리고 나서 <code>postgre=#</code> 쉘에 <code>SELECT version()</code> 명령어를 넣어준다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/postgreSQL-helloworld.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/postgreSQL-helloworld.png" class="img-fluid figure-img" width="383"></p>
 <figcaption>postgreSQL 헬로월드</figcaption>
 </figure>
 </div>
@@ -373,15 +396,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>SQL Shell (psql)</code> 쉘을 실행하여 <code>dvd</code> 데이터베이스를 생성한다.</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Database [postgres]<span class="sc">:</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Port [<span class="dv">5432</span>]<span class="sc">:</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Username [postgres]<span class="sc">:</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>postgres 사용자의 암호<span class="sc">:</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">psql</span> (<span class="fl">11.5</span>)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>도움말을 보려면 <span class="st">"help"</span>를 입력하십시오.</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Database</span> <span class="pp">[</span><span class="ss">postgres</span><span class="pp">]</span>:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Port</span> <span class="pp">[</span><span class="ss">5432</span><span class="pp">]</span>:</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">Username</span> <span class="pp">[</span><span class="ss">postgres</span><span class="pp">]</span>:</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">postgres</span> 사용자의 암호:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">psql</span> <span class="er">(</span><span class="ex">11.5</span><span class="kw">)</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">도움말을</span> 보려면 <span class="st">"help"</span>를 입력하십시오.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>postgres<span class="ot">=</span><span class="co"># CREATE DATABASE dvdrental;</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>CREATE DATABASE</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">postgres</span><span class="op">=</span># <span class="ex">CREATE</span> DATABASE dvdrental<span class="kw">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">CREATE</span> DATABASE</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
 <li><code>Windows + R</code> 단축키를 실행시켜 <code>cmd</code>를 입력하여 윈도우 쉘을 구동시킨다. 그리고 <code>postgreSQL</code>을 설치한 윈도우 디렉토리로 이동한다. <code>C:\Program Files\PostgreSQL\11\bin</code> 디렉토리가 된다. 그리고 나서 다운받은 <code>dvdrental.zip</code> 파일 압축을 풀어 <code>dvdrental.tar</code>을 지정한다.</li>
@@ -392,12 +415,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>-d dvd</code> 인자는 데이터베이스를 지정한다.</li>
 <li><code>C:\dvdrental\dvdrental.tar</code> 인자는 파일로 저장된 데이터베이스 정보를 담고 있다.</li>
 </ul>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Program</span> Files<span class="dt">\P</span>ostgreSQL<span class="dt">\1</span>6<span class="dt">\b</span>in<span class="op">&gt;</span> pg_restore <span class="at">-U</span> postgres <span class="at">-d</span> dvdrental C:<span class="dt">\d</span>vdrental<span class="dt">\d</span>vdrental.tar</span>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Program</span> Files<span class="dt">\P</span>ostgreSQL<span class="dt">\1</span>6<span class="dt">\b</span>in<span class="op">&gt;</span> pg_restore <span class="at">-U</span> postgres <span class="at">-d</span> dvdrental C:<span class="dt">\d</span>vdrental<span class="dt">\d</span>vdrental.tar</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">암호:</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="ex">C:\Program</span> Files<span class="dt">\P</span>ostgreSQL<span class="dt">\1</span>1<span class="dt">\b</span>in<span class="op">&gt;</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/postgreSQL-dvd.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/postgreSQL-dvd.png" class="img-fluid figure-img" width="323"></p>
 <figcaption>postgreSQL DVD 데이터베이스</figcaption>
 </figure>
 </div>
@@ -407,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>dvd</code> 데이터베이스가 설치되었기 때문에 쿼리를 던지기 위해서는 postgreSQL 데이터베이스에 접속을 해야한다. 이를 위해서 <code>pgAdmin 4</code>를 실행시키게 되면 웹브라우져에 웹인터페이스가 생기게 된다. 데이터베이스를 <code>dvd</code>로 지정하고 하고 나서, <code>Tools</code> → <code>Query Tool</code>을 클릭하게 되면 해당 데이터베이스 테이블에 쿼리를 던질 수가 있게 된다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/postgreSQL-dvd-select.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/postgreSQL-dvd-select.png" class="img-fluid figure-img" width="323"></p>
 <figcaption>postgreSQL select 쿼리문 예시</figcaption>
 </figure>
 </div>
@@ -415,16 +440,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h4 class="anchored" data-anchor-id="database-user">데이터베이스 사용자 추가</h4>
 <p><code>postgres</code> 사용자는 이미 존재하기 때문에 별도로 <code>tidyverse</code> 사용자를 추가하고 권한을 부여한다. <code>\du</code> 명령어로 사용자가 정상 등록되었는지 확인한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>postgres<span class="ot">=</span><span class="co"># create user tidyverse with encrypted password '1234';</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>CREATE ROLE</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>postgres<span class="ot">=</span><span class="co"># grant all privileges on database dvd to tidyverse;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>GRANT</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>postgres<span class="ot">=</span><span class="co"># \du</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                 롤 목록</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  롤 이름  <span class="sc">|</span>                      속성                      <span class="sc">|</span> 소속 그룹<span class="sc">:</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="sc">-----------+------------------------------------------------+------------</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a> postgres  <span class="sc">|</span> 슈퍼유저, 롤 만들기, DB 만들기, 복제, RLS 통과 <span class="sc">|</span> {}</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> tidyverse <span class="sc">|</span>                                                <span class="er">|</span> {}</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="va">postgres</span><span class="op">=</span># <span class="ex">create</span> user tidyverse with encrypted password <span class="st">'1234'</span><span class="kw">;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">CREATE</span> ROLE</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="va">postgres</span><span class="op">=</span># <span class="ex">grant</span> all privileges on database dvd to tidyverse<span class="kw">;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">GRANT</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="va">postgres</span><span class="op">=</span># <span class="ex">\du</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="ex">롤</span> 목록</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="ex">롤</span> 이름  <span class="kw">|</span>                      <span class="ex">속성</span>                      <span class="kw">|</span> <span class="ex">소속</span> 그룹:</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">-----------+------------------------------------------------+------------</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a> <span class="ex">postgres</span>  <span class="kw">|</span> <span class="ex">슈퍼유저,</span> 롤 만들기, DB 만들기, 복제, RLS 통과 <span class="kw">|</span> <span class="ex">{}</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a> <span class="ex">tidyverse</span> <span class="kw">|</span>                                                <span class="kw">|</span> <span class="ex">{}</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="rstudio-dvd-postgreSQL" class="level4">
@@ -452,10 +477,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>actor <span class="sc">%&gt;%</span> </span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(actor_id <span class="sc">==</span><span class="dv">1</span>)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(actor_id <span class="sc">==</span><span class="dv">1</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  actor_id first_name last_name         last_update</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        1   Penelope   Guiness 2013-05-26 14:47:57</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>  actor_id first_name last_name         last_update
-1        1   Penelope   Guiness 2013-05-26 14:47:57</code></pre>
 </section>
 <section id="find-table" class="level4">
 <h4 class="anchored" data-anchor-id="find-table">작업에 필요한 테이블 찾기</h4>
@@ -467,55 +492,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>MySQL: <code>SHOW TABLES;</code></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>qry <span class="ot">&lt;-</span> <span class="st">"SELECT *</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM pg_catalog.pg_tables"</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, qry) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(schemaname <span class="sc">==</span> <span class="st">'public'</span>) </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>qry <span class="ot">&lt;-</span> <span class="st">"SELECT *</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="st">        FROM pg_catalog.pg_tables"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, qry) <span class="sc">%&gt;%</span> </span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(schemaname <span class="sc">==</span> <span class="st">'public'</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="st">"tablename"</span>, <span class="st">"tableowner"</span>, <span class="st">"hasindexes"</span>, </span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">"hasrules"</span>, <span class="st">"hastriggers"</span>, <span class="st">"rowsecurity"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   tablename tableowner hasindexes hasrules hastriggers rowsecurity</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     actor   postgres       TRUE    FALSE        TRUE       FALSE</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     store   postgres       TRUE    FALSE        TRUE       FALSE</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   address   postgres       TRUE    FALSE        TRUE       FALSE</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  category   postgres       TRUE    FALSE        TRUE       FALSE</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5      city   postgres       TRUE    FALSE        TRUE       FALSE</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>   schemaname     tablename tableowner tablespace hasindexes hasrules hastriggers rowsecurity
-1      public         actor   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-2      public         store   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-3      public       address   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-4      public      category   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-5      public          city   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-6      public       country   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-7      public      customer   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-8      public    film_actor   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-9      public film_category   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-10     public     inventory   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-11     public      language   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-12     public        rental   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-13     public         staff   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-14     public       payment   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE
-15     public          film   postgres       &lt;NA&gt;       TRUE    FALSE        TRUE       FALSE</code></pre>
 </section>
 <section id="find-table-columns" class="level4">
 <h4 class="anchored" data-anchor-id="find-table-columns">테이블 별 칼럼명</h4>
 <p>다음으로 테이블을 찾았다고 하면, 해당되는 칼럼명을 찾을 수 있어야 한다. 이를 통해서 유의미한 의미를 찾아낼 수 있는데 칼럼명을 통해 영감을 받아 다가설 수 있게 된다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>col_qry <span class="ot">&lt;-</span> <span class="st">"SELECT table_name,</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="st">                   STRING_AGG(column_name, ', ') AS columns</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="st">            FROM information_schema.columns</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="st">            WHERE table_schema = 'public'</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="st">            GROUP BY table_name;"</span></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, col_qry) <span class="sc">%&gt;%</span> </span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(table_name <span class="sc">%in%</span> <span class="fu">c</span>( <span class="st">"actor"</span>, <span class="st">"rental"</span>, <span class="st">"store"</span>))</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># DBI::dbDisconnect(con)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>col_qry <span class="ot">&lt;-</span> <span class="st">"SELECT table_name,</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">                   STRING_AGG(column_name, ', ') AS columns</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">            FROM information_schema.columns</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">            WHERE table_schema = 'public'</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">            GROUP BY table_name;"</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, col_qry) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(table_name <span class="sc">%in%</span> <span class="fu">c</span>( <span class="st">"actor"</span>, <span class="st">"rental"</span>, <span class="st">"store"</span>))</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  table_name                                                                               columns</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      actor                                          actor_id, last_update, first_name, last_name</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     rental rental_id, rental_date, inventory_id, customer_id, return_date, staff_id, last_update</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      store                                   store_id, manager_staff_id, address_id, last_update</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>  table_name                                                                               columns
-1      actor                                          actor_id, last_update, first_name, last_name
-2     rental rental_id, rental_date, inventory_id, customer_id, return_date, staff_id, last_update
-3      store                                   store_id, manager_staff_id, address_id, last_update</code></pre>
 </section>
 <section id="dvd-er-diagram" class="level4">
 <h4 class="anchored" data-anchor-id="dvd-er-diagram">DVD ER 다이어그램</h4>
 <p>후속 쿼리 분석 작업을 위해서 도움이 되는 ER 다이어그램은 다음과 같다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/dvd-rental-sample-database-diagram.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/dvd-rental-sample-database-diagram.png" class="img-fluid figure-img" width="357"></p>
 <figcaption>DVD ER 다이어그램</figcaption>
 </figure>
 </div>
@@ -529,208 +547,213 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="14.2.1" class="anchored" data-anchor-id="dvd-rental-db-insight-sql"><span class="header-section-number">14.2.1</span> DB 접속 헬로월드 <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a></h3>
 <p>먼저 <code>DBI::dbConnect()</code>를 통해 접속하고 SQL 쿼리 헬로월드를 던져보자.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgreSQL)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>pgdrv <span class="ot">&lt;-</span> <span class="fu">dbDriver</span>(<span class="st">"PostgreSQL"</span>)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>rental_con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(pgdrv, </span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dbname=</span><span class="st">"dvdrental"</span>, </span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">host=</span><span class="st">"localhost"</span>,</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">port=</span><span class="st">"5432"</span>, </span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">user=</span><span class="st">"postgres"</span>, </span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">password=</span><span class="fu">Sys.getenv</span>(<span class="st">"POSTGRES_PASSWORD"</span>))</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>actor <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(rental_con, <span class="st">"SELECT * FROM actor LIMIT 5"</span>)</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>actor</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RPostgreSQL)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>pgdrv <span class="ot">&lt;-</span> <span class="fu">dbDriver</span>(<span class="st">"PostgreSQL"</span>)</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>rental_con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(pgdrv, </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>                 <span class="at">dbname=</span><span class="st">"dvdrental"</span>, </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                 <span class="at">host=</span><span class="st">"localhost"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">port=</span><span class="st">"5432"</span>, </span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">user=</span><span class="st">"postgres"</span>, </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>                 <span class="at">password=</span><span class="fu">Sys.getenv</span>(<span class="st">"POSTGRES_PASSWORD"</span>))</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>actor <span class="ot">&lt;-</span> <span class="fu">dbGetQuery</span>(rental_con, <span class="st">"SELECT * FROM actor LIMIT 5"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>actor</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   actor_id first_name    last_name         last_update</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        1   Penelope      Guiness 2013-05-26 14:47:57</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        2       Nick     Wahlberg 2013-05-26 14:47:57</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3        3         Ed        Chase 2013-05-26 14:47:57</span></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4        4   Jennifer        Davis 2013-05-26 14:47:57</span></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        5     Johnny Lollobrigida 2013-05-26 14:47:57</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>  actor_id first_name    last_name         last_update
-1        1   Penelope      Guiness 2013-05-26 14:47:57
-2        2       Nick     Wahlberg 2013-05-26 14:47:57
-3        3         Ed        Chase 2013-05-26 14:47:57
-4        4   Jennifer        Davis 2013-05-26 14:47:57
-5        5     Johnny Lollobrigida 2013-05-26 14:47:57</code></pre>
 </section>
 <section id="run-statistics-active" class="level3" data-number="14.2.2">
 <h3 data-number="14.2.2" class="anchored" data-anchor-id="run-statistics-active"><span class="header-section-number">14.2.2</span> 이탈/잔존고객 구매금액</h3>
 <p><code>customer</code> 테이블에는 <code>active</code> 칼럼을 통해 잔존고객과 이탈고객을 파악할 수 있다. 이를 통해서 잔존고객과 이탈고객이 몇명이고 구매금액을 파악할 수 있다. 먼저 <code>datamodelr</code> 팩키지를 통해 해당 테이블을 뽑아내서 이를 시각화해보자.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datamodelr)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>payment <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"payment"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>customer <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"customer"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>payment_customer_model <span class="ot">&lt;-</span> <span class="fu">dm_from_data_frames</span>(payment, customer)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>payment_customer_model <span class="ot">&lt;-</span> <span class="fu">dm_add_references</span>(</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  payment_customer_model,</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  customer<span class="sc">$</span>customer_id <span class="sc">==</span>  payment<span class="sc">$</span>customer_id</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>payment_customer_graph <span class="ot">&lt;-</span> <span class="fu">dm_create_graph</span>(payment_customer_model, <span class="at">rankdir =</span> <span class="st">"LR"</span>, <span class="at">col_attr =</span> <span class="fu">c</span>(<span class="st">"column"</span>, <span class="st">"type"</span>))</span>
-<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dm_render_graph</span>(payment_customer_graph)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datamodelr)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>payment <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"payment"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>customer <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"customer"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>payment_customer_model <span class="ot">&lt;-</span> <span class="fu">dm_from_data_frames</span>(payment, customer)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>payment_customer_model <span class="ot">&lt;-</span> <span class="fu">dm_add_references</span>(</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  payment_customer_model,</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  customer<span class="sc">$</span>customer_id <span class="sc">==</span>  payment<span class="sc">$</span>customer_id</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>payment_customer_graph <span class="ot">&lt;-</span> <span class="fu">dm_create_graph</span>(payment_customer_model, <span class="at">rankdir =</span> <span class="st">"LR"</span>, <span class="at">col_attr =</span> <span class="fu">c</span>(<span class="st">"column"</span>, <span class="st">"type"</span>))</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dm_render_graph</span>(payment_customer_graph)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/dvd-rental-amount.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/dvd-rental-amount.png" class="img-fluid figure-img" width="373"></p>
 <figcaption>테이블 구조 시각화 - 구매금액</figcaption>
 </figure>
 </div>
 <p><code>con</code>을 통해 DVD 대여 데이터베이스에 접속이 이루어진 상태다. 이탈고객과 잔존고객별로 구매금액에 대한 평균, 최소, 최대, 총합계를 구하려면 두 테이블을 <code>INNER JOIN</code>으로 <code>customer_id</code>를 키값으로 합치고 나서 기술통계를 산출한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sql_query <span class="ot">&lt;-</span> </span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT active, </span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="st">       COUNT(*) AS num_active, </span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="st">       MIN(amount) AS min_amt, </span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="st">       AVG(amount) AS avg_amt,</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="st">       MAX(amount) AS max_amt, </span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(amount) AS total_amt</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="st">FROM payment AS p</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN customer AS c</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ON p.customer_id = c.customer_id</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY c.active;"</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, sql_query)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>sql_query <span class="ot">&lt;-</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT active, </span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="st">       COUNT(*) AS num_active, </span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="st">       MIN(amount) AS min_amt, </span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="st">       AVG(amount) AS avg_amt,</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="st">       MAX(amount) AS max_amt, </span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="st">       SUM(amount) AS total_amt</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="st">FROM payment AS p</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN customer AS c</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="st">  ON p.customer_id = c.customer_id</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY c.active;"</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con, sql_query)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   active num_active min_amt  avg_amt max_amt total_amt</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1      0        369    0.99 4.092981   11.99   1510.31</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2      1      14227    0.00 4.203397   11.99  59801.73</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>  active num_active min_amt  avg_amt max_amt total_amt
-1      0        369    0.99 4.092981   11.99   1510.31
-2      1      14227    0.00 4.203397   11.99  59801.73</code></pre>
 </section>
 <section id="run-statistics-rental-rate" class="level3" data-number="14.2.3">
 <h3 data-number="14.2.3" class="anchored" data-anchor-id="run-statistics-rental-rate"><span class="header-section-number">14.2.3</span> 쟝르별 평균 대여평점</h3>
 <p>앞서와 마찬가지로 쟝르별 평균 대여평점을 계산할 수 있는 테이블을 쭉 뽑아본다. 이를 통해서 3개 테이블, 즉 <code>category</code>, <code>film_category</code>, <code>film</code>을 뽑아놓고 각 해당 키값을 사용하여 결합시킨다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"category"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>film_category <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"film_category"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"film"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>rental_rating_model <span class="ot">&lt;-</span> <span class="fu">dm_from_data_frames</span>(category, film_category, film)</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>rental_rating_model <span class="ot">&lt;-</span> <span class="fu">dm_add_references</span>(</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  rental_rating_model,</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  category<span class="sc">$</span>category_id <span class="sc">==</span> film_category<span class="sc">$</span>category_id,</span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  film_category<span class="sc">$</span>film_id <span class="sc">==</span> film<span class="sc">$</span>film_id</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>rental_rating_graph <span class="ot">&lt;-</span> <span class="fu">dm_create_graph</span>(rental_rating_model, <span class="at">rankdir =</span> <span class="st">"LR"</span>, <span class="at">col_attr =</span> <span class="fu">c</span>(<span class="st">"column"</span>, <span class="st">"type"</span>))</span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dm_render_graph</span>(rental_rating_graph)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>category <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"category"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>film_category <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"film_category"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"film"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>rental_rating_model <span class="ot">&lt;-</span> <span class="fu">dm_from_data_frames</span>(category, film_category, film)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>rental_rating_model <span class="ot">&lt;-</span> <span class="fu">dm_add_references</span>(</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  rental_rating_model,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  category<span class="sc">$</span>category_id <span class="sc">==</span> film_category<span class="sc">$</span>category_id,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  film_category<span class="sc">$</span>film_id <span class="sc">==</span> film<span class="sc">$</span>film_id</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>rental_rating_graph <span class="ot">&lt;-</span> <span class="fu">dm_create_graph</span>(rental_rating_model, <span class="at">rankdir =</span> <span class="st">"LR"</span>, <span class="at">col_attr =</span> <span class="fu">c</span>(<span class="st">"column"</span>, <span class="st">"type"</span>))</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dm_render_graph</span>(rental_rating_graph)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/dvd-rental-genre.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/dvd-rental-genre.png" class="img-fluid figure-img" width="455"></p>
 <figcaption>테이블 구조 시각화 - 쟝르별 대여평점</figcaption>
 </figure>
 </div>
 <p>먼저 <code>film_category</code>와 <code>category</code>를 결합시켜 영화(<code>film</code>)가 속한 쟝르(<code>category</code>)를 파악한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rate_qry <span class="ot">&lt;-</span> </span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT * </span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="st">FROM category AS c</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN film_category AS fc</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="st">  ON c.category_id = fc.category_id</span></span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="st">LIMIT 5;"</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, rate_qry)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>rate_qry <span class="ot">&lt;-</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT * </span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="st">FROM category AS c</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN film_category AS fc</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="st">  ON c.category_id = fc.category_id</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="st">LIMIT 5;"</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, rate_qry)</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   category_id        name         last_update film_id category_id..5      last_update..6</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1           6 Documentary 2006-02-15 09:46:27       1              6 2006-02-15 10:07:09</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2          11      Horror 2006-02-15 09:46:27       2             11 2006-02-15 10:07:09</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3           6 Documentary 2006-02-15 09:46:27       3              6 2006-02-15 10:07:09</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4          11      Horror 2006-02-15 09:46:27       4             11 2006-02-15 10:07:09</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5           8      Family 2006-02-15 09:46:27       5              8 2006-02-15 10:07:09</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>  category_id        name         last_update film_id category_id..5      last_update..6
-1           6 Documentary 2006-02-15 09:46:27       1              6 2006-02-15 10:07:09
-2          11      Horror 2006-02-15 09:46:27       2             11 2006-02-15 10:07:09
-3           6 Documentary 2006-02-15 09:46:27       3              6 2006-02-15 10:07:09
-4          11      Horror 2006-02-15 09:46:27       4             11 2006-02-15 10:07:09
-5           8      Family 2006-02-15 09:46:27       5              8 2006-02-15 10:07:09</code></pre>
 <p>다음으로 <code>film</code> 테이블을 조인하여 <code>rental_rate</code>를 결합하고 쟝르(<code>category</code>) 별로 평균평점을 구하고 이를 <code>ORDER BY ... DESC</code>를 사용해서 내림차순으로 정렬한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>rate_qry <span class="ot">&lt;-</span> </span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT c.name,</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="st">        AVG(rental_rate) AS avg_rental_rate</span></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM category AS c</span></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN film_category AS fc</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="st">  ON c.category_id = fc.category_id </span></span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN film AS f</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="st">  ON fc.film_id = f.film_id</span></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY c.category_id</span></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY avg_rental_rate DESC;"</span></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, rate_qry)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rate_qry <span class="ot">&lt;-</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT c.name,</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="st">        AVG(rental_rate) AS avg_rental_rate</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM category AS c</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN film_category AS fc</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="st">  ON c.category_id = fc.category_id </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN film AS f</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">  ON fc.film_id = f.film_id</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY c.category_id</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY avg_rental_rate DESC;"</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, rate_qry)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;           name avg_rental_rate</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        Games        3.252295</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2       Travel        3.235614</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3       Sci-Fi        3.219508</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4       Comedy        3.162414</span></span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5       Sports        3.125135</span></span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6          New        3.116984</span></span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7      Foreign        3.099589</span></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8       Horror        3.025714</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9        Drama        3.022258</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10       Music        2.950784</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11    Children        2.890000</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12   Animation        2.808182</span></span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13      Family        2.758116</span></span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14    Classics        2.744386</span></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15 Documentary        2.666471</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16      Action        2.646250</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>          name avg_rental_rate
-1        Games        3.252295
-2       Travel        3.235614
-3       Sci-Fi        3.219508
-4       Comedy        3.162414
-5       Sports        3.125135
-6          New        3.116984
-7      Foreign        3.099589
-8       Horror        3.025714
-9        Drama        3.022258
-10       Music        2.950784
-11    Children        2.890000
-12   Animation        2.808182
-13      Family        2.758116
-14    Classics        2.744386
-15 Documentary        2.666471
-16      Action        2.646250</code></pre>
 </section>
 <section id="run-statistics-rental-rate-top10" class="level3" data-number="14.2.4">
 <h3 data-number="14.2.4" class="anchored" data-anchor-id="run-statistics-rental-rate-top10"><span class="header-section-number">14.2.4</span> Top 10 DVD 영화</h3>
 <p>가장 많이 대여된 Top 10 DVD 영화를 찾아내기 위해서 이에 해당되는 연관 테이블을 검색하여 찾아낸다. <code>film</code>, <code>inventory</code>, <code>rental</code> 테이블을 특정하고 서로 연결시킬 수 있는 키값을 찾아 연결시킨다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"film"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>inventory <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"inventory"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>rental <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"rental"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>top_10_model <span class="ot">&lt;-</span> <span class="fu">dm_from_data_frames</span>(film, inventory, rental)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>top_10_model <span class="ot">&lt;-</span> <span class="fu">dm_add_references</span>(</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  top_10_model,</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  film<span class="sc">$</span>film_id <span class="sc">==</span> inventory<span class="sc">$</span>film_id,</span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  inventory<span class="sc">$</span>inventory_id <span class="sc">==</span> rental<span class="sc">$</span>inventory_id</span>
-<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>top_10_graph <span class="ot">&lt;-</span> <span class="fu">dm_create_graph</span>(top_10_model, <span class="at">rankdir =</span> <span class="st">"LR"</span>, <span class="at">col_attr =</span> <span class="fu">c</span>(<span class="st">"column"</span>, <span class="st">"type"</span>))</span>
-<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dm_render_graph</span>(top_10_graph)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>film <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"film"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>inventory <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"inventory"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>rental <span class="ot">&lt;-</span> <span class="fu">tbl</span>(rental_con, <span class="st">"rental"</span>) <span class="sc">%&gt;%</span> <span class="fu">collect</span>()</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>top_10_model <span class="ot">&lt;-</span> <span class="fu">dm_from_data_frames</span>(film, inventory, rental)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>top_10_model <span class="ot">&lt;-</span> <span class="fu">dm_add_references</span>(</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  top_10_model,</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>  film<span class="sc">$</span>film_id <span class="sc">==</span> inventory<span class="sc">$</span>film_id,</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  inventory<span class="sc">$</span>inventory_id <span class="sc">==</span> rental<span class="sc">$</span>inventory_id</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>top_10_graph <span class="ot">&lt;-</span> <span class="fu">dm_create_graph</span>(top_10_model, <span class="at">rankdir =</span> <span class="st">"LR"</span>, <span class="at">col_attr =</span> <span class="fu">c</span>(<span class="st">"column"</span>, <span class="st">"type"</span>))</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a><span class="fu">dm_render_graph</span>(top_10_graph)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/dvd-rental-top10.png" class="img-fluid figure-img" style="width:100.0%"></p>
+<p><img src="images/dvd-rental-top10.png" class="img-fluid figure-img" width="472"></p>
 <figcaption>테이블 구조 시각화 - Top 10 DVD 영화</figcaption>
 </figure>
 </div>
 <p><code>film</code> → <code>inventory</code> → <code>rental</code> 테이블을 순차적으로 <code>film_id</code>, <code>inventory_id</code>를 키값으로 삼아 결합시킨다. 그리고 나서 가장 많이 대여된 영화를 찾기 위해서 <code>COUNT()</code> 함수로 개수하고 나서 이를 내림차순 정리한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>top_query <span class="ot">&lt;-</span> </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT f.title AS movie_title, </span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="st">        COUNT(f.title) AS num_rentals</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM film AS f</span></span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN inventory AS i</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="st">  ON f.film_id = i.film_id</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN rental AS r</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a><span class="st">  ON i.inventory_id = r.inventory_id</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY f.title</span></span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY num_rentals DESC;"</span></span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, top_query) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">order_by =</span> num_rentals)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>top_query <span class="ot">&lt;-</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT f.title AS movie_title, </span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="st">        COUNT(f.title) AS num_rentals</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="st">FROM film AS f</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN inventory AS i</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="st">  ON f.film_id = i.film_id</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="st">INNER JOIN rental AS r</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="st">  ON i.inventory_id = r.inventory_id</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="st">GROUP BY f.title</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="st">ORDER BY num_rentals DESC;"</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(rental_con, top_query) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_max</span>(<span class="at">n=</span><span class="dv">10</span>, <span class="at">order_by =</span> num_rentals)</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>         </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;            movie_title num_rentals</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   Bucket Brotherhood          34</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2     Rocketeer Mother          33</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3       Juggler Hardly          32</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4  Ridgemont Submarine          32</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        Scalawag Duck          32</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6       Grit Clockwork          32</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7       Forward Temple          32</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8       Timberland Sky          31</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9            Zorro Ark          31</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10        Robbers Joon          31</span></span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 11        Hobbit Alien          31</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 12        Network Peak          31</span></span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 13       Apache Divine          31</span></span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 14     Rush Goodfellas          31</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 15           Wife Turn          31</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 16   Goodfellas Salute          31</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<pre><code>           movie_title num_rentals
-1   Bucket Brotherhood          34
-2     Rocketeer Mother          33
-3       Juggler Hardly          32
-4  Ridgemont Submarine          32
-5        Scalawag Duck          32
-6       Grit Clockwork          32
-7       Forward Temple          32
-8       Timberland Sky          31
-9            Zorro Ark          31
-10        Robbers Joon          31
-11        Hobbit Alien          31
-12        Network Peak          31
-13       Apache Divine          31
-14     Rush Goodfellas          31
-15           Wife Turn          31
-16   Goodfellas Salute          31</code></pre>
 </section>
 </section>
 <section id="db-summary" class="level2" data-number="14.3">
@@ -1163,6 +1186,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>챗GPT SQL 책은 소프트웨어 카펜트리 Database and SQL 번역한 것이 포함되어 있습니다.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.</p>
+</div>
+  </div>
+</footer>
 
 
 

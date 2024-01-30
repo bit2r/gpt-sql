@@ -8,12 +8,12 @@ editor_options:
 
 # DVD 대여 데이터베이스 {#dvd-rental}
 
-## PostgreSQL [^application-1] [^application-2] {#about-postgreSQL}
+## PostgreSQL [^case_dvd-1] [^case_dvd-2] {#about-postgreSQL}
 
-[^application-1]: [위키백과,
+[^case_dvd-1]: [위키백과,
     "PostgreSQL"](https://ko.wikipedia.org/wiki/PostgreSQL)
 
-[^application-2]: [NAVER D2 한눈에 살펴보는
+[^case_dvd-2]: [NAVER D2 한눈에 살펴보는
     PostgreSQL](https://d2.naver.com/helloworld/227936)
 
 PostgreSQL은 확장 가능성 및 표준 준수를 강조하는 객체-관계형
@@ -24,9 +24,9 @@ PostgreSQL은 확장 가능성 및 표준 준수를 강조하는 객체-관계�
 수 있으며 macOS 서버의 경우 PostgreSQL은 기본 데이터베이스로 상용 오라클
 데이터베이스를 대체하는 오픈소스 데이터베이스로 알려져 있다.
 
-### PostgreSQL 설치 [^application-3] {#install-postgreSQL}
+### PostgreSQL 설치 [^case_dvd-3] {#install-postgreSQL}
 
-[^application-3]: [Install
+[^case_dvd-3]: [Install
     PostgreSQL](http://www.postgresqltutorial.com/install-postgresql/)
 
 [PostgreSQL: The World's Most Advanced Open Source Relational
@@ -40,7 +40,7 @@ Database](https://www.postgresql.org/) 웹사이트에서 PostgreSQL
 -   사용자명: `postgres`
 
 ![postgreSQL 설치](images/postgreSQL-shell.png){fig-align="center"
-width="315"}
+width="200"}
 
 `PostgreSQL 16` → `SQL Shell (psql)`을 클릭한 후에 postgreSQL 헬로월드를
 찍어본다. 설치과정에서 등록한 비번만 넣어주고 나머지는 로컬호스트와 기본
@@ -48,11 +48,13 @@ width="315"}
 넣어준다. 그리고 나서 `postgre=#` 쉘에 `SELECT version()` 명령어를
 넣어준다.
 
-![postgreSQL 헬로월드](images/postgreSQL-helloworld.png){width="100%"}
+![postgreSQL
+헬로월드](images/postgreSQL-helloworld.png){fig-align="center"
+width="383"}
 
-### 예제 데이터베이스 - `pagila` [^application-4] {#install-dvd-postgreSQL}
+### 예제 데이터베이스 - `pagila` [^case_dvd-4] {#install-dvd-postgreSQL}
 
-[^application-4]: [PostgreSQL Sample
+[^case_dvd-4]: [PostgreSQL Sample
     Database](http://www.postgresqltutorial.com/postgresql-sample-database/)
 
 [PostgreSQL Sample Database](https://github.com/devrimgunduz/pagila)를
@@ -64,7 +66,10 @@ Database](http://www.postgresqltutorial.com/load-postgresql-sample-database/)을
 
 1.  `SQL Shell (psql)` 쉘을 실행하여 `dvd` 데이터베이스를 생성한다.
 
-```{r create-dvd-database, eval=FALSE}
+```{bash}
+#| label: create-dvd-database
+#| eval: false
+
 Database [postgres]:
 Port [5432]:
 Username [postgres]:
@@ -88,17 +93,20 @@ CREATE DATABASE
 -   `C:\dvdrental\dvdrental.tar` 인자는 파일로 저장된 데이터베이스
     정보를 담고 있다.
 
-``` bash
+```{bash}
+#| eval: false
+
 C:\Program Files\PostgreSQL\16\bin> pg_restore -U postgres -d dvdrental C:\dvdrental\dvdrental.tar
 암호:
 C:\Program Files\PostgreSQL\11\bin>
 ```
 
-![postgreSQL DVD 데이터베이스](images/postgreSQL-dvd.png){width="100%"}
+![postgreSQL DVD
+데이터베이스](images/postgreSQL-dvd.png){fig-align="center" width="323"}
 
-### DVD 대여 질의문 작성 [^application-5] {#query-dvd-postgreSQL}
+### DVD 대여 질의문 작성 [^case_dvd-5] {#query-dvd-postgreSQL}
 
-[^application-5]: [Connect To a PostgreSQL Database
+[^case_dvd-5]: [Connect To a PostgreSQL Database
     Server](http://www.postgresqltutorial.com/connect-to-postgresql-database/)
 
 `dvd` 데이터베이스가 설치되었기 때문에 쿼리를 던지기 위해서는 postgreSQL
@@ -107,7 +115,8 @@ C:\Program Files\PostgreSQL\11\bin>
 지정하고 하고 나서, `Tools` → `Query Tool`을 클릭하게 되면 해당
 데이터베이스 테이블에 쿼리를 던질 수가 있게 된다.
 
-![postgreSQL select 쿼리문 예시](images/postgreSQL-dvd-select.png){width="100%"}
+![postgreSQL select 쿼리문
+예시](images/postgreSQL-dvd-select.png){fig-align="center" width="323"}
 
 #### 데이터베이스 사용자 추가 {#database-user}
 
@@ -115,7 +124,10 @@ C:\Program Files\PostgreSQL\11\bin>
 추가하고 권한을 부여한다. `\du` 명령어로 사용자가 정상 등록되었는지
 확인한다.
 
-```{r create-user, eval = FALSE}
+```{bash}
+#| label: create-user
+#| eval: false
+
 postgres=# create user tidyverse with encrypted password '1234';
 CREATE ROLE
 postgres=# grant all privileges on database dvd to tidyverse;
@@ -137,6 +149,7 @@ postgres=# \du
 
 ```{r}
 #| label: rpostgreSQL-example
+#| eval: false
 
 library(tidyverse)
 library(RPostgreSQL)
@@ -158,16 +171,16 @@ actor <- dbGetQuery(rental_con, "SELECT * FROM actor LIMIT 5")
 `dbGetQuery()`로 가져온 데이터프레임을 `dplyr` 동사로 후속작업을
 진행한다.
 
-```{r actor-tidyverse, eval = FALSE}
+```{r}
+#| label: actor-tidyverse
+#| eval: false
+
 library(tidyverse)
 
 actor %>% 
   filter(actor_id ==1)
-```
-
-```         
-  actor_id first_name last_name         last_update
-1        1   Penelope   Guiness 2013-05-26 14:47:57
+#>  actor_id first_name last_name         last_update
+#> 1        1   Penelope   Guiness 2013-05-26 14:47:57
 ```
 
 #### 작업에 필요한 테이블 찾기 {#find-table}
@@ -184,31 +197,25 @@ actor %>%
     `SELECT * FROM INFORMATION_SCHEMA.TABLES;`
 -   MySQL: `SHOW TABLES;`
 
-```{r find-tables, eval = FALSE}
+```{r}
+#| label: find-table
+#| eval: false
+
 qry <- "SELECT *
         FROM pg_catalog.pg_tables"
 
 dbGetQuery(rental_con, qry) %>% 
-  filter(schemaname == 'public') 
-```
+  filter(schemaname == 'public') |> 
+  select("tablename", "tableowner", "hasindexes", 
+"hasrules", "hastriggers", "rowsecurity") |> 
+  slice(1:5)
 
-```         
-   schemaname     tablename tableowner tablespace hasindexes hasrules hastriggers rowsecurity
-1      public         actor   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-2      public         store   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-3      public       address   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-4      public      category   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-5      public          city   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-6      public       country   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-7      public      customer   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-8      public    film_actor   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-9      public film_category   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-10     public     inventory   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-11     public      language   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-12     public        rental   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-13     public         staff   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-14     public       payment   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
-15     public          film   postgres       <NA>       TRUE    FALSE        TRUE       FALSE
+#>   tablename tableowner hasindexes hasrules hastriggers rowsecurity
+#> 1     actor   postgres       TRUE    FALSE        TRUE       FALSE
+#> 2     store   postgres       TRUE    FALSE        TRUE       FALSE
+#> 3   address   postgres       TRUE    FALSE        TRUE       FALSE
+#> 4  category   postgres       TRUE    FALSE        TRUE       FALSE
+#> 5      city   postgres       TRUE    FALSE        TRUE       FALSE
 ```
 
 #### 테이블 별 칼럼명 {#find-table-columns}
@@ -217,7 +224,10 @@ dbGetQuery(rental_con, qry) %>%
 이를 통해서 유의미한 의미를 찾아낼 수 있는데 칼럼명을 통해 영감을 받아
 다가설 수 있게 된다.
 
-```{r find-table-column, eval = FALSE}
+```{r}
+#| label: find-table-column
+#| eval: false
+
 col_qry <- "SELECT table_name,
                    STRING_AGG(column_name, ', ') AS columns
             FROM information_schema.columns
@@ -227,21 +237,19 @@ col_qry <- "SELECT table_name,
 dbGetQuery(rental_con, col_qry) %>% 
   filter(table_name %in% c( "actor", "rental", "store"))
   
-# DBI::dbDisconnect(con)
-```
-
-```         
-  table_name                                                                               columns
-1      actor                                          actor_id, last_update, first_name, last_name
-2     rental rental_id, rental_date, inventory_id, customer_id, return_date, staff_id, last_update
-3      store                                   store_id, manager_staff_id, address_id, last_update
+#>  table_name                                                                               columns
+#> 1      actor                                          actor_id, last_update, first_name, last_name
+#> 2     rental rental_id, rental_date, inventory_id, customer_id, return_date, staff_id, last_update
+#> 3      store                                   store_id, manager_staff_id, address_id, last_update
 ```
 
 #### DVD ER 다이어그램 {#dvd-er-diagram}
 
 후속 쿼리 분석 작업을 위해서 도움이 되는 ER 다이어그램은 다음과 같다.
 
-![DVD ER 다이어그램](images/dvd-rental-sample-database-diagram.png){width="100%"}
+![DVD ER
+다이어그램](images/dvd-rental-sample-database-diagram.png){fig-align="center"
+width="357"}
 
 ## DVD DB 인사이트 {#dvd-insight-rental}
 
@@ -251,15 +259,18 @@ DVT 대여 데이터베이스를 설치했다면 다음 단계로 다양한 SQL 
 데이터베이스"](https://statkclee.github.io/data-science/ds-postgreSQL.html)에서
 데이터베이스 설치와 접속에 대한 사항은 확인한다.
 
-### DB 접속 헬로월드 [^application-6] {#dvd-rental-db-insight-sql}
+### DB 접속 헬로월드 [^case_dvd-6] {#dvd-rental-db-insight-sql}
 
-[^application-6]: [Okoh Anita (2018-12-20), "How I analyzed DVD rental
-    data with SQL",
+[^case_dvd-6]: [Okoh Anita (2018-12-20), "How I analyzed DVD rental data
+    with SQL",
     freeCodeCamp](https://www.freecodecamp.org/news/project-1-analyzing-dvd-rentals-with-sql-fd12dd674a64/)
 
 먼저 `DBI::dbConnect()`를 통해 접속하고 SQL 쿼리 헬로월드를 던져보자.
 
-```{r dvd-rental-sql-test, eval = FALSE}
+```{r}
+#| label: dvd-rental-db-insight-sql
+#| eval: false
+
 library(tidyverse)
 library(RPostgreSQL)
 
@@ -275,15 +286,13 @@ rental_con <- DBI::dbConnect(pgdrv,
 actor <- dbGetQuery(rental_con, "SELECT * FROM actor LIMIT 5")
 
 actor
-```
 
-```         
-  actor_id first_name    last_name         last_update
-1        1   Penelope      Guiness 2013-05-26 14:47:57
-2        2       Nick     Wahlberg 2013-05-26 14:47:57
-3        3         Ed        Chase 2013-05-26 14:47:57
-4        4   Jennifer        Davis 2013-05-26 14:47:57
-5        5     Johnny Lollobrigida 2013-05-26 14:47:57
+#>   actor_id first_name    last_name         last_update
+#> 1        1   Penelope      Guiness 2013-05-26 14:47:57
+#> 2        2       Nick     Wahlberg 2013-05-26 14:47:57
+#> 3        3         Ed        Chase 2013-05-26 14:47:57
+#> 4        4   Jennifer        Davis 2013-05-26 14:47:57
+#> 5        5     Johnny Lollobrigida 2013-05-26 14:47:57
 ```
 
 ### 이탈/잔존고객 구매금액 {#run-statistics-active}
@@ -314,14 +323,18 @@ payment_customer_graph <- dm_create_graph(payment_customer_model, rankdir = "LR"
 dm_render_graph(payment_customer_graph)
 ```
 
-![테이블 구조 시각화 - 구매금액](images/dvd-rental-amount.png){width="100%"}
+![테이블 구조 시각화 -
+구매금액](images/dvd-rental-amount.png){fig-align="center" width="373"}
 
 `con`을 통해 DVD 대여 데이터베이스에 접속이 이루어진 상태다. 이탈고객과
 잔존고객별로 구매금액에 대한 평균, 최소, 최대, 총합계를 구하려면 두
 테이블을 `INNER JOIN`으로 `customer_id`를 키값으로 합치고 나서
 기술통계를 산출한다.
 
-```{r query-payment-schema, eval = FALSE}
+```{r}
+#| label: query-payment-schema
+#| eval: false
+
 sql_query <- 
 "SELECT active, 
        COUNT(*) AS num_active, 
@@ -335,12 +348,10 @@ INNER JOIN customer AS c
 GROUP BY c.active;"
 
 dbGetQuery(con, sql_query)
-```
 
-```         
-  active num_active min_amt  avg_amt max_amt total_amt
-1      0        369    0.99 4.092981   11.99   1510.31
-2      1      14227    0.00 4.203397   11.99  59801.73
+#>   active num_active min_amt  avg_amt max_amt total_amt
+#> 1      0        369    0.99 4.092981   11.99   1510.31
+#> 2      1      14227    0.00 4.203397   11.99  59801.73
 ```
 
 ### 쟝르별 평균 대여평점 {#run-statistics-rental-rate}
@@ -370,7 +381,7 @@ dm_render_graph(rental_rating_graph)
 ```
 
 ![테이블 구조 시각화 - 쟝르별
-대여평점](images/dvd-rental-genre.png){width="100%"}
+대여평점](images/dvd-rental-genre.png){fig-align="center" width="455"}
 
 먼저 `film_category`와 `category`를 결합시켜 영화(`film`)가 속한
 쟝르(`category`)를 파악한다.
@@ -387,15 +398,13 @@ INNER JOIN film_category AS fc
 LIMIT 5;"
 
 dbGetQuery(rental_con, rate_qry)
-```
 
-```         
-  category_id        name         last_update film_id category_id..5      last_update..6
-1           6 Documentary 2006-02-15 09:46:27       1              6 2006-02-15 10:07:09
-2          11      Horror 2006-02-15 09:46:27       2             11 2006-02-15 10:07:09
-3           6 Documentary 2006-02-15 09:46:27       3              6 2006-02-15 10:07:09
-4          11      Horror 2006-02-15 09:46:27       4             11 2006-02-15 10:07:09
-5           8      Family 2006-02-15 09:46:27       5              8 2006-02-15 10:07:09
+#>   category_id        name         last_update film_id category_id..5      last_update..6
+#> 1           6 Documentary 2006-02-15 09:46:27       1              6 2006-02-15 10:07:09
+#> 2          11      Horror 2006-02-15 09:46:27       2             11 2006-02-15 10:07:09
+#> 3           6 Documentary 2006-02-15 09:46:27       3              6 2006-02-15 10:07:09
+#> 4          11      Horror 2006-02-15 09:46:27       4             11 2006-02-15 10:07:09
+#> 5           8      Family 2006-02-15 09:46:27       5              8 2006-02-15 10:07:09
 ```
 
 다음으로 `film` 테이블을 조인하여 `rental_rate`를 결합하고
@@ -418,26 +427,24 @@ GROUP BY c.category_id
 ORDER BY avg_rental_rate DESC;"
 
 dbGetQuery(rental_con, rate_qry)
-```
 
-```         
-          name avg_rental_rate
-1        Games        3.252295
-2       Travel        3.235614
-3       Sci-Fi        3.219508
-4       Comedy        3.162414
-5       Sports        3.125135
-6          New        3.116984
-7      Foreign        3.099589
-8       Horror        3.025714
-9        Drama        3.022258
-10       Music        2.950784
-11    Children        2.890000
-12   Animation        2.808182
-13      Family        2.758116
-14    Classics        2.744386
-15 Documentary        2.666471
-16      Action        2.646250
+#>           name avg_rental_rate
+#> 1        Games        3.252295
+#> 2       Travel        3.235614
+#> 3       Sci-Fi        3.219508
+#> 4       Comedy        3.162414
+#> 5       Sports        3.125135
+#> 6          New        3.116984
+#> 7      Foreign        3.099589
+#> 8       Horror        3.025714
+#> 9        Drama        3.022258
+#> 10       Music        2.950784
+#> 11    Children        2.890000
+#> 12   Animation        2.808182
+#> 13      Family        2.758116
+#> 14    Classics        2.744386
+#> 15 Documentary        2.666471
+#> 16      Action        2.646250
 ```
 
 ### Top 10 DVD 영화 {#run-statistics-rental-rate-top10}
@@ -467,7 +474,7 @@ dm_render_graph(top_10_graph)
 ```
 
 ![테이블 구조 시각화 - Top 10 DVD
-영화](images/dvd-rental-top10.png){width="100%"}
+영화](images/dvd-rental-top10.png){fig-align="center" width="472"}
 
 `film` → `inventory` → `rental` 테이블을 순차적으로 `film_id`,
 `inventory_id`를 키값으로 삼아 결합시킨다. 그리고 나서 가장 많이 대여된
@@ -491,26 +498,24 @@ ORDER BY num_rentals DESC;"
 
 dbGetQuery(rental_con, top_query) %>% 
   slice_max(n=10, order_by = num_rentals)
-```
-
-```         
-           movie_title num_rentals
-1   Bucket Brotherhood          34
-2     Rocketeer Mother          33
-3       Juggler Hardly          32
-4  Ridgemont Submarine          32
-5        Scalawag Duck          32
-6       Grit Clockwork          32
-7       Forward Temple          32
-8       Timberland Sky          31
-9            Zorro Ark          31
-10        Robbers Joon          31
-11        Hobbit Alien          31
-12        Network Peak          31
-13       Apache Divine          31
-14     Rush Goodfellas          31
-15           Wife Turn          31
-16   Goodfellas Salute          31
+         
+#>            movie_title num_rentals
+#> 1   Bucket Brotherhood          34
+#> 2     Rocketeer Mother          33
+#> 3       Juggler Hardly          32
+#> 4  Ridgemont Submarine          32
+#> 5        Scalawag Duck          32
+#> 6       Grit Clockwork          32
+#> 7       Forward Temple          32
+#> 8       Timberland Sky          31
+#> 9            Zorro Ark          31
+#> 10        Robbers Joon          31
+#> 11        Hobbit Alien          31
+#> 12        Network Peak          31
+#> 13       Apache Divine          31
+#> 14     Rush Goodfellas          31
+#> 15           Wife Turn          31
+#> 16   Goodfellas Salute          31
 ```
 
 ## 요약 {#db-summary}
