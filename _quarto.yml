@@ -11,7 +11,24 @@ lang: ko-KR
 
 book:
   title: "챗GPT SQL"
-  subtitle: "범용 데이터 과학 도구"
+  reader-mode: true
+  subtitle: "SQL을 넘어 챗GPT와 떠나는 데이터 과학 여정"
+
+  page-footer:
+    left: |
+      챗GPT SQL 책은 소프트웨어 카펜트리 Database and SQL 번역한 것이 포함되어 있습니다.
+    right: |
+      순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.
+
+  cover-image: images/logo.png
+  favicon: images/logo.png
+  site-url: https://r2bit.com/gpt-sql/
+  repo-url: https://github.com/bit2r/gpt-sql/
+  repo-branch: main
+  repo-actions: [edit, issue]
+  
+
+  google-analytics: "UA-229551680-1"
   author:
     - name: "이광춘"
       affiliations: "공익법인 한국 R 사용자회"
@@ -55,7 +72,6 @@ book:
 format:
   html:
     theme: cosmo
-    cover-image: images/logo.png
     number-depth: 3
     number-sections: true
     colorlinks: true
