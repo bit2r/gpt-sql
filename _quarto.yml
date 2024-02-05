@@ -20,7 +20,7 @@ book:
     right: |
       순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.
 
-  cover-image: images/logo.png
+  cover-image: images/book_cover.jpg
   favicon: images/logo.png
   site-url: https://r2bit.com/gpt-sql/
   repo-url: https://github.com/bit2r/gpt-sql/
@@ -71,12 +71,18 @@ book:
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      - cosmo
     number-depth: 3
     number-sections: true
     colorlinks: true
     # cite-method: biblatex
     code-overflow: wrap
+    code-link: true
+
+    author-meta: "이광춘"
+    include-in-header: "plausible.html"
+    callout-appearance: simple      
 
 bibliography: references.bib
 link-citations: false
