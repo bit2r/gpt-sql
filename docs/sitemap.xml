@@ -6,7 +6,7 @@
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/case_dvd.html</loc>
-    <lastmod>2024-02-05T03:40:38.501Z</lastmod>
+    <lastmod>2024-02-06T05:12:05.207Z</lastmod>
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/intro.html</loc>
@@ -35,5 +35,41 @@
   <url>
     <loc>https://r2bit.com/gpt-sql/null-hygene.html</loc>
     <lastmod>2024-02-06T00:50:51.523Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/calc-agg.html</loc>
+    <lastmod>2024-02-06T03:48:49.466Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/join.html</loc>
+    <lastmod>2024-02-06T03:50:12.768Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/create.html</loc>
+    <lastmod>2024-02-06T03:56:13.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/prog.html</loc>
+    <lastmod>2024-02-06T04:01:24.155Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/spreadsheet.html</loc>
+    <lastmod>2024-02-06T04:21:55.665Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/etl.html</loc>
+    <lastmod>2024-02-06T04:31:23.113Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/duck_postgreSQL.html</loc>
+    <lastmod>2024-02-06T05:04:07.199Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/text2sql.html</loc>
+    <lastmod>2024-02-06T05:19:59.708Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/llm.html</loc>
+    <lastmod>2024-02-06T05:26:00.070Z</lastmod>
   </url>
 </urlset>

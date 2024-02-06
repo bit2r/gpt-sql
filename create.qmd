@@ -162,26 +162,62 @@ DELETE FROM Person WHERE id = 'danforth';
 :::
 
 
-## 연습문제
+## 연습문제 {.unnumbered}
 
-### NULL 치환
+
+### 객관식 {.unnumbered}
+
+1. **문제:** SQL에서 테이블을 생성할 때 사용하는 명령어는 무엇입니까?
+   1. `INSERT INTO`
+   1. `CREATE TABLE`
+   1. `UPDATE TABLE`
+   1. `ALTER TABLE`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. `CREATE TABLE`
+:::   
+
+2. **문제:** SQL 테이블 생성 시 필수적으로 명시해야 하는 것은 무엇입니까?
+   1. 데이터베이스 이름
+   1. 테이블의 최대 크기
+   1. 열(컬럼)의 이름과 데이터 유형
+   1. 인덱스
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** C. 열(컬럼)의 이름과 데이터 유형
+:::   
+
+3. **문제:** `PRIMARY KEY` 제약 조건의 역할은 무엇입니까?
+   1. 데이터 정렬
+   1. 중복 데이터 제거
+   1. 데이터 무결성 보장
+   1. 데이터베이스 최적화
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** C. 데이터 무결성 보장
+:::
+
+
+### NULL 치환 {.unnumbered}
 
 `Survey.person`의 `null`인 모든 사용자를 문자열 `'unknown'`으로 대체하는 SQL문을 작성하세요.
 
----
+::: {.content-visible when-format="revealjs"}
 
 ```sql
 UPDATE Survey SET person = 'unknown' WHERE person IS NULL;
 ```
 
-### SQL 백업
+:::
+
+### SQL 백업 {.unnumbered}
 
 SQLite는 SQL 표준에서 벗어난 몇가지 관리 명령어을 가지고 있다. 
 그 중 하나는 `.dump`로, 데이터베이스를 다시 생성하는 데 필요한 SQL 명령을 출력한다. 
 또 다른 하나는 `.read`로, `.dump`에 의해 생성된 파일을 읽고 데이터베이스를 복원한다. 
 당신의 동료는 덤프 파일(텍스트 형식)을 버전 관리에 저장하는 것이 데이터베이스의 변경을 추적하고 관리하는 좋은 방법이라고 생각한다. 이 접근 방식의 장단점은 무엇인가? (힌트: 레코드는 특정한 순서로 저장되지 않는다.)
 
----
+::: {.content-visible when-format="revealjs"}
 
 - 장점
     - 버전 관리 시스템은 덤프 파일 버전 간의 차이를 보여줄 수 있다. 데이터베이스와 같은 이진 파일의 경우에는 이것이 불가능하다
@@ -190,4 +226,4 @@ SQLite는 SQL 표준에서 벗어난 몇가지 관리 명령어을 가지고 있
 - 단점
     - 레코드에 고정된 순서가 없기 때문에 커밋 사이에 인위적인 차이가 발생할 수 있다
 
-
+:::

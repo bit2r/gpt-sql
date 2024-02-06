@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="이광춘">
 
-<title>챗GPT SQL - 15&nbsp; 자연어 SQL 쿼리</title>
+<title>챗GPT SQL - 16&nbsp; 자연어 SQL 쿼리</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -86,6 +87,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./llm.html" rel="next">
 <link href="./case_dvd.html" rel="prev">
+<link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -122,6 +124,21 @@ div.csl-indent {
     "search-label": "검색"
   }
 }</script>
+
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-229551680-1', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+<script defer="" data-domain="r2bit.com/gpt-sql" src="https://plausible.io/js/script.js"></script>
 <script src="site_libs/quarto-diagram/mermaid.min.js"></script>
 <script src="site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
@@ -138,7 +155,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./text2sql.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./text2sql.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -154,6 +171,14 @@ div.csl-indent {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">챗GPT SQL</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/bit2r/gpt-sql/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="리더 모드 전환">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -166,7 +191,7 @@ div.csl-indent {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">감사의 글</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">챗GPT SQL</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -181,19 +206,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
   </div>
 </li>
       </ul>
@@ -210,43 +235,43 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -263,25 +288,25 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./duck_postgreSQL.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -298,13 +323,13 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./text2sql.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
   </div>
 </li>
       </ul>
@@ -325,18 +350,23 @@ div.csl-indent {
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#프롬프트-공학" id="toc-프롬프트-공학" class="nav-link active" data-scroll-target="#프롬프트-공학"><span class="header-section-number">15.1</span> 프롬프트 공학</a></li>
-  <li><a href="#챗gui-인터페이스" id="toc-챗gui-인터페이스" class="nav-link" data-scroll-target="#챗gui-인터페이스"><span class="header-section-number">15.2</span> 챗GUI 인터페이스</a></li>
-  <li><a href="#프로그래밍" id="toc-프로그래밍" class="nav-link" data-scroll-target="#프로그래밍"><span class="header-section-number">15.3</span> 프로그래밍</a></li>
+  <li><a href="#프롬프트-공학" id="toc-프롬프트-공학" class="nav-link active" data-scroll-target="#프롬프트-공학"><span class="header-section-number">16.1</span> 프롬프트 공학</a></li>
+  <li><a href="#챗gui-인터페이스" id="toc-챗gui-인터페이스" class="nav-link" data-scroll-target="#챗gui-인터페이스"><span class="header-section-number">16.2</span> 챗GUI 인터페이스</a></li>
+  <li><a href="#프로그래밍" id="toc-프로그래밍" class="nav-link" data-scroll-target="#프로그래밍"><span class="header-section-number">16.3</span> 프로그래밍</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a>
+  <ul class="collapse">
+  <li><a href="#객관식" id="toc-객관식" class="nav-link" data-scroll-target="#객관식">객관식</a></li>
+  <li><a href="#서술형" id="toc-서술형" class="nav-link" data-scroll-target="#서술형">서술형</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/text2sql.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./text2sql.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./text2sql.html">챗GPT SQL</a></li><li class="breadcrumb-item"><a href="./text2sql.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></h1>
+<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></h1>
 </div>
 
 
@@ -375,7 +405,7 @@ classDef A font-size:16px;
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ui-evolution-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;15.1: 사용자 인터페이스 진화
+그림&nbsp;16.1: 사용자 인터페이스 진화
 </figcaption>
 </figure>
 </div>
@@ -383,8 +413,8 @@ classDef A font-size:16px;
 </div>
 <p>챗GPT는 인터넷에서 방대한 양의 데이터를 학습하여 이를 정말 잘 압축한 하나의 저장소로 이해할 수 있다. 따라서, 압축을 풀게 되면 정확히 원본을 복원할 수 있는 부분도 있지만, 그렇지 못한 부분도 당영히 있게 된다.</p>
 <p>챗GPT를 “웹의 흐릿한 JPEG”<span class="citation" data-cites="chiang2023chatgpt">(Chiang 2023)</span>으로 비유하고 있다. JPEC 기술 자체는 손실 압축기술로 무손실 압축기술로 대표적인 PNG와 대비된다. 흐릿한 이미지가 선명하지 않거나 정확하지 않은 것처럼 ChatGPT도 항상 완벽한 답변을 제공하거나 모든 질문을 제대로 이해하는 것도 아니다. 하지만 사용자와의 대화를 기반으로 끊임없이 학습하고 개선하고 있다. 더 많은 사람들이 챗GPT를 사용할수록 사람의 언어를 더 잘 이해하고 반응할 수 있게 개발된 기술이다.</p>
-<section id="프롬프트-공학" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="프롬프트-공학"><span class="header-section-number">15.1</span> 프롬프트 공학</h2>
+<section id="프롬프트-공학" class="level2" data-number="16.1">
+<h2 data-number="16.1" class="anchored" data-anchor-id="프롬프트-공학"><span class="header-section-number">16.1</span> 프롬프트 공학</h2>
 <p><strong>프롬프트 공학(Prompt Engineering)</strong>은 챗GPT와 같은 AI 언어 모형로부터 구체적이고 정확하며 관련성 있는 응답을 도출하기 위해 프롬프트(Prompt, 지시명령어)를 설계하고 개선하는 과정이다. 프롬프트의 품질이 GPT 모형 출력결과에 큰 영향을 미칠 수 있기 때문에 이 작업은 매우 중요하다. 프롬프트 엔지니어링의 목표는 사용자와 AI 모델 사이 커뮤니케이션을 최적화하여 AI 시스템의 유용성과 효율성을 향상시키는 것이다.</p>
 <p>프롬프트 엔지니어링은 반복적인 작업과정으로 AI의 응답에 따라 프롬프트를 조정하고 개선해야 할 수도 있다는 점을 항상 염두에 두고, 다음 프롬프트 구성요소를 프롬프트에 녹여 제작할 경우 AI 언어 모델이 목표에 부합하는 정확하고 관련성 있는 구체적인 답변을 효과적으로 생성할 수 있다.</p>
 <p>AI 언어 모델과의 효과적인 커뮤니케이션을 위해 프롬프트를 작성할 때 고려해야 할 몇 가지 구성 요소가 있다. 잘 만들어진 프롬프트의 몇 가지 핵심 구성 요소를 다음과 같이 정리할 수 있다.</p>
@@ -398,8 +428,8 @@ classDef A font-size:16px;
 <li><p><strong>문법과 철자</strong>: AI 언어모형이 수행 작업을 해석할 때 문법 정보를 사용하기 때문에 올바른 문법과 철자법을 맞게 작성하는 것은 중요하다.</p></li>
 </ul>
 </section>
-<section id="챗gui-인터페이스" class="level2" data-number="15.2">
-<h2 data-number="15.2" class="anchored" data-anchor-id="챗gui-인터페이스"><span class="header-section-number">15.2</span> 챗GUI 인터페이스</h2>
+<section id="챗gui-인터페이스" class="level2" data-number="16.2">
+<h2 data-number="16.2" class="anchored" data-anchor-id="챗gui-인터페이스"><span class="header-section-number">16.2</span> 챗GUI 인터페이스</h2>
 <p><code>survey.db</code> 데이터베이스 SQL 쿼리를 개발자가 직접 작성하는 것을 지양하고 AI를 사용하여 SQL 쿼리를 제작한다. 현존하는 가장 성능이 높은 AI로 평가받는 OpenAI GPT-4 챗팅 인터페이스를 사용하여 SQL 쿼리를 제작한다.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">프롬프트</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">출력결과</a></li></ul>
@@ -440,7 +470,7 @@ classDef A font-size:16px;
 </div>
 </div>
 </div>
-<p><a href="#fig-prompt" class="quarto-xref">그림&nbsp;<span>15.2</span></a> 에 챗GPT 인터페이스를 사용하여 SQL 쿼리를 생성하는 과정을 캡쳐하여 실제 실행결과를 화면에 담았다.</p>
+<p><a href="#fig-prompt" class="quarto-xref">그림&nbsp;<span>16.2</span></a> 에 챗GPT 인터페이스를 사용하여 SQL 쿼리를 생성하는 과정을 캡쳐하여 실제 실행결과를 화면에 담았다.</p>
 <div id="fig-prompt" class="quarto-layout-panel">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-prompt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -464,13 +494,13 @@ classDef A font-size:16px;
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-prompt-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;15.2: 챗GPT 자연어 질의와 SQL 쿼리 생성
+그림&nbsp;16.2: 챗GPT 자연어 질의와 SQL 쿼리 생성
 </figcaption>
 </figure>
 </div>
 </section>
-<section id="프로그래밍" class="level2" data-number="15.3">
-<h2 data-number="15.3" class="anchored" data-anchor-id="프로그래밍"><span class="header-section-number">15.3</span> 프로그래밍</h2>
+<section id="프로그래밍" class="level2" data-number="16.3">
+<h2 data-number="16.3" class="anchored" data-anchor-id="프로그래밍"><span class="header-section-number">16.3</span> 프로그래밍</h2>
 <p>GUI 챗팅 인터페이스를 사용하면 직관적으로 SQL 쿼리를 생성할 수 있지만, 자동화를 할 수 없다는 문제와 함께 재사용도 매번 복사하여 붙여넣기를 해야한다는 문제가 있다. 대신 프로그래밍을 통해 SQL 쿼리 생성작업을 자동화하고 재사용할 수 있도록 한걸음 더 들어가 본다.</p>
 <p>자연어로 SQL 쿼리를 생성하는 프로그램 작성을 본격적으로 들어가기 전에 기본적인 설정을 다음과 같이 설정한다. 다양한 언어로 OpenAI API를 활용하는 것이 가능하지만 지면관계상 파이썬으로 OpenAI GPT 모델을 사용해 사용자 질문에 자동으로 답하는 스크립트를 작성한다. 헬로월드(“Hello World!”)를 통해 기본 설정이 정상동작하는지 확인한다.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
@@ -681,6 +711,47 @@ classDef A font-size:16px;
 <span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>과학자별 총 조사시간을 추출하는 쿼리가 <code>GROUP BY</code> 절을 활용하여 생성된 것이 확인된다.</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="st">'SELECT person, SUM(reading) AS total_hours\nFROM Survey\nGROUP BY person;'</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="연습문제" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
+<section id="객관식" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="객관식">객관식</h3>
+<ol type="1">
+<li><strong>문제:</strong> 자연어를 사용하여 SQL 쿼리를 생성하는 주된 이점은 다음 중 무엇입니까?
+<ol type="1">
+<li>쿼리 속도 향상</li>
+<li>데이터베이스 보안 강화</li>
+<li>SQL 문법의 복잡성 감소</li>
+<li>데이터 처리량 증가</li>
+</ol></li>
+</ol>
+<ol start="2" type="1">
+<li><strong>문제:</strong> 자연어를 SQL 쿼리로 변환할 때 다음 중 가장 중요한 고려 사항은 무엇입니까?
+<ol type="1">
+<li>쿼리 실행 시간</li>
+<li>정확한 키워드 사용</li>
+<li>사용자의 의도 정확히 파악</li>
+<li>데이터베이스 크기</li>
+</ol></li>
+</ol>
+<ol start="3" type="1">
+<li><strong>문제:</strong> 자연어로 된 질의를 SQL 쿼리로 변환하는 과정에서 마주치는 가장 큰 어려움은 무엇입니까?
+<ol type="1">
+<li>적절한 데이터 소스 선택</li>
+<li>모호한 자연어 표현의 해석</li>
+<li>쿼리 최적화</li>
+<li>데이터베이스 연결</li>
+</ol></li>
+</ol>
+</section>
+<section id="서술형" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="서술형">서술형</h3>
+<ol type="1">
+<li><strong>문제:</strong> 자연어를 사용하여 SQL 쿼리를 작성하는 방법에 대해 설명하시오.</li>
+</ol>
+<ol start="2" type="1">
+<li><strong>문제:</strong> 자연어 SQL 쿼리 변환에서 정확도를 높이기 위한 방법에 대해 설명하시오.</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -697,6 +768,7 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 Wickham, Hadley, Mine Çetinkaya-Rundel, 와/과 Garrett Grolemund. 2023. <em>R for data science</em>. " O’Reilly Media, Inc.".
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1100,16 +1172,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./case_dvd.html" class="pagination-link  aria-label=" &lt;span="" 대여="" 데이터베이스&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./llm.html" class="pagination-link" aria-label="<span class='chapter-number'>16</span>&nbsp; <span class='chapter-title'>오픈소스 SQL LLM</span>">
-        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./llm.html" class="pagination-link" aria-label="<span class='chapter-number'>17</span>&nbsp; <span class='chapter-title'>오픈소스 SQL LLM</span>">
+        <span class="nav-page-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>챗GPT SQL 책은 소프트웨어 카펜트리 Database and SQL 번역한 것이 포함되어 있습니다.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.</p>
+</div>
+  </div>
+</footer>
 
 
 

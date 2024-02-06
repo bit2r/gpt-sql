@@ -351,12 +351,46 @@ ORDER BY person, quant;
 4.  각 부분집합의 레코드 숫자를 세고, 각각 `reading` 평균을 계산하고, 각각 `person`과 `quant` 값을 선택한다.
     (모두 동등하기 때문에 어느 것인지는 문제가 되지 않는다.)
 
-## 연습문제
+## 연습문제 {.unnumbered}
 
-### 염도 측정치 수정
+### 객관식 {.unnumbered}
+
+1. **문제:** SQL에서 새로운 계산된 필드를 만들 때 어떤 키워드를 사용합니까?
+   1. `CREATE`
+   1. `CALCULATE`
+   1. `AS`
+   1. `DEFINE`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** C. `AS`
+:::   
+
+2. **문제:** 다음 중 집계 함수(aggregation function)는 무엇입니까?
+   1. `JOIN`
+   1. `GROUP BY`
+   1. `SUM`
+   1. `ORDER BY`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** C. `SUM`
+:::   
+
+3. **문제:** `GROUP BY` 절을 사용하는 주된 목적은 무엇입니까?
+   1. 데이터베이스의 보안 강화
+   1. 레코드 정렬
+   1. 지정된 열 기준으로 레코드 그룹화
+   1. 중복 레코드 제거
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** C. 지정된 열 기준으로 레코드 그룹화
+:::
+
+### 염도 측정치 수정 {.unnumbered}
 
 추가로 정보를 살펴본 결과, 발렌티나 로에리히(Valentina Roerich)가 염도를 백분율로 보고했다는 것을 알게 되었다.
 `Survey` 테이블에서 모든 염도 측정치를 100으로 나눈 값으로 반환하는 쿼리를 작성하시오.
+
+::: {.content-visible when-format="revealjs"}
 
 ``` sql
 SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
@@ -367,7 +401,9 @@ SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
 | 752   | 0.416         |
 | 837   | 0.225         |
 
-### 통합 측정목록
+:::
+
+### 통합 측정목록 {.unnumbered}
 
 `UNION`을 사용하여 발렌티나 로에리히(Roerich가)의 염도 측정치를 앞선 도전과제에서 설명한 대로 수정하고, 발렌티나 로에리히만의 측정치로 통합된 염도 측정치 목록을 만든다.
 출력 결과는 다음과 같아야 한다.
@@ -383,11 +419,20 @@ SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
 |  837  |  0.21   |
 |  837  |  0.225  |
 
+::: {.content-visible when-format="revealjs"}
+
 ``` sql
-SELECT taken, reading FROM Survey WHERE person != 'roe' AND quant = 'sal' UNION SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal' ORDER BY taken ASC;
+SELECT taken, reading 
+FROM Survey 
+WHERE person != 'roe' AND quant = 'sal' 
+UNION SELECT taken, reading / 100 
+FROM Survey 
+WHERE person = 'roe' AND quant = 'sal' ORDER BY taken ASC;
 ```
 
-### 주요 사이트 식별자
+:::
+
+### 주요 사이트 식별자 {.unnumbered}
 
 `Visited` 테이블의 사이트 식별자는 '-'로 구분된 두 부분으로 이루어져 있다.
 
@@ -407,13 +452,20 @@ SELECT DISTINCT site FROM Visited;
 이 두 함수를 사용하여 고유한 주요 사이트 식별자 목록을 생성한다.
 (이 데이터의 경우, 목록은 "DR"과 "MSK"만을 포함해야 한다).
 
+::: {.content-visible when-format="revealjs"}
+
 ``` sql
-SELECT DISTINCT substr(site, 1, instr(site, '-') - 1) AS MajorSite FROM Visited;
+SELECT DISTINCT substr(site, 1, instr(site, '-') - 1) AS MajorSite 
+FROM Visited;
 ```
 
-### 온도 측정횟수 세기
+:::
+
+### 온도 측정횟수 세기 {.unnumbered}
 
 프랭크 파보디(Frank Pabodie)가 기록한 온도 측정횟수는 몇 번이며, 그 평균 값은 얼마인가?
+
+::: {.content-visible when-format="revealjs"}
 
 ``` sql
 SELECT count(reading), avg(reading) FROM Survey WHERE quant = 'temp' AND person = 'pb';
@@ -423,12 +475,14 @@ SELECT count(reading), avg(reading) FROM Survey WHERE quant = 'temp' AND person 
 |:--------------:|:------------:|
 |       2        |    -20.0     |
 
-### NULL 포함 평균 계산
+:::
+
+### NULL 포함 평균 계산 {.unnumbered}
 
 집합 값의 평균은 값들의 합을 값들의 개수로 나눈 것이다.
 이는 `avg` 함수가 1.0, `null`, 5.0이라는 값들이 주어졌을 때 2.0 또는 3.0을 반환한다는 것을 의미하는가?
 
-------------------------------------------------------------------------
+::: {.content-visible when-format="revealjs"}
 
 정답은 3.0이다.
 `NULL`은 값이 아니라 값이 없음을 나타낸다.
@@ -446,7 +500,9 @@ SELECT AVG(a) FROM (
     UNION ALL SELECT 5);
 ```
 
-### 쿼리가 의미하는 바는?
+:::
+
+### 쿼리 의미는? {.unnumbered}
 
 각 개별 방사능 측정값과 모든 방사능 측정값의 평균 사이의 차이를 계산하고자 한다.
 이를 위해 다음과 같은 쿼리를 작성했다.
@@ -457,7 +513,7 @@ SELECT avg(reading) FROM Survey WHERE quant='rad';
 
 쿼리가 실제로 어떤 결과를 생성하며, 그 이유는 무엇일까?
 
-------------------------------------------------------------------------
+::: {.content-visible when-format="revealjs"}
 
 쿼리는 각 측정값에 대한 결과 대신 단 하나의 결과 행만을 생성한다.
 `avg()` 함수는 단일 값을 생성하며, 먼저 실행되기 때문에 테이블이 단일 행으로 축소된다.
@@ -485,7 +541,9 @@ SELECT reading - (SELECT avg(reading) FROM Survey WHERE quant='rad') FROM Survey
 
 요약하자면, 원래 쿼리에서 `avg(reading)`을 `(SELECT avg(reading) FROM Survey WHERE quant='rad')`로 대체한 것이다.
 
-### group_concat 함수 사용
+:::
+
+### group_concat 함수 사용 {.unnumbered}
 
 `group_concat(field, separator)` 함수는 지정된 구분자 문자(또는 구분자가 지정되지 않은 경우 ',')를 사용하여 필드의 모든 값을 연결한다.
 이를 사용하여 과학자들의 이름을 한 줄 목록으로 생성하면 출력결과는 다음과 같다.
@@ -497,7 +555,7 @@ William Dyer, Frank Pabodie, Anderson Lake, Valentina Roerich, Frank Danforth
 쉼표로 구분된 모든 과학자들의 성을 나열하는 쿼리를 작성하세요.
 쉼표로 구분된 모든 과학자들의 개인 이름과 성을 나열하는 쿼리를 작성하세요.
 
-------------------------------------------------------------------------
+::: {.content-visible when-format="revealjs"}
 
 쉼표로 구분된 모든 성을 나열하는 쿼리는 다음과 같다.
 
@@ -510,4 +568,6 @@ SELECT group_concat(family, ',') FROM Person;
 ``` sql
 SELECT group_concat(personal || ' ' || family, ',') FROM Person;
 ```
+
+:::
 

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="이광춘">
 
-<title>챗GPT SQL - 9&nbsp; 데이터 생성과 변형</title>
+<title>챗GPT SQL - 10&nbsp; 데이터 생성과 변형</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,6 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="./">
 <link href="./prog.html" rel="next">
 <link href="./join.html" rel="prev">
+<link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -103,6 +105,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+<script type="text/javascript">
+
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-229551680-1', 'auto');
+
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script>
+<script defer="" data-domain="r2bit.com/gpt-sql" src="https://plausible.io/js/script.js"></script>
+
 
 </head>
 
@@ -115,7 +132,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./create.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./create.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -131,6 +148,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">챗GPT SQL</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/bit2r/gpt-sql/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="리더 모드 전환">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -143,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">감사의 글</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">챗GPT SQL</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -158,19 +183,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
   </div>
 </li>
       </ul>
@@ -187,43 +212,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
@@ -240,25 +265,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./duck_postgreSQL.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
@@ -275,13 +300,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./text2sql.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
   </div>
 </li>
       </ul>
@@ -302,23 +327,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#삽입" id="toc-삽입" class="nav-link active" data-scroll-target="#삽입"><span class="header-section-number">9.1</span> 삽입</a></li>
-  <li><a href="#갱신" id="toc-갱신" class="nav-link" data-scroll-target="#갱신"><span class="header-section-number">9.2</span> 갱신</a></li>
-  <li><a href="#삭제" id="toc-삭제" class="nav-link" data-scroll-target="#삭제"><span class="header-section-number">9.3</span> 삭제</a></li>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제"><span class="header-section-number">9.4</span> 연습문제</a>
+  <li><a href="#삽입" id="toc-삽입" class="nav-link active" data-scroll-target="#삽입"><span class="header-section-number">10.1</span> 삽입</a></li>
+  <li><a href="#갱신" id="toc-갱신" class="nav-link" data-scroll-target="#갱신"><span class="header-section-number">10.2</span> 갱신</a></li>
+  <li><a href="#삭제" id="toc-삭제" class="nav-link" data-scroll-target="#삭제"><span class="header-section-number">10.3</span> 삭제</a></li>
+  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a>
   <ul class="collapse">
-  <li><a href="#null-치환" id="toc-null-치환" class="nav-link" data-scroll-target="#null-치환"><span class="header-section-number">9.4.1</span> NULL 치환</a></li>
-  <li><a href="#sql-백업" id="toc-sql-백업" class="nav-link" data-scroll-target="#sql-백업"><span class="header-section-number">9.4.2</span> SQL 백업</a></li>
+  <li><a href="#객관식" id="toc-객관식" class="nav-link" data-scroll-target="#객관식"><span class="header-section-number">10.3.1</span> 객관식</a></li>
+  <li><a href="#null-치환" id="toc-null-치환" class="nav-link" data-scroll-target="#null-치환">NULL 치환</a></li>
+  <li><a href="#sql-백업" id="toc-sql-백업" class="nav-link" data-scroll-target="#sql-백업">SQL 백업</a></li>
   </ul></li>
   </ul>
-</nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/create.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./create.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./create.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></h1>
+<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></h1>
 </div>
 
 
@@ -391,8 +417,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">foreign</span> <span class="kw">key</span>(person) <span class="kw">references</span> Person(<span class="kw">id</span>)</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>다시 한번, 어떤 제약 조건들이 사용 가능하고, 어떻게 불려지는지는 어떤 데이터베이스 관리자를 사용하느냐에 따라 다르다.</p>
-<section id="삽입" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="삽입"><span class="header-section-number">9.1</span> 삽입</h2>
+<section id="삽입" class="level2" data-number="10.1">
+<h2 data-number="10.1" class="anchored" data-anchor-id="삽입"><span class="header-section-number">10.1</span> 삽입</h2>
 <p>테이블이 생성되면, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>와 같은 다른 명령집합을 사용하여 레코드를 추가, 변경 및 제거할 수 있다.</p>
 <p>다음은 <code>Site</code> 테이블에 행을 삽입하는 예시다.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Site (name, lat, <span class="dt">long</span>) <span class="kw">VALUES</span> (<span class="st">'DR-1'</span>, <span class="op">-</span><span class="fl">49.85</span>, <span class="op">-</span><span class="fl">128.57</span>);</span>
@@ -402,20 +428,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> JustLatLong(lat <span class="dt">real</span>, <span class="dt">long</span> <span class="dt">real</span>);</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> JustLatLong <span class="kw">SELECT</span> lat, <span class="dt">long</span> <span class="kw">FROM</span> Site;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="갱신" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="갱신"><span class="header-section-number">9.2</span> 갱신</h2>
+<section id="갱신" class="level2" data-number="10.2">
+<h2 data-number="10.2" class="anchored" data-anchor-id="갱신"><span class="header-section-number">10.2</span> 갱신</h2>
 <p>기존 레코드를 수정하는 것은 <code>UPDATE</code> 문을 사용하여 수행된다. 이 작업을 수행하기 위해 데이터베이스에 어떤 테이블을 업데이트할 것인지, 필드의 값들을 어떻게 변경할 것인지, 어떤 조건에서 값들을 업데이트할 것인지를 지정해줘야 한다.</p>
 <p>예를 들어, 앞서 마지막 <code>INSERT</code> 문에서 위도와 경도 값을 잘못 입력했다면, 업데이트를 통해 이를 수정할 수 있다.</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">UPDATE</span> Site <span class="kw">SET</span> lat <span class="op">=</span> <span class="op">-</span><span class="fl">47.87</span>, <span class="dt">long</span> <span class="op">=</span> <span class="op">-</span><span class="fl">122.40</span> <span class="kw">WHERE</span> name <span class="op">=</span> <span class="st">'MSK-4'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><code>WHERE</code> 절을 잊지 않도록 주의하라. 그렇지 않으면 업데이트 문이 <code>Site</code> 테이블 <em>모든</em> 레코드를 수정하게 된다.</p>
 </section>
-<section id="삭제" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="삭제"><span class="header-section-number">9.3</span> 삭제</h2>
+<section id="삭제" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="삭제"><span class="header-section-number">10.3</span> 삭제</h2>
 <p>레코드를 삭제하는 것은 데이터베이스를 내부적으로 일관성 있게 유지해야 하기 때문에 좀 더 복잡하다. 테이블이 하나로 단순하다면, 제거하고자 하는 레코드와 일치하는 <code>WHERE</code> 절과 함께 <code>DELETE</code> 명령을 한다. 예를 들어, 프랭크 댄포스(Frank Danforth)가 어떠한 조사측정 업무도 수행하지 않았다는 것을 확인하고 반영한다면, 다음과 같이 <code>Person</code> 테이블에서 프랭크 댄포스를 제거한다.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">'danforth'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>그러나 앤더슨 레이크(Anderson Lake)를 대신 제거한다면 어떨까? <code>Survey</code> 테이블은 그가 수행한 측정의 7개 레코드를 여전히 포함할 것이다. 그러나 이러한 일은 절대 일어나서는 안 되는 일이다. <code>Survey.person</code>은 <code>Person</code> 테이블로 외래 키로, 작성된 모든 쿼리는 전자의 모든 값이 매칭되는 후자의 행이 있을 거라고 가정한다.</p>
 <p>이 문제를 <strong>참조 무결성(referential integrity)</strong>이라고 부른다. 테이블 간 모든 참조가 항상 올바르게 해결될 수 있도록 해야 한다. 이를 해결하는 한 가지 방법은 기본 키로 사용되는 레코드를 삭제하기 전에 외래 키로 <code>lake</code>를 사용하는 모든 레코드를 삭제하는 것이다. 데이터베이스 관리자가 지원한다면, <strong>계단식 삭제(cascading delete)</strong>를 자동화할 수 있다. 하지만, 이 기법은 여기서 다루는 SQL 기본영역 밖이다.</p>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -429,30 +455,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="연습문제" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="연습문제"><span class="header-section-number">9.4</span> 연습문제</h2>
-<section id="null-치환" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="null-치환"><span class="header-section-number">9.4.1</span> NULL 치환</h3>
-<p><code>Survey.person</code>의 <code>null</code>인 모든 사용자를 문자열 <code>'unknown'</code>으로 대체하는 SQL문을 작성하세요.</p>
-<hr>
-<div class="sourceCode" id="cb11"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">UPDATE</span> Survey <span class="kw">SET</span> person <span class="op">=</span> <span class="st">'unknown'</span> <span class="kw">WHERE</span> person <span class="kw">IS</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="연습문제" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
+<section id="객관식" class="level3" data-number="10.3.1">
+<h3 data-number="10.3.1" class="anchored" data-anchor-id="객관식"><span class="header-section-number">10.3.1</span> 객관식</h3>
+<ol type="1">
+<li><strong>문제:</strong> SQL에서 테이블을 생성할 때 사용하는 명령어는 무엇입니까?
+<ol type="1">
+<li><code>INSERT INTO</code></li>
+<li><code>CREATE TABLE</code></li>
+<li><code>UPDATE TABLE</code></li>
+<li><code>ALTER TABLE</code></li>
+</ol></li>
+</ol>
+<ol start="2" type="1">
+<li><strong>문제:</strong> SQL 테이블 생성 시 필수적으로 명시해야 하는 것은 무엇입니까?
+<ol type="1">
+<li>데이터베이스 이름</li>
+<li>테이블의 최대 크기</li>
+<li>열(컬럼)의 이름과 데이터 유형</li>
+<li>인덱스</li>
+</ol></li>
+</ol>
+<ol start="3" type="1">
+<li><strong>문제:</strong> <code>PRIMARY KEY</code> 제약 조건의 역할은 무엇입니까?
+<ol type="1">
+<li>데이터 정렬</li>
+<li>중복 데이터 제거</li>
+<li>데이터 무결성 보장</li>
+<li>데이터베이스 최적화</li>
+</ol></li>
+</ol>
 </section>
-<section id="sql-백업" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="sql-백업"><span class="header-section-number">9.4.2</span> SQL 백업</h3>
+<section id="null-치환" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="null-치환">NULL 치환</h3>
+<p><code>Survey.person</code>의 <code>null</code>인 모든 사용자를 문자열 <code>'unknown'</code>으로 대체하는 SQL문을 작성하세요.</p>
+</section>
+<section id="sql-백업" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="sql-백업">SQL 백업</h3>
 <p>SQLite는 SQL 표준에서 벗어난 몇가지 관리 명령어을 가지고 있다. 그 중 하나는 <code>.dump</code>로, 데이터베이스를 다시 생성하는 데 필요한 SQL 명령을 출력한다. 또 다른 하나는 <code>.read</code>로, <code>.dump</code>에 의해 생성된 파일을 읽고 데이터베이스를 복원한다. 당신의 동료는 덤프 파일(텍스트 형식)을 버전 관리에 저장하는 것이 데이터베이스의 변경을 추적하고 관리하는 좋은 방법이라고 생각한다. 이 접근 방식의 장단점은 무엇인가? (힌트: 레코드는 특정한 순서로 저장되지 않는다.)</p>
-<hr>
-<ul>
-<li>장점
-<ul>
-<li>버전 관리 시스템은 덤프 파일 버전 간의 차이를 보여줄 수 있다. 데이터베이스와 같은 이진 파일의 경우에는 이것이 불가능하다</li>
-<li>버전 관리 시스템(VCS)은 각 버전의 전체 복사본이 아닌 버전 간의 변경 사항만 저장한다(디스크 공간 절약)</li>
-<li>버전 관리 로그는 데이터베이스의 각 버전에 대한 변경 이유를 설명한다</li>
-</ul></li>
-<li>단점
-<ul>
-<li>레코드에 고정된 순서가 없기 때문에 커밋 사이에 인위적인 차이가 발생할 수 있다</li>
-</ul></li>
-</ul>
 
 
 </section>
@@ -859,16 +900,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./join.html" class="pagination-link  aria-label=" &lt;span="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./prog.html" class="pagination-link" aria-label="<span class='chapter-number'>10</span>&nbsp; <span class='chapter-title'>데이터베이스 프로그래밍</span>">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./prog.html" class="pagination-link" aria-label="<span class='chapter-number'>11</span>&nbsp; <span class='chapter-title'>데이터베이스 프로그래밍</span>">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>챗GPT SQL 책은 소프트웨어 카펜트리 Database and SQL 번역한 것이 포함되어 있습니다.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.</p>
+</div>
+  </div>
+</footer>
 
 
 

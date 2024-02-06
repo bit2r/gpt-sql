@@ -518,3 +518,52 @@ dbGetQuery(rental_con, top_query) %>%
 #> 16   Goodfellas Salute          31
 ```
 
+## 연습문제 {.unnumbered}
+
+### 객관식 {.unnumbered}
+
+1. **문제:** DVD 대여 데이터베이스에서 가장 많이 대여된 영화를 찾는 쿼리에 가장 적합한 SQL 명령어는 무엇입니까?
+   1. `SELECT DISTINCT`
+   1. `SELECT COUNT()`
+   1. `SELECT MAX()`
+   1. `SELECT AVG()`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. `SELECT COUNT()`
+:::   
+
+2. **문제:** DVD 대여 데이터베이스에서 특정 장르의 영화만을 선택하는 쿼리에서 사용해야 하는 SQL 절은?
+   1. `WHERE`
+   1. `GROUP BY`
+   1. `ORDER BY`
+   1. `HAVING`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** A. `WHERE`
+:::   
+
+3. **문제:** DVD 렌털 데이터베이스에서 각 영화 장르별로 총 대여 횟수를 계산하려면 어떤 SQL 절을 사용해야 합니까?
+   1. `WHERE`
+   1. `GROUP BY`
+   1. `ORDER BY`
+   1. `JOIN`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. `GROUP BY`
+:::   
+
+### 서술형 {.unnumbered}
+
+1. **문제:** DVD 대여 데이터베이스에서 고객별 대여 횟수를 집계하는 SQL 쿼리 방법을 설명하고 쿼리를 작성하시오.
+
+::: {.content-visible when-format="revealjs"}
+   - **예시 답변:** `SELECT` 명령어를 사용하여 고객 ID별로 대여 기록을 그룹화(`GROUP BY`)하고, 각 고객별 대여 횟수를 `COUNT()` 함수로 계산한다.
+:::   
+
+2. **문제:** DVD 대여 데이터베이스에서 특정 시간대에 가장 인기 있는 영화를 찾는 쿼리 방법에 대해 설명하고 쿼리를 작성하시오.
+
+::: {.content-visible when-format="revealjs"}
+   - **예시 답변:** 특정 시간대의 대여 기록을 필터링하기 위해 `WHERE` 절을 사용하고, 가장 많이 대여된 영화를 찾기 위해 `COUNT()` 함수와 `GROUP BY` 절을 사용하여 영화별 대여 횟수를 계산한 후, `ORDER BY` 절로 가장 높은 대여 횟수를 가진 영화를 선택한다.
+:::
+
+

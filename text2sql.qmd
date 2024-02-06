@@ -419,4 +419,51 @@ translate_sql(query = 'aggregate the hours for each scientist separately')
 'SELECT person, SUM(reading) AS total_hours\nFROM Survey\nGROUP BY person;'
 ```
 
+## 연습문제 {.unnumbered}
+
+### 객관식 {.unnumbered}
+
+1. **문제:** 자연어를 사용하여 SQL 쿼리를 생성하는 주된 이점은 다음 중 무엇입니까?
+   1. 쿼리 속도 향상
+   1. 데이터베이스 보안 강화
+   1. SQL 문법의 복잡성 감소
+   1. 데이터 처리량 증가
+   
+::: {.content-visible when-format="revealjs"}      
+   - **정답:** C. SQL 문법의 복잡성 감소
+:::   
+
+2. **문제:** 자연어를 SQL 쿼리로 변환할 때 다음 중 가장 중요한 고려 사항은 무엇입니까?
+   1. 쿼리 실행 시간
+   1. 정확한 키워드 사용
+   1. 사용자의 의도 정확히 파악
+   1. 데이터베이스 크기
+
+::: {.content-visible when-format="revealjs"}      
+   - **정답:** C. 사용자의 의도 정확히 파악
+:::   
+
+3. **문제:** 자연어로 된 질의를 SQL 쿼리로 변환하는 과정에서 마주치는 가장 큰 어려움은 무엇입니까?
+   1. 적절한 데이터 소스 선택
+   1. 모호한 자연어 표현의 해석
+   1. 쿼리 최적화
+   1. 데이터베이스 연결
+
+::: {.content-visible when-format="revealjs"}      
+   - **정답:** B. 모호한 자연어 표현의 해석
+:::   
+
+### 서술형 {.unnumbered}
+
+1. **문제:** 자연어를 사용하여 SQL 쿼리를 작성하는 방법에 대해 설명하시오.
+
+::: {.content-visible when-format="revealjs"}   
+   - **예시 답변:** 사용자는 자연어로 데이터에 대한 질문을 하고, 이를 SQL 쿼리로 변환하는 시스템이 사용자의 질문을 분석하여 관련 SQL 명령어로 변환한다. 예를 들어, "2020년에 가장 많이 판매된 제품은?"이라는 질문을 "SELECT product_name FROM sales WHERE year = 2020 ORDER BY quantity_sold DESC LIMIT 1;"과 같은 SQL 쿼리로 변환한다.
+:::   
+
+2. **문제:** 자연어 SQL 쿼리 변환에서 정확도를 높이기 위한 방법에 대해 설명하시오.
+
+::: {.content-visible when-format="revealjs"}   
+   - **예시 답변:** 정확도를 높이기 위해서는 자연어 처리 알고리즘의 향상, 사용자의 질문에 대한 정확한 해석, 맥락 이해 및 데이터베이스 구조에 대한 지식이 필요하다. 또한, 사용자가 입력한 자연어 질문에 대한 충분한 맥락 정보를 제공하여 시스템이 보다 정확한 SQL 쿼리를 생성할 수 있도록 해야 한다.
+:::
 

@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR" xml:lang="ko-KR"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.523">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-
-<title>챗GPT SQL - 13&nbsp; 생산성 향상 전략</title>
+<meta name="author" content="이광춘">
+<title>챗GPT SQL - 14&nbsp; 생산성 향상 전략</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -76,7 +74,6 @@ div.csl-indent {
   margin-left: 2em;
 }</style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -86,6 +83,7 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./case_dvd.html" rel="next">
 <link href="./etl.html" rel="prev">
+<link href="./images/logo.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -94,8 +92,7 @@ div.csl-indent {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -121,36 +118,47 @@ div.csl-indent {
     "search-submit-button-title": "검색",
     "search-label": "검색"
   }
-}</script>
+}</script><script type="text/javascript">
 
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-229551680-1', 'auto');
 
+ga('send', {
+  hitType: 'pageview',
+  'anonymizeIp': true,
+});
+</script><script defer="" data-domain="r2bit.com/gpt-sql" src="https://plausible.io/js/script.js"></script>
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spreadsheet.html">현장활용법</a></li><li class="breadcrumb-item"><a href="./duck_postgreSQL.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spreadsheet.html">현장활용법</a></li><li class="breadcrumb-item"><a href="./duck_postgreSQL.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">챗GPT SQL</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/bit2r/gpt-sql/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="리더 모드 전환">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -160,10 +168,10 @@ div.csl-indent {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">감사의 글</span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">챗GPT SQL</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -174,27 +182,27 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./theory.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">기본 개념</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./setup.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">실습환경 설정</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -203,51 +211,51 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./sort-filter.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">정렬과 필터</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./null-hygene.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">데이터 결측과 위생</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./calc-agg.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">새로운 필드와 집계</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./join.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">조인(Join)</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./create.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./prog.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -256,33 +264,33 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./etl.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./duck_postgreSQL.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./case_dvd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -291,21 +299,21 @@ div.csl-indent {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./text2sql.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./llm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">오픈소스 SQL LLM</span></span></a>
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -313,41 +321,47 @@ div.csl-indent {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">목차</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#duckdb" id="toc-duckdb" class="nav-link active" data-scroll-target="#duckdb"><span class="header-section-number">13.1</span> DuckDB</a></li>
-  <li><a href="#시카고-범죄-데이터" id="toc-시카고-범죄-데이터" class="nav-link" data-scroll-target="#시카고-범죄-데이터"><span class="header-section-number">13.2</span> 시카고 범죄 데이터</a>
+<li><a href="#duckdb" id="toc-duckdb" class="nav-link active" data-scroll-target="#duckdb"><span class="header-section-number">14.1</span> DuckDB</a></li>
+  <li>
+<a href="#%EC%8B%9C%EC%B9%B4%EA%B3%A0-%EB%B2%94%EC%A3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0" id="toc-시카고-범죄-데이터" class="nav-link" data-scroll-target="#%EC%8B%9C%EC%B9%B4%EA%B3%A0-%EB%B2%94%EC%A3%84-%EB%8D%B0%EC%9D%B4%ED%84%B0"><span class="header-section-number">14.2</span> 시카고 범죄 데이터</a>
   <ul class="collapse">
-  <li><a href="#duckdb-연결" id="toc-duckdb-연결" class="nav-link" data-scroll-target="#duckdb-연결"><span class="header-section-number">13.2.1</span> DuckDB 연결</a></li>
-  <li><a href="#성능비교" id="toc-성능비교" class="nav-link" data-scroll-target="#성능비교"><span class="header-section-number">13.2.2</span> 성능비교</a></li>
-  </ul></li>
-  <li><a href="#sql-대신-dplyr" id="toc-sql-대신-dplyr" class="nav-link" data-scroll-target="#sql-대신-dplyr"><span class="header-section-number">13.3</span> SQL 대신 <code>dplyr</code></a></li>
-  <li><a href="#sql-dplyr" id="toc-sql-dplyr" class="nav-link" data-scroll-target="#sql-dplyr"><span class="header-section-number">13.4</span> <code>dplyr</code> 동사 데이터베이스 작업</a>
-  <ul class="collapse">
-  <li><a href="#db-connection" id="toc-db-connection" class="nav-link" data-scroll-target="#db-connection"><span class="header-section-number">13.4.1</span> 데이터베이스 연결</a></li>
-  <li><a href="#dplyr-sql" id="toc-dplyr-sql" class="nav-link" data-scroll-target="#dplyr-sql"><span class="header-section-number">13.4.2</span> SQL 쿼리 전송</a></li>
-  <li><a href="#dplyr-dplyr" id="toc-dplyr-dplyr" class="nav-link" data-scroll-target="#dplyr-dplyr"><span class="header-section-number">13.4.3</span> dplyr 동사 활용</a></li>
-  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">13.4.4</span> 데이터프레임 변환</a></li>
-  <li><a href="#conversion" id="toc-conversion" class="nav-link" data-scroll-target="#conversion"><span class="header-section-number">13.4.5</span> SQL 변환 과정 살펴보기</a></li>
-  <li><a href="#disconnect" id="toc-disconnect" class="nav-link" data-scroll-target="#disconnect"><span class="header-section-number">13.4.6</span> 데이터베이스 연결 끊기</a></li>
-  <li><a href="#sqlite" id="toc-sqlite" class="nav-link" data-scroll-target="#sqlite"><span class="header-section-number">13.4.7</span> SQLite와 실습 데이터베이스</a></li>
-  </ul></li>
+<li><a href="#duckdb-%EC%97%B0%EA%B2%B0" id="toc-duckdb-연결" class="nav-link" data-scroll-target="#duckdb-%EC%97%B0%EA%B2%B0"><span class="header-section-number">14.2.1</span> DuckDB 연결</a></li>
+  <li><a href="#%EC%84%B1%EB%8A%A5%EB%B9%84%EA%B5%90" id="toc-성능비교" class="nav-link" data-scroll-target="#%EC%84%B1%EB%8A%A5%EB%B9%84%EA%B5%90"><span class="header-section-number">14.2.2</span> 성능비교</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#sql-%EB%8C%80%EC%8B%A0-dplyr" id="toc-sql-대신-dplyr" class="nav-link" data-scroll-target="#sql-%EB%8C%80%EC%8B%A0-dplyr"><span class="header-section-number">14.3</span> SQL 대신 <code>dplyr</code></a></li>
+  <li>
+<a href="#sql-dplyr" id="toc-sql-dplyr" class="nav-link" data-scroll-target="#sql-dplyr"><span class="header-section-number">14.4</span> <code>dplyr</code> 동사 데이터베이스 작업</a>
+  <ul class="collapse">
+<li><a href="#db-connection" id="toc-db-connection" class="nav-link" data-scroll-target="#db-connection"><span class="header-section-number">14.4.1</span> 데이터베이스 연결</a></li>
+  <li><a href="#dplyr-sql" id="toc-dplyr-sql" class="nav-link" data-scroll-target="#dplyr-sql"><span class="header-section-number">14.4.2</span> SQL 쿼리 전송</a></li>
+  <li><a href="#dplyr-dplyr" id="toc-dplyr-dplyr" class="nav-link" data-scroll-target="#dplyr-dplyr"><span class="header-section-number">14.4.3</span> dplyr 동사 활용</a></li>
+  <li><a href="#dataframe" id="toc-dataframe" class="nav-link" data-scroll-target="#dataframe"><span class="header-section-number">14.4.4</span> 데이터프레임 변환</a></li>
+  <li><a href="#conversion" id="toc-conversion" class="nav-link" data-scroll-target="#conversion"><span class="header-section-number">14.4.5</span> SQL 변환 과정 살펴보기</a></li>
+  <li><a href="#disconnect" id="toc-disconnect" class="nav-link" data-scroll-target="#disconnect"><span class="header-section-number">14.4.6</span> 데이터베이스 연결 끊기</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C" id="toc-연습문제" class="nav-link" data-scroll-target="#%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">연습문제</a>
+  <ul class="collapse">
+<li><a href="#%EA%B0%9D%EA%B4%80%EC%8B%9D" id="toc-객관식" class="nav-link" data-scroll-target="#%EA%B0%9D%EA%B4%80%EC%8B%9D">객관식</a></li>
+  <li><a href="#%EC%84%9C%EC%88%A0%ED%98%95" id="toc-서술형" class="nav-link" data-scroll-target="#%EC%84%9C%EC%88%A0%ED%98%95">서술형</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/duck_postgreSQL.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spreadsheet.html">현장활용법</a></li><li class="breadcrumb-item"><a href="./duck_postgreSQL.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./spreadsheet.html">현장활용법</a></li><li class="breadcrumb-item"><a href="./duck_postgreSQL.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">14</span>&nbsp; <span class="chapter-title">생산성 향상 전략</span>
+</h1>
 </div>
 
 
@@ -361,26 +375,20 @@ div.csl-indent {
   
 
 
-</header>
-
-
-<p>데이터베이스에 존재하는 데이터를 활용해 분석 및 모델 개발 작업을 수행할 때 생산성을 높일 수 있는 방법은 여러 가지가 있다. 대표적으로 분석에 특화된 데이터베이스를 사용하는 것은 대용량 데이터를 빠르게 처리함으로써 기계시간(Machine time)을 줄여 생산성을 높이는 것이고 다른 한가지 방법은 SQL 쿼리를 직접 작성하지 않고 사람시간(Human time)을 줄여 생산성을 높일 수 있는 <code>dplyr</code> 데이터 문법을 활용하는 방법이 있다.</p>
-<section id="duckdb" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="duckdb"><span class="header-section-number">13.1</span> DuckDB</h2>
+</header><p>데이터베이스에 존재하는 데이터를 활용해 분석 및 모델 개발 작업을 수행할 때 생산성을 높일 수 있는 방법은 여러 가지가 있다. 대표적으로 분석에 특화된 데이터베이스를 사용하는 것은 대용량 데이터를 빠르게 처리함으로써 기계시간(Machine time)을 줄여 생산성을 높이는 것이고 다른 한가지 방법은 SQL 쿼리를 직접 작성하지 않고 사람시간(Human time)을 줄여 생산성을 높일 수 있는 <code>dplyr</code> 데이터 문법을 활용하는 방법이 있다.</p>
+<section id="duckdb" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="duckdb">
+<span class="header-section-number">14.1</span> DuckDB</h2>
 <p>SQLite3와 DuckDB를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다.</p>
 <p>반면에 DuckDB는 OLAP에 더 적합하며, 데이터 분석 작업에 최적화된 데이터베이스다. 큰 규모의 데이터셋에 대한 복잡한 쿼리와 데이터 분석을 빠르게 처리할 수 있다. DuckDB는 벡터화 쿼리 처리와 멀티 코어 시스템에서의 병렬 처리 능력을 갖추고 있어, 대용량 데이터 분석, 보고서 생성, 데이터 마이닝과 같은 작업에서 뛰어난 성능을 발휘한다. 이러한 특성 때문에 DuckDB는 주로 데이터 과학자들과 분석가들에 의해 사용되며, 빅데이터의 효율적인 처리와 복잡한 분석 쿼리를 신속하게 실행할 수 있는 도구로 인정받고 있다.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/two_database.jpg" class="img-fluid figure-img" width="775"></p>
-<figcaption>SQLite3와 DuckDB</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/two_database.jpg" class="img-fluid figure-img" width="775"></p>
+<figcaption>SQLite3와 DuckDB</figcaption></figure>
 </div>
 <p>DuckDB는 “SQLite for analytics”라는 슬로건으로 알려진, 분석을 위한 임베디드 관계형 SQL 데이터베이스 라이브러리다. DuckDB는 설치가 쉽고, 별도의 설정 없이 메모리 상에서 데이터를 처리하거나 단일 파일 데이터베이스로 데이터를 저장할 수 있다.</p>
 <p>SQLite와는 달리 DuckDB는 컬럼 지향적인 테이블 데이터 모델을 사용한다. 이는 R과 같은 데이터 분석 언어의 데이터 모델과 유사하며, 대규모의 데이터를 빠르고 효율적으로 처리하는 데 유리하다.</p>
 <p>DuckDB의 가장 인상적인 특징 중 하나는 R과 Python과의 통합이다. R 사용자는 <code>install.packages("duckdb")</code> 명령을 통해 쉽게 설치할 수 있으며, Python 사용자도 마찬가지로 쉽게 설치 및 사용이 가능하다. 이로 인해 데이터 분석가와 개발자 모두에게 매력적인 선택이 될 수 있다.</p>
-</section>
-<section id="시카고-범죄-데이터" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="시카고-범죄-데이터"><span class="header-section-number">13.2</span> 시카고 범죄 데이터</h2>
+</section><section id="시카고-범죄-데이터" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="시카고-범죄-데이터">
+<span class="header-section-number">14.2</span> 시카고 범죄 데이터</h2>
 <p>DuckDB는 대규모 데이터셋을 분석하기에 적합한 데이터베이스이며, 이는 시카고 범죄 데이터에도 해당된다. DuckDB의 벡터화 쿼리 처리 및 멀티 코어 시스템에서의 병렬 처리 능력은 대용량 데이터에 대한 복잡한 쿼리를 신속하고 효율적으로 처리할 수 있게 한다. 시카고 범죄 데이터는 범죄 유형, 위치, 날짜, 체포 여부 등의 다양한 정보를 포함하고 있어, 이를 통해 시카고의 범죄 패턴과 추세를 이해하는 데 유용하다. 공공 안전 분석, 연구, 정책 개발 등에서 널리 사용되는 이 데이터는 DuckDB를 통해 한정된 메모리를 넘어서는 데이터를 효율적으로 처리하는 데 적합하다. 2021년부터 2023년까지 데이터를 웹페이지에서 다운로드 받아 DuckDB를 활용하여 분석해보자.</p>
 <ul>
 <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2021/dwme-t96c">2021년</a></li>
@@ -388,272 +396,274 @@ div.csl-indent {
 <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2023/xguy-4ndq">2023년</a></li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(duckdb)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>crime_csv <span class="ot">&lt;-</span> fs<span class="sc">::</span><span class="fu">dir_ls</span>(<span class="st">"data/crime/"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>crime_raw <span class="ot">&lt;-</span> crime_csv <span class="sc">|&gt;</span> </span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">enframe</span>(<span class="at">value =</span> <span class="st">"filepath"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>name) <span class="sc">|&gt;</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">data =</span> <span class="fu">map</span>(filepath, read_csv)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">str_extract</span>(filepath, <span class="st">"</span><span class="sc">\\</span><span class="st">d{4}"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(year, data) </span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>crime_tbl <span class="ot">&lt;-</span> crime_raw <span class="sc">|&gt;</span> </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">unnest</span>(data) <span class="sc">|&gt;</span> </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  janitor<span class="sc">::</span><span class="fu">clean_names</span>()</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>crime_tbl <span class="sc">|&gt;</span> </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">glimpse</span>()</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Rows: 707,153</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Columns: 23</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ year                 &lt;chr&gt; "2021", "2021", "2021", "2021", "2021", "2021", "…</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ id                   &lt;dbl&gt; 12342615, 26262, 13209581, 13209369, 12374520, 13…</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ case_number          &lt;chr&gt; "JE202211", "JE366265", "JG422927", "JG422777", "…</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ date                 &lt;chr&gt; "04/17/2021 03:20:00 PM", "09/08/2021 04:45:00 PM…</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ block                &lt;chr&gt; "081XX S PRAIRIE AVE", "047XX W HARRISON ST", "01…</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ iucr                 &lt;chr&gt; "0325", "0110", "1563", "1153", "0486", "1153", "…</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ primary_type         &lt;chr&gt; "ROBBERY", "HOMICIDE", "SEX OFFENSE", "DECEPTIVE …</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ description          &lt;chr&gt; "VEHICULAR HIJACKING", "FIRST DEGREE MURDER", "CR…</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ location_description &lt;chr&gt; "RESIDENCE", "CAR WASH", "APARTMENT", "RESIDENCE"…</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ arrest               &lt;lgl&gt; TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ domestic             &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F…</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ beat                 &lt;chr&gt; "0631", "1131", "0411", "0915", "1123", "1412", "…</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ district             &lt;chr&gt; "006", "011", "004", "009", "011", "014", "017", …</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ ward                 &lt;dbl&gt; 6, 24, 8, 11, 28, 35, 45, 25, 25, 20, 9, 44, 28, …</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ community_area       &lt;dbl&gt; 44, 25, 45, 60, 27, 21, 16, 31, 31, 40, 73, 6, 28…</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ fbi_code             &lt;chr&gt; "03", "01A", "17", "11", "08B", "11", "11", "17",…</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ x_coordinate         &lt;dbl&gt; 1179448, 1144907, NA, NA, 1154131, NA, NA, NA, NA…</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ y_coordinate         &lt;dbl&gt; 1851073, 1896933, NA, NA, 1900784, NA, NA, NA, NA…</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ year_2               &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2…</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ updated_on           &lt;chr&gt; "09/14/2023 03:41:59 PM", "09/14/2023 03:41:59 PM…</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ latitude             &lt;dbl&gt; 41.74663, 41.87319, NA, NA, 41.88358, NA, NA, NA,…</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ longitude            &lt;dbl&gt; -87.61803, -87.74345, NA, NA, -87.70948, NA, NA, …</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $ location             &lt;chr&gt; "(41.746626309, -87.618031954)", "(41.873191445, …</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://duckdb.org/">duckdb</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">crime_csv</span> <span class="op">&lt;-</span> <span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_ls.html">dir_ls</a></span><span class="op">(</span><span class="st">"data/crime/"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">crime_raw</span> <span class="op">&lt;-</span> <span class="va">crime_csv</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tibble.tidyverse.org/reference/enframe.html">enframe</a></span><span class="op">(</span>value <span class="op">=</span> <span class="st">"filepath"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">name</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html">map</a></span><span class="op">(</span><span class="va">filepath</span>, <span class="va">read_csv</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">filepath</span>, <span class="st">"\\d{4}"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">data</span><span class="op">)</span> </span>
+<span></span>
+<span><span class="va">crime_tbl</span> <span class="op">&lt;-</span> <span class="va">crime_raw</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html">unnest</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://sfirke.github.io/janitor/reference/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">crime_tbl</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; Rows: 707,153</span></span>
+<span><span class="co">#&gt; Columns: 23</span></span>
+<span><span class="co">#&gt; $ year                 &lt;chr&gt; "2021", "2021", "2021", "2021", "2021", "2021", "…</span></span>
+<span><span class="co">#&gt; $ id                   &lt;dbl&gt; 12342615, 26262, 13209581, 13209369, 12374520, 13…</span></span>
+<span><span class="co">#&gt; $ case_number          &lt;chr&gt; "JE202211", "JE366265", "JG422927", "JG422777", "…</span></span>
+<span><span class="co">#&gt; $ date                 &lt;chr&gt; "04/17/2021 03:20:00 PM", "09/08/2021 04:45:00 PM…</span></span>
+<span><span class="co">#&gt; $ block                &lt;chr&gt; "081XX S PRAIRIE AVE", "047XX W HARRISON ST", "01…</span></span>
+<span><span class="co">#&gt; $ iucr                 &lt;chr&gt; "0325", "0110", "1563", "1153", "0486", "1153", "…</span></span>
+<span><span class="co">#&gt; $ primary_type         &lt;chr&gt; "ROBBERY", "HOMICIDE", "SEX OFFENSE", "DECEPTIVE …</span></span>
+<span><span class="co">#&gt; $ description          &lt;chr&gt; "VEHICULAR HIJACKING", "FIRST DEGREE MURDER", "CR…</span></span>
+<span><span class="co">#&gt; $ location_description &lt;chr&gt; "RESIDENCE", "CAR WASH", "APARTMENT", "RESIDENCE"…</span></span>
+<span><span class="co">#&gt; $ arrest               &lt;lgl&gt; TRUE, TRUE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span></span>
+<span><span class="co">#&gt; $ domestic             &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, F…</span></span>
+<span><span class="co">#&gt; $ beat                 &lt;chr&gt; "0631", "1131", "0411", "0915", "1123", "1412", "…</span></span>
+<span><span class="co">#&gt; $ district             &lt;chr&gt; "006", "011", "004", "009", "011", "014", "017", …</span></span>
+<span><span class="co">#&gt; $ ward                 &lt;dbl&gt; 6, 24, 8, 11, 28, 35, 45, 25, 25, 20, 9, 44, 28, …</span></span>
+<span><span class="co">#&gt; $ community_area       &lt;dbl&gt; 44, 25, 45, 60, 27, 21, 16, 31, 31, 40, 73, 6, 28…</span></span>
+<span><span class="co">#&gt; $ fbi_code             &lt;chr&gt; "03", "01A", "17", "11", "08B", "11", "11", "17",…</span></span>
+<span><span class="co">#&gt; $ x_coordinate         &lt;dbl&gt; 1179448, 1144907, NA, NA, 1154131, NA, NA, NA, NA…</span></span>
+<span><span class="co">#&gt; $ y_coordinate         &lt;dbl&gt; 1851073, 1896933, NA, NA, 1900784, NA, NA, NA, NA…</span></span>
+<span><span class="co">#&gt; $ year_2               &lt;dbl&gt; 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2021, 2…</span></span>
+<span><span class="co">#&gt; $ updated_on           &lt;chr&gt; "09/14/2023 03:41:59 PM", "09/14/2023 03:41:59 PM…</span></span>
+<span><span class="co">#&gt; $ latitude             &lt;dbl&gt; 41.74663, 41.87319, NA, NA, 41.88358, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ longitude            &lt;dbl&gt; -87.61803, -87.74345, NA, NA, -87.70948, NA, NA, …</span></span>
+<span><span class="co">#&gt; $ location             &lt;chr&gt; "(41.746626309, -87.618031954)", "(41.873191445, …</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>R의 <code>tidyverse</code>와 <code>duckdb</code> 라이브러리를 사용하여 범죄 기록 데이터을 파악하는 과정은 다음과 같다. 먼저 지정된 디렉토리(<code>data/crime/</code>) 안의 모든 파일을 파악하고, 각 CSV 파일을 반복적으로 읽어 데이터와 파일 이름에서 추출한 연도를 저장한다. 데이터를 <code>crime_tbl</code>이라는 단일 데이터프레임으로 결합한 후, <code>unnest</code> 함수를 사용하여 이 중첩된 데이터 구조를 펼치고, <code>janitor::clean_names()</code> 함수로 열 이름을 표준화한다. 마지막으로, <code>glimpse()</code>를 호출하여 정리된 데이터를 파악한다.</p>
+<p>R의 <code>tidyverse</code>와 <code>duckdb</code> 라이브러리를 사용하여 범죄 기록 데이터을 파악하는 과정은 다음과 같다. 먼저 지정된 디렉토리(<code>data/crime/</code>) 안의 모든 파일을 파악하고, 각 CSV 파일을 반복적으로 읽어 데이터와 파일 이름에서 추출한 연도를 저장한다. 데이터를 <code>crime_tbl</code>이라는 단일 데이터프레임으로 결합한 후, <code>unnest</code> 함수를 사용하여 이 중첩된 데이터 구조를 펼치고, <code><a href="https://sfirke.github.io/janitor/reference/clean_names.html">janitor::clean_names()</a></code> 함수로 열 이름을 표준화한다. 마지막으로, <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>를 호출하여 정리된 데이터를 파악한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>crime_type_gg <span class="ot">&lt;-</span> crime_tbl <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(primary_type, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(<span class="dv">10</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_reorder</span>(primary_type, n), <span class="at">y =</span> n)) <span class="sc">+</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_col</span>(<span class="at">width =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"범죄 유형"</span>, <span class="at">y =</span> <span class="st">"범죄 건수"</span>, <span class="at">title =</span> <span class="st">"시카고 범죄 유형별 건수"</span>) <span class="sc">+</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span>comma) </span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>ragg<span class="sc">::</span><span class="fu">agg_jpeg</span>(<span class="st">"images/chicago_crime_type.jpeg"</span>,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>               <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">res =</span> <span class="dv">600</span>)</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>crime_type_gg</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crime_type_gg</span> <span class="op">&lt;-</span> <span class="va">crime_tbl</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">primary_type</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html">fct_reorder</a></span><span class="op">(</span><span class="va">primary_type</span>, <span class="va">n</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">n</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"범죄 유형"</span>, y <span class="op">=</span> <span class="st">"범죄 건수"</span>, title <span class="op">=</span> <span class="st">"시카고 범죄 유형별 건수"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu">scales</span><span class="fu">::</span><span class="va"><a href="https://scales.r-lib.org/reference/comma.html">comma</a></span><span class="op">)</span> </span>
+<span></span>
+<span><span class="fu">ragg</span><span class="fu">::</span><span class="fu"><a href="https://ragg.r-lib.org/reference/agg_jpeg.html">agg_jpeg</a></span><span class="op">(</span><span class="st">"images/chicago_crime_type.jpeg"</span>,</span>
+<span>               width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">7</span>, units <span class="op">=</span> <span class="st">"in"</span>, res <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span>
+<span><span class="va">crime_type_gg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="fig-chicago-crime" class="quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-chicago-crime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chicago-crime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="images/chicago_crime_type.jpeg" class="img-fluid figure-img">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chicago-crime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-그림&nbsp;13.1: 최근 3년 시카고 범죄 유형과 건수
-</figcaption>
-</figure>
+그림&nbsp;14.1: 최근 3년 시카고 범죄 유형과 건수
+</figcaption></figure>
 </div>
-<p><a href="#fig-chicago-crime" class="quarto-xref">그림&nbsp;<span>13.1</span></a> 는 시카고 범죄 데이터셋(<code>crime_tbl</code>)에서 가장 흔한 범죄 유형 상위 10개를 추려내고, 막대 그래프로 시각화하는 과정을 통해 작성되었다. <code>count</code> 함수를 사용해 각 범죄 유형(<code>primary_type</code>)별로 발생 횟수를 계산하고, 내림차순으로 정렬하고, 상위 10개 범죄 유형을 선택하여 <code>ggplot</code>으로 시각화한다. 그래프에 범죄 유형을 x축에, 발생 횟수를 y축에 배치하고, <code>geom_col</code>을 사용해 막대 그래프를 생성하고, <code>coord_flip</code> 함수로 축을 뒤집어 가독성을 높이고, <code>labs</code> 함수로 축과 차트 제목을 설정한 후, <code>scale_y_continuous</code> 함수로 y축 레이블에 쉼표를 추가해 숫자를 보기 쉽게 한다.</p>
-<section id="duckdb-연결" class="level3" data-number="13.2.1">
-<h3 data-number="13.2.1" class="anchored" data-anchor-id="duckdb-연결"><span class="header-section-number">13.2.1</span> DuckDB 연결</h3>
+<p><a href="#fig-chicago-crime" class="quarto-xref">그림&nbsp;<span>14.1</span></a> 는 시카고 범죄 데이터셋(<code>crime_tbl</code>)에서 가장 흔한 범죄 유형 상위 10개를 추려내고, 막대 그래프로 시각화하는 과정을 통해 작성되었다. <code>count</code> 함수를 사용해 각 범죄 유형(<code>primary_type</code>)별로 발생 횟수를 계산하고, 내림차순으로 정렬하고, 상위 10개 범죄 유형을 선택하여 <code>ggplot</code>으로 시각화한다. 그래프에 범죄 유형을 x축에, 발생 횟수를 y축에 배치하고, <code>geom_col</code>을 사용해 막대 그래프를 생성하고, <code>coord_flip</code> 함수로 축을 뒤집어 가독성을 높이고, <code>labs</code> 함수로 축과 차트 제목을 설정한 후, <code>scale_y_continuous</code> 함수로 y축 레이블에 쉼표를 추가해 숫자를 보기 쉽게 한다.</p>
+<section id="duckdb-연결" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="duckdb-연결">
+<span class="header-section-number">14.2.1</span> DuckDB 연결</h3>
 <p><code>DuckDB</code>는 <code>Analytical SQLite</code>라는 별명을 갖고 있다. SQLite가 OLTP 데이터베이스라면, <code>DuckDB</code> OLAP 데이터베이스라고 볼 수 있다.</p>
 <p>DuckDB에 연결하고, R 데이터프레임(<code>crime_tbl</code>)을 DuckDB 데이터베이스에 테이블로 저장한 후, 저장된 테이블 목록을 조회하고, <code>crime_tbl</code> 테이블 내의 총 범죄 수를 쿼리하는 과정이 다음 코드에 담겨있다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>con_dd <span class="ot">&lt;-</span> duckdb<span class="sc">::</span><span class="fu">dbConnect</span>(duckdb<span class="sc">::</span><span class="fu">duckdb</span>())</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>duckdb<span class="sc">::</span><span class="fu">dbWriteTable</span>(con_dd, <span class="st">"crime_tbl"</span>, crime_tbl, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>duckdb<span class="sc">::</span><span class="fu">dbListTables</span>(con_dd)</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con_dd, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span>)</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  범죄수</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 707153</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con_dd</span> <span class="op">&lt;-</span> <span class="fu">duckdb</span><span class="fu">::</span><span class="fu">dbConnect</span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/duckdb/man/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con_dd</span>, <span class="st">"crime_tbl"</span>, <span class="va">crime_tbl</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu">dbListTables</span><span class="op">(</span><span class="va">con_dd</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_dd</span>, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span><span class="op">)</span></span>
+<span><span class="co">#&gt;  범죄수</span></span>
+<span><span class="co">#&gt; 1 707153</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>대용량 처리에 강점이 있는 DuckDB의 유용성을 부각시키기 위해 R에서 특정 작업의 실행 시간을 측정하기 위해 설계된 사용자 정의 함수 <code>time</code>를 제작한다. 이 함수는 <code>system.time()</code>을 사용하여 함수 호출에 소요된 시간을 측정하는데 무명함수와 결합하여 실행시간 측정을 간결하게 할 수 있다. <code>time</code>함수를 두 가지 DuckDB 작업, 데이터베이스에 테이블 쓰기와 테이블의 레코드 수를 쿼리하는 작업에 적용하여, 쓰기작업은 <code>duckdb::dbWriteTable</code>으로 약 0.71초의 실행 시간이 걸리고 쿼리작업은 <code>dbGetQuery</code>로 <code>crime_tbl</code> 테이블 레코드 수를 세는 것은 거의 즉시(0초) 완료된다.</p>
+<p>대용량 처리에 강점이 있는 DuckDB의 유용성을 부각시키기 위해 R에서 특정 작업의 실행 시간을 측정하기 위해 설계된 사용자 정의 함수 <code>time</code>를 제작한다. 이 함수는 <code><a href="https://rdrr.io/r/base/system.time.html">system.time()</a></code>을 사용하여 함수 호출에 소요된 시간을 측정하는데 무명함수와 결합하여 실행시간 측정을 간결하게 할 수 있다. <code>time</code>함수를 두 가지 DuckDB 작업, 데이터베이스에 테이블 쓰기와 테이블의 레코드 수를 쿼리하는 작업에 적용하여, 쓰기작업은 <code>duckdb::dbWriteTable</code>으로 약 0.71초의 실행 시간이 걸리고 쿼리작업은 <code>dbGetQuery</code>로 <code>crime_tbl</code> 테이블 레코드 수를 세는 것은 거의 즉시(0초) 완료된다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>time <span class="ot">&lt;-</span> <span class="cf">function</span>(call) {</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">system.time</span>(<span class="fu">call</span>())[[<span class="dv">1</span>]])</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() duckdb<span class="sc">::</span><span class="fu">dbWriteTable</span>(con_dd, <span class="st">"crime_tbl"</span>, crime_tbl, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.71</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_dd, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span>))</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">time</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">call</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.time.html">system.time</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/call.html">call</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span>\<span class="op">(</span><span class="op">)</span> <span class="fu">duckdb</span><span class="fu">::</span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con_dd</span>, <span class="st">"crime_tbl"</span>, <span class="va">crime_tbl</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.71</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span>\<span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_dd</span>, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>R DuckDB와 SQLite 데이터베이스를 사용한 두 가지 상황에서 데이터를 쓰고 쿼리하는 데 걸리는 시간을 비교한다. DuckDB를 사용할 때, <code>crime_tbl</code> 테이블을 작성하는 데 약 0.71초가 걸렸다. 반면, SQLite를 사용할 때는 같은 작업에 1.78초가 소요되었다. 두 데이터베이스에서 <code>crime_tbl</code> 테이블에서 총 범죄 수를 쿼리하는 작업은 모두 0초가 걸렸다. DuckDB가 SQLite보다 데이터 쓰기 작업에서 더 빠르다는 것을 보여주며, 두 데이터베이스 모두 쿼리 작업에서는 유사한 효율성을 보인다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RSQLite)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>con_sqlite <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>())</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() RSQLite<span class="sc">::</span><span class="fu">dbWriteTable</span>(con_sqlite, <span class="st">"crime_tbl"</span>, crime_tbl, <span class="at">overwrite =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 1.78</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_sqlite, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span>))</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rsqlite.r-dbi.org">RSQLite</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">con_sqlite</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span>\<span class="op">(</span><span class="op">)</span> <span class="fu">RSQLite</span><span class="fu">::</span><span class="fu">dbWriteTable</span><span class="op">(</span><span class="va">con_sqlite</span>, <span class="st">"crime_tbl"</span>, <span class="va">crime_tbl</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 1.78</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span>\<span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_sqlite</span>, <span class="st">"SELECT COUNT(*) AS '범죄수' FROM crime_tbl"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>데이터베이스에 저장된 쿼리문을 작성하기 전에 테이블 구조를 이해하는 데 중요하다. <code>DBI::dbGetQuery</code> 함수를 사용하여 DuckDB 연결(<code>con_dd</code>)에서 ‘duckdb_tables’ 테이블 내용을 조회한다. 이 테이블은 데이터베이스 내의 테이블 구조와 관련된 정보를 담고 있다. <code>select(sql)</code>을 통해 특정 열을 선택하여 스키마 정보를 더 자세히 살펴볼 수 있다.</p>
+<p>데이터베이스에 저장된 쿼리문을 작성하기 전에 테이블 구조를 이해하는 데 중요하다. <code><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">DBI::dbGetQuery</a></code> 함수를 사용하여 DuckDB 연결(<code>con_dd</code>)에서 ‘duckdb_tables’ 테이블 내용을 조회한다. 이 테이블은 데이터베이스 내의 테이블 구조와 관련된 정보를 담고 있다. <code>select(sql)</code>을 통해 특정 열을 선택하여 스키마 정보를 더 자세히 살펴볼 수 있다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>crime_schema <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbGetQuery</span>(con_dd, <span class="st">'SELECT * FROM duckdb_tables;'</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>crime_schema <span class="sc">|&gt;</span> </span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(sql)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; sql</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 CREATE TABLE crime_tbl("year" VARCHAR, id DOUBLE, case_number VARCHAR, date VARCHAR, block VARCHAR, iucr VARCHAR, primary_type VARCHAR, description VARCHAR, location_description VARCHAR, arrest BOOLEAN, domestic BOOLEAN, beat VARCHAR, district VARCHAR, ward DOUBLE, community_area DOUBLE, fbi_code VARCHAR, x_coordinate DOUBLE, y_coordinate DOUBLE, year_2 DOUBLE, updated_on VARCHAR, latitude DOUBLE, longitude DOUBLE, "location" VARCHAR);</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">crime_schema</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_dd</span>, <span class="st">'SELECT * FROM duckdb_tables;'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">crime_schema</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">sql</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; sql</span></span>
+<span><span class="co">#&gt; 1 CREATE TABLE crime_tbl("year" VARCHAR, id DOUBLE, case_number VARCHAR, date VARCHAR, block VARCHAR, iucr VARCHAR, primary_type VARCHAR, description VARCHAR, location_description VARCHAR, arrest BOOLEAN, domestic BOOLEAN, beat VARCHAR, district VARCHAR, ward DOUBLE, community_area DOUBLE, fbi_code VARCHAR, x_coordinate DOUBLE, y_coordinate DOUBLE, year_2 DOUBLE, updated_on VARCHAR, latitude DOUBLE, longitude DOUBLE, "location" VARCHAR);</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="성능비교" class="level3" data-number="13.2.2">
-<h3 data-number="13.2.2" class="anchored" data-anchor-id="성능비교"><span class="header-section-number">13.2.2</span> 성능비교</h3>
+</section><section id="성능비교" class="level3" data-number="14.2.2"><h3 data-number="14.2.2" class="anchored" data-anchor-id="성능비교">
+<span class="header-section-number">14.2.2</span> 성능비교</h3>
 <p>난이도 있는 SQL 쿼리문을 작성하여 OLTP Sqlite3와 DuckDB의 성능을 비교한다. 작성된 SQL 쿼리는 시카고 범죄 데이터베이스에서 2021년부터 2023년까지 가장 흔한 범죄 유형 상위 5가지를 찾고, 이들의 평균 발생 위치, 체포 건수, 연도별 발생 횟수를 파악하는 것이다.</p>
 <ul>
-<li><code>WHERE</code> 절: 범죄 발생 연도를 2021년부터 2023년 사이로 범위를 제한한다.</li>
-<li><code>GROUP BY</code> 절: 결과를 범죄 유형(<code>primary_type</code>)과 발생 연도(<code>year</code>)별로 그룹화한다.</li>
-<li><code>ROUND(AVG(latitude), 5)</code> 및 <code>ROUND(AVG(longitude), 5)</code>: 각 범죄 유형의 평균 위도와 경도를 계산하여 범죄가 일반적으로 발생하는 위치를 파악한다. 평균은 소수점 다섯째 자리까지 반올림된다.</li>
-<li><code>SUM(CASE WHEN arrest THEN 1 ELSE 0 END) AS total_arrests</code>: 각 범죄 유형별로 발생한 총 체포 건수를 합산하고, <code>arrest</code>가 참일 때마다 1을 더하는 방식으로 계산한다.</li>
-<li><code>COUNT(*) AS total_crimes</code>: 각 범죄 유형별로 발생한 총 범죄 건수를 계산한다.</li>
-<li><code>HAVING COUNT(*) &gt; 100</code>: 100건 이상 발생한 범죄 유형만을 필터링하여 신뢰성 있는 데이터만을 대상으로 한다.</li>
-<li><code>ORDER BY total_crimes DESC, primary_type</code>: 총 범죄 건수가 많은 순으로 결과를 정렬하고, 동일한 건수일 경우 범죄 유형(<code>primary_type</code>)에 따라 정렬한다.</li>
-<li><code>LIMIT 5</code>: 결과를 상위 5가지 범죄 유형으로 한정한다.</li>
+<li>
+<code>WHERE</code> 절: 범죄 발생 연도를 2021년부터 2023년 사이로 범위를 제한한다.</li>
+<li>
+<code>GROUP BY</code> 절: 결과를 범죄 유형(<code>primary_type</code>)과 발생 연도(<code>year</code>)별로 그룹화한다.</li>
+<li>
+<code>ROUND(AVG(latitude), 5)</code> 및 <code>ROUND(AVG(longitude), 5)</code>: 각 범죄 유형의 평균 위도와 경도를 계산하여 범죄가 일반적으로 발생하는 위치를 파악한다. 평균은 소수점 다섯째 자리까지 반올림된다.</li>
+<li>
+<code>SUM(CASE WHEN arrest THEN 1 ELSE 0 END) AS total_arrests</code>: 각 범죄 유형별로 발생한 총 체포 건수를 합산하고, <code>arrest</code>가 참일 때마다 1을 더하는 방식으로 계산한다.</li>
+<li>
+<code>COUNT(*) AS total_crimes</code>: 각 범죄 유형별로 발생한 총 범죄 건수를 계산한다.</li>
+<li>
+<code>HAVING COUNT(*) &gt; 100</code>: 100건 이상 발생한 범죄 유형만을 필터링하여 신뢰성 있는 데이터만을 대상으로 한다.</li>
+<li>
+<code>ORDER BY total_crimes DESC, primary_type</code>: 총 범죄 건수가 많은 순으로 결과를 정렬하고, 동일한 건수일 경우 범죄 유형(<code>primary_type</code>)에 따라 정렬한다.</li>
+<li>
+<code>LIMIT 5</code>: 결과를 상위 5가지 범죄 유형으로 한정한다.</li>
 </ul>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>complex_query <span class="ot">&lt;-</span> <span class="st">"</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="st">  SELECT </span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="st">      primary_type,</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="st">      ROUND(AVG(latitude), 5) AS avg_latitude,</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="st">      ROUND(AVG(longitude), 5) AS avg_longitude,</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="st">      SUM(CASE WHEN arrest THEN 1 ELSE 0 END) AS total_arrests,</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="st">      COUNT(*) AS total_crimes,</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="st">      year</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM </span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="st">      crime_tbl</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE </span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="st">      year &gt;= '2021' AND year &lt;= '2023'</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="st">  GROUP BY </span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="st">      primary_type, year</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="st">  HAVING </span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="st">      COUNT(*) &gt; 100</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="st">  ORDER BY </span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="st">      total_crimes DESC, primary_type</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="st">  LIMIT 5;</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="st">"</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(con_dd, complex_query)</span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   primary_type avg_latitude avg_longitude total_arrests total_crimes year</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1        THEFT     41.86707     -87.66762          2738        56770 2023</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2        THEFT     41.86597     -87.66691          2019        54853 2022</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3      BATTERY     41.83902     -87.66873          6726        43958 2023</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      BATTERY     41.83833     -87.66838          5932        40924 2022</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5        THEFT     41.86354     -87.66865          1552        40806 2021</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">complex_query</span> <span class="op">&lt;-</span> <span class="st">"</span></span>
+<span><span class="st">  SELECT </span></span>
+<span><span class="st">      primary_type,</span></span>
+<span><span class="st">      ROUND(AVG(latitude), 5) AS avg_latitude,</span></span>
+<span><span class="st">      ROUND(AVG(longitude), 5) AS avg_longitude,</span></span>
+<span><span class="st">      SUM(CASE WHEN arrest THEN 1 ELSE 0 END) AS total_arrests,</span></span>
+<span><span class="st">      COUNT(*) AS total_crimes,</span></span>
+<span><span class="st">      year</span></span>
+<span><span class="st">  FROM </span></span>
+<span><span class="st">      crime_tbl</span></span>
+<span><span class="st">  WHERE </span></span>
+<span><span class="st">      year &gt;= '2021' AND year &lt;= '2023'</span></span>
+<span><span class="st">  GROUP BY </span></span>
+<span><span class="st">      primary_type, year</span></span>
+<span><span class="st">  HAVING </span></span>
+<span><span class="st">      COUNT(*) &gt; 100</span></span>
+<span><span class="st">  ORDER BY </span></span>
+<span><span class="st">      total_crimes DESC, primary_type</span></span>
+<span><span class="st">  LIMIT 5;</span></span>
+<span><span class="st">"</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_dd</span>, <span class="va">complex_query</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt;   primary_type avg_latitude avg_longitude total_arrests total_crimes year</span></span>
+<span><span class="co">#&gt; 1        THEFT     41.86707     -87.66762          2738        56770 2023</span></span>
+<span><span class="co">#&gt; 2        THEFT     41.86597     -87.66691          2019        54853 2022</span></span>
+<span><span class="co">#&gt; 3      BATTERY     41.83902     -87.66873          6726        43958 2023</span></span>
+<span><span class="co">#&gt; 4      BATTERY     41.83833     -87.66838          5932        40924 2022</span></span>
+<span><span class="co">#&gt; 5        THEFT     41.86354     -87.66865          1552        40806 2021</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>DuckDB와 SQLite3 데이터베이스에서 동일한 복잡한 쿼리(<code>complex_query</code>)를 실행하여 수행 시간을 비교한다. DuckDB에서 쿼리를 실행할 때 걸리는 시간은 약 0.34초이며, SQLite3에서는 약 0.58초가 걸린다. DuckDB가 SQLite3에 비해 해당 쿼리를 더 빠르게 처리할 수 있음을 보여준다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_dd, complex_query) )</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.34</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">time</span>(\() <span class="fu">dbGetQuery</span>(con_sqlite, complex_query) )</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0.58</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span>\<span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_dd</span>, <span class="va">complex_query</span><span class="op">)</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.34</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/time.html">time</a></span><span class="op">(</span>\<span class="op">(</span><span class="op">)</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">con_sqlite</span>, <span class="va">complex_query</span><span class="op">)</span> <span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 0.58</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-</section>
-<section id="sql-대신-dplyr" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="sql-대신-dplyr"><span class="header-section-number">13.3</span> SQL 대신 <code>dplyr</code></h2>
+</section></section><section id="sql-대신-dplyr" class="level2" data-number="14.3"><h2 data-number="14.3" class="anchored" data-anchor-id="sql-대신-dplyr">
+<span class="header-section-number">14.3</span> SQL 대신 <code>dplyr</code>
+</h2>
 <p>다음 예제(<span class="citation" data-cites="lewis2021duckdb">(Lewis 2021)</span>)는 SQL이 데이터 분석의 유일한 해결책이 아님을 보여준다. <code>nycflights13</code> 패키지 <code>flights</code> 데이터셋을 사용하여 “출발지 공항별 상위 3개 목적지”를 찾는 세 가지 다른 접근법을 제시한다. SQL 쿼리를 사용하는 방법은 DuckDB와 연결하여 복잡한 쿼리를 실행한다. 반면, <code>dplyr</code>를 사용하는 방법은 SQL보다 직관적이고 간결한 코드로 동일한 결과를 제공한다. 마지막으로, Base R 문법을 사용하는 방법은 <code>flights</code> 데이터를 분할하고 테이블 함수를 적용하여 목적지를 추출한다.</p>
 <p>3가지 방법은 모두 동일한 결과를 제공하지만 코드 작성 시간과 인지적 부하를 생각하면 데이터 문법(grammar of data)을 충실히 구현하고 있는 <code>dplyr</code> 동사를 사용하는 것도 추천할 만하다.</p>
 <ol type="1">
 <li>SQL 쿼리를 사용하는 방법</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(duckdb)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"flights"</span>, <span class="at">package =</span> <span class="st">"nycflights13"</span>)</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>flight_con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(<span class="fu">duckdb</span>())</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">duckdb_register</span>(flight_con, <span class="st">"flights"</span>, flights)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(flight_con,</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">"SELECT origin, dest</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">FROM (SELECT origin, dest, n</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="st">  FROM (SELECT origin, dest, n, RANK() OVER (</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="st">      PARTITION BY origin ORDER BY n DESC) AS h</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="st">    FROM (SELECT origin, dest, COUNT(*) AS n</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">      FROM flights</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="st">      GROUP BY origin, dest</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="st">    ) AS curly</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="st">  ) AS moe</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="st">  WHERE (h &lt;= 3)</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="st">) AS shemp ORDER BY origin;"</span>)</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   origin dest</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1    EWR  ORD</span></span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2    EWR  BOS</span></span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3    EWR  SFO</span></span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4    JFK  LAX</span></span>
-<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5    JFK  SFO</span></span>
-<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6    JFK  BOS</span></span>
-<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7    LGA  ATL</span></span>
-<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8    LGA  ORD</span></span>
-<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9    LGA  CLT</span></span>
-<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(flight_con, <span class="at">shutdown=</span><span class="cn">TRUE</span>) </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://duckdb.org/">duckdb</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span><span class="op">(</span><span class="st">"flights"</span>, package <span class="op">=</span> <span class="st">"nycflights13"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">flight_con</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/duckdb/man/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/duckdb/man/duckdb_register.html">duckdb_register</a></span><span class="op">(</span><span class="va">flight_con</span>, <span class="st">"flights"</span>, <span class="va">flights</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">flight_con</span>,</span>
+<span><span class="st">"SELECT origin, dest</span></span>
+<span><span class="st">FROM (SELECT origin, dest, n</span></span>
+<span><span class="st">  FROM (SELECT origin, dest, n, RANK() OVER (</span></span>
+<span><span class="st">      PARTITION BY origin ORDER BY n DESC) AS h</span></span>
+<span><span class="st">    FROM (SELECT origin, dest, COUNT(*) AS n</span></span>
+<span><span class="st">      FROM flights</span></span>
+<span><span class="st">      GROUP BY origin, dest</span></span>
+<span><span class="st">    ) AS curly</span></span>
+<span><span class="st">  ) AS moe</span></span>
+<span><span class="st">  WHERE (h &lt;= 3)</span></span>
+<span><span class="st">) AS shemp ORDER BY origin;"</span><span class="op">)</span></span>
+<span></span>
+<span></span>
+<span><span class="co">#&gt;   origin dest</span></span>
+<span><span class="co">#&gt; 1    EWR  ORD</span></span>
+<span><span class="co">#&gt; 2    EWR  BOS</span></span>
+<span><span class="co">#&gt; 3    EWR  SFO</span></span>
+<span><span class="co">#&gt; 4    JFK  LAX</span></span>
+<span><span class="co">#&gt; 5    JFK  SFO</span></span>
+<span><span class="co">#&gt; 6    JFK  BOS</span></span>
+<span><span class="co">#&gt; 7    LGA  ATL</span></span>
+<span><span class="co">#&gt; 8    LGA  ORD</span></span>
+<span><span class="co">#&gt; 9    LGA  CLT</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">flight_con</span>, shutdown<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span> </span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="2" type="1">
-<li><code>dplyr</code> 문법</li>
+<li>
+<code>dplyr</code> 문법</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>flights  <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(origin) <span class="sc">|&gt;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(dest, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">3</span>) <span class="sc">|&gt;</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(origin, dest)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 9 × 2</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Groups:   origin [3]</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   origin dest </span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1 EWR    ORD  </span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2 EWR    BOS  </span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3 EWR    SFO  </span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4 JFK    LAX  </span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 JFK    SFO  </span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6 JFK    BOS  </span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7 LGA    ATL  </span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 8 LGA    ORD  </span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 9 LGA    CLT  </span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">flights</span>  <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">origin</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">dest</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">origin</span>, <span class="va">dest</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; # A tibble: 9 × 2</span></span>
+<span><span class="co">#&gt; # Groups:   origin [3]</span></span>
+<span><span class="co">#&gt;   origin dest </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt;</span></span>
+<span><span class="co">#&gt; 1 EWR    ORD  </span></span>
+<span><span class="co">#&gt; 2 EWR    BOS  </span></span>
+<span><span class="co">#&gt; 3 EWR    SFO  </span></span>
+<span><span class="co">#&gt; 4 JFK    LAX  </span></span>
+<span><span class="co">#&gt; 5 JFK    SFO  </span></span>
+<span><span class="co">#&gt; 6 JFK    BOS  </span></span>
+<span><span class="co">#&gt; 7 LGA    ATL  </span></span>
+<span><span class="co">#&gt; 8 LGA    ORD  </span></span>
+<span><span class="co">#&gt; 9 LGA    CLT  </span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol start="3" type="1">
 <li>Base R 문법</li>
 </ol>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Map</span>(<span class="cf">function</span>(x) <span class="fu">head</span>(<span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">table</span>(x), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)), <span class="dv">3</span>),</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">split</span>(flights[[<span class="st">"dest"</span>]], flights[[<span class="st">"origin"</span>]]))</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $EWR</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ORD" "BOS" "SFO"</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $JFK</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "LAX" "SFO" "BOS"</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; $LGA</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "ATL" "ORD" "CLT"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/funprog.html">Map</a></span><span class="op">(</span><span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span>,</span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/split.html">split</a></span><span class="op">(</span><span class="va">flights</span><span class="op">[[</span><span class="st">"dest"</span><span class="op">]</span><span class="op">]</span>, <span class="va">flights</span><span class="op">[[</span><span class="st">"origin"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; $EWR</span></span>
+<span><span class="co">#&gt; [1] "ORD" "BOS" "SFO"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $JFK</span></span>
+<span><span class="co">#&gt; [1] "LAX" "SFO" "BOS"</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $LGA</span></span>
+<span><span class="co">#&gt; [1] "ATL" "ORD" "CLT"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="sql-dplyr" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="sql-dplyr"><span class="header-section-number">13.4</span> <code>dplyr</code> 동사 데이터베이스 작업</h2>
+</section><section id="sql-dplyr" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="sql-dplyr">
+<span class="header-section-number">14.4</span> <code>dplyr</code> 동사 데이터베이스 작업</h2>
 <p>NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 <code>DBI</code> 패키지를 사용해 <code>dplyr</code>과 연결하여 활용하는 방법을 살펴볼 수 있다.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/dplyr-dbi-sqlite.png" class="img-fluid figure-img"></p>
-<figcaption>dplyr, dbi, sqlite3 변환</figcaption>
-</figure>
+<figure class="figure"><p><img src="images/dplyr-dbi-sqlite.png" class="img-fluid figure-img"></p>
+<figcaption>dplyr, dbi, sqlite3 변환</figcaption></figure>
 </div>
 <p>R 개발자들은 데이터 분석을 할 때 <code>dplyr</code>을 사용하고, 데이터베이스 작업을 할 때는 <code>SQL</code>을 사용하는 것이 일반적인 작업 흐름이었다. 이렇게 두 가지 다른 도구를 사용하는 것은 동일한 작업을 중복해서 수행한다는 불편함을 가져왔다. 그러나 <code>dplyr</code>을 다양한 데이터베이스 시스템에 <code>DBI</code>와 <code>odbc</code>와 연결하면 문제를 해결할 수 있다. 즉, <code>dplyr</code> 동사를 직접 사용하여 SQL 작업을 수행할 수 있어 <code>dplyr</code> 동사를 데이터베이스에 직접 던져서 작업을 수행할 수 있는 중간 통역이 제공되어 보다 효율적으로 작업을 진행할 수 있게 된다. 자료를 원하는 방향으로 처리하기 위해서는 다음과 같은 다양한 기본적인 자료 처리 방법을 조합하여 사용한다.</p>
 <ul>
@@ -678,60 +688,58 @@ div.csl-indent {
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">ORDER</span> <span class="kw">BY</span> 칼럼명 {오름차순|내림차순};</span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> 칼럼명;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="db-connection" class="level3" data-number="13.4.1">
-<h3 data-number="13.4.1" class="anchored" data-anchor-id="db-connection"><span class="header-section-number">13.4.1</span> 데이터베이스 연결</h3>
+<section id="db-connection" class="level3" data-number="14.4.1"><h3 data-number="14.4.1" class="anchored" data-anchor-id="db-connection">
+<span class="header-section-number">14.4.1</span> 데이터베이스 연결</h3>
 <p>가장 먼저 앞에서 생성한 sqlite3 데이터베이스에 R과 연결시킨다. 그리고 연결된 데이터베이스에 들어있는 테이블을 살펴본다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 0. 환경설정 -----------------------</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbplyr)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. 데이터 연결 -----------------------</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>survey_con <span class="ot">&lt;-</span> DBI<span class="sc">::</span><span class="fu">dbConnect</span>(RSQLite<span class="sc">::</span><span class="fu">SQLite</span>(), <span class="st">"data/survey.db"</span>)</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">dbListTables</span>(survey_con)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] "Person"  "Site"    "Survey"  "Visited"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 0. 환경설정 -----------------------</span></span>
+<span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbplyr.tidyverse.org/">dbplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dbi.r-dbi.org">DBI</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># 1. 데이터 연결 -----------------------</span></span>
+<span></span>
+<span><span class="va">survey_con</span> <span class="op">&lt;-</span> <span class="fu">DBI</span><span class="fu">::</span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbConnect.html">dbConnect</a></span><span class="op">(</span><span class="fu">RSQLite</span><span class="fu">::</span><span class="fu"><a href="https://rsqlite.r-dbi.org/reference/SQLite.html">SQLite</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"data/survey.db"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbListTables.html">dbListTables</a></span><span class="op">(</span><span class="va">survey_con</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; [1] "Person"  "Site"    "Survey"  "Visited"</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="dplyr-sql" class="level3" data-number="13.4.2">
-<h3 data-number="13.4.2" class="anchored" data-anchor-id="dplyr-sql"><span class="header-section-number">13.4.2</span> SQL 쿼리 전송</h3>
+</section><section id="dplyr-sql" class="level3" data-number="14.4.2"><h3 data-number="14.4.2" class="anchored" data-anchor-id="dplyr-sql">
+<span class="header-section-number">14.4.2</span> SQL 쿼리 전송</h3>
 <p><code>dbGetQuery</code> 명령어를 통해 연결된 <code>con</code>을 통해 데이터베이스에 질의문(query)를 직접 전송하여 실행시킬 수 있다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. SQL 활용 -----------------------</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbGetQuery</span>(survey_con, <span class="st">'SELECT * FROM Person LIMIT 5'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;         id  personal   family</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1     dyer   William     Dyer</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2       pb     Frank  Pabodie</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3     lake  Anderson     Lake</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4      roe Valentina  Roerich</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5 danforth     Frank Danforth</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 2. SQL 활용 -----------------------</span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbGetQuery.html">dbGetQuery</a></span><span class="op">(</span><span class="va">survey_con</span>, <span class="st">'SELECT * FROM Person LIMIT 5'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt;         id  personal   family</span></span>
+<span><span class="co">#&gt; 1     dyer   William     Dyer</span></span>
+<span><span class="co">#&gt; 2       pb     Frank  Pabodie</span></span>
+<span><span class="co">#&gt; 3     lake  Anderson     Lake</span></span>
+<span><span class="co">#&gt; 4      roe Valentina  Roerich</span></span>
+<span><span class="co">#&gt; 5 danforth     Frank Danforth</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="dplyr-dplyr" class="level3" data-number="13.4.3">
-<h3 data-number="13.4.3" class="anchored" data-anchor-id="dplyr-dplyr"><span class="header-section-number">13.4.3</span> dplyr 동사 활용</h3>
+</section><section id="dplyr-dplyr" class="level3" data-number="14.4.3"><h3 data-number="14.4.3" class="anchored" data-anchor-id="dplyr-dplyr">
+<span class="header-section-number">14.4.3</span> dplyr 동사 활용</h3>
 <p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. dplyr 방식 -----------------------</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>survey_df <span class="ot">&lt;-</span> <span class="fu">tbl</span>(survey_con, <span class="st">"Survey"</span>)</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey_df)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Source:   SQL [6 x 4]</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # Database: sqlite 3.41.2 [D:\tcs\gpt-sql\data\survey.db]</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   taken person quant reading</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1   619 dyer   rad      9.82</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2   619 dyer   sal      0.13</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3   622 dyer   rad      7.8 </span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   622 dyer   sal      0.09</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5   734 pb     rad      8.41</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6   734 lake   sal      0.05</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 3. dplyr 방식 -----------------------</span></span>
+<span></span>
+<span><span class="va">survey_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tbl.html">tbl</a></span><span class="op">(</span><span class="va">survey_con</span>, <span class="st">"Survey"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">survey_df</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; # Source:   SQL [6 x 4]</span></span>
+<span><span class="co">#&gt; # Database: sqlite 3.41.2 [D:\tcs\gpt-sql\data\survey.db]</span></span>
+<span><span class="co">#&gt;   taken person quant reading</span></span>
+<span><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt;  &lt;chr&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1   619 dyer   rad      9.82</span></span>
+<span><span class="co">#&gt; 2   619 dyer   sal      0.13</span></span>
+<span><span class="co">#&gt; 3   622 dyer   rad      7.8 </span></span>
+<span><span class="co">#&gt; 4   622 dyer   sal      0.09</span></span>
+<span><span class="co">#&gt; 5   734 pb     rad      8.41</span></span>
+<span><span class="co">#&gt; 6   734 lake   sal      0.05</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -748,66 +756,87 @@ div.csl-indent {
 </ul>
 </div>
 </div>
-</section>
-<section id="dataframe" class="level3" data-number="13.4.4">
-<h3 data-number="13.4.4" class="anchored" data-anchor-id="dataframe"><span class="header-section-number">13.4.4</span> 데이터프레임 변환</h3>
+</section><section id="dataframe" class="level3" data-number="14.4.4"><h3 data-number="14.4.4" class="anchored" data-anchor-id="dataframe">
+<span class="header-section-number">14.4.4</span> 데이터프레임 변환</h3>
 <p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸 상태는 아직 R에서 작업이 가능한 데이터프레임이 아니라 <code>collect</code> 함수를 활용해서 데이터프레임으로 변환시켜 후속 작업을 R에서 실행한다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. 데이터프레임 변환 -----------------------</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>survey_collect_gg <span class="ot">&lt;-</span> survey_df <span class="sc">%&gt;%</span> <span class="fu">collect</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span> quant, <span class="at">y=</span>reading)) <span class="sc">+</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>      <span class="fu">geom_boxplot</span>()</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>ragg<span class="sc">::</span><span class="fu">agg_jpeg</span>(<span class="st">"images/survey_collect_gg.jpeg"</span>, <span class="at">width =</span> <span class="dv">10</span>, <span class="at">height =</span> <span class="dv">7</span>, <span class="at">units =</span> <span class="st">"in"</span>, <span class="at">res =</span> <span class="dv">600</span>)</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>survey_collect_gg</span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dev.off</span>()</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 4. 데이터프레임 변환 -----------------------</span></span>
+<span></span>
+<span><span class="va">survey_collect_gg</span> <span class="op">&lt;-</span> <span class="va">survey_df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/compute.html">collect</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x<span class="op">=</span> <span class="va">quant</span>, y<span class="op">=</span><span class="va">reading</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>      <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">ragg</span><span class="fu">::</span><span class="fu"><a href="https://ragg.r-lib.org/reference/agg_jpeg.html">agg_jpeg</a></span><span class="op">(</span><span class="st">"images/survey_collect_gg.jpeg"</span>, width <span class="op">=</span> <span class="fl">10</span>, height <span class="op">=</span> <span class="fl">7</span>, units <span class="op">=</span> <span class="st">"in"</span>, res <span class="op">=</span> <span class="fl">600</span><span class="op">)</span></span>
+<span><span class="va">survey_collect_gg</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img src="images/survey_collect_gg.jpeg" class="img-fluid"></p>
-</section>
-<section id="conversion" class="level3" data-number="13.4.5">
-<h3 data-number="13.4.5" class="anchored" data-anchor-id="conversion"><span class="header-section-number">13.4.5</span> SQL 변환 과정 살펴보기</h3>
+</section><section id="conversion" class="level3" data-number="14.4.5"><h3 data-number="14.4.5" class="anchored" data-anchor-id="conversion">
+<span class="header-section-number">14.4.5</span> SQL 변환 과정 살펴보기</h3>
 <p><code>show_query</code> 함수를 사용해서 <code>dplyr</code> 동사가 SQL 질의문으로 변환된 상황을 살펴볼 수도 있다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. 내부 SQL 변환과정 살펴보기 --------------</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>survey_df <span class="sc">|&gt;</span> </span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(quant <span class="sc">==</span> <span class="st">"sal"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">show_query</span>()</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &lt;SQL&gt;</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; SELECT *</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; FROM `Survey`</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WHERE (`quant` = 'sal')</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 5. 내부 SQL 변환과정 살펴보기 --------------</span></span>
+<span></span>
+<span><span class="va">survey_df</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">quant</span> <span class="op">==</span> <span class="st">"sal"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/explain.html">show_query</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">#&gt; &lt;SQL&gt;</span></span>
+<span><span class="co">#&gt; SELECT *</span></span>
+<span><span class="co">#&gt; FROM `Survey`</span></span>
+<span><span class="co">#&gt; WHERE (`quant` = 'sal')</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="disconnect" class="level3" data-number="13.4.6">
-<h3 data-number="13.4.6" class="anchored" data-anchor-id="disconnect"><span class="header-section-number">13.4.6</span> 데이터베이스 연결 끊기</h3>
+</section><section id="disconnect" class="level3" data-number="14.4.6"><h3 data-number="14.4.6" class="anchored" data-anchor-id="disconnect">
+<span class="header-section-number">14.4.6</span> 데이터베이스 연결 끊기</h3>
 <p>데이터베이스는 혼자 사용하는 것이 아니라 사용하지 않는 경우 필히 연결시켜 놓은 <code>con</code>을 필히 끊어 놓는다.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 7. 연결 끊기 -----------------------</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(survey_con)</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># 7. 연결 끊기 -----------------------</span></span>
+<span></span>
+<span><span class="fu"><a href="https://dbi.r-dbi.org/reference/dbDisconnect.html">dbDisconnect</a></span><span class="op">(</span><span class="va">survey_con</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="sqlite" class="level3" data-number="13.4.7">
-<h3 data-number="13.4.7" class="anchored" data-anchor-id="sqlite"><span class="header-section-number">13.4.7</span> SQLite와 실습 데이터베이스</h3>
-<p>먼저 이론을 이해하는 것과 더블어 예제 데이터베이스를 설치하고 실습을 진행하기 위해서 먼저 명령-라인을 사용하여 어떻게 디렉토리 여기저기 이동하는지와 명령-라인에서 명령문을 어떻게 실행하는지 숙지할 필요가 있다.</p>
-<p>이런 주제와 친숙하지 않다면, <a href="http://software-carpentry.org/v5/novice/shell/index.html">유닉스 쉘(Unix Shell)</a> 학습을 참조한다. 우선, <code>SQLite</code> 데이터베이스가 어떻게 동작하는지 설명을 할 필요가 있다.</p>
-<p>인터랙티브하게 학습을 수행하기 위해서는 <a href="http://software-carpentry.org/v5/setup.html">설치 방법</a>에 언급된 SQLite 를 참조하여 설치하고, 학습자가 선택한 위치에 “software_carpentry_sql” 디렉토리를 생성한다. 예를 들어,</p>
+</section></section><section id="연습문제" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
+<section id="객관식" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="객관식">객관식</h3>
 <ol type="1">
-<li>명령-라인 터미널 윈도우를 연다.</li>
-<li>다음과 같이 명령어를 타이핑해서 디렉토리를 생성한다.</li>
+<li>
+<strong>문제:</strong> DuckDB는 어떤 유형의 데이터 처리에 특화되어 있습니까?
+<ol type="1">
+<li>온라인 트랜잭션 처리 (OLTP)</li>
+<li>온라인 분석 처리 (OLAP)</li>
+<li>데이터 스트리밍</li>
+<li>실시간 데이터 처리</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> mkdir <span class="sc">~</span><span class="er">/</span>swc<span class="sc">/</span>sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</li>
+</ol>
+<ol start="2" type="1">
+<li>
+<strong>문제:</strong> PostgreSQL과 DuckDB를 비교했을 때, 어느 데이터베이스가 분석 쿼리에 대해 더 빠른 읽기 성능을 제공합니까?
+<ol type="1">
+<li>DuckDB</li>
+<li>PostgreSQL</li>
+<li>두 데이터베이스가 유사한 성능을 제공</li>
+<li>성능은 사용 사례에 따라 다름</li>
+</ol>
+</li>
+</ol>
 <ol start="3" type="1">
-<li>생성한 디렉토리로 현재 작업 디렉토리를 변경한다.</li>
+<li>
+<strong>문제:</strong> PostgreSQL은 어떤 종류의 데이터베이스로 가장 잘 알려져 있습니까?
+<ol type="1">
+<li>OLTP 데이터베이스</li>
+<li>OLAP 데이터베이스</li>
+<li>NoSQL 데이터베이스</li>
+<li>그래프 데이터베이스</li>
 </ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> cd <span class="sc">~</span><span class="er">/</span>swc<span class="sc">/</span>sql</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+</li>
+</ol></section><section id="서술형" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="서술형">서술형</h3>
+<ol type="1">
+<li>
+<strong>문제:</strong> DuckDB와 PostgreSQL의 주요 차이점과 각각의 데이터베이스가 적합한 사용 사례에 대해 설명하시오.</li>
+</ol>
+<ol start="2" type="1">
+<li>
+<strong>문제:</strong> 데이터 분석에 DuckDB를 사용하는 장점에 대해 설명하시오.</li>
+</ol>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
@@ -815,11 +844,7 @@ div.csl-indent {
 Lewis, Bryan W. 2021. <span>“On DuckDB and R”</span>. Presented to the Cleveland R User Group. <a href="https://www.scattered-thoughts.net/writing/against-sql/">https://www.scattered-thoughts.net/writing/against-sql/</a>.
 </div>
 </div>
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1215,22 +1240,30 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./etl.html" class="pagination-link  aria-label=" &lt;span="" etl&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span>
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./etl.html" class="pagination-link  aria-label=" etl="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">데이터베이스 ETL</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./case_dvd.html" class="pagination-link" aria-label="<span class='chapter-number'>14</span>&nbsp; <span class='chapter-title'>DVD 대여 데이터베이스</span>">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./case_dvd.html" class="pagination-link" aria-label="<span class='chapter-number'>15</span>&nbsp; <span class='chapter-title'>DVD 대여 데이터베이스</span>">
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">DVD 대여 데이터베이스</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
-
+<footer class="footer"><div class="nav-footer">
+    <div class="nav-footer-left">
+<p>챗GPT SQL 책은 소프트웨어 카펜트리 Database and SQL 번역한 것이 포함되어 있습니다.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.</p>
+</div>
+  </div>
+</footer>
 
 
 </body></html>

@@ -496,30 +496,53 @@ dbDisconnect(survey_con)
 ```
 
 
-### SQLite와 실습 데이터베이스 {#sqlite}
+## 연습문제  {.unnumbered}
 
-먼저 이론을 이해하는 것과 더블어 예제 데이터베이스를 설치하고 실습을 진행하기 위해서 먼저 명령-라인을 사용하여 어떻게 디렉토리 여기저기 이동하는지와 명령-라인에서 명령문을 어떻게 실행하는지 숙지할 필요가 있다.
+### 객관식 {.unnumbered}
 
-이런 주제와 친숙하지 않다면, [유닉스 쉘(Unix Shell)](http://software-carpentry.org/v5/novice/shell/index.html) 학습을 참조한다.
-우선, `SQLite` 데이터베이스가 어떻게 동작하는지 설명을 할 필요가 있다.
+1. **문제:** DuckDB는 어떤 유형의 데이터 처리에 특화되어 있습니까?
+   1. 온라인 트랜잭션 처리 (OLTP)
+   1. 온라인 분석 처리 (OLAP)
+   1. 데이터 스트리밍
+   1. 실시간 데이터 처리
 
-인터랙티브하게 학습을 수행하기 위해서는 [설치 방법](http://software-carpentry.org/v5/setup.html)에 언급된 SQLite 를 참조하여 설치하고, 학습자가 선택한 위치에 "software_carpentry_sql" 디렉토리를 생성한다.
-예를 들어,
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. 온라인 분석 처리 (OLAP)
+:::   
 
-1.  명령-라인 터미널 윈도우를 연다.
-2.  다음과 같이 명령어를 타이핑해서 디렉토리를 생성한다.
+2. **문제:** PostgreSQL과 DuckDB를 비교했을 때, 어느 데이터베이스가 분석 쿼리에 대해 더 빠른 읽기 성능을 제공합니까?
+   1. DuckDB
+   1. PostgreSQL
+   1. 두 데이터베이스가 유사한 성능을 제공
+   1. 성능은 사용 사례에 따라 다름
+   
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** A. DuckDB
+:::   
 
-```{r create-directory, eval=FALSE}
-$ mkdir ~/swc/sql
-```
+3. **문제:** PostgreSQL은 어떤 종류의 데이터베이스로 가장 잘 알려져 있습니까?
+   1. OLTP 데이터베이스
+   1. OLAP 데이터베이스
+   1. NoSQL 데이터베이스
+   1. 그래프 데이터베이스
 
-3.  생성한 디렉토리로 현재 작업 디렉토리를 변경한다.
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** A. OLTP 데이터베이스
+:::   
 
-```{r change-directory, eval=FALSE}
-$ cd ~/swc/sql
-```
+### 서술형 {.unnumbered}
 
+1. **문제:** DuckDB와 PostgreSQL의 주요 차이점과 각각의 데이터베이스가 적합한 사용 사례에 대해 설명하시오.
 
+::: {.content-visible when-format="revealjs"}
+   - **예시 답변:** DuckDB는 OLAP 쿼리에 최적화된 분석을 위한 데이터베이스이며, 대규모 데이터 분석과 복잡한 쿼리 처리에 적합하다. 반면, PostgreSQL은 OLTP에 더 적합하며, 트랜잭션 처리와 운영 데이터 관리에 주로 사용된다. 
+:::   
+
+2. **문제:** 데이터 분석에 DuckDB를 사용하는 장점에 대해 설명하시오.
+
+::: {.content-visible when-format="revealjs"}
+   - **예시 답변:** DuckDB는 벡터화 쿼리 처리와 멀티코어 시스템에서의 병렬 처리 능력을 갖추고 있어, 대규모 데이터셋에 대한 빠른 분석이 가능하다.  데이터 과학자와 분석가들이 복잡한 분석 쿼리를 신속하게 수행할 수 있게 해준다.
+:::   
 
 
 

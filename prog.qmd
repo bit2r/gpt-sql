@@ -217,7 +217,41 @@ print("Full name for barrett:", get_name('survey.db', 'barrett'))
 Full name for barrett: Mary Barrett
 ```
 
-## 연습문제
+## 연습문제 {.unnumbered}
+
+### 객관식 {.unnumbered}
+
+1. **문제:** SQL 프로그래밍에서 변수를 선언하기 위해 사용하는 키워드는 무엇입니까?
+   1. `DECLARE`
+   1. `DEFINE`
+   1. `SET`
+   1. `VARIABLE`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** A. `DECLARE`
+:::   
+
+2. **문제:** SQL에서 조건부 로직을 구현할 때 사용되는 구문은 무엇입니까?
+   1. `IF-ELSE`
+   1. `SWITCH`
+   1. `FOR`
+   1. `WHILE`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** A. `IF-ELSE`
+:::   
+
+3. **문제:** SQL에서 예외 처리를 위해 사용하는 구문은 무엇입니까?
+   1. `ERROR`
+   1. `TRY-CATCH`
+   1. `THROW`
+   1. `RAISE`
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. `TRY-CATCH`
+:::   
+
+
 
 ### 테이블 채우기 vs. 값 출력하기  {.unnumbered}
 
@@ -227,7 +261,7 @@ Full name for barrett: Mary Barrett
 
 이를 위해 먼저 `sqlite3` 모듈과 `random` 모듈을 사용할 수 있다. 데이터베이스와 테이블을 생성하고, 무작위 숫자를 생성하여 테이블에 삽입하는 코드를 작성한다. 그리고 이 프로세스가 얼마나 걸리는지 측정한다. 파일에 숫자를 쓰는 프로그램도 비슷한 방식으로 작성하고 실행 시간을 비교한다.
 
----
+::: {.content-visible when-format="revealjs"}   
 
 ```python
 import sqlite3
@@ -263,12 +297,13 @@ with open('random_numbers.txt', 'w') as outfile:
         outfile.write("{}\n".format(number))
 ```
 
+:::
 
 ### SQL 필터링 vs. 파이썬 필터링  {.unnumbered}
 
 `original.db`와 동일한 구조를 가진 새 데이터베이스 backup.db를 생성하는 파이썬 프로그램을 작성하고, original.db에서 20.0보다 큰 모든 값을 backup.db로 복사한다. 어느 것이 더 빠른가? 쿼리에서 값을 필터링하는 것, 아니면 모든 것을 메모리에 읽어 파이썬에서 필터링하는 것.
 
----
+::: {.content-visible when-format="revealjs"}   
 
 첫 번째 예시는 모든 데이터를 메모리로 읽어들이고 파이썬의 if문을 사용하여 숫자를 필터링한다.
 
@@ -333,7 +368,9 @@ connection_backup.commit()
 connection_backup.close()
 ```
 
-### 삽입문 생성
+:::
+
+### 삽입문 생성 {.unnumbered}
 
 동료중의 한명이 Robert Olmstead가 측정한 온도 측정치를 포함하는 다음과 같은 형식의
 **CSV** 파일을 보내왔다.

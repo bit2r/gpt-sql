@@ -49,24 +49,24 @@ book:
         - select.qmd       # O
         - sort-filter.qmd  # O
         - null-hygene.qmd  # O
-        - calc-agg.qmd     # X
-        - join.qmd         # X
-        - create.qmd       # X
-        - prog.qmd         # X
+        - calc-agg.qmd     # O
+        - join.qmd         # O
+        - create.qmd       # O
+        - prog.qmd         # O
 
     - part: "현장활용법"
       chapters:
-        - spreadsheet.qmd # X
-        - etl.qmd         # X
-        - duck_postgreSQL.qmd # X
-        - case_dvd.qmd    # X
+        - spreadsheet.qmd # O
+        - etl.qmd         # O
+        - duck_postgreSQL.qmd # O
+        - case_dvd.qmd    # O
         
     - part: "챗GPT SQL"
       chapters:
-        - text2sql.qmd   # X
-        - llm.qmd        # X
+        - text2sql.qmd   # O
+        - llm.qmd        # O
 
-    - references.qmd     # X
+    - references.qmd     # O
 
 format:
   html:
