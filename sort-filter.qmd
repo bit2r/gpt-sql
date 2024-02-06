@@ -378,9 +378,66 @@ SELECT DISTINCT person, quant FROM Survey WHERE person = 'lake' OR person = 'roe
 
 ## 연습문제 {.unnumbered}
 
+### 객관식 {.unnumbered}
+
+1. **문제:** SQL에서 `DISTINCT` 키워드의 주요 용도는 무엇입니까?
+   1. 정렬 순서 변경
+   1. 중복된 레코드 제거
+   1. 데이터베이스 백업 생성
+   1. 쿼리 실행 속도 향상
+   
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. 중복된 레코드 제거
+:::   
+
+2. **문제:** `ORDER BY` 절의 기본 정렬 순서는 무엇입니까?
+   1. 내림차순
+   1. 오름차순
+   1. 무작위 순서
+   1. 알파벳 순서
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. 오름차순
+:::   
+
+3. **문제:** `LIKE` 키워드와 `%` 와일드카드의 조합은 무엇을 위해 사용됩니까?
+   1. 정확한 문자열 매칭
+   1. 패턴에 기반한 부분 일치 검색
+   1. 숫자 범위 내 검색
+   1. 데이터 타입 변환
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. 패턴에 기반한 부분 일치 검색
+:::
+
+4. 다음 표현식 중 참은 무엇인가?
+   1. `'a' LIKE 'a'`
+   1. `'a' LIKE '%a'`
+   1. `'beta' LIKE '%a'`
+   1. `'alpha' LIKE 'a%%'`
+   1. `'alpha' LIKE 'a%p%'`
+
+::: {.content-visible when-format="revealjs"}
+
+표현식들이 참인 이유는 다음과 같습니다:
+
+1.  `True` - 'a'와 'a'는 동일한 문자이기 때문이다.
+2.  `True` - 와일드카드는 *제로* 또는 그 이상의 문자와 일치할 수 있기 때문이다.
+3.  `True` - '%'가 'bet'과 일치하고, 'a'가 마지막 'a'와 일치한다.
+4.  `True` - 첫 번째 와일드카드가 'lpha'와 일치하고, 두 번째 와일드카드는 제로 문자(또는 그 반대)와 일치한다.
+5.  `True` - 첫 번째 와일드카드가 'l'과 일치하고, 두 번째 와일드카드가 'ha'와 일치한다.
+
+만약 명명된 칼럼의 값이 주어진 패턴과 일치한다면 SQL 테스트 `*column-name* like *pattern*`은 참이다.
+"0 혹은 그 이상의 문자와 매칭"된다는 것을 의미하기 위해서 '%'문자를 패턴에 임의 숫자 횟수에 사용한다.
+반면, 표현식 `*column-name* not like *pattern*`은 매칭을 거꾸로 한다.
+
+:::
+
 ### 중복 날짜 {.unnumbered}
 
 `Visited` 테이블에서 별개로 구별되는 고유한(distinct) 날짜들을 선택하는 쿼리를 작성하시오.
+
+::: {.content-visible when-format="revealjs"}
 
 다음 쿼리는 `Visited` 테이블에서 중복 없이 모든 고유한 'dated' 칼럼의 값을 반환한다.
 
@@ -399,9 +456,13 @@ SELECT DISTINCT dated FROM Visited;
 | 1932-01-14 |
 | 1932-03-22 |
 
+:::
+
 ### 조사자명 {.unnumbered}
 
 `Person` 테이블에 있는 과학자들 전체 이름을 표시하고, 가족 이름(family name)으로 정렬하는 쿼리문을 작성하시오.
+
+::: {.content-visible when-format="revealjs"}
 
 다음 쿼리는 `Person` 테이블에서 개인 이름(personal)과 가족 이름(family)을 결합하여 전체 이름(fullname)을 생성하고, 그 결과를 가족 이름으로 정렬해 반환한다.
 여기서 `||`는 문자열을 연결하는 SQL 연산자다.
@@ -418,8 +479,9 @@ SELECT personal, family FROM Person ORDER BY family ASC;
 |   Frank   | Pabodie  |
 | Valentina | Roerich  |
 
+:::
 
-### 쿼리 디버깅
+### 쿼리 디버깅 {.unnumbered}
 
 극에서 48&deg보다 고위도에 위치한 모든 사이트를 선택하고자 한다고 가정하자.
 작성한 첫번째 쿼리는 다음과 같다.
@@ -428,10 +490,9 @@ SELECT personal, family FROM Person ORDER BY family ASC;
 SELECT * FROM Site WHERE (lat > -48) OR (lat < 48);
 ```
 
-왜 이 쿼리가 잘못된 것인지 설명하세요.
-그리고 쿼리를 다시 작성해서 올바르게 동작하게 만드세요.
+왜 이 쿼리가 잘못된 것인지 설명하고, 쿼리를 다시 작성해서 올바르게 동작하게 만드세요.
 
-------------------------------------------------------------------------
+::: {.content-visible when-format="revealjs"}
 
 `OR`를 사용했기 때문에, 예를 들어 남극에 있는 사이트도 두 번째 기준을 만족하여 포함된다.
 대신에, *두 가지 기준 모두*를 충족하는 사이트만을 포함시키고 싶다면 다음과 같이 쿼리를 수정한다.
@@ -443,10 +504,14 @@ SELECT * FROM Site WHERE (lat > -48) AND (lat < 48);
 작성된 쿼리는 위도가 -48보다 크고 48보다 작은 Site 테이블의 모든 레코드를 선택한다.
 이는 사실상 남극과 북극 사이의 사이트들만을 대상으로 한다.
 
-### 이상치 탐지
+:::
+
+### 이상치 탐지 {.unnumbered}
 
 정규화된 염분 수치는 0.0에서 1.0 사이에 있어야 한다.
 상기 범위 밖에 있는 염분수치를 가진 모든 레코드를 `Survey` 테이블에서 선택하는 쿼리를 작성하세요.
+
+::: {.content-visible when-format="revealjs"}
 
 ``` sql
 SELECT * FROM Survey WHERE quant = 'sal' AND ((reading > 1.0) OR (reading < 0.0));
@@ -457,28 +522,7 @@ SELECT * FROM Survey WHERE quant = 'sal' AND ((reading > 1.0) OR (reading < 0.0)
 |  752  |  roe   |  sal  |  41.6   |
 |  837  |  roe   |  sal  |  22.5   |
 
-### 패턴 매칭
+:::
 
-다음 표현식 중 참은 무엇인가?
-
-1.  `'a' LIKE 'a'`
-2.  `'a' LIKE '%a'`
-3.  `'beta' LIKE '%a'`
-4.  `'alpha' LIKE 'a%%'`
-5.  `'alpha' LIKE 'a%p%'`
-
-------------------------------------------------------------------------
-
-표현식들이 참인 이유는 다음과 같습니다:
-
-1.  `True` - 'a'와 'a'는 동일한 문자이기 때문이다.
-2.  `True` - 와일드카드는 *제로* 또는 그 이상의 문자와 일치할 수 있기 때문이다.
-3.  `True` - '%'가 'bet'과 일치하고, 'a'가 마지막 'a'와 일치한다.
-4.  `True` - 첫 번째 와일드카드가 'lpha'와 일치하고, 두 번째 와일드카드는 제로 문자(또는 그 반대)와 일치한다.
-5.  `True` - 첫 번째 와일드카드가 'l'과 일치하고, 두 번째 와일드카드가 'ha'와 일치한다.
-
-만약 명명된 칼럼의 값이 주어진 패턴과 일치한다면 SQL 테스트 `*column-name* like *pattern*`은 참이다.
-"0 혹은 그 이상의 문자와 매칭"된다는 것을 의미하기 위해서 '%'문자를 패턴에 임의 숫자 횟수에 사용한다.
-반면, 표현식 `*column-name* not like *pattern*`은 매칭을 거꾸로 한다.
 
 

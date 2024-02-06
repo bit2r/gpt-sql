@@ -328,11 +328,43 @@ SELECT * FROM Person;
 
 ## 연습문제 {.unnumbered}
 
+### 객관식 {.unnumbered}
+
+1. **문제:** SQL에서 `SELECT` 문은 무엇에 사용됩니까?
+   1. 데이터베이스에 새로운 테이블을 생성
+   1. 테이블에서 특정 칼럼을 선택
+   1. 데이터베이스의 보안 설정을 변경
+   1. 데이터베이스의 저장된 프로시저를 실행
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. 테이블에서 특정 칼럼을 선택하기 위해
+:::   
+
+2. **문제:** 다음 중 SQL 쿼리 작성 시 고려해야 할 사항은 무엇입니까?
+   1. 항상 모든 쿼리를 대문자로 작성
+   1. 쿼리의 마지막에는 반드시 세미콜론을 사용
+   1. 모든 SQL 명령어는 고유한 테이블에 연결
+   1. 테이블 이름은 항상 소문자로 작성
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** B. 쿼리의 마지막에는 반드시 세미콜론을 사용해야 합니다.
+:::
+
+3. **문제:** `SELECT` 문을 사용하여 여러 열을 선택할 때, 열 이름 사이에 무엇을 넣어야 합니까?
+   1. 쉼표
+   1. 세미콜론
+   1. 콜론
+   1. 슬래시
+
+::: {.content-visible when-format="revealjs"}   
+   - **정답:** A. 쉼표
+:::
+
 ### `CREATE` 쿼리문 {.unnumbered}
 
 데이터베이스 SQL 문을 작성할 때 테이블 칼럼 자료형(문자, 숫자, 날짜 등)을 파악하고 있어야 버그없는 깔끔한 쿼리를 작성할 수 있다.
 
-정수를 포함하는 칼럼을 확인하기 위해, `.schema` 명령어를 사용하면 확인할 수 있다.
+`.schema` 명령어를 사용하여 정수를 포함하는 칼럼을 확인하시오.
 
 
 ```sql
@@ -346,11 +378,17 @@ CREATE TABLE Survey (taken integer, person text, quant text, reading real);
 CREATE TABLE Visited (id integer, site text, dated text);
 ```
 
-출력 결과에서, **Survey** 테이블(3번째 줄)의 **taken** 칼럼이 실수 자료형임을 확인할 수 있다.
+::: {.content-visible when-format="revealjs"}
+`.schema` 명령어는 데이터베이스에 있는 모든 테이블의 구조를 보여준다.
+출력 결과에서, **Survey** 테이블(3번째 줄)의 **taken** 칼럼이 정수 자료형임을 확인할 수 있다.
+:::
+
 
 ### 사이트 이름 선택하기 {.unnumbered}
  
-`Site` 테이블에서 `name` 칼럼만 선택하는 쿼리를 작성한다.
+`Site` 테이블에서 `name` 칼럼만 선택하는 쿼리를 작성하시오.
+
+::: {.content-visible when-format="revealjs"}
 
 ```sql
 SELECT name FROM Site;
@@ -362,6 +400,7 @@ SELECT name FROM Site;
 | DR-3      | 
 | MSK-4     | 
 
+:::
 
 ### 쿼리 스타일 {.unnumbered}
 
@@ -379,6 +418,8 @@ select Personal, Family from PERSON;
 
 어떤 스타일이 가장 읽기 쉽다고 생각하며, 그 이유는 무엇인가?
 
+::: {.content-visible when-format="revealjs"}
+
 읽기 쉬운 쿼리 스타일은 주로 개인적인 선호와 경험에 따라 달라질 수 있다. 그러나 일반적으로 첫 번째 예시처럼 SQL 키워드를 대문자로, 테이블과 칼럼 이름을 소문자로 쓰는 방식이 가독성이 높다고 여겨진다. SQL 키워드와 테이블, 칼럼 이름 사이의 명확한 구분을 제공하여 쿼리를 더 쉽게 읽고 이해할 수 있게 한다. 반면, 두 번째 예시처럼 모든 것을 소문자나 대문자로 쓰는 방식은 이러한 구분을 덜 명확하게 만들어 쿼리의 구조를 파악하기 어렵게 할 수 있다.
 
-
+:::

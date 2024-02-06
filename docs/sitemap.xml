@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://r2bit.com/gpt-sql/index.html</loc>
-    <lastmod>2024-02-05T01:07:54.391Z</lastmod>
+    <lastmod>2024-02-05T23:38:41.594Z</lastmod>
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/case_dvd.html</loc>
@@ -10,15 +10,15 @@
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/intro.html</loc>
-    <lastmod>2024-02-05T03:43:18.669Z</lastmod>
+    <lastmod>2024-02-06T00:16:22.057Z</lastmod>
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/theory.html</loc>
-    <lastmod>2024-02-05T02:24:40.777Z</lastmod>
+    <lastmod>2024-02-06T00:16:19.535Z</lastmod>
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/select.html</loc>
-    <lastmod>2024-01-05T08:22:57.709Z</lastmod>
+    <lastmod>2024-02-06T00:35:49.880Z</lastmod>
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/references.html</loc>
@@ -26,6 +26,14 @@
   </url>
   <url>
     <loc>https://r2bit.com/gpt-sql/setup.html</loc>
-    <lastmod>2024-01-30T03:03:57.690Z</lastmod>
+    <lastmod>2024-02-06T00:07:06.095Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/sort-filter.html</loc>
+    <lastmod>2024-02-06T00:43:19.551Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r2bit.com/gpt-sql/null-hygene.html</loc>
+    <lastmod>2024-02-06T00:50:51.523Z</lastmod>
   </url>
 </urlset>
