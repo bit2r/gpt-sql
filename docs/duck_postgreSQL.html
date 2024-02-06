@@ -378,7 +378,7 @@ ga('send', {
 </header><p>데이터베이스에 존재하는 데이터를 활용해 분석 및 모델 개발 작업을 수행할 때 생산성을 높일 수 있는 방법은 여러 가지가 있다. 대표적으로 분석에 특화된 데이터베이스를 사용하는 것은 대용량 데이터를 빠르게 처리함으로써 기계시간(Machine time)을 줄여 생산성을 높이는 것이고 다른 한가지 방법은 SQL 쿼리를 직접 작성하지 않고 사람시간(Human time)을 줄여 생산성을 높일 수 있는 <code>dplyr</code> 데이터 문법을 활용하는 방법이 있다.</p>
 <section id="duckdb" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="duckdb">
 <span class="header-section-number">14.1</span> DuckDB</h2>
-<p>SQLite3와 DuckDB를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다.</p>
+<p>SQLite3<span class="citation" data-cites="kreibich2010using">(Kreibich 2010)</span>와 DuckDB<span class="citation" data-cites="raasveldt2019duckdb">(Raasveldt 와/과 Mühleisen 2019)</span>를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다.</p>
 <p>반면에 DuckDB는 OLAP에 더 적합하며, 데이터 분석 작업에 최적화된 데이터베이스다. 큰 규모의 데이터셋에 대한 복잡한 쿼리와 데이터 분석을 빠르게 처리할 수 있다. DuckDB는 벡터화 쿼리 처리와 멀티 코어 시스템에서의 병렬 처리 능력을 갖추고 있어, 대용량 데이터 분석, 보고서 생성, 데이터 마이닝과 같은 작업에서 뛰어난 성능을 발휘한다. 이러한 특성 때문에 DuckDB는 주로 데이터 과학자들과 분석가들에 의해 사용되며, 빅데이터의 효율적인 처리와 복잡한 분석 쿼리를 신속하게 실행할 수 있는 도구로 인정받고 있다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/two_database.jpg" class="img-fluid figure-img" width="775"></p>
@@ -660,7 +660,7 @@ ga('send', {
 </div>
 </section><section id="sql-dplyr" class="level2" data-number="14.4"><h2 data-number="14.4" class="anchored" data-anchor-id="sql-dplyr">
 <span class="header-section-number">14.4</span> <code>dplyr</code> 동사 데이터베이스 작업</h2>
-<p>NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 <code>DBI</code> 패키지를 사용해 <code>dplyr</code>과 연결하여 활용하는 방법을 살펴볼 수 있다.</p>
+<p>NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 <code>DBI</code> 패키지를 사용해 <code>dplyr</code><span class="citation" data-cites="broatch2019introducing">(Broatch, Dietrich, 와/과 Goelman 2019)</span>과 연결하여 활용하는 방법을 살펴볼 수 있다.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure"><p><img src="images/dplyr-dbi-sqlite.png" class="img-fluid figure-img"></p>
 <figcaption>dplyr, dbi, sqlite3 변환</figcaption></figure>
@@ -840,8 +840,17 @@ ga('send', {
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-broatch2019introducing" class="csl-entry" role="listitem">
+Broatch, Jennifer E, Suzanne Dietrich, 와/과 Don Goelman. 2019. <span>“Introducing data science techniques by connecting database concepts and dplyr”</span>. <em>Journal of Statistics Education</em> 27 (3): 147–53.
+</div>
+<div id="ref-kreibich2010using" class="csl-entry" role="listitem">
+Kreibich, Jay. 2010. <em>Using SQLite</em>. " O’Reilly Media, Inc.".
+</div>
 <div id="ref-lewis2021duckdb" class="csl-entry" role="listitem">
 Lewis, Bryan W. 2021. <span>“On DuckDB and R”</span>. Presented to the Cleveland R User Group. <a href="https://www.scattered-thoughts.net/writing/against-sql/">https://www.scattered-thoughts.net/writing/against-sql/</a>.
+</div>
+<div id="ref-raasveldt2019duckdb" class="csl-entry" role="listitem">
+Raasveldt, Mark, 와/과 Hannes Mühleisen. 2019. <span>“Duckdb: an embeddable analytical database”</span>. In <em>Proceedings of the 2019 International Conference on Management of Data</em>, 1981–84.
 </div>
 </div>
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">

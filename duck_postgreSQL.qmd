@@ -13,7 +13,7 @@ editor_options:
 
 ## DuckDB
 
-SQLite3와 DuckDB를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다.
+SQLite3[@kreibich2010using]와 DuckDB[@raasveldt2019duckdb]를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다.
 
 반면에 DuckDB는 OLAP에 더 적합하며, 데이터 분석 작업에 최적화된 데이터베이스다. 큰 규모의 데이터셋에 대한 복잡한 쿼리와 데이터 분석을 빠르게 처리할 수 있다. DuckDB는 벡터화 쿼리 처리와 멀티 코어 시스템에서의 병렬 처리 능력을 갖추고 있어, 대용량 데이터 분석, 보고서 생성, 데이터 마이닝과 같은 작업에서 뛰어난 성능을 발휘한다. 이러한 특성 때문에 DuckDB는 주로 데이터 과학자들과 분석가들에 의해 사용되며, 빅데이터의 효율적인 처리와 복잡한 분석 쿼리를 신속하게 실행할 수 있는 도구로 인정받고 있다.
 
@@ -333,7 +333,7 @@ Map(function(x) head(names(sort(table(x), decreasing = TRUE)), 3),
 
 ## `dplyr` 동사 데이터베이스 작업 {#sql-dplyr}
 
-NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 `DBI` 패키지를 사용해 `dplyr`과 연결하여 활용하는 방법을 살펴볼 수 있다.
+NoSQL과 빅데이터가 주목을 받고 있지만, 데이터 분석을 하는 입장에서는 여전히 SQL의 중요성이 크다. SQL에 대한 이해는 데이터 조작의 기본을 다지는 데 필수적이며, 이를 바탕으로 `DBI` 패키지를 사용해 `dplyr`[@broatch2019introducing]과 연결하여 활용하는 방법을 살펴볼 수 있다.
 
 ![dplyr, dbi, sqlite3 변환](images/dplyr-dbi-sqlite.png)
 

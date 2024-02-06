@@ -383,7 +383,7 @@ ga('send', {
 </header>
 
 
-<p>1950년대부터 본격적으로 컴퓨터가 도입되면서 CLI를 필두로 다양한 사용자 인터페이스(User Interface)가 적용되었다. 스티브 잡스의 애플사는 매킨토시 GUI에 이어 아이폰 모바일 인터페이스를 일반화시켰다면, 최근 챗GPT는 언어 사용자 인터페이스(LUI)를 통해 각 분야에 혁신을 예고하고 있다. 챗GPT 데이터 과학도 사용자 관점에서 보자. 기존 R, 파이썬, SQL, 엑셀 등 데이터 과학 구문을 머리속에 암기하고 있거나 구글이나 네이버를 통해 중요 키워드를 통해 문제를 해결해야 했었다. 하지만, 이제 챗GPT가 자연어를 이해하기 때문에 데이터 전처리, 통계 작업, 데이터 분석, 시각화, 모형개발 등 데이터 과학 전반에 변화는 필연적이다. <span class="citation" data-cites="wickham2023r">(Wickham, Çetinkaya-Rundel, 와/과 Grolemund 2023)</span> <span class="citation" data-cites="wickham2019welcome">(Wickham 기타 2019)</span> <span class="citation" data-cites="gozalo2023chatgpt">(Gozalo-Brizuela 와/과 Garrido-Merchan 2023)</span></p>
+<p>1950년대부터 본격적으로 컴퓨터가 도입되면서 CLI를 필두로 다양한 사용자 인터페이스(User Interface)가 적용되었다. 스티브 잡스의 애플사는 매킨토시 GUI에 이어 아이폰 모바일 인터페이스를 일반화시켰다면, 최근 챗GPT는 언어 사용자 인터페이스(LUI)를 통해 각 분야에 혁신을 예고하고 있다. 챗GPT<span class="citation" data-cites="vaswani2017attention">(Vaswani 기타 2017)</span> 데이터 과학도 사용자 관점에서 보자. 기존 R, 파이썬, SQL, 엑셀 등 데이터 과학 구문을 머리속에 암기하고 있거나 구글이나 네이버를 통해 중요 키워드를 통해 문제를 해결해야 했었다. 하지만, 이제 챗GPT가 자연어를 이해하기 때문에 데이터 전처리, 통계 작업, 데이터 분석, 시각화, 모형개발 등 데이터 과학 전반에 변화는 필연적이다. <span class="citation" data-cites="wickham2023r">(Wickham, Çetinkaya-Rundel, 와/과 Grolemund 2023)</span> <span class="citation" data-cites="wickham2019welcome">(Wickham 기타 2019)</span> <span class="citation" data-cites="gozalo2023chatgpt">(Gozalo-Brizuela 와/과 Garrido-Merchan 2023)</span></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ui-evolution" class="quarto-figure quarto-figure-center anchored">
@@ -411,7 +411,7 @@ classDef A font-size:16px;
 </div>
 </div>
 </div>
-<p>챗GPT는 인터넷에서 방대한 양의 데이터를 학습하여 이를 정말 잘 압축한 하나의 저장소로 이해할 수 있다. 따라서, 압축을 풀게 되면 정확히 원본을 복원할 수 있는 부분도 있지만, 그렇지 못한 부분도 당영히 있게 된다.</p>
+<p>챗GPT<span class="citation" data-cites="wu2023brief">(Wu 기타 2023)</span>는 인터넷에서 방대한 양의 데이터를 학습하여 이를 정말 잘 압축한 하나의 저장소로 이해할 수 있다. 따라서, 압축을 풀게 되면 정확히 원본을 복원할 수 있는 부분도 있지만, 그렇지 못한 부분도 당영히 있게 된다.</p>
 <p>챗GPT를 “웹의 흐릿한 JPEG”<span class="citation" data-cites="chiang2023chatgpt">(Chiang 2023)</span>으로 비유하고 있다. JPEC 기술 자체는 손실 압축기술로 무손실 압축기술로 대표적인 PNG와 대비된다. 흐릿한 이미지가 선명하지 않거나 정확하지 않은 것처럼 ChatGPT도 항상 완벽한 답변을 제공하거나 모든 질문을 제대로 이해하는 것도 아니다. 하지만 사용자와의 대화를 기반으로 끊임없이 학습하고 개선하고 있다. 더 많은 사람들이 챗GPT를 사용할수록 사람의 언어를 더 잘 이해하고 반응할 수 있게 개발된 기술이다.</p>
 <section id="프롬프트-공학" class="level2" data-number="16.1">
 <h2 data-number="16.1" class="anchored" data-anchor-id="프롬프트-공학"><span class="header-section-number">16.1</span> 프롬프트 공학</h2>
@@ -761,11 +761,17 @@ Chiang, Ted. 2023. <span>“ChatGPT is a blurry JPEG of the web”</span>. <em>T
 <div id="ref-gozalo2023chatgpt" class="csl-entry" role="listitem">
 Gozalo-Brizuela, Roberto, 와/과 Eduardo C Garrido-Merchan. 2023. <span>“ChatGPT is not all you need. A State of the Art Review of large Generative AI models”</span>. <em>arXiv preprint arXiv:2301.04655</em>.
 </div>
+<div id="ref-vaswani2017attention" class="csl-entry" role="listitem">
+Vaswani, Ashish, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Lukasz Kaiser, 와/과 Illia Polosukhin. 2017. <span>“Attention Is All You Need”</span>. <a href="https://arxiv.org/abs/1706.03762">https://arxiv.org/abs/1706.03762</a>.
+</div>
 <div id="ref-wickham2019welcome" class="csl-entry" role="listitem">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, 기타. 2019. <span>“Welcome to the Tidyverse”</span>. <em>Journal of open source software</em> 4 (43): 1686.
 </div>
 <div id="ref-wickham2023r" class="csl-entry" role="listitem">
 Wickham, Hadley, Mine Çetinkaya-Rundel, 와/과 Garrett Grolemund. 2023. <em>R for data science</em>. " O’Reilly Media, Inc.".
+</div>
+<div id="ref-wu2023brief" class="csl-entry" role="listitem">
+Wu, Tianyu, Shizhu He, Jingping Liu, Siqi Sun, Kang Liu, Qing-Long Han, 와/과 Yang Tang. 2023. <span>“A brief overview of ChatGPT: The history, status quo and potential future development”</span>. <em>IEEE/CAA Journal of Automatica Sinica</em> 10 (5): 1122–36.
 </div>
 </div>
 </section>

@@ -52,7 +52,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -356,11 +376,11 @@ ga('send', {
   
 
 
-</header><p>ETL은 데이터베이스에서 데이터를 처리하는 세 단계, 즉 ’Extract, Transform, Load’의 약자다. ETL이 없으면, 데이터는 분산되어 있고 형식이 일치하지 않아 데이터 관리가 힘들어진다. 또한, 데이터 질과 정확성이 떨어져 분석 결과에 신뢰를 둘 수 없게 된다.</p>
+</header><p>ETL은 데이터베이스에서 데이터를 처리하는 세 단계, 즉 ’Extract, Transform, Load’의 약자다. ETL이 없으면, 데이터는 분산되어 있고 형식이 일치하지 않아 데이터 관리가 힘들어진다. 또한, 데이터 질과 정확성이 떨어져 분석 결과에 신뢰를 둘 수 없게 된다. <span class="citation" data-cites="Carpentries2021Spreadsheet">(The Carpentries 2021)</span></p>
 <ol type="1">
 <li><p><strong>Extract (추출)</strong>: 다양한 출처에서 데이터를 끌어온다. 추출 단계 목적은 다음 단계로 가기 위해 데이터를 준비하는 과정이다.</p></li>
 <li><p><strong>Transform (변환)</strong>: 추출된 데이터를 사용하기 좋게 가공하는 단계로 데이터를 정제하고, 형식을 맞추고, 오류를 수정하여 데이터 품질을 높이는 데 꼭 필요한 단계다.</p></li>
-<li><p><strong>Load (적재)</strong>: 변환된 데이터를 데이터베이스나 데이터 웨어하우스 같은 최종 목적지에 저장한다. 저장된 데이터는 분석, 모형개발, 대쉬보드 제작, 보고서 작성에 사용된다.</p></li>
+<li><p><strong>Load (적재)</strong>: 변환된 데이터를 데이터베이스나 데이터 웨어하우스<span class="citation" data-cites="gardner1998building">(Gardner 1998)</span> 같은 최종 목적지에 저장한다. 저장된 데이터는 분석, 모형개발, 대쉬보드 제작, 보고서 작성에 사용된다.</p></li>
 </ol>
 <p>앞장에서 살펴본 문헌정보 <code>bibliography.csv</code> 파일을 ETL 과정을 거쳐 데이터베이스에 적재해보자.</p>
 <section id="자료-추출" class="level2" data-number="13.1"><h2 data-number="13.1" class="anchored" data-anchor-id="자료-추출">
@@ -985,6 +1005,14 @@ ga('send', {
 <p>지금까지 작성한 함수를 재활용하여 저자명을 정규화하시오. 작업 결과를 옆사람과 비교하시오. 정확하게 저자명과 동일한 목록을 만들어 냈는지 확인하시고, 만약 그렇지 못하다면, 상응하는 목록을 만들어 냈는지 확인하세요.</p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list" style="display: none">
+<div id="ref-gardner1998building" class="csl-entry" role="listitem">
+Gardner, Stephen R. 1998. <span>“Building the data warehouse”</span>. <em>Communications of the ACM</em> 41 (9): 52–60.
+</div>
+<div id="ref-Carpentries2021Spreadsheet" class="csl-entry" role="listitem">
+The Carpentries. 2021. <span>“<span>Capstone Project for Novices: Data Analysis and Visualization in R for Ecologists</span>”</span>. <a href="https://carpentries-incubator.github.io/capstone-novice-spreadsheet-biblio/">https://carpentries-incubator.github.io/capstone-novice-spreadsheet-biblio/</a>.
+</div>
+</div>
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -8,13 +8,7 @@ editor_options:
 
 # DVD 대여 데이터베이스 {#dvd-rental}
 
-## PostgreSQL [^case_dvd-1] [^case_dvd-2] {#about-postgreSQL}
-
-[^case_dvd-1]: [위키백과,
-    "PostgreSQL"](https://ko.wikipedia.org/wiki/PostgreSQL)
-
-[^case_dvd-2]: [NAVER D2 한눈에 살펴보는
-    PostgreSQL](https://d2.naver.com/helloworld/227936)
+## PostgreSQL  {#about-postgreSQL}
 
 PostgreSQL은 확장 가능성 및 표준 준수를 강조하는 객체-관계형
 데이터베이스 관리 시스템(ORDBMS)의 하나로 BSD 라이선스로 배포되며
@@ -22,18 +16,24 @@ PostgreSQL은 확장 가능성 및 표준 준수를 강조하는 객체-관계�
 머신 애플리케이션에서부터 수많은 동시 접속 사용자가 있는 대형의 인터넷
 애플리케이션(또는 데이터 웨어하우스용)에 이르기까지 여러 부하를 관리할
 수 있으며 macOS 서버의 경우 PostgreSQL은 기본 데이터베이스로 상용 오라클
-데이터베이스를 대체하는 오픈소스 데이터베이스로 알려져 있다.
+데이터베이스를 대체하는 오픈소스 데이터베이스로 알려져 있다. [^case_dvd-1] [^case_dvd-2]
 
-### PostgreSQL 설치 [^case_dvd-3] {#install-postgreSQL}
+[^case_dvd-1]: [위키백과,
+    "PostgreSQL"](https://ko.wikipedia.org/wiki/PostgreSQL)
 
-[^case_dvd-3]: [Install
-    PostgreSQL](http://www.postgresqltutorial.com/install-postgresql/)
+[^case_dvd-2]: [NAVER D2 한눈에 살펴보는
+    PostgreSQL](https://d2.naver.com/helloworld/227936)
+
+### PostgreSQL 설치  {#install-postgreSQL}
 
 [PostgreSQL: The World's Most Advanced Open Source Relational
 Database](https://www.postgresql.org/) 웹사이트에서 PostgreSQL
 [다운로드](https://www.postgresql.org/download/windows/) 한다. 윈도우에
 설치하는 경우 다음을 참고한다. 설치과정에서 나중에 도움이 될만한 정보는
-다음과 같다.
+다음과 같다.[^case_dvd-3]
+
+[^case_dvd-3]: [Install
+    PostgreSQL](http://www.postgresqltutorial.com/install-postgresql/)
 
 -   설치 디렉토리: `C:\Program Files\PostgreSQL\16`
 -   포트: `5432`
@@ -52,17 +52,17 @@ width="200"}
 헬로월드](images/postgreSQL-helloworld.png){fig-align="center"
 width="383"}
 
-### 예제 데이터베이스 - `pagila` [^case_dvd-4] {#install-dvd-postgreSQL}
-
-[^case_dvd-4]: [PostgreSQL Sample
-    Database](http://www.postgresqltutorial.com/postgresql-sample-database/)
+### 예제 데이터베이스 - `pagila` {#install-dvd-postgreSQL}
 
 [PostgreSQL Sample Database](https://github.com/devrimgunduz/pagila)를
 Github에서 구해서 설치하거나, [PostgreSQL Sample
 Database](http://www.postgresqltutorial.com/postgresql-sample-database/),
 [Load PostgreSQL Sample
 Database](http://www.postgresqltutorial.com/load-postgresql-sample-database/)을
-참조하여 DVD 대여 데이터베이스를 설치한다.
+참조하여 DVD 대여 데이터베이스[@stones2006beginning]를 설치한다. [^case_dvd-4]
+
+[^case_dvd-4]: [PostgreSQL Sample
+    Database](http://www.postgresqltutorial.com/postgresql-sample-database/)
 
 1.  `SQL Shell (psql)` 쉘을 실행하여 `dvd` 데이터베이스를 생성한다.
 
