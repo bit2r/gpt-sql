@@ -56,4 +56,12 @@ data/crime/
 .env
 
 publishing/
+pdfs/
+
+index.toc
+index.tex
+index.log
+index.idx
+index.bcf
+index.aux
 

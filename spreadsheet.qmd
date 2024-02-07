@@ -41,7 +41,6 @@ library(tidyverse)
 library(gt)
 library(gtExtras)
 
-
 excel_tbl <- tribble(
   ~순위, ~함수, ~`스프레드쉬트 갯수`, ~`누적 백분율(%)`,
   1, "SUM", 578, "6.4%",
