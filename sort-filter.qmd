@@ -48,6 +48,8 @@ SELECT quant FROM Survey;
 
 반환된 결과는 `Survey` 테이블의 다양한 `quant` 유형을 직관적으로 확인하기 어렵게 만든다.
 `DISTINCT` 키워드를 쿼리에 추가함으로써 중복된 출력을 제거하여 결과의 가독성을 높인다.
+\index{SQL!distinct}
+
 
 ``` sql
 SELECT DISTINCT quant FROM Survey;
@@ -101,6 +103,7 @@ SELECT DISTINCT taken, quant FROM Survey;
 앞서 언급했듯이, 데이터베이스 레코드는 일반적으로 특정한 순서로 저장되지 않는다.
 쿼리 결과가 반드시 정렬되어 있지 않으며, 설사 정렬되어 있다 해도, 원하는 다른 방식(예를 들어, 개인 이름 대신 식별자 등)으로 정렬 결과를 보고 싶을 때가 많다는 의미기도 하다.
 SQL에서는 쿼리에 `ORDER BY` 절을 추가함으로써 간단하게 구현할 수 있다.
+\index{SQL!order by}
 
 ``` sql
 SELECT * FROM Person ORDER BY id;
@@ -130,6 +133,7 @@ SELECT * FROM Person ORDER BY id;
 각 사이트 방문 때 어떤 과학자가 양을 측정했는지 살펴보려면, 다시 `Survey` 테이블을 봐야 한다.
 여러 칼럼을 한 번에 정렬할 수도 있다.
 예를 들어, 다음 쿼리는 결과를 먼저 `taken`에 따라 오름차순으로 정렬한 다음, 각각의 동일한 `taken` 값 그룹 내에서 `person`에 따라 내림차순으로 정렬한다.
+\index{SQL!order by desc} \index{SQL!order by asc}
 
 ``` sql
 SELECT taken, person, quant FROM Survey ORDER BY taken ASC, person DESC;
@@ -166,7 +170,7 @@ SELECT taken, person, quant FROM Survey ORDER BY taken ASC, person DESC;
 다음 쿼리를 통해 어떤 과학자가 방문에 관여했으며, 방문 동안 어떤 측정을 수행했는지를 잘 파악할 수 있다.
 
 테이블을 살펴보면, 일부 과학자들이 특정 종류의 측정에 전문화되어 있는 것처럼 보인다.
-적절한 칼럼을 선택하고 중복을 제거함으로써 어떤 과학자가 어떤 측정을 수행했는지 선명히 드러난다.
+적절한 칼럼을 선택하고 중복을 제거함으로써 어떤 과학자가 어떤 측정을 수행했는지 선명히 드러난다. \index{SQL!distinct}
 
 ``` sql
 SELECT DISTINCT quant, person FROM Survey ORDER BY quant ASC;
@@ -196,6 +200,7 @@ SELECT DISTINCT quant, person FROM Survey ORDER BY quant ASC;
 즉, 특정 기준에 맞는 레코드만 선택한다.
 예를 들어, 특정 사이트를 언제 방문했는지 확인한다고 가정하자.
 쿼리에 `where` 절을 사용해서 `Visited` 테이블로부터 조건에 맞는 레코드만 뽑아낼 수 있다.
+\index{SQL!where}
 
 ``` sql
 SELECT * FROM Visited WHERE site = 'DR-1';
@@ -231,6 +236,7 @@ SELECT id FROM Visited WHERE site = 'DR-1';
 이는 특정 조건을 만족하는 데이터를 선택하거나 제외하는 데 유용하다.
 예를 들어, `DR-1` 사이트에서 1930년 이후로 수집된 모든 정보를 요청하는 경우, 부울 연산자를 사용하여 '사이트 이름이 DR-1이고, 수집 연도가 1930년 이후인' 데이터를 필터링할 수 있다.
 이렇게 SQL 쿼리에서 부울 연산자를 사용하면, 복잡한 데이터 집합에서 필요한 정보를 정확하고 효율적으로 추출할 수 있다.
+\index{SQL!부울 연산자}
 
 ``` sql
 SELECT * FROM Visited WHERE site = 'DR-1' AND dated < '1930-01-01';
@@ -272,6 +278,7 @@ SELECT * FROM Survey WHERE person = 'lake' OR person = 'roe';
 |  844  |  roe   |  rad  |  11.25  |
 
 다른 방식으로, `IN`을 사용하여 특정 집합에 값이 있는지 확인할 수 있다.
+\index{SQL!in}
 
 ``` sql
 SELECT * FROM Survey WHERE person IN ('lake', 'roe');
@@ -292,6 +299,7 @@ SELECT * FROM Survey WHERE person IN ('lake', 'roe');
 
 `AND`와 `OR`을 결합할 수 있지만, 어떤 연산자가 먼저 실행되는지 주의해야 한다.
 괄호를 사용하지 *않으면*, 다음과 같은 결과를 얻게 된다:
+\index{SQL!and} \index{SQL!or}
 
 ``` sql
 SELECT * FROM Survey WHERE quant = 'sal' AND person = 'lake' OR person = 'roe';
@@ -330,6 +338,7 @@ SQL 필터링에서 `LIKE` 키워드의 중요성은 부분 일치를 통해 데
 퍼센트 기호(%)는 **와일드카드**로서, 그 위치에 어떤 문자열이든 일치할 수 있게 한다.
 이를 통해 문자열의 시작, 중간, 끝 부분에서 특정 패턴을 검색할 수 있다.
 `LIKE`와 와일드카드의 조합은 SQL 쿼리에서 매우 유연한 문자열 검색을 가능하게 하며, 복잡하거나 정확하지 않은 데이터에서 원하는 정보를 효과적으로 추출하는 데 중요한 역할을 한다.
+\index{SQL!like}
 
 ``` sql
 SELECT * FROM Visited WHERE site LIKE 'DR%';

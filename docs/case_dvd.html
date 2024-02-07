@@ -372,7 +372,7 @@ ga('send', {
 
 </header><section id="about-postgreSQL" class="level2" data-number="15.1"><h2 data-number="15.1" class="anchored" data-anchor-id="about-postgreSQL">
 <span class="header-section-number">15.1</span> PostgreSQL</h2>
-<p>PostgreSQL은 확장 가능성 및 표준 준수를 강조하는 객체-관계형 데이터베이스 관리 시스템(ORDBMS)의 하나로 BSD 라이선스로 배포되며 오픈소스 개발자 및 관련 회사들이 개발에 참여하고 있다. 소규모의 단일 머신 애플리케이션에서부터 수많은 동시 접속 사용자가 있는 대형의 인터넷 애플리케이션(또는 데이터 웨어하우스용)에 이르기까지 여러 부하를 관리할 수 있으며 macOS 서버의 경우 PostgreSQL은 기본 데이터베이스로 상용 오라클 데이터베이스를 대체하는 오픈소스 데이터베이스로 알려져 있다. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<p>PostgreSQL은 확장 가능성 및 표준 준수를 강조하는 객체-관계형 데이터베이스 관리 시스템(ORDBMS)의 하나로 BSD 라이선스로 배포되며 오픈소스 개발자 및 관련 회사들이 개발에 참여하고 있다. 소규모의 단일 머신 애플리케이션에서부터 수많은 동시 접속 사용자가 있는 대형의 인터넷 애플리케이션(또는 데이터 웨어하우스용)에 이르기까지 여러 부하를 관리할 수 있으며 macOS 서버의 경우 PostgreSQL은 기본 데이터베이스로 상용 오라클 데이터베이스를 대체하는 오픈소스 데이터베이스로 알려져 있다. <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> </p>
 <section id="install-postgreSQL" class="level3" data-number="15.1.1"><h3 data-number="15.1.1" class="anchored" data-anchor-id="install-postgreSQL">
 <span class="header-section-number">15.1.1</span> PostgreSQL 설치</h3>
 <p><a href="https://www.postgresql.org/">PostgreSQL: The World’s Most Advanced Open Source Relational Database</a> 웹사이트에서 PostgreSQL <a href="https://www.postgresql.org/download/windows/">다운로드</a> 한다. 윈도우에 설치하는 경우 다음을 참고한다. 설치과정에서 나중에 도움이 될만한 정보는 다음과 같다.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
@@ -385,7 +385,7 @@ ga('send', {
 </li>
 </ul>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/postgreSQL-shell.png" class="img-fluid figure-img" width="200"></p>
+<figure class="figure"><p><img src="images/postgreSQL-shell.png" class="img-fluid figure-img" width="150"></p>
 <figcaption>postgreSQL 설치</figcaption></figure>
 </div>
 <p><code>PostgreSQL 16</code> → <code>SQL Shell (psql)</code>을 클릭한 후에 postgreSQL 헬로월드를 찍어본다. 설치과정에서 등록한 비번만 넣어주고 나머지는 로컬호스트와 기본 디폴트 설정된 데이터베이스를 사용할 것이라 <code>postgres</code> 사용자 비밀번호만 넣어준다. 그리고 나서 <code>postgre=#</code> 쉘에 <code>SELECT version()</code> 명령어를 넣어준다.</p>
@@ -538,9 +538,11 @@ ga('send', {
 <figure class="figure"><p><img src="images/dvd-rental-sample-database-diagram.png" class="img-fluid figure-img" width="357"></p>
 <figcaption>DVD ER 다이어그램</figcaption></figure>
 </div>
+<p></p>
 </section></section></section><section id="dvd-insight-rental" class="level2" data-number="15.2"><h2 data-number="15.2" class="anchored" data-anchor-id="dvd-insight-rental">
 <span class="header-section-number">15.2</span> DVD DB 인사이트</h2>
 <p>DVT 대여 데이터베이스를 설치했다면 다음 단계로 다양한 SQL 쿼리문을 던져 뭔가 가치 있는 정보를 추출해야만 한다. <a href="https://statkclee.github.io/data-science/ds-postgreSQL.html">데이터 과학: “postgreSQL - DVD 대여 데이터베이스”</a>에서 데이터베이스 설치와 접속에 대한 사항은 확인한다.</p>
+<p></p>
 <section id="dvd-rental-db-insight-sql" class="level3" data-number="15.2.1"><h3 data-number="15.2.1" class="anchored" data-anchor-id="dvd-rental-db-insight-sql">
 <span class="header-section-number">15.2.1</span> DB 접속 헬로월드 <a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>
 </h3>

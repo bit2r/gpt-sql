@@ -5,7 +5,6 @@
 결측 정보를 다룰 때, 3개 값을 가진 로직(three-valued logic) 데이터베이스 사용하여 
 결측 정보를 올바르게 처리하는 쿼리를 작성한다.
 
-
 현실 세계 데이터는 결코 완전하지 않고 구멍은 항상 있다.
 `null`로 불리는 특별한 값을 사용하여 데이터베이스는 구멍을 표현한다.
 `null`는 0, `False`, 혹은 빈 문자열도 아니다."아무것도 없음(nothing here)"을 의미하는 특별한 값이다.
@@ -14,6 +13,7 @@
 기본적으로 SQLite는 출력에서 NULL 값을 표시하지 않는다. 
 `.nullvalue` 명령은 SQLite가 NULL에 대해 지정한 값을 표시하도록 한다. 
 NULL을 더 쉽게 볼 수 있도록 `-null-` 값을 사용한다.
+\index{SQL!null}
 
 ```sql
 .nullvalue -null-
@@ -102,6 +102,7 @@ SELECT * FROM Visited WHERE dated != NULL;
 
 
 `null` 인지 아닌지를 점검하기 위해서, 특별한 테스트 `IS NULL`을 사용해야 한다.
+\index{SQL!is null}
 
 
 | id    | site   | dated      | 
@@ -110,6 +111,7 @@ SELECT * FROM Visited WHERE dated != NULL;
 
 
 혹은, 역으로는 `IS NOT NULL`을 사용한다.
+\index{SQL!is not null}
 
 ```sql
 SELECT * FROM Visited WHERE dated IS NOT NULL;
@@ -174,7 +176,8 @@ SELECT * FROM Survey WHERE quant = 'sal' AND (person != 'lake' OR person IS NULL
 
 ## 데이터 위생
 
-**데이터 위생(data hygiene)**은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자.
+**데이터 위생(data hygiene)**은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자. \index{데이터 위생}
+\index{data hygiene}
 
 첫번째 규칙은 모든 값은 독립 요소로 분해될 수 없는 **원자(atomic)**적 속성을 지녀야 한다.
 하나의 칼럼에 전체 이름을 넣는 대신에 별도로 구별되는 칼럼에 이름과 성을 저장해서 이름 컴포넌트를 뽑아내는 부분 문자열 연산(substring operation)을 사용할 필요가 없다.
@@ -233,7 +236,7 @@ SELECT * FROM Survey WHERE quant = 'sal' AND (person != 'lake' OR person IS NULL
     행을 찾는지 다루기 때문에, 테이블에 동일한 값을 가진 다중 행이
     존재한다는 것은 의미가 없다.
 
--   **주키(primary key)**는 통상적으로 데이터베이스에서 자동 대입되는
+-   **기본 키(primary key)**는 통상적으로 데이터베이스에서 자동 대입되는
     숫자다. 프로그램 밖에서는 일반적으로 의미가 없고, 단지 서로 다른
     테이블에서 행을 열결할 때만 사용된다. 테이블에 행을 찾을 때,
     통상적으로 주키를 사용해서 행을 찾는 것이 가장 빠르게 행을 찾는
@@ -241,12 +244,13 @@ SELECT * FROM Survey WHERE quant = 'sal' AND (person != 'lake' OR person IS NULL
     빨리 비교 혹은 정렬할 수 있다. 이번에 사용된 데이터 모델에서 `id`
     필드가 주키의 한 예가 된다.
 
--   **외부 키(foreign key)**는 일반적으로 다른 테이블에 연관된 행의
+-   **외래 키(foreign key)**는 일반적으로 다른 테이블에 연관된 행의
     주키를 가리키는 숫자다. 이번에 사용된 데이터 모델의 외부 키의 사례는
     `from_id`다.
 
 주키 `id`필드명을 호출하고, 항상 외부키에 임의 필드명에 접미사로 `_id`
-붙이는 명명규칙을 사용한다.    
+붙이는 명명규칙을 사용한다.   \index{기본 키(primary key)} \index{외래 키(foreign key)} 
+\index{논리 키(logical key)}
 
 ## 연습문제 {.unnumbered}
 

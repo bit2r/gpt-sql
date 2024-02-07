@@ -365,7 +365,7 @@ ga('send', {
 </header>
 
 
-<p>탐험 기록을 주의 깊게 다시 읽은 후, 탐험대가 보고한 방사선 측정치를 5% 상향 조정해야 할 필요가 있음을 깨달았다. 저장된 데이터를 변경하기보다는, 쿼리의 일부로서 현장에서 계산을 수행할 수 있다.</p>
+<p>탐험 기록을 주의 깊게 다시 읽은 후, 탐험대가 보고한 방사선 측정치를 5% 상향 조정해야 할 필요가 있음을 깨달았다. 저장된 데이터를 변경하기보다는, 쿼리의 일부로서 현장에서 계산을 수행할 수 있다. </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fl">1.05</span> <span class="op">*</span> reading <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'rad'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <thead>
@@ -522,7 +522,7 @@ ga('send', {
 <p>분명하게, 심지어 ’personal’과 ’family’라는 두 부분으로 나누는 것만으로는 충분하지 않다.</p>
 <section id="합집합" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="합집합"><span class="header-section-number">8.1</span> 합집합</h2>
-<p><code>UNION</code> 연산자는 두 개의 쿼리 결과를 결합한다.</p>
+<p><code>UNION</code> 연산자는 두 개의 쿼리 결과를 결합한다. </p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">'dyer'</span> <span class="kw">UNION</span> <span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">'roe'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <thead>
@@ -584,7 +584,7 @@ ga('send', {
 </tr>
 </tbody>
 </table>
-<p>하지만 조합하기 위해서는 <code>min</code> 혹은 <code>max</code> 같은 <strong>집계 함수(aggregation function)</strong>를 사용해야만 한다. 각 함수는 입력으로 레코드 집합을 받고 출력으로 단일 레코드를 만든다.</p>
+<p>하지만 조합하기 위해서는 <code>min</code> 혹은 <code>max</code> 같은 <strong>집계 함수(aggregation function)</strong>를 사용해야만 한다. 각 함수는 입력으로 레코드 집합을 받고 출력으로 단일 레코드를 만든다. </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">min</span>(dated) <span class="kw">FROM</span> Visited;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <thead>
@@ -600,7 +600,7 @@ ga('send', {
 </table>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/sql-aggregation.svg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<p><img src="images/sql-aggregation.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="560"></p>
 </figure>
 </div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">max</span>(dated) <span class="kw">FROM</span> Visited;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -616,7 +616,7 @@ ga('send', {
 </tr>
 </tbody>
 </table>
-<p><code>min</code>과 <code>max</code>는 SQL에 내장된 단지 두개의 집계 함수다. 다른 함수로 많이 사용되는 <code>avg</code>, <code>count</code>, <code>sum</code>을 들 수 있다.</p>
+<p><code>min</code>과 <code>max</code>는 SQL에 내장된 단지 두개의 집계 함수다. 다른 함수로 많이 사용되는 <code>avg</code>, <code>count</code>, <code>sum</code>을 들 수 있다. </p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">avg</span>(reading) <span class="kw">FROM</span> Survey <span class="kw">WHERE</span> quant <span class="op">=</span> <span class="st">'sal'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <thead>
@@ -780,7 +780,7 @@ ga('send', {
 </tbody>
 </table>
 <p>하지만, 이러한 접근법은 성가시고, 만약 50명 혹은 500명의 과학자를 가진 데이터셋을 분석한다면, 모든 쿼리를 올바르게 작성할 가능성은 작다.</p>
-<p>필요한 것은 데이터베이스 관리자에게 각 과학자별로 시간을 별도로 집계하도록 <code>GROUP BY</code> 절을 사용하여 지시하는 것이다.</p>
+<p>필요한 것은 데이터베이스 관리자에게 각 과학자별로 시간을 별도로 집계하도록 <code>GROUP BY</code> 절을 사용하여 지시하는 것이다. </p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span>   person, <span class="fu">count</span>(reading), <span class="fu">round</span>(<span class="fu">avg</span>(reading), <span class="dv">2</span>)</span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span>     Survey</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span>    quant <span class="op">=</span> <span class="st">'rad'</span></span>

@@ -378,10 +378,10 @@ ga('send', {
 </header><p>데이터베이스에 존재하는 데이터를 활용해 분석 및 모델 개발 작업을 수행할 때 생산성을 높일 수 있는 방법은 여러 가지가 있다. 대표적으로 분석에 특화된 데이터베이스를 사용하는 것은 대용량 데이터를 빠르게 처리함으로써 기계시간(Machine time)을 줄여 생산성을 높이는 것이고 다른 한가지 방법은 SQL 쿼리를 직접 작성하지 않고 사람시간(Human time)을 줄여 생산성을 높일 수 있는 <code>dplyr</code> 데이터 문법을 활용하는 방법이 있다.</p>
 <section id="duckdb" class="level2" data-number="14.1"><h2 data-number="14.1" class="anchored" data-anchor-id="duckdb">
 <span class="header-section-number">14.1</span> DuckDB</h2>
-<p>SQLite3<span class="citation" data-cites="kreibich2010using">(Kreibich 2010)</span>와 DuckDB<span class="citation" data-cites="raasveldt2019duckdb">(Raasveldt 와/과 Mühleisen 2019)</span>를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다.</p>
+<p>SQLite3<span class="citation" data-cites="kreibich2010using">(Kreibich 2010)</span>와 DuckDB<span class="citation" data-cites="raasveldt2019duckdb">(Raasveldt 와/과 Mühleisen 2019)</span>를 각각 OLTP(Online Transaction Processing)와 OLAP(Online Analytical Processing)의 관점에서 볼 때, 다른 특성과 사용 사례를 가진다. SQLite3는 OLTP에 더 적합한 데이터베이스로, 애플리케이션의 거래 처리를 위한 운영 데이터 관리에 주로 사용된다. 이는 빠른 쓰기와 읽기, 낮은 지연 시간, 높은 트랜잭션 보장을 필요로 하는 환경에 적합하게 설계되었다. SQLite는 가벼운 구조와 서버리스 아키텍처 덕분에 임베디드 시스템, 모바일 애플리케이션, 소규모 웹 애플리케이션에서 데이터 저장 및 관리에 자주 사용된다. </p>
 <p>반면에 DuckDB는 OLAP에 더 적합하며, 데이터 분석 작업에 최적화된 데이터베이스다. 큰 규모의 데이터셋에 대한 복잡한 쿼리와 데이터 분석을 빠르게 처리할 수 있다. DuckDB는 벡터화 쿼리 처리와 멀티 코어 시스템에서의 병렬 처리 능력을 갖추고 있어, 대용량 데이터 분석, 보고서 생성, 데이터 마이닝과 같은 작업에서 뛰어난 성능을 발휘한다. 이러한 특성 때문에 DuckDB는 주로 데이터 과학자들과 분석가들에 의해 사용되며, 빅데이터의 효율적인 처리와 복잡한 분석 쿼리를 신속하게 실행할 수 있는 도구로 인정받고 있다.</p>
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/two_database.jpg" class="img-fluid figure-img" width="775"></p>
+<figure class="figure"><p><img src="images/two_database.jpg" class="img-fluid figure-img" width="300"></p>
 <figcaption>SQLite3와 DuckDB</figcaption></figure>
 </div>
 <p>DuckDB는 “SQLite for analytics”라는 슬로건으로 알려진, 분석을 위한 임베디드 관계형 SQL 데이터베이스 라이브러리다. DuckDB는 설치가 쉽고, 별도의 설정 없이 메모리 상에서 데이터를 처리하거나 단일 파일 데이터베이스로 데이터를 저장할 수 있다.</p>
@@ -389,7 +389,7 @@ ga('send', {
 <p>DuckDB의 가장 인상적인 특징 중 하나는 R과 Python과의 통합이다. R 사용자는 <code>install.packages("duckdb")</code> 명령을 통해 쉽게 설치할 수 있으며, Python 사용자도 마찬가지로 쉽게 설치 및 사용이 가능하다. 이로 인해 데이터 분석가와 개발자 모두에게 매력적인 선택이 될 수 있다.</p>
 </section><section id="시카고-범죄-데이터" class="level2" data-number="14.2"><h2 data-number="14.2" class="anchored" data-anchor-id="시카고-범죄-데이터">
 <span class="header-section-number">14.2</span> 시카고 범죄 데이터</h2>
-<p>DuckDB는 대규모 데이터셋을 분석하기에 적합한 데이터베이스이며, 이는 시카고 범죄 데이터에도 해당된다. DuckDB의 벡터화 쿼리 처리 및 멀티 코어 시스템에서의 병렬 처리 능력은 대용량 데이터에 대한 복잡한 쿼리를 신속하고 효율적으로 처리할 수 있게 한다. 시카고 범죄 데이터는 범죄 유형, 위치, 날짜, 체포 여부 등의 다양한 정보를 포함하고 있어, 이를 통해 시카고의 범죄 패턴과 추세를 이해하는 데 유용하다. 공공 안전 분석, 연구, 정책 개발 등에서 널리 사용되는 이 데이터는 DuckDB를 통해 한정된 메모리를 넘어서는 데이터를 효율적으로 처리하는 데 적합하다. 2021년부터 2023년까지 데이터를 웹페이지에서 다운로드 받아 DuckDB를 활용하여 분석해보자.</p>
+<p>DuckDB는 대규모 데이터셋을 분석하기에 적합한 데이터베이스이며, 이는 시카고 범죄 데이터에도 해당된다. DuckDB의 벡터화 쿼리 처리 및 멀티 코어 시스템에서의 병렬 처리 능력은 대용량 데이터에 대한 복잡한 쿼리를 신속하고 효율적으로 처리할 수 있게 한다. 시카고 범죄 데이터는 범죄 유형, 위치, 날짜, 체포 여부 등의 다양한 정보를 포함하고 있어, 이를 통해 시카고의 범죄 패턴과 추세를 이해하는 데 유용하다. 공공 안전 분석, 연구, 정책 개발 등에서 널리 사용되는 이 데이터는 DuckDB를 통해 한정된 메모리를 넘어서는 데이터를 효율적으로 처리하는 데 적합하다. 2021년부터 2023년까지 데이터를 웹페이지에서 다운로드 받아 DuckDB를 활용하여 분석해보자. </p>
 <ul>
 <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2021/dwme-t96c">2021년</a></li>
 <li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2022/9hwr-2zxp">2022년</a></li>
@@ -457,9 +457,9 @@ ga('send', {
 <span><span class="va">crime_type_gg</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/dev.html">dev.off</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="fig-chicago-crime" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-chicago-crime" class="quarto-figure quarto-figure-center anchored" data-fig-align="center" width="429">
 <figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-chicago-crime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="images/chicago_crime_type.jpeg" class="img-fluid figure-img">
+<img src="images/chicago_crime_type.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" width="429">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chicago-crime-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 그림&nbsp;14.1: 최근 3년 시카고 범죄 유형과 건수
@@ -469,7 +469,7 @@ ga('send', {
 <section id="duckdb-연결" class="level3" data-number="14.2.1"><h3 data-number="14.2.1" class="anchored" data-anchor-id="duckdb-연결">
 <span class="header-section-number">14.2.1</span> DuckDB 연결</h3>
 <p><code>DuckDB</code>는 <code>Analytical SQLite</code>라는 별명을 갖고 있다. SQLite가 OLTP 데이터베이스라면, <code>DuckDB</code> OLAP 데이터베이스라고 볼 수 있다.</p>
-<p>DuckDB에 연결하고, R 데이터프레임(<code>crime_tbl</code>)을 DuckDB 데이터베이스에 테이블로 저장한 후, 저장된 테이블 목록을 조회하고, <code>crime_tbl</code> 테이블 내의 총 범죄 수를 쿼리하는 과정이 다음 코드에 담겨있다.</p>
+<p>DuckDB에 연결하고, R 데이터프레임(<code>crime_tbl</code>)을 DuckDB 데이터베이스에 테이블로 저장한 후, 저장된 테이블 목록을 조회하고, <code>crime_tbl</code> 테이블 내의 총 범죄 수를 쿼리하는 과정이 다음 코드에 담겨있다. </p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">con_dd</span> <span class="op">&lt;-</span> <span class="fu">duckdb</span><span class="fu">::</span><span class="fu">dbConnect</span><span class="op">(</span><span class="fu">duckdb</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/duckdb/man/duckdb.html">duckdb</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -578,7 +578,7 @@ ga('send', {
 <span class="header-section-number">14.3</span> SQL 대신 <code>dplyr</code>
 </h2>
 <p>다음 예제(<span class="citation" data-cites="lewis2021duckdb">(Lewis 2021)</span>)는 SQL이 데이터 분석의 유일한 해결책이 아님을 보여준다. <code>nycflights13</code> 패키지 <code>flights</code> 데이터셋을 사용하여 “출발지 공항별 상위 3개 목적지”를 찾는 세 가지 다른 접근법을 제시한다. SQL 쿼리를 사용하는 방법은 DuckDB와 연결하여 복잡한 쿼리를 실행한다. 반면, <code>dplyr</code>를 사용하는 방법은 SQL보다 직관적이고 간결한 코드로 동일한 결과를 제공한다. 마지막으로, Base R 문법을 사용하는 방법은 <code>flights</code> 데이터를 분할하고 테이블 함수를 적용하여 목적지를 추출한다.</p>
-<p>3가지 방법은 모두 동일한 결과를 제공하지만 코드 작성 시간과 인지적 부하를 생각하면 데이터 문법(grammar of data)을 충실히 구현하고 있는 <code>dplyr</code> 동사를 사용하는 것도 추천할 만하다.</p>
+<p>3가지 방법은 모두 동일한 결과를 제공하지만 코드 작성 시간과 인지적 부하를 생각하면 데이터 문법(grammar of data)을 충실히 구현하고 있는 <code>dplyr</code> 동사를 사용하는 것도 추천할 만하다. </p>
 <ol type="1">
 <li>SQL 쿼리를 사용하는 방법</li>
 </ol>
@@ -756,6 +756,7 @@ ga('send', {
 </ul>
 </div>
 </div>
+<p></p>
 </section><section id="dataframe" class="level3" data-number="14.4.4"><h3 data-number="14.4.4" class="anchored" data-anchor-id="dataframe">
 <span class="header-section-number">14.4.4</span> 데이터프레임 변환</h3>
 <p><code>tbl</code> 함수로 <code>con</code> 으로 연결된 데이터베이스의 특정 테이블 “Survey”를 뽑아낸 상태는 아직 R에서 작업이 가능한 데이터프레임이 아니라 <code>collect</code> 함수를 활용해서 데이터프레임으로 변환시켜 후속 작업을 R에서 실행한다.</p>

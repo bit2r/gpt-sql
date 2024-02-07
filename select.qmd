@@ -8,7 +8,8 @@
 기본적으로 3가지 선택 옵션(텍스트 파일, 스프레드쉬트, 데이터베이스)이 있다. 
 텍스트 파일은 생성하기 가장 쉽고 버젼 제어와 궁합이 맞지만, 검색과 분석 도구를 별도로 구축해야한다.
 스프레드쉬트는 단순한 분석에는 적합하지만, 크고 복잡한 데이터셋을 매우 잘 다루지는 못한다.
-그래서 데이터를 데이터베이스에 넣어서 어떻게 검색과 분석을 하는지 이번 학습에서 배울 것이다.
+그래서 데이터를 데이터베이스에 넣어서 어떻게 검색과 분석을 하는지 이번 학습에서 배울 것이다. 
+\index{SQL!select}
 
 
 ## 기본 지식
@@ -18,6 +19,8 @@
 **테이블(tables)**로 정렬된 정보를 저장하고 다루는 방식이다.
 각 테이블은 데이터를 기술하는 **필드(fields)**로도 알려진 열(column)과
 데이터를 담고 있는 **레코드(records)**로 알려진 행(row)으로 구성된다.
+\index{데이터베이스!테이블} \index{데이터베이스!필드} \index{데이터베이스!레코드}
+\index{데이터베이스!쿼리}
 
 스프레드쉬트를 사용할 때, 이전 값에 기초하여 새로운 값을 계산할 때 공식을 셀(cell)에 넣어서 구한다.
 데이터베이스를 사용할 때는 **쿼리(queries, 질의)**로 불리는 명령문을 
@@ -31,17 +34,18 @@
 모든 데이터베이스 관리자(IBM DB2, PostgreSQL, MySQL, Microsoft Access, SQLite)는
 서로 다른 고유한 방식으로 데이터를 저장하기 때문에, 특정 데이터베이스로 저장된 데이터를 다른 곳의 데이터베이스에서 직접적으로 사용할 수는 없다. 하지만, 모든 데이터베이스 관리자에는 데이터를 다양한 형식으로 가져오기(import)와 내보내기(export) 기능을 제공한다.
 그래서 한 곳에서 다른 곳으로 정보를 이동하는 것이 *가능하다*.
+\index{데이터베이스!관리자}
 
 :::
 
 쿼리는 **SQL**로 불리는 언어로 작성된다.
 SQL 은 "Structured Query Language"(구조적 질의 언어)의 약자다.
 SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다.
-본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다.
+본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다. \index{SQL}
 
 ## 조사 데이터베이스
 
-SQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자.
+SQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자. \index{조사 데이터베이스} \index{survey database}
 
 <div class="row">
 
@@ -151,6 +155,7 @@ SQLite에 `survey.db` 파일에 있는 데이터베이스를 로드하라는 명
 SQLite 시스템 명령어들은 SQL 명령어와 구별하기 위해 `.`로 시작한다.
 
 데이터베이스의 테이블 목록을 보려면 `.tables`를 입력한다.
+\index{SQLite3}
 
 ```sql
 .tables
@@ -159,9 +164,6 @@ SQLite 시스템 명령어들은 SQL 명령어와 구별하기 위해 `.`로 시
 ```output
 Person   Site     Survey   Visited
 ```
-
-If you had the above tables, you might be curious what information was stored in each table.
-To get more information on the tables, type `.schema` to see the SQL statements used to create the tables in the database.  The statements will have a list of the columns and the data types each column stores.
 
 위와 같은 테이블이 있다면 각 테이블에 어떤 정보가 저장되어 있는지 궁금할 수 있다.
 테이블에 대한 자세한 정보를 얻으려면 `.schema`를 입력해 데이터베이스의 테이블을 생성하는 데 사용된 SQL 문을 확인한다. 테이블명과 함께 테이블을 구성하는 칼럼과 칼럼 자료형이 목록으로 나열된다.

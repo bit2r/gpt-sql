@@ -364,10 +364,10 @@ ga('send', {
 
 
 <p>1920년 후반, 1930년 초반 William Dyer, Frank Pabodie,Valentina Roerich는 남태평양 <a href="http://en.wikipedia.org/wiki/Pole_of_inaccessibility">도달불가능한 극(Pole of Inaccessibility)</a>과 이어서 남극 대륙을 탐험했다. 2년 전에 이들의 탐험 기록이 Miskatonic 대학 창고 사물함에서 발견됐다. 기록을 스캔해서 OCR로 저장했고, 이제는 검색가능하고 분석이 용히한 방식으로 정보를 저장하고자 한다.</p>
-<p>기본적으로 3가지 선택 옵션(텍스트 파일, 스프레드쉬트, 데이터베이스)이 있다. 텍스트 파일은 생성하기 가장 쉽고 버젼 제어와 궁합이 맞지만, 검색과 분석 도구를 별도로 구축해야한다. 스프레드쉬트는 단순한 분석에는 적합하지만, 크고 복잡한 데이터셋을 매우 잘 다루지는 못한다. 그래서 데이터를 데이터베이스에 넣어서 어떻게 검색과 분석을 하는지 이번 학습에서 배울 것이다.</p>
+<p>기본적으로 3가지 선택 옵션(텍스트 파일, 스프레드쉬트, 데이터베이스)이 있다. 텍스트 파일은 생성하기 가장 쉽고 버젼 제어와 궁합이 맞지만, 검색과 분석 도구를 별도로 구축해야한다. 스프레드쉬트는 단순한 분석에는 적합하지만, 크고 복잡한 데이터셋을 매우 잘 다루지는 못한다. 그래서 데이터를 데이터베이스에 넣어서 어떻게 검색과 분석을 하는지 이번 학습에서 배울 것이다. </p>
 <section id="기본-지식" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="기본-지식"><span class="header-section-number">5.1</span> 기본 지식</h2>
-<p><strong>관계형 데이터베이스(relational database)</strong>는 <strong>테이블(tables)</strong>로 정렬된 정보를 저장하고 다루는 방식이다. 각 테이블은 데이터를 기술하는 <strong>필드(fields)</strong>로도 알려진 열(column)과 데이터를 담고 있는 <strong>레코드(records)</strong>로 알려진 행(row)으로 구성된다.</p>
+<p><strong>관계형 데이터베이스(relational database)</strong>는 <strong>테이블(tables)</strong>로 정렬된 정보를 저장하고 다루는 방식이다. 각 테이블은 데이터를 기술하는 <strong>필드(fields)</strong>로도 알려진 열(column)과 데이터를 담고 있는 <strong>레코드(records)</strong>로 알려진 행(row)으로 구성된다. </p>
 <p>스프레드쉬트를 사용할 때, 이전 값에 기초하여 새로운 값을 계산할 때 공식을 셀(cell)에 넣어서 구한다. 데이터베이스를 사용할 때는 <strong>쿼리(queries, 질의)</strong>로 불리는 명령문을 <strong>데이터베이스 관리자(database manager)</strong>에게 보낸다. 데이터베이스 관리자는 사용자를 대신해서 데이터베이스를 조작하는 프로그램이다. 데이터베이스 관리자는 쿼리가 명기하는 임의의 조회작업과 계산작업을 수행하고 다음 쿼리작업 시작점으로 사용될 수 있는 테이블 형식으로 결과값을 반환한다.</p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -379,14 +379,14 @@ ga('send', {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>모든 데이터베이스 관리자(IBM DB2, PostgreSQL, MySQL, Microsoft Access, SQLite)는 서로 다른 고유한 방식으로 데이터를 저장하기 때문에, 특정 데이터베이스로 저장된 데이터를 다른 곳의 데이터베이스에서 직접적으로 사용할 수는 없다. 하지만, 모든 데이터베이스 관리자에는 데이터를 다양한 형식으로 가져오기(import)와 내보내기(export) 기능을 제공한다. 그래서 한 곳에서 다른 곳으로 정보를 이동하는 것이 <em>가능하다</em>.</p>
+<p>모든 데이터베이스 관리자(IBM DB2, PostgreSQL, MySQL, Microsoft Access, SQLite)는 서로 다른 고유한 방식으로 데이터를 저장하기 때문에, 특정 데이터베이스로 저장된 데이터를 다른 곳의 데이터베이스에서 직접적으로 사용할 수는 없다. 하지만, 모든 데이터베이스 관리자에는 데이터를 다양한 형식으로 가져오기(import)와 내보내기(export) 기능을 제공한다. 그래서 한 곳에서 다른 곳으로 정보를 이동하는 것이 <em>가능하다</em>. </p>
 </div>
 </div>
-<p>쿼리는 <strong>SQL</strong>로 불리는 언어로 작성된다. SQL 은 “Structured Query Language”(구조적 질의 언어)의 약자다. SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다. 본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다.</p>
+<p>쿼리는 <strong>SQL</strong>로 불리는 언어로 작성된다. SQL 은 “Structured Query Language”(구조적 질의 언어)의 약자다. SQL은 데이터를 분석하고 다시 조합할 수 있는 수백개의 다른 방식을 제공한다. 본서에서 일부를 살펴볼 것이지만, 일부작업이 데이터 과학자가 수행하는 일의 대부분을 처리할 것이다. </p>
 </section>
 <section id="조사-데이터베이스" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="조사-데이터베이스"><span class="header-section-number">5.2</span> 조사 데이터베이스</h2>
-<p>SQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자.</p>
+<p>SQLite를 사용하여 본격적인 쿼리문 작성에 앞서 실습에 사용될 데이터베이스 구조를 살펴보자. </p>
 <div class="row">
 <div class="col-md-6" data-markdown="1">
 <p><strong>Person</strong>: 측정값을 기록한 사람, <code>id</code>는 해당 인물을 위한 고유 식별자를 나타낸다.</p>
@@ -664,10 +664,9 @@ sqlite&gt;</code></pre>
 <p>SQLite에 <code>survey.db</code> 파일에 있는 데이터베이스를 로드하라는 명령어다.</p>
 <p>유용한 시스템 명령어 목록을 보려면 <code>.help</code>를 입력한다.</p>
 <p>SQLite 시스템 명령어들은 SQL 명령어와 구별하기 위해 <code>.</code>로 시작한다.</p>
-<p>데이터베이스의 테이블 목록을 보려면 <code>.tables</code>를 입력한다.</p>
+<p>데이터베이스의 테이블 목록을 보려면 <code>.tables</code>를 입력한다. </p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">tables</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>Person   Site     Survey   Visited</code></pre>
-<p>If you had the above tables, you might be curious what information was stored in each table. To get more information on the tables, type <code>.schema</code> to see the SQL statements used to create the tables in the database. The statements will have a list of the columns and the data types each column stores.</p>
 <p>위와 같은 테이블이 있다면 각 테이블에 어떤 정보가 저장되어 있는지 궁금할 수 있다. 테이블에 대한 자세한 정보를 얻으려면 <code>.schema</code>를 입력해 데이터베이스의 테이블을 생성하는 데 사용된 SQL 문을 확인한다. 테이블명과 함께 테이블을 구성하는 칼럼과 칼럼 자료형이 목록으로 나열된다.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">schema</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="output"><code>CREATE TABLE Person(

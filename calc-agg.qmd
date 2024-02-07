@@ -7,7 +7,7 @@ editor:
 # 새로운 필드와 집계
 
 탐험 기록을 주의 깊게 다시 읽은 후, 탐험대가 보고한 방사선 측정치를 5% 상향 조정해야 할 필요가 있음을 깨달았다.
-저장된 데이터를 변경하기보다는, 쿼리의 일부로서 현장에서 계산을 수행할 수 있다.
+저장된 데이터를 변경하기보다는, 쿼리의 일부로서 현장에서 계산을 수행할 수 있다. \index{총계} \index{aggregate}
 
 ``` sql
 SELECT 1.05 * reading FROM Survey WHERE quant = 'rad';
@@ -86,6 +86,7 @@ SELECT personal || ' ' || family FROM Person;
 ## 합집합
 
 `UNION` 연산자는 두 개의 쿼리 결과를 결합한다.
+\index{SQL!union}
 
 ``` sql
 SELECT * FROM Person WHERE id = 'dyer' UNION SELECT * FROM Person WHERE id = 'roe';
@@ -101,7 +102,6 @@ SELECT * FROM Person WHERE id = 'dyer' UNION SELECT * FROM Person WHERE id = 'ro
 대신, `UNION ALL`은 쿼리의 모든 행을 가져와서 하나의 테이블로 결합한다.
 `UNION` 명령은 결과 세트에 대해 `SELECT DISTINCT`를 수행한다.
 만약 합병할 모든 레코드가 고유하다면, `DISTINCT` 단계를 건너뛰므로 더 빠른 결과를 얻기 위해 `UNION ALL`을 사용한다.
-
 
 ## 집계
 
@@ -125,6 +125,7 @@ SELECT dated FROM Visited;
 
 하지만 조합하기 위해서는 `min` 혹은 `max` 같은 **집계 함수(aggregation function)**를 사용해야만 한다.
 각 함수는 입력으로 레코드 집합을 받고 출력으로 단일 레코드를 만든다.
+\index{집계!max} \index{집계!min}
 
 ``` sql
 SELECT min(dated) FROM Visited;
@@ -134,7 +135,7 @@ SELECT min(dated) FROM Visited;
 |:----------:|
 | 1927-02-08 |
 
-![](images/sql-aggregation.svg){fig-align="center"}
+![](images/sql-aggregation.jpg){fig-align="center" width="560"}
 
 ``` sql
 SELECT max(dated) FROM Visited;
@@ -146,6 +147,7 @@ SELECT max(dated) FROM Visited;
 
 `min`과 `max`는 SQL에 내장된 단지 두개의 집계 함수다.
 다른 함수로 많이 사용되는 `avg`, `count`, `sum`을 들 수 있다.
+\index{집계!avg} \index{집계!count} \index{집계!sum}
 
 ``` sql
 SELECT avg(reading) FROM Survey WHERE quant = 'sal';
@@ -273,6 +275,7 @@ AND   person = 'dyer';
 하지만, 이러한 접근법은 성가시고, 만약 50명 혹은 500명의 과학자를 가진 데이터셋을 분석한다면, 모든 쿼리를 올바르게 작성할 가능성은 작다.
 
 필요한 것은 데이터베이스 관리자에게 각 과학자별로 시간을 별도로 집계하도록 `GROUP BY` 절을 사용하여 지시하는 것이다.
+\index{SQL!group by}
 
 ``` sql
 SELECT   person, count(reading), round(avg(reading), 2)
@@ -355,34 +358,34 @@ ORDER BY person, quant;
 
 ### 객관식 {.unnumbered}
 
-1. **문제:** SQL에서 새로운 계산된 필드를 만들 때 어떤 키워드를 사용합니까?
-   1. `CREATE`
-   1. `CALCULATE`
-   1. `AS`
-   1. `DEFINE`
+1.  **문제:** SQL에서 새로운 계산된 필드를 만들 때 어떤 키워드를 사용합니까?
+    1.  `CREATE`
+    2.  `CALCULATE`
+    3.  `AS`
+    4.  `DEFINE`
 
-::: {.content-visible when-format="revealjs"}   
-   - **정답:** C. `AS`
-:::   
+::: {.content-visible when-format="revealjs"}
+-   **정답:** C. `AS`
+:::
 
-2. **문제:** 다음 중 집계 함수(aggregation function)는 무엇입니까?
-   1. `JOIN`
-   1. `GROUP BY`
-   1. `SUM`
-   1. `ORDER BY`
+2.  **문제:** 다음 중 집계 함수(aggregation function)는 무엇입니까?
+    1.  `JOIN`
+    2.  `GROUP BY`
+    3.  `SUM`
+    4.  `ORDER BY`
 
-::: {.content-visible when-format="revealjs"}   
-   - **정답:** C. `SUM`
-:::   
+::: {.content-visible when-format="revealjs"}
+-   **정답:** C. `SUM`
+:::
 
-3. **문제:** `GROUP BY` 절을 사용하는 주된 목적은 무엇입니까?
-   1. 데이터베이스의 보안 강화
-   1. 레코드 정렬
-   1. 지정된 열 기준으로 레코드 그룹화
-   1. 중복 레코드 제거
+3.  **문제:** `GROUP BY` 절을 사용하는 주된 목적은 무엇입니까?
+    1.  데이터베이스의 보안 강화
+    2.  레코드 정렬
+    3.  지정된 열 기준으로 레코드 그룹화
+    4.  중복 레코드 제거
 
-::: {.content-visible when-format="revealjs"}   
-   - **정답:** C. 지정된 열 기준으로 레코드 그룹화
+::: {.content-visible when-format="revealjs"}
+-   **정답:** C. 지정된 열 기준으로 레코드 그룹화
 :::
 
 ### 염도 측정치 수정 {.unnumbered}
@@ -391,7 +394,6 @@ ORDER BY person, quant;
 `Survey` 테이블에서 모든 염도 측정치를 100으로 나눈 값으로 반환하는 쿼리를 작성하시오.
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
 ```
@@ -400,7 +402,6 @@ SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
 |-------|---------------|
 | 752   | 0.416         |
 | 837   | 0.225         |
-
 :::
 
 ### 통합 측정목록 {.unnumbered}
@@ -420,7 +421,6 @@ SELECT taken, reading / 100 FROM Survey WHERE person = 'roe' AND quant = 'sal';
 |  837  |  0.225  |
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT taken, reading 
 FROM Survey 
@@ -429,7 +429,6 @@ UNION SELECT taken, reading / 100
 FROM Survey 
 WHERE person = 'roe' AND quant = 'sal' ORDER BY taken ASC;
 ```
-
 :::
 
 ### 주요 사이트 식별자 {.unnumbered}
@@ -453,12 +452,10 @@ SELECT DISTINCT site FROM Visited;
 (이 데이터의 경우, 목록은 "DR"과 "MSK"만을 포함해야 한다).
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT DISTINCT substr(site, 1, instr(site, '-') - 1) AS MajorSite 
 FROM Visited;
 ```
-
 :::
 
 ### 온도 측정횟수 세기 {.unnumbered}
@@ -466,7 +463,6 @@ FROM Visited;
 프랭크 파보디(Frank Pabodie)가 기록한 온도 측정횟수는 몇 번이며, 그 평균 값은 얼마인가?
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT count(reading), avg(reading) FROM Survey WHERE quant = 'temp' AND person = 'pb';
 ```
@@ -474,7 +470,6 @@ SELECT count(reading), avg(reading) FROM Survey WHERE quant = 'temp' AND person 
 | count(reading) | avg(reading) |
 |:--------------:|:------------:|
 |       2        |    -20.0     |
-
 :::
 
 ### NULL 포함 평균 계산 {.unnumbered}
@@ -483,7 +478,6 @@ SELECT count(reading), avg(reading) FROM Survey WHERE quant = 'temp' AND person 
 이는 `avg` 함수가 1.0, `null`, 5.0이라는 값들이 주어졌을 때 2.0 또는 3.0을 반환한다는 것을 의미하는가?
 
 ::: {.content-visible when-format="revealjs"}
-
 정답은 3.0이다.
 `NULL`은 값이 아니라 값이 없음을 나타낸다.
 따라서 계산에 포함되지 않는다.
@@ -499,7 +493,6 @@ SELECT AVG(a) FROM (
     UNION ALL SELECT NULL
     UNION ALL SELECT 5);
 ```
-
 :::
 
 ### 쿼리 의미는? {.unnumbered}
@@ -514,7 +507,6 @@ SELECT avg(reading) FROM Survey WHERE quant='rad';
 쿼리가 실제로 어떤 결과를 생성하며, 그 이유는 무엇일까?
 
 ::: {.content-visible when-format="revealjs"}
-
 쿼리는 각 측정값에 대한 결과 대신 단 하나의 결과 행만을 생성한다.
 `avg()` 함수는 단일 값을 생성하며, 먼저 실행되기 때문에 테이블이 단일 행으로 축소된다.
 `reading` 값은 단순히 임의의 값일 뿐이다.
@@ -540,7 +532,6 @@ SELECT reading - (SELECT avg(reading) FROM Survey WHERE quant='rad') FROM Survey
 이 방법을 사용하면 두 개의 쿼리를 실행할 필요가 없다.
 
 요약하자면, 원래 쿼리에서 `avg(reading)`을 `(SELECT avg(reading) FROM Survey WHERE quant='rad')`로 대체한 것이다.
-
 :::
 
 ### group_concat 함수 사용 {.unnumbered}
@@ -556,7 +547,6 @@ William Dyer, Frank Pabodie, Anderson Lake, Valentina Roerich, Frank Danforth
 쉼표로 구분된 모든 과학자들의 개인 이름과 성을 나열하는 쿼리를 작성하세요.
 
 ::: {.content-visible when-format="revealjs"}
-
 쉼표로 구분된 모든 성을 나열하는 쿼리는 다음과 같다.
 
 ``` sql
@@ -568,6 +558,4 @@ SELECT group_concat(family, ',') FROM Person;
 ``` sql
 SELECT group_concat(personal || ' ' || family, ',') FROM Person;
 ```
-
 :::
-

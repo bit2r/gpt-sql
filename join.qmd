@@ -8,26 +8,26 @@ editor_options:
 
 # 조인(Join)
 
--   두 테이블을 조인(join)하는 쿼리 연산을 설명한다.
--   의미있는 값의 조합만 포함하기 위해서 조인문을 포함하는 쿼리 결과를 어떻게 제한하는지 설명한다.
--   동일한 키를 갖는 테이블을 조인하는 쿼리를 작성한다.
--   기본키(primary key)와 외래키(foreign key)가 무엇인지 그리고 왜 유용한지 설명한다.
--   원자값(atomic value)이 무엇이고, 왜 데이터베이스 필드는 원자값만 포함해야하는지 설명한다.
-
 과거 기상 데이터를 집계하는 웹사이트에 데이터를 제출하기 위해, 위도, 경도, 날짜, 측정량, 측정값 형식으로 데이터를 체계적으로 만들 필요가 있을 수 있다.
 그러나, 위도와 경도는 `Site` 테이블에 있고, 측정 날짜는 `Visited` 테이블에, 측정값 자체는 `Survey` 테이블에 있다.
-어떤 방식이든지 상기 테이블을 조합할 필요가 있다.
+어떤 방식이든지 상기 테이블을 조합할 필요가 있다. 
+\index{SQL!join} \index{SQL!조인}
 
 테이블들 간 관계는 다음 그림을 통해 확인할 수 있다.
 
-![조사 데이터베이스 구조](images/sql-join-structure.svg)
+![조사 데이터베이스 구조](images/sql-join-structure.jpg){fig-align="center" width="373"}
 
-## 데이터모델 - `datamodelr` {#sqlite3-survey-model}
+## 데이터 모델 {#sqlite3-survey-model}
 
-`survey.db` 데이터베이스의 정보를 이용해 데이터프레임을 추출하고, 이를 `datamodelr`에 넣어 데이터베이스 모델을 시각화한다. [`datamodelr`](https://github.com/bergant/datamodelr) 패키지 `nycflights13` 사례를 참조하여 유사한 방식으로 제작한다. `datamodelr`는 [R에서 데이터 모델 다이어그램을 그리는 방법](https://github.com/bergant/datamodelr)을 제공한다. 먼저 데이터프레임만 시각화하는 작업을 진행한다.
+`survey.db` 데이터베이스의 정보를 이용해 데이터프레임을 추출하고, 이를 `datamodelr`에 넣어 데이터베이스 모델을 시각화한다.
+[`datamodelr`](https://github.com/bergant/datamodelr) 패키지 `nycflights13` 사례를 참조하여 유사한 방식으로 제작한다.
+`datamodelr`는 [R에서 데이터 모델 다이어그램을 그리는 방법](https://github.com/bergant/datamodelr)을 제공한다.
+먼저 데이터프레임만 시각화하는 작업을 진행한다.
+\index{datamodelr} \index{데이터 모델} 
 
 ```{r}
 #| label: survey-database-model
+#| eval: false
 # 0. 환경설정 -----------------------
 
 library(dbplyr)
@@ -44,16 +44,21 @@ site <- tbl(survey_con, "Site") %>% collect()
 visited <- tbl(survey_con, "Visited") %>% collect()
 
 survey_model <- dm_from_data_frames(survey, person, site, visited)
-survey_graph <- dm_create_graph(survey_model, rankdir = "LR", col_attr = c("column", "type"))
+survey_graph <- dm_create_graph(survey_model, rankdir = "BT", col_attr = c("column", "type"))
 
 dm_render_graph(survey_graph)
+
+dm_export_graph(survey_graph, file_name = "images/survey_dm_tables.png")
 ```
 
+![조사(survey) 데이터베이스 테이블](images/survey_dm_tables.png)
 
-다음으로 테이블의 키를 찾아 이를 연결시켜서 관계도 함께 표현되도록 작업한다.
+다음으로 테이블의 키를 찾아 이를 연결시켜서 관계도 함께 표현되도록 작업한다. 
+\index{survey database} \index{조사 데이터베이스}
 
 ```{r}
 #| label: survey-database-model-relation
+#| eval: false
 
 survey_model <- dm_add_references(
   survey_model,
@@ -64,12 +69,16 @@ survey_model <- dm_add_references(
   survey$taken == visited$id
 )
 
-survey_graph <- dm_create_graph(survey_model, rankdir = "LR", col_attr = c("column", "type"))
-dm_render_graph(survey_graph)
+survey_rel_graph <- dm_create_graph(survey_model, rankdir = "LR", col_attr = c("column", "type"))
+
+dm_render_graph(survey_rel_graph)
 
 dbDisconnect(survey_con)
+
+dm_export_graph(survey_rel_graph, file_name = "images/survey_dm_relation.png")
 ```
 
+![조사(survey) 데이터베이스 연결 관계](images/survey_dm_relation.png)
 
 이러한 작업을 하는 SQL 명령어가 `JOIN`이다.
 어떻게 동작하는지 확인하기 위해서, `Site`와 `Visited` 테이블을 조인하면서 살펴보자.
@@ -109,6 +118,7 @@ SELECT * FROM Site JOIN Visited;
 즉, 한 테이블의 각 레코드를 다른 테이블의 각 레코드와 결합하여 가능한 모든 조합을 만든다.
 `Site`에는 세 개의 레코드가 있고 `Visited`에는 여덟 개가 있으므로, 조인의 출력에는 24개의 레코드가 있다(3 \* 8 = 24).
 그리고 각 테이블에는 세 개의 필드가 있으므로, 출력에는 여섯 개의 필드가 있다(3 + 3 = 6).
+\index{교차 곱(cross product)}
 
 조인이 수행하지 *않은* 것은 조인되는 레코드가 서로 관계가 있는지를 파악하는 것이다.
 어떻게 조인할지 명시할 때까지 레코드가 서로 관계가 있는지 없는지 알 수 있는 방법은 없다.
@@ -136,14 +146,14 @@ FROM
 | MSK-4 | -48.87 | -123.4  | 837 | MSK-4 | 1932-01-14 |
 
 `ON`은 `WHERE`와 매우 유사하며, SQL 기본과정에서 이 둘을 서로 바꿔가며 사용할 수 있다.
-**\[외부 조인(outer joins)**이 미치는 영향에 대해 차이점이 있지만, SQL 기본과정 범위를 벗어난다.
-쿼리에 `ON`을 추가하면, 데이터베이스 관리자는 두 다른 사이트에 대한 정보를 결합한 레코드를 제거하고 원하는 것만 남긴다.
+**외부 조인(outer joins)**이 미치는 영향에 대해 차이점이 있지만, SQL 기본과정 범위를 벗어난다.
+쿼리에 `ON`을 추가하면, 데이터베이스 관리자는 두 다른 사이트에 대한 정보를 결합한 레코드를 제거하고 원하는 것만 남긴다. \index{외부 조인} \index{SQL!on}
 
 조인의 출력에서 필드 이름을 지정하기 위해 `Table.field`를 사용했음을 주목하자.
 테이블에 동일한 이름의 필드가 있을 수 있고, 어떤 것에 대해 이야기하고 있는지 구체적으로 명시할 필요가 있기 때문이다.
 예를 들어, `Person`과 `Visited` 테이블을 조인하면, 결과는 각 원래 테이블에서 `id`라는 필드를 상속받는다.
 
-이제 같은 점 표기법(dotted notation)을 사용하여 조인에서 실제로 원하는 칼럼 3개를 선택할 수 있다.
+이제 같은 점 표기법(dotted notation)을 사용하여 조인에서 실제로 원하는 칼럼 3개를 선택할 수 있다. \index{점 표기법}
 
 ``` sql
 SELECT
@@ -204,11 +214,12 @@ FROM
 | -48.87 | -123.4  | 1932-01-14 |  sal  |  22.5   |
 | -49.85 | -128.57 | 1932-03-22 |  rad  |  11.25  |
 
-`Site`, `Visited`, `Survey` 테이블 레코드들이 서로 어떻게 대응하는지 알 수 있는 이유는 테이블들이 **기본 키(primary keys)**와 **외래 키(foreign keys)**를 포함하기 때문이다.
+`Site`, `Visited`, `Survey` 테이블 레코드들이 서로 어떻게 대응하는지 알 수 있는 이유는 테이블들이 **기본 키(primary key)**와 **외래 키(foreign key)**를 포함하기 때문이다.
 기본 키는 테이블 각 레코드를 고유하게 식별하는 값 또는 값의 조합이다.
 외래키는 또 다른 테이블에 있는 유일하게 레코드를 식별하는 하나의 값(혹은 여러 값의 조합)이다.
 다른 방식으로 말하면, 외래 키는 한 테이블의 기본 키가 다른 테이블에 존재하는 것이다.
 예제 데이터베이스에서 `Person.ident`는 `Person` 테이블의 기본키인 반면에, `Survey.person`은 외래키로 `Survey` 테이블의 항목과 `Person` 테이블의 항목을 연결하는 외래 키다.
+\index{기본 키(primary key)} \index{외래 키(foreign key)}
 
 대부분의 데이터베이스 설계자들은 모든 테이블이 잘 정의된 기본 키를 가져야 한다고 믿는다.
 또한, 이 키는 데이터 자체와 별개여야 하므로, 데이터를 변경할 필요가 있을 때 한 곳에서만 변경을 하면 된다.
@@ -228,48 +239,45 @@ SELECT rowid, * FROM Person;
 |   4   |   roe    | Valentina | Roerich  |
 |   5   | danforth |   Frank   | Danforth |
 
-
 ## 연습문제 {.unnumbered}
 
 ### 객관식 {.unnumbered}
 
-1. **문제:** SQL에서 `INNER JOIN`은 어떤 조건에서 레코드를 반환합니까?
-   1. 모든 레코드
-   1. 첫 번째 테이블의 레코드만
-   1. 두 테이블 간 일치하는 레코드만
-   1. 일치하지 않는 레코드만
+1.  **문제:** SQL에서 `INNER JOIN`은 어떤 조건에서 레코드를 반환합니까?
+    1.  모든 레코드
+    2.  첫 번째 테이블의 레코드만
+    3.  두 테이블 간 일치하는 레코드만
+    4.  일치하지 않는 레코드만
 
-::: {.content-visible when-format="revealjs"}   
-   - **정답:** C. 두 테이블 간 일치하는 레코드만
-:::   
-
-2. **문제:** `LEFT JOIN`을 사용할 때 결과 집합에 포함되는 것은 무엇입니까?
-   1. 오른쪽 테이블의 모든 레코드
-   1. 일치하는 레코드가 없는 왼쪽 테이블의 레코드
-   1. 왼쪽 테이블의 모든 레코드와 일치하는 오른쪽 테이블의 레코드
-   1. 두 테이블 간 일치하지 않는 모든 레코드
-
-::: {.content-visible when-format="revealjs"}   
-   - **정답:** C. 왼쪽 테이블의 모든 레코드와 일치하는 오른쪽 테이블의 레코드
-:::   
-
-3. **문제:** `FULL OUTER JOIN`의 기능은 무엇입니까?
-   1. 두 테이블의 교집합만 반환
-   1. 두 테이블의 합집합을 반환
-   1. 오직 한 테이블의 레코드만 반환
-   1. 일치하는 레코드가 없는 경우에만 반환
-   
-::: {.content-visible when-format="revealjs"}   
-   - **정답:** B. 두 테이블의 합집합을 반환
+::: {.content-visible when-format="revealjs"}
+-   **정답:** C. 두 테이블 간 일치하는 레코드만
 :::
 
+2.  **문제:** `LEFT JOIN`을 사용할 때 결과 집합에 포함되는 것은 무엇입니까?
+    1.  오른쪽 테이블의 모든 레코드
+    2.  일치하는 레코드가 없는 왼쪽 테이블의 레코드
+    3.  왼쪽 테이블의 모든 레코드와 일치하는 오른쪽 테이블의 레코드
+    4.  두 테이블 간 일치하지 않는 모든 레코드
+
+::: {.content-visible when-format="revealjs"}
+-   **정답:** C. 왼쪽 테이블의 모든 레코드와 일치하는 오른쪽 테이블의 레코드
+:::
+
+3.  **문제:** `FULL OUTER JOIN`의 기능은 무엇입니까?
+    1.  두 테이블의 교집합만 반환
+    2.  두 테이블의 합집합을 반환
+    3.  오직 한 테이블의 레코드만 반환
+    4.  일치하는 레코드가 없는 경우에만 반환
+
+::: {.content-visible when-format="revealjs"}
+-   **정답:** B. 두 테이블의 합집합을 반환
+:::
 
 ### 방사능 측정값 목록 {.unnumbered}
 
 `DR-1` 사이트의 모든 방사선 측정치를 출력하는 쿼리를 작성하세요.
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT
    Survey.reading
@@ -291,7 +299,6 @@ WHERE
 | 9.82    |
 | 7.8     |
 | 11.25   |
-
 :::
 
 ### 프랭크 위치 {.unnumbered}
@@ -299,7 +306,6 @@ WHERE
 "Frank" 가 방문한 모든 사이트를 출력하는 쿼리를 작성하세요.
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT
   DISTINCT Site.name
@@ -317,7 +323,6 @@ WHERE
 | name |
 |------|
 | DR-3 |
-
 :::
 
 ### 쿼리 독해 {.unnumbered}
@@ -336,7 +341,6 @@ ON Site.lat < -49.0 AND Site.name = Visited.site AND Visited.dated >= '1932-01-0
 힌트: 15개의 레코드와 8개의 필드를 얻어야 한다.
 
 ::: {.content-visible when-format="revealjs"}
-
 ``` sql
 SELECT Site.name, Site.lat, Site.long, Person.personal, Person.family, Survey.quant, Survey.reading, Visited.dated
 FROM
@@ -374,5 +378,4 @@ ORDER BY
 | MSK-4 | -48.87 | -123.4  | Anderson  |  Lake   |  sal  |  0.21   | 1932-01-14 |
 | MSK-4 | -48.87 | -123.4  | Valentina | Roerich |  sal  |  22.5   | 1932-01-14 |
 | DR-1  | -49.85 | -128.57 | Valentina | Roerich |  rad  |  11.25  | 1932-03-22 |
-
 :::

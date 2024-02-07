@@ -48,6 +48,8 @@ contributes:
             
             %% GPT-SQL
             \usepackage{colortbl}
+            \usepackage[utf8]{inputenc}
+            \usepackage{tabularray}
             \usepackage{tabularx}
             \usepackage{longtable}
 

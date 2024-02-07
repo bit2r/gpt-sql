@@ -7,6 +7,9 @@
 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만,
 개념은 동일한다.
 
+\index{데이터베이스!프로그래밍}
+\index{데이터베이스!파이썬}
+
 `survey.db`라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는
 짧은 파이썬 프로그램이 다음에 있다.
 
@@ -100,13 +103,15 @@ SELECT personal || ' ' || family FROM Person WHERE id='dyer'; DROP TABLE Survey;
 만약 쿼리를 실행하게 된다면, 데이터베이스에 있는 테이블 중의 하나를 삭제한다.
 
 이것을 **SQL 주입 공격(SQL injection attack)**이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다.
+\index{SQL 주입 공격}
 
 악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다.
 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다.
 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다.
-문자열로 문장을 작성하는 대신에 **준비된 문장(prepared statement)**를 사용해서 작업할 수 있다.
-만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.
-
+문자열로 문장을 작성하는 대신에 **미리 준비된 쿼리(prepared statement)**를 사용해서 작업할 수 있다.
+만약에 미리 준비된 쿼리를 사용한다면, 예제 프로그램은 다음과 같다.
+\index{미리 준비된 쿼리}
+\index{prepared statement}
 
 ``` python
 import sqlite3
@@ -251,8 +256,6 @@ Full name for barrett: Mary Barrett
    - **정답:** B. `TRY-CATCH`
 :::   
 
-
-
 ### 테이블 채우기 vs. 값 출력하기  {.unnumbered}
 
 `Pressure`라는 테이블 하나로 구성된 `original.db`라는 파일에 새로운 데이터베이스를 생성하는 파이썬 프로그램을 작성해보자. 테이블에는 `reading`이라는 단일 필드가 있으며, 
@@ -393,6 +396,9 @@ Taken,Temp
 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만,
 개념은 동일한다.
 
+\index{데이터베이스!프로그래밍}
+\index{데이터베이스!R 언어}
+
 `survey.db`라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는
 짧은 R 프로그램이 다음에 있다.
 
@@ -480,12 +486,18 @@ SELECT personal || ' ' || family FROM Person WHERE id='dyer'; DROP TABLE Survey;
 만약 쿼리를 실행하게 된다면, 데이터베이스에 있는 테이블 중의 하나를 삭제한다.
 
 이것을 **SQL 주입 공격(SQL injection attack)**이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다.
+\index{SQL 주입 공격}
 
 악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다.
 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다.
 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다.
-문자열로 문장을 작성하는 대신에 **준비된 문장(prepared statement)**를 사용해서 작업할 수 있다.
-만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.번
+문자열로 문장을 작성하는 대신에 **미리 준비된 쿼리(prepared statement)**를 사용해서 작업할 수 있다.
+만약에 미리 준비된 쿼리를 사용한다면, 예제 프로그램은 다음과 같다.
+
+\index{미리 준비된 쿼리}
+\index{prepared statement}
+
+
 
 ```{{r}}
 library(RSQLite)
@@ -530,7 +542,8 @@ R의 데이터베이스 인터페이스 패키지들(예: `RSQLite`)은 데이�
 
 데이터베이스의 모든 테이블을 보기 위해서는 `dbListTables()`를 사용한다.
 
-``` {{r}}
+``` {r}
+#| eval: false
 connection <- dbConnect(SQLite(), "survey.db")
 dbListTables(connection)
 ```
@@ -541,7 +554,8 @@ dbListTables(connection)
 
 테이블 모든 칼럼 이름을 보려면 `dbListFields()`를 사용한다.
 
-``` {{r}}
+``` {r}
+#| eval: false
 dbListFields(connection, "Survey")
 ```
 
@@ -551,7 +565,8 @@ dbListFields(connection, "Survey")
 
 전체 테이블을 데이터프레임으로 읽으려면 `dbReadTable()`을 사용한다.
 
-``` {{r}}
+``` {r}
+#| eval: false
 dbReadTable(connection, "Person")
 ```
 

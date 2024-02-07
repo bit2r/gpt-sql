@@ -1,7 +1,7 @@
 project:
   type: book
-  # output-dir: docs
-  output-dir: pdfs
+  output-dir: docs
+  # output-dir: pdfs
   preview:
     port: 7772
     browser: false
@@ -39,33 +39,33 @@ book:
     # - acknowledgments.qmd
     - index.qmd
 
-    # - part: "시작을 위한 준비"
-    #   chapters:    
-    #     - intro.qmd      
-    #     - theory.qmd      
-    #     - setup.qmd
-        
-    # - part: "SQL 쿼리"
-    #   chapters:
-    #     - select.qmd       # O
-    #     - sort-filter.qmd  # O
-    #     - null-hygene.qmd  # O
-    #     - calc-agg.qmd     # O
-    #     - join.qmd         # O
-    #     - create.qmd       # O
-    #     - prog.qmd         # O
+    - part: "시작을 위한 준비"
+      chapters:
+        - intro.qmd
+        - theory.qmd
+        - setup.qmd
+
+    - part: "SQL 쿼리"
+      chapters:
+        - select.qmd       # O
+        - sort-filter.qmd  # O
+        - null-hygene.qmd  # O
+        - calc-agg.qmd     # O
+        - join.qmd         # O
+        - create.qmd       # O
+        - prog.qmd         # O
 
     - part: "현장활용법"
       chapters:
         - spreadsheet.qmd # O
-        # - etl.qmd         # O
-        # - duck_postgreSQL.qmd # O
-        # - case_dvd.qmd    # O
+        - etl.qmd         # O
+        - duck_postgreSQL.qmd # O
+        - case_dvd.qmd    # O
 
-    # - part: "챗GPT SQL"
-    #   chapters:
-    #     - text2sql.qmd   # O
-    #     - llm.qmd        # O
+    - part: "챗GPT SQL"
+      chapters:
+        - text2sql.qmd   # O
+        - llm.qmd        # O
 
     - references.qmd     # O
 
@@ -88,6 +88,10 @@ bibliography: references.bib
 link-citations: false
 
 engine: knitr
+
+filters:
+   - lightbox
+lightbox: auto
 
 knitr:
   opts_chunk:

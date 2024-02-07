@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR" xml:lang="ko-KR"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.4.523">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="이광춘">
-
 <title>챗GPT SQL - 11&nbsp; 데이터베이스 프로그래밍</title>
 <style>
 code{white-space: pre-wrap;}
@@ -57,7 +54,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -76,8 +72,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -103,9 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "검색",
     "search-label": "검색"
   }
-}</script>
-
-<script type="text/javascript">
+}</script><script type="text/javascript">
 
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -117,18 +110,12 @@ ga('send', {
   hitType: 'pageview',
   'anonymizeIp': true,
 });
-</script>
-<script defer="" data-domain="r2bit.com/gpt-sql" src="https://plausible.io/js/script.js"></script>
-
-
+</script><script defer="" data-domain="r2bit.com/gpt-sql" src="https://plausible.io/js/script.js"></script>
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="사이드바 전환" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -139,13 +126,9 @@ ga('send', {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">챗GPT SQL</a> 
         <div class="sidebar-tools-main">
@@ -165,7 +148,7 @@ ga('send', {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">챗GPT SQL</span></span></a>
@@ -179,8 +162,8 @@ ga('send', {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">들어가며</span></span></a>
@@ -199,7 +182,7 @@ ga('send', {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
@@ -208,8 +191,8 @@ ga('send', {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./select.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">데이터 선택하기</span></span></a>
@@ -252,7 +235,7 @@ ga('send', {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
@@ -261,8 +244,8 @@ ga('send', {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./spreadsheet.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">엑셀의 역설</span></span></a>
@@ -287,7 +270,7 @@ ga('send', {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
@@ -296,8 +279,8 @@ ga('send', {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./text2sql.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">자연어 SQL 쿼리</span></span></a>
@@ -310,7 +293,7 @@ ga('send', {
   </div>
 </li>
       </ul>
-  </li>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -318,41 +301,43 @@ ga('send', {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">목차</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">목차</h2>
    
   <ul>
-  <li><a href="#파이썬" id="toc-파이썬" class="nav-link active" data-scroll-target="#파이썬"><span class="header-section-number">11.1</span> 파이썬</a></li>
-  <li><a href="#연습문제" id="toc-연습문제" class="nav-link" data-scroll-target="#연습문제">연습문제</a>
+<li><a href="#%ED%8C%8C%EC%9D%B4%EC%8D%AC" id="toc-파이썬" class="nav-link active" data-scroll-target="#%ED%8C%8C%EC%9D%B4%EC%8D%AC"><span class="header-section-number">11.1</span> 파이썬</a></li>
+  <li>
+<a href="#%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C" id="toc-연습문제" class="nav-link" data-scroll-target="#%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C">연습문제</a>
   <ul class="collapse">
-  <li><a href="#객관식" id="toc-객관식" class="nav-link" data-scroll-target="#객관식">객관식</a></li>
-  <li><a href="#테이블-채우기-vs.-값-출력하기" id="toc-테이블-채우기-vs.-값-출력하기" class="nav-link" data-scroll-target="#테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
-  <li><a href="#sql-필터링-vs.-파이썬-필터링" id="toc-sql-필터링-vs.-파이썬-필터링" class="nav-link" data-scroll-target="#sql-필터링-vs.-파이썬-필터링">SQL 필터링 vs.&nbsp;파이썬 필터링</a></li>
-  <li><a href="#삽입문-생성" id="toc-삽입문-생성" class="nav-link" data-scroll-target="#삽입문-생성">삽입문 생성</a></li>
-  </ul></li>
-  <li><a href="#r-언어" id="toc-r-언어" class="nav-link" data-scroll-target="#r-언어"><span class="header-section-number">11.2</span> R 언어</a>
-  <ul class="collapse">
-  <li><a href="#r-도우미-함수" id="toc-r-도우미-함수" class="nav-link" data-scroll-target="#r-도우미-함수"><span class="header-section-number">11.2.1</span> R 도우미 함수</a></li>
-  </ul></li>
-  <li><a href="#연습문제-1" id="toc-연습문제-1" class="nav-link" data-scroll-target="#연습문제-1">연습문제</a>
-  <ul class="collapse">
-  <li><a href="#테이블-채우기-vs.-값-출력하기-1" id="toc-테이블-채우기-vs.-값-출력하기-1" class="nav-link" data-scroll-target="#테이블-채우기-vs.-값-출력하기-1">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
-  <li><a href="#sql-필터링-vs.-r-필터링" id="toc-sql-필터링-vs.-r-필터링" class="nav-link" data-scroll-target="#sql-필터링-vs.-r-필터링">SQL 필터링 vs.&nbsp;R 필터링</a></li>
-  </ul></li>
+<li><a href="#%EA%B0%9D%EA%B4%80%EC%8B%9D" id="toc-객관식" class="nav-link" data-scroll-target="#%EA%B0%9D%EA%B4%80%EC%8B%9D">객관식</a></li>
+  <li><a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B1%84%EC%9A%B0%EA%B8%B0-vs.-%EA%B0%92-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0" id="toc-테이블-채우기-vs.-값-출력하기" class="nav-link" data-scroll-target="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B1%84%EC%9A%B0%EA%B8%B0-vs.-%EA%B0%92-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
+  <li><a href="#sql-%ED%95%84%ED%84%B0%EB%A7%81-vs.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%95%84%ED%84%B0%EB%A7%81" id="toc-sql-필터링-vs.-파이썬-필터링" class="nav-link" data-scroll-target="#sql-%ED%95%84%ED%84%B0%EB%A7%81-vs.-%ED%8C%8C%EC%9D%B4%EC%8D%AC-%ED%95%84%ED%84%B0%EB%A7%81">SQL 필터링 vs.&nbsp;파이썬 필터링</a></li>
+  <li><a href="#%EC%82%BD%EC%9E%85%EB%AC%B8-%EC%83%9D%EC%84%B1" id="toc-삽입문-생성" class="nav-link" data-scroll-target="#%EC%82%BD%EC%9E%85%EB%AC%B8-%EC%83%9D%EC%84%B1">삽입문 생성</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/prog.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></nav>
+</li>
+  <li>
+<a href="#r-%EC%96%B8%EC%96%B4" id="toc-r-언어" class="nav-link" data-scroll-target="#r-%EC%96%B8%EC%96%B4"><span class="header-section-number">11.2</span> R 언어</a>
+  <ul class="collapse">
+<li><a href="#r-%EB%8F%84%EC%9A%B0%EB%AF%B8-%ED%95%A8%EC%88%98" id="toc-r-도우미-함수" class="nav-link" data-scroll-target="#r-%EB%8F%84%EC%9A%B0%EB%AF%B8-%ED%95%A8%EC%88%98"><span class="header-section-number">11.2.1</span> R 도우미 함수</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C-1" id="toc-연습문제-1" class="nav-link" data-scroll-target="#%EC%97%B0%EC%8A%B5%EB%AC%B8%EC%A0%9C-1">연습문제</a>
+  <ul class="collapse">
+<li><a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B1%84%EC%9A%B0%EA%B8%B0-vs.-%EA%B0%92-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0-1" id="toc-테이블-채우기-vs.-값-출력하기-1" class="nav-link" data-scroll-target="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%B1%84%EC%9A%B0%EA%B8%B0-vs.-%EA%B0%92-%EC%B6%9C%EB%A0%A5%ED%95%98%EA%B8%B0-1">테이블 채우기 vs.&nbsp;값 출력하기</a></li>
+  <li><a href="#sql-%ED%95%84%ED%84%B0%EB%A7%81-vs.-r-%ED%95%84%ED%84%B0%EB%A7%81" id="toc-sql-필터링-vs.-r-필터링" class="nav-link" data-scroll-target="#sql-%ED%95%84%ED%84%B0%EB%A7%81-vs.-r-%ED%95%84%ED%84%B0%EB%A7%81">SQL 필터링 vs.&nbsp;R 필터링</a></li>
+  </ul>
+</li>
+  </ul><div class="toc-actions"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/prog.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./select.html">SQL 쿼리</a></li><li class="breadcrumb-item"><a href="./prog.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">11</span>&nbsp; <span class="chapter-title">데이터베이스 프로그래밍</span>
+</h1>
 </div>
 
 
@@ -366,12 +351,10 @@ ga('send', {
   
 
 
-</header>
-
-
-<section id="파이썬" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="파이썬"><span class="header-section-number">11.1</span> 파이썬</h2>
+</header><section id="파이썬" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="파이썬">
+<span class="header-section-number">11.1</span> 파이썬</h2>
 <p>마무리 하면서, 파이썬 같은 범용 프로그래밍 언어에서 데이터베이스를 어떻게 접근하는지 살펴보자. 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만, 개념은 동일한다.</p>
+<p> </p>
 <p><code>survey.db</code>라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는 짧은 파이썬 프로그램이 다음에 있다.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="in">import sqlite3</span></span>
@@ -418,8 +401,8 @@ ga('send', {
 <p>프로젝트 이름 뒤에는 쓰레기(garbage)처럼 보이지만, 매우 주의깊게 고른 쓰레기다. 만약 이 문자열을 쿼리에 삽입하면, 결과는 다음과 같다.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> personal <span class="op">||</span> <span class="st">' '</span> <span class="op">||</span> family <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span><span class="op">=</span><span class="st">'dyer'</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> Survey; <span class="kw">SELECT</span> <span class="st">''</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>만약 쿼리를 실행하게 된다면, 데이터베이스에 있는 테이블 중의 하나를 삭제한다.</p>
-<p>이것을 <strong>SQL 주입 공격(SQL injection attack)</strong>이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다.</p>
-<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <strong>준비된 문장(prepared statement)</strong>를 사용해서 작업할 수 있다. 만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.</p>
+<p>이것을 <strong>SQL 주입 공격(SQL injection attack)</strong>이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다. </p>
+<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <strong>미리 준비된 쿼리(prepared statement)</strong>를 사용해서 작업할 수 있다. 만약에 미리 준비된 쿼리를 사용한다면, 예제 프로그램은 다음과 같다. </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sqlite3</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_name(database_file, person_id):</span>
@@ -502,60 +485,55 @@ ga('send', {
 <span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a><span class="in">print("Full name for barrett:", get_name('survey.db', 'barrett'))</span></span>
 <span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <pre class="shell"><code>Full name for barrett: Mary Barrett</code></pre>
-</section>
-<section id="연습문제" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
-<section id="객관식" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="객관식">객관식</h3>
+</section><section id="연습문제" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
+<section id="객관식" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="객관식">객관식</h3>
 <ol type="1">
-<li><strong>문제:</strong> SQL 프로그래밍에서 변수를 선언하기 위해 사용하는 키워드는 무엇입니까?
+<li>
+<strong>문제:</strong> SQL 프로그래밍에서 변수를 선언하기 위해 사용하는 키워드는 무엇입니까?
 <ol type="1">
 <li><code>DECLARE</code></li>
 <li><code>DEFINE</code></li>
 <li><code>SET</code></li>
 <li><code>VARIABLE</code></li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <ol start="2" type="1">
-<li><strong>문제:</strong> SQL에서 조건부 로직을 구현할 때 사용되는 구문은 무엇입니까?
+<li>
+<strong>문제:</strong> SQL에서 조건부 로직을 구현할 때 사용되는 구문은 무엇입니까?
 <ol type="1">
 <li><code>IF-ELSE</code></li>
 <li><code>SWITCH</code></li>
 <li><code>FOR</code></li>
 <li><code>WHILE</code></li>
-</ol></li>
+</ol>
+</li>
 </ol>
 <ol start="3" type="1">
-<li><strong>문제:</strong> SQL에서 예외 처리를 위해 사용하는 구문은 무엇입니까?
+<li>
+<strong>문제:</strong> SQL에서 예외 처리를 위해 사용하는 구문은 무엇입니까?
 <ol type="1">
 <li><code>ERROR</code></li>
 <li><code>TRY-CATCH</code></li>
 <li><code>THROW</code></li>
 <li><code>RAISE</code></li>
-</ol></li>
 </ol>
-</section>
-<section id="테이블-채우기-vs.-값-출력하기" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</h3>
+</li>
+</ol></section><section id="테이블-채우기-vs.-값-출력하기" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기">테이블 채우기 vs.&nbsp;값 출력하기</h3>
 <p><code>Pressure</code>라는 테이블 하나로 구성된 <code>original.db</code>라는 파일에 새로운 데이터베이스를 생성하는 파이썬 프로그램을 작성해보자. 테이블에는 <code>reading</code>이라는 단일 필드가 있으며, 10.0에서 25.0 사이의 100,000개의 무작위 숫자를 삽입한다. 이 프로그램을 실행하는 데 얼마나 걸리는가? 단순히 이 무작위 숫자를 파일에 쓰는 프로그램을 실행하는 데는 얼마나 걸리는가?</p>
 <p>이를 위해 먼저 <code>sqlite3</code> 모듈과 <code>random</code> 모듈을 사용할 수 있다. 데이터베이스와 테이블을 생성하고, 무작위 숫자를 생성하여 테이블에 삽입하는 코드를 작성한다. 그리고 이 프로세스가 얼마나 걸리는지 측정한다. 파일에 숫자를 쓰는 프로그램도 비슷한 방식으로 작성하고 실행 시간을 비교한다.</p>
-</section>
-<section id="sql-필터링-vs.-파이썬-필터링" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="sql-필터링-vs.-파이썬-필터링">SQL 필터링 vs.&nbsp;파이썬 필터링</h3>
+</section><section id="sql-필터링-vs.-파이썬-필터링" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="sql-필터링-vs.-파이썬-필터링">SQL 필터링 vs.&nbsp;파이썬 필터링</h3>
 <p><code>original.db</code>와 동일한 구조를 가진 새 데이터베이스 backup.db를 생성하는 파이썬 프로그램을 작성하고, original.db에서 20.0보다 큰 모든 값을 backup.db로 복사한다. 어느 것이 더 빠른가? 쿼리에서 값을 필터링하는 것, 아니면 모든 것을 메모리에 읽어 파이썬에서 필터링하는 것.</p>
-</section>
-<section id="삽입문-생성" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="삽입문-생성">삽입문 생성</h3>
+</section><section id="삽입문-생성" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="삽입문-생성">삽입문 생성</h3>
 <p>동료중의 한명이 Robert Olmstead가 측정한 온도 측정치를 포함하는 다음과 같은 형식의 <strong>CSV</strong> 파일을 보내왔다.</p>
 <pre class="shell"><code>Taken,Temp
 619,-21.5
 622,-15.5</code></pre>
 <p><code>survey</code> 데이터베이스에 레코드로 추가하려고 CSV 파일을 읽고 SQL <code>insert</code>문을 출력하는 작은 파이썬 프로그램을 작성하세요. <code>Person</code> 테이블에 Olmstead 항목을 추가할 필요가 있을 것이다. 반복적으로 프로그램을 테스트하려면, SQL <code>INSERT or REPLACE</code> 문을 자세히 살펴볼 필요도 있다.</p>
-</section>
-</section>
-<section id="r-언어" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="r-언어"><span class="header-section-number">11.2</span> R 언어</h2>
+</section></section><section id="r-언어" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="r-언어">
+<span class="header-section-number">11.2</span> R 언어</h2>
 <p>마무리 하면서, R 같은 범용 프로그래밍 언어에서 데이터베이스를 어떻게 접근하는지 살펴보자. 다른 언어도 거의 같은 모델을 사용한다. 라이브러리와 함수 이름이 다를지 모르지만, 개념은 동일한다.</p>
+<p> </p>
 <p><code>survey.db</code>라는 이름의 파일에 저장된 SQLite 데이터베이스에서 위도와 경도를 선택하는 짧은 R 프로그램이 다음에 있다.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(RSQLite)</span></span>
@@ -596,8 +574,9 @@ ga('send', {
 <p>프로젝트 이름 뒤에는 쓰레기(garbage)처럼 보이지만, 매우 주의깊게 고른 쓰레기다. 만약 이 문자열을 쿼리에 삽입하면, 결과는 다음과 같다.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> personal <span class="op">||</span> <span class="st">' '</span> <span class="op">||</span> family <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span><span class="op">=</span><span class="st">'dyer'</span>; <span class="kw">DROP</span> <span class="kw">TABLE</span> Survey; <span class="kw">SELECT</span> <span class="st">''</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>만약 쿼리를 실행하게 된다면, 데이터베이스에 있는 테이블 중의 하나를 삭제한다.</p>
-<p>이것을 <strong>SQL 주입 공격(SQL injection attack)</strong>이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다.</p>
-<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <strong>준비된 문장(prepared statement)</strong>를 사용해서 작업할 수 있다. 만약에 준비된 문장을 사용한다면, 예제 프로그램은 다음과 같다.번</p>
+<p>이것을 <strong>SQL 주입 공격(SQL injection attack)</strong>이라고 하며, 수년에 걸쳐 수천 개의 프로그램을 공격하는 데 사용되었다. 특히, 사용자로부터 데이터를 받는 많은 웹사이트들이 값을 쿼리에 직접 삽입하는데, 이를 신중하게 검사하지 않는 경우가 많다. </p>
+<p>악의를 가진 사용자가 다양한 많은 방식으로 쿼리에 명령어를 몰래 밀어넣으려고 한다. 이러한 위협을 다루는 가장 안전한 방식은 인용부호 같은 문자를 대체 상응값으로 대체하는 것이다. 그렇게 해서 안전하게 문자열 내부에 사용자가 입력한 무엇이든지 넣을 수 있다. 문자열로 문장을 작성하는 대신에 <strong>미리 준비된 쿼리(prepared statement)</strong>를 사용해서 작업할 수 있다. 만약에 미리 준비된 쿼리를 사용한다면, 예제 프로그램은 다음과 같다.</p>
+<p> </p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="in">library(RSQLite)</span></span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="in">connection &lt;- dbConnect(SQLite(), "data/survey.db")</span></span>
@@ -614,24 +593,24 @@ ga('send', {
 <pre class="shell"><code>full name for dyer: William Dyer</code></pre>
 <p>The key changes are in the query string and the <code>dbGetQuery</code> call (we use dbGetPreparedQuery instead). Instead of formatting the query ourselves, we put question marks in the query template where we want to insert values. When we call <code>dbGetPreparedQuery</code>, we provide a dataframe that contains as many values as there are question marks in the query. The library matches values to question marks in order, and translates any special characters in the values into their escaped equivalents so that they are safe to use.</p>
 <p>주요 변경사항은 쿼리 문자열과 <code>dbGetQuery</code> 호출에 있다. (대신 <code>dbGetPreparedQuery</code>을 사용 ) 직접 쿼리를 포맷하는 대신, 값을 삽입하고 싶은 쿼리 템플릿에 물음표를 넣는다. <code>dbGetPreparedQuery</code>를 호출할 때, 쿼리에 있는 물음표 수만큼의 값을 포함하는 데이터프레임을 제공한다. 라이브러리는 순서대로 값과 물음표를 매칭하고, 값의 특수 문자를 이스케이프된 대응물로 변환하여 사용하기 안전하게 만든다.</p>
-<section id="r-도우미-함수" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="r-도우미-함수"><span class="header-section-number">11.2.1</span> R 도우미 함수</h3>
+<section id="r-도우미-함수" class="level3" data-number="11.2.1"><h3 data-number="11.2.1" class="anchored" data-anchor-id="r-도우미-함수">
+<span class="header-section-number">11.2.1</span> R 도우미 함수</h3>
 <p>R의 데이터베이스 인터페이스 패키지들(예: <code>RSQLite</code>)은 데이터베이스를 탐색하고 전체 테이블을 한 번에 읽거나 쓰는 데 유용한 공통된 도우미 함수(helper function)들을 공유한다.</p>
 <p>데이터베이스의 모든 테이블을 보기 위해서는 <code>dbListTables()</code>를 사용한다.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="in">connection &lt;- dbConnect(SQLite(), "survey.db")</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="in">dbListTables(connection)</span></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">connection</span> <span class="op">&lt;-</span> <span class="fu">dbConnect</span><span class="op">(</span><span class="fu">SQLite</span><span class="op">(</span><span class="op">)</span>, <span class="st">"survey.db"</span><span class="op">)</span></span>
+<span><span class="fu">dbListTables</span><span class="op">(</span><span class="va">connection</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <pre class="shell"><code>"Person"  "Site"    "Survey"  "Visited"</code></pre>
 <p>테이블 모든 칼럼 이름을 보려면 <code>dbListFields()</code>를 사용한다.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbListFields(connection, "Survey")</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">dbListFields</span><span class="op">(</span><span class="va">connection</span>, <span class="st">"Survey"</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <pre class="shell"><code>"taken"   "person"  "quant"   "reading"</code></pre>
 <p>전체 테이블을 데이터프레임으로 읽으려면 <code>dbReadTable()</code>을 사용한다.</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbReadTable(connection, "Person")</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">dbReadTable</span><span class="op">(</span><span class="va">connection</span>, <span class="st">"Person"</span><span class="op">)</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <pre class="shell"><code>        id  personal   family
 1     dyer   William     Dyer
 2       pb     Frank  Pabodie
@@ -654,24 +633,14 @@ ga('send', {
 <div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="in">dbDisconnect(connection)</span></span>
 <span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-</section>
-<section id="연습문제-1" class="level2 unnumbered">
-<h2 class="unnumbered anchored" data-anchor-id="연습문제-1">연습문제</h2>
-<section id="테이블-채우기-vs.-값-출력하기-1" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기-1">테이블 채우기 vs.&nbsp;값 출력하기</h3>
+</section></section><section id="연습문제-1" class="level2 unnumbered"><h2 class="unnumbered anchored" data-anchor-id="연습문제-1">연습문제</h2>
+<section id="테이블-채우기-vs.-값-출력하기-1" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="테이블-채우기-vs.-값-출력하기-1">테이블 채우기 vs.&nbsp;값 출력하기</h3>
 <p><code>Pressure</code>라는 테이블 하나로 구성된 <code>original.db</code>라는 파일에 새로운 데이터베이스를 생성하는 R 프로그램을 작성해보자. 테이블에는 <code>reading</code>이라는 단일 필드가 있으며, 10.0에서 25.0 사이의 100,000개의 무작위 숫자를 삽입한다. 이 프로그램을 실행하는 데 얼마나 걸리는가? 단순히 이 무작위 숫자를 파일에 쓰는 프로그램을 실행하는 데는 얼마나 걸리는가?</p>
-</section>
-<section id="sql-필터링-vs.-r-필터링" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="sql-필터링-vs.-r-필터링">SQL 필터링 vs.&nbsp;R 필터링</h3>
+</section><section id="sql-필터링-vs.-r-필터링" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="sql-필터링-vs.-r-필터링">SQL 필터링 vs.&nbsp;R 필터링</h3>
 <p><code>original.db</code>와 동일한 구조를 가진 새 데이터베이스 <code>backup.db</code>를 생성하는 R 프로그램을 작성하고, <code>original.db</code>에서 20.0보다 큰 모든 값을 <code>backup.db</code>로 복사한다. 어느 것이 더 빠른가? 쿼리에서 값을 필터링하는 것, 아니면 모든 것을 메모리에 읽어 R에서 필터링하는 것.</p>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1067,10 +1036,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./create.html" class="pagination-link  aria-label=" &lt;span="" 생성과="" 변형&lt;="" span&gt;"="">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./create.html" class="pagination-link  aria-label=">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">데이터 생성과 변형</span></span>
       </a>          
   </div>
@@ -1081,8 +1048,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
 <p>챗GPT SQL 책은 소프트웨어 카펜트리 Database and SQL 번역한 것이 포함되어 있습니다.</p>
 </div>   
@@ -1094,8 +1060,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>
   </div>
 </footer>
-
-
 
 
 </body></html>

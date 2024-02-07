@@ -370,7 +370,7 @@ ga('send', {
 <div class="sourceCode" id="cb3"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>.<span class="kw">mode</span> <span class="kw">column</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>.<span class="kw">header</span> <span class="kw">on</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>데이터를 생성하고 수정하고 싶다면, 두 가지 명령어 짝을 알아야 한다.</p>
-<p>첫번째 명령어 쌍은 <strong>CREATE TABLE</strong>과 <strong>DROP TABLE</strong>이다. 두 단어로 작성되지만, 사실 하나의 단일 명령어다. 첫번째 명령어는 새로운 테이블을 생성한다. 인자는 테이블 칼럼의 이름과 형식이다. 예를 들어, 다음 문장은 survey 데이터베이스에 테이블 4개를 생성한다.</p>
+<p>첫번째 명령어 쌍은 <strong>CREATE TABLE</strong>과 <strong>DROP TABLE</strong>이다. 두 단어로 작성되지만, 사실 하나의 단일 명령어다. 첫번째 명령어는 새로운 테이블을 생성한다. 인자는 테이블 칼럼의 이름과 형식이다. 예를 들어, 다음 문장은 survey 데이터베이스에 테이블 4개를 생성한다. </p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Person(<span class="kw">id</span> text, personal text, family text);</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Site(name text, lat <span class="dt">real</span>, <span class="dt">long</span> <span class="dt">real</span>);</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span> Visited(<span class="kw">id</span> <span class="dt">integer</span>, site text, dated text);</span>
@@ -419,7 +419,7 @@ ga('send', {
 <p>다시 한번, 어떤 제약 조건들이 사용 가능하고, 어떻게 불려지는지는 어떤 데이터베이스 관리자를 사용하느냐에 따라 다르다.</p>
 <section id="삽입" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="삽입"><span class="header-section-number">10.1</span> 삽입</h2>
-<p>테이블이 생성되면, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>와 같은 다른 명령집합을 사용하여 레코드를 추가, 변경 및 제거할 수 있다.</p>
+<p>테이블이 생성되면, <code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>와 같은 다른 명령집합을 사용하여 레코드를 추가, 변경 및 제거할 수 있다. </p>
 <p>다음은 <code>Site</code> 테이블에 행을 삽입하는 예시다.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Site (name, lat, <span class="dt">long</span>) <span class="kw">VALUES</span> (<span class="st">'DR-1'</span>, <span class="op">-</span><span class="fl">49.85</span>, <span class="op">-</span><span class="fl">128.57</span>);</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">INSERT</span> <span class="kw">INTO</span> Site (name, lat, <span class="dt">long</span>) <span class="kw">VALUES</span> (<span class="st">'DR-3'</span>, <span class="op">-</span><span class="fl">47.15</span>, <span class="op">-</span><span class="fl">126.72</span>);</span>
@@ -441,6 +441,7 @@ ga('send', {
 <div class="sourceCode" id="cb10"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">DELETE</span> <span class="kw">FROM</span> Person <span class="kw">WHERE</span> <span class="kw">id</span> <span class="op">=</span> <span class="st">'danforth'</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>그러나 앤더슨 레이크(Anderson Lake)를 대신 제거한다면 어떨까? <code>Survey</code> 테이블은 그가 수행한 측정의 7개 레코드를 여전히 포함할 것이다. 그러나 이러한 일은 절대 일어나서는 안 되는 일이다. <code>Survey.person</code>은 <code>Person</code> 테이블로 외래 키로, 작성된 모든 쿼리는 전자의 모든 값이 매칭되는 후자의 행이 있을 거라고 가정한다.</p>
 <p>이 문제를 <strong>참조 무결성(referential integrity)</strong>이라고 부른다. 테이블 간 모든 참조가 항상 올바르게 해결될 수 있도록 해야 한다. 이를 해결하는 한 가지 방법은 기본 키로 사용되는 레코드를 삭제하기 전에 외래 키로 <code>lake</code>를 사용하는 모든 레코드를 삭제하는 것이다. 데이터베이스 관리자가 지원한다면, <strong>계단식 삭제(cascading delete)</strong>를 자동화할 수 있다. 하지만, 이 기법은 여기서 다루는 SQL 기본영역 밖이다.</p>
+<p> </p>
 <div class="callout callout-style-simple callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

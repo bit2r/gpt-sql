@@ -34,6 +34,8 @@ $ sqlite3 newsurvey.db
 첫번째 명령어는 새로운 테이블을 생성한다. 
 인자는 테이블 칼럼의 이름과 형식이다.
 예를 들어, 다음 문장은 survey 데이터베이스에 테이블 4개를 생성한다.
+\index{SQL!create table}
+\index{SQL!drop table}
 
 ```sql
 CREATE TABLE Person(id text, personal text, family text);
@@ -92,6 +94,7 @@ CREATE TABLE Survey(
   
 테이블이 생성되면, `INSERT`, `UPDATE`, `DELETE`와 같은 다른 명령집합을 사용하여 
 레코드를 추가, 변경 및 제거할 수 있다.
+\index{SQL!insert} \index{SQL!update} \index{SQL!delete}
 
 다음은 `Site` 테이블에 행을 삽입하는 예시다.
 
@@ -149,6 +152,8 @@ DELETE FROM Person WHERE id = 'danforth';
 이를 해결하는 한 가지 방법은 기본 키로 사용되는 레코드를 삭제하기 전에 외래 키로 `lake`를 사용하는 모든 레코드를 삭제하는 것이다. 데이터베이스 관리자가 지원한다면, **계단식 삭제(cascading delete)**를 자동화할 수 있다.
 하지만, 이 기법은 여기서 다루는 SQL 기본영역 밖이다.
 
+\index{참조 무결성}
+\index{계단식 삭제}
 
 
 ::: {.callout-note}

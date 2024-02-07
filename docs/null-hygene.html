@@ -364,7 +364,7 @@ ga('send', {
 
 <p>데이터베이스가 어떻게 결측 정보를 표현하는지 살펴보고, 결측 정보를 다룰 때, 3개 값을 가진 로직(three-valued logic) 데이터베이스 사용하여 결측 정보를 올바르게 처리하는 쿼리를 작성한다.</p>
 <p>현실 세계 데이터는 결코 완전하지 않고 구멍은 항상 있다. <code>null</code>로 불리는 특별한 값을 사용하여 데이터베이스는 구멍을 표현한다. <code>null</code>는 0, <code>False</code>, 혹은 빈 문자열도 아니다.”아무것도 없음(nothing here)“을 의미하는 특별한 값이다. <code>null</code>을 다루는 것은 약간 특별한 기교와 신중한 생각을 요구한다.</p>
-<p>기본적으로 SQLite는 출력에서 NULL 값을 표시하지 않는다. <code>.nullvalue</code> 명령은 SQLite가 NULL에 대해 지정한 값을 표시하도록 한다. NULL을 더 쉽게 볼 수 있도록 <code>-null-</code> 값을 사용한다.</p>
+<p>기본적으로 SQLite는 출력에서 NULL 값을 표시하지 않는다. <code>.nullvalue</code> 명령은 SQLite가 NULL에 대해 지정한 값을 표시하도록 한다. NULL을 더 쉽게 볼 수 있도록 <code>-null-</code> 값을 사용한다. </p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>.nullvalue <span class="op">-</span><span class="kw">null</span><span class="op">-</span></span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>시작으로 <code>Visited</code> 테이블을 살펴보자. 혹은 더 정확히 말하면 날짜가 <code>null</code>이다.</p>
 <p>시작으로 <code>Visited</code> 테이블을 살펴보자. 레코드가 8개 있지만 #752은 날짜가 없다. 즉, 그 날짜는 <code>null</code>이다:</p>
@@ -486,7 +486,7 @@ ga('send', {
 <div class="sourceCode" id="cb5"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">=</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>출력을 생성하지 않으며, 다음도 마찬가지로 출력을 생성하지 않는다.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="op">!=</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><code>null</code> 인지 아닌지를 점검하기 위해서, 특별한 테스트 <code>IS NULL</code>을 사용해야 한다.</p>
+<p><code>null</code> 인지 아닌지를 점검하기 위해서, 특별한 테스트 <code>IS NULL</code>을 사용해야 한다. </p>
 <table class="table">
 <thead>
 <tr class="header">
@@ -503,7 +503,7 @@ ga('send', {
 </tr>
 </tbody>
 </table>
-<p>혹은, 역으로는 <code>IS NOT NULL</code>을 사용한다.</p>
+<p>혹은, 역으로는 <code>IS NOT NULL</code>을 사용한다. </p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="op">*</span> <span class="kw">FROM</span> Visited <span class="kw">WHERE</span> dated <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span>;</span></code><button title="클립보드 복사" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <table class="table">
 <thead>
@@ -637,7 +637,7 @@ ga('send', {
 <p>산술 또는 부울 연산자와 달리, <code>min</code>, <code>max</code> 또는 <code>avg</code>와 같은 여러 값을 결합하는 집계 함수는 <code>null</code> 값을 <em>무시한다</em>. 대부분의 경우, 이는 바람직한 결과이다. 예를 들어, 알려지지 않은 값들이 평균을 낼 때 <code>null</code>값은 데이터에 영향을 주지 않는다. 집계 함수는 다음 장에서 더 자세히 다룰 것이다.</p>
 <section id="데이터-위생" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="데이터-위생"><span class="header-section-number">7.1</span> 데이터 위생</h2>
-<p><strong>데이터 위생(data hygiene)</strong>은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자.</p>
+<p><strong>데이터 위생(data hygiene)</strong>은 특히 데이터 분석, 데이터베이스 관리 및 데이터 처리에서 중요한 개념으로, 오류가 적고 정확한 데이터를 보장하기 위한 일련의 방법론을 의미한다. 지금까지 조인이 어떻게 동작하는지 살펴봤으니, 왜 관계형 모델이 그렇게 유용한지 그리고 어떻게 가장 잘 사용할 수 있는지 살펴보자. 이를 위해, 데이터베이스 설계자들이 데이터를 어떻게 구조화하는지 살펴보자. </p>
 <p>첫번째 규칙은 모든 값은 독립 요소로 분해될 수 없는 <strong>원자(atomic)</strong>적 속성을 지녀야 한다. 하나의 칼럼에 전체 이름을 넣는 대신에 별도로 구별되는 칼럼에 이름과 성을 저장해서 이름 컴포넌트를 뽑아내는 부분 문자열 연산(substring operation)을 사용할 필요가 없다. 좀더 중요하게는, 이름을 두 부분으로 저장한다. 왜냐하면, 공백으로 쪼개는 것은 신뢰성이 약하다. “Eloise St.&nbsp;Cyr” 혹은 “Jan Mikkel Steubart” 같은 이름을 생각하면 쉽게 알 수 있다.</p>
 <p>두번째 규칙은 모든 레코드는 유일한 기본키를 가져야한다. 내재적인 의미가 전혀없는 일련번호가 될 수도 있고, 레코드 값중의 하나 (<code>Person</code> 테이블의 <code>ident</code> 필드), 혹은 <code>Survey</code> 테이블에서 심지어 모든 측정값을 유일하게 식별하는 <code>(taken, person, quant)</code> 삼중값의 조합도 될 수 있다.</p>
 <p>세번째 규칙은 불필요한 정보가 없어야 한다. 예를 들어, <code>Site</code>테이블을 제거하고 다음과 같이 <code>Visited</code> 테이블을 다시 작성할 수 있다.</p>
@@ -710,10 +710,10 @@ ga('send', {
 <p>지금까지 데이터를 다중 연결된 테이블에 넣고 <strong>키(keys)</strong>를 사용하여 행을 연결하는 방식으로 데이터 모델을 생성했는데, 키와 관련된 몇몇 용어를 살펴볼 필요가 있다. 일반적으로 데이터베이스 모델에서 세가지 종류의 키가 사용된다.</p>
 <ul>
 <li><p><strong>논리 키(logical key)</strong>는 “실제 세상”이 행을 찾기 위해서 사용하는 키다. 데이터 모델 예제에서, <code>name</code> 필드는 논리키다. 사용자에 대해서 <code>screen_name</code>이고, <code>name</code> 필드를 사용하여 프로그램에서 여러번 사용자 행을 찾을 수 있다. 논리 키에 <code>UNIQUE</code> 제약 사항을 추가하는 것이 의미있다는 것을 종종 이해하게 된다. 논리 키는 어떻게 바깥 세상에서 행을 찾는지 다루기 때문에, 테이블에 동일한 값을 가진 다중 행이 존재한다는 것은 의미가 없다.</p></li>
-<li><p><strong>주키(primary key)</strong>는 통상적으로 데이터베이스에서 자동 대입되는 숫자다. 프로그램 밖에서는 일반적으로 의미가 없고, 단지 서로 다른 테이블에서 행을 열결할 때만 사용된다. 테이블에 행을 찾을 때, 통상적으로 주키를 사용해서 행을 찾는 것이 가장 빠르게 행을 찾는 방법이다. 주키는 정수형이어서, 매우 적은 저장공간을 차지하고 매우 빨리 비교 혹은 정렬할 수 있다. 이번에 사용된 데이터 모델에서 <code>id</code> 필드가 주키의 한 예가 된다.</p></li>
-<li><p><strong>외부 키(foreign key)</strong>는 일반적으로 다른 테이블에 연관된 행의 주키를 가리키는 숫자다. 이번에 사용된 데이터 모델의 외부 키의 사례는 <code>from_id</code>다.</p></li>
+<li><p><strong>기본 키(primary key)</strong>는 통상적으로 데이터베이스에서 자동 대입되는 숫자다. 프로그램 밖에서는 일반적으로 의미가 없고, 단지 서로 다른 테이블에서 행을 열결할 때만 사용된다. 테이블에 행을 찾을 때, 통상적으로 주키를 사용해서 행을 찾는 것이 가장 빠르게 행을 찾는 방법이다. 주키는 정수형이어서, 매우 적은 저장공간을 차지하고 매우 빨리 비교 혹은 정렬할 수 있다. 이번에 사용된 데이터 모델에서 <code>id</code> 필드가 주키의 한 예가 된다.</p></li>
+<li><p><strong>외래 키(foreign key)</strong>는 일반적으로 다른 테이블에 연관된 행의 주키를 가리키는 숫자다. 이번에 사용된 데이터 모델의 외부 키의 사례는 <code>from_id</code>다.</p></li>
 </ul>
-<p>주키 <code>id</code>필드명을 호출하고, 항상 외부키에 임의 필드명에 접미사로 <code>_id</code> 붙이는 명명규칙을 사용한다.</p>
+<p>주키 <code>id</code>필드명을 호출하고, 항상 외부키에 임의 필드명에 접미사로 <code>_id</code> 붙이는 명명규칙을 사용한다. </p>
 </section>
 <section id="연습문제" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="연습문제">연습문제</h2>
