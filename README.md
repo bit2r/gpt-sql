@@ -20,6 +20,16 @@ PostgreSQL에 포함되어 있는 내장 데이터베이스(DVD 대여)를 통�
 
 전자책은 쿼토 책(Quarto Book)을 활용하여 제작되었으며
 PDF 파일은 한글 글꼴 및 한글 책 특성을 반영하기 위해서 
-공익법인 한국 R 사용자회에서 제작한 [`bitPublish`](https://github.com/bit2r/bitPublish)를 템플리트로 사용하여 
-챗GPT SQL 한글 책을 조판했습니다.
+공익법인 한국 R 사용자회에서 제작한 [`bitPublish`](https://github.com/bit2r/bitPublish)를 템플리트로 사용하여 챗GPT SQL 한글 책을 조판했습니다.
 
+# 챗GPT SQL 책 구매 정보
+
+챗GPT SQL 책은 교보문고에서 POD 종이책과 전자책으로 구매가 가능합니다.
+
+📘 교보 POD 종이책: https://bit.ly/3OJmMeT
+
+📗 교보 전자책: https://bit.ly/48fujZD
+
+🌐 웹사이트: https://bit.ly/48gYn7d
+
+💻 소스코드: https://bit.ly/3wrgeuP
