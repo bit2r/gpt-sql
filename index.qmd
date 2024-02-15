@@ -10,7 +10,9 @@
 
 데이터베이스와 SQL에 대해 어느 정도 기본적인 지식이 있는 독자는 쿼리작성의 기본기를 다루는 "SQL 쿼리"를 생략하고 바로 현장활용법과 챗GPT SQL로 넘어가는 것을 추천한다. 이 책을 통해서 SQL 쿼리 작성 기본기, 연관 데이터베이스 지식, 엑셀과 관계, ETL 과정을 통해 정형 파일(CSV 등) 데이터베이스로 담기는 과정, DuckDB, 데이터베이스 프로그래밍, OpenAI API 프로그래밍, 오픈소스 LLM 모델을 활용한 챗GPT SQL을 배울 수 있다. 
 
-"챗GPT와 SQL"은 [기여자 행동 강령](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html)을 준용한다는 점에 유의하고, 이 책에 기여하는 것은 여러분은 해당 조항을 준수하는 데 동의함을 의미한다.
+"챗GPT와 SQL"은 [기여자 행동 강령](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html)을 준용한다는 점에 유의하고, 이 책에 기여하는 것은 여러분이 해당 조항을 준수하는 데 동의함을 의미한다. 
+이 책은 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 라이선스를 준용하고 
+교보문고에서 [POD 종이책](https://product.kyobobook.co.kr/detail/S000212372280)과 함께 [전자책](https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000006436385)으로도 소장이 가능하다.
 
 ## 감사의 글 {.unnumbered}
 

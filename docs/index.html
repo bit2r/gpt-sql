@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ko-KR" xml:lang="ko-KR"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.523">
+<meta name="generator" content="quarto-1.5.9">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -117,7 +117,7 @@ ga('send', {
     <div class="sidebar-title mb-0 py-0">
       <a href="./">챗GPT SQL</a> 
         <div class="sidebar-tools-main">
-    <a href="https://github.com/bit2r/gpt-sql/" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="https://github.com/bit2r/gpt-sql/" title="소스 코드" class="quarto-navigation-tool px-1" aria-label="소스 코드"><i class="bi bi-github"></i></a>
   <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="리더 모드 전환">
   <div class="quarto-reader-toggle-btn">
   <i class="bi"></i>
@@ -332,7 +332,7 @@ ga('send', {
     <div>
     <div class="quarto-title-meta-heading">공개</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">2024년 02월 07일</p>
+      <p class="date">2024년 02월 15일</p>
     </div>
   </div>
   
@@ -350,7 +350,7 @@ ga('send', {
 <p><a href="https://r2bit.com/">공익법인 한국 R 사용자회</a>에서 출판한 “챗GP SQL” 웹사이트로 오신 것을 환영합니다. 이 책은 본격적으로 부상한 인공지능(AI) 기술인 챗GPT와 함께 SQL을 다양한 각도에서 다루고 있습니다. 챗GPT로 대표되는 생성형 AI 기술의 가장 큰 문제점 중 하나는 환각(허구, hallucination)의 가능성이다. 환각을 내포한 SQL 쿼리 생성문제를 확인하기 위해서 현재 기준 기여자가 87명의 집단지성으로 제작되고 현재도 꾸준히 업데이트되고 있는 소프트웨어 카펜트리 <a href="https://swcarpentry.github.io/sql-novice-survey/">데이터베이스와 SQL(Databases and SQL)</a> 콘텐츠를 한글로 번역하고 생성형 AI가 생성한 SQL 쿼리를 검증하는 과정을 포함했다.</p>
 <p>이 책은 SQL 쿼리를 여러분이 직접 작성하고 빠른 시간내에 체화할 수 있도록 복잡하고 어려운 내용을 최대한 단순하게 풀어서 설명하고 불필요하다고 생각되는 내용은 최대한 배제했다. 하지만, 다양한 상황에서 효과적인 SQL 쿼리를 작성하는데 필요한 다양한 개념들 예를 들어, OLTP/OLAP 데이터베이스, ETL/ELT, 프로그래밍 언어와 결합, 스프레드시트(엑셀) 등도 코드와 함께 넣어 실무에서도 바로 사용할 수 있도록 했다.</p>
 <p>데이터베이스와 SQL에 대해 어느 정도 기본적인 지식이 있는 독자는 쿼리작성의 기본기를 다루는 “SQL 쿼리”를 생략하고 바로 현장활용법과 챗GPT SQL로 넘어가는 것을 추천한다. 이 책을 통해서 SQL 쿼리 작성 기본기, 연관 데이터베이스 지식, 엑셀과 관계, ETL 과정을 통해 정형 파일(CSV 등) 데이터베이스로 담기는 과정, DuckDB, 데이터베이스 프로그래밍, OpenAI API 프로그래밍, 오픈소스 LLM 모델을 활용한 챗GPT SQL을 배울 수 있다.</p>
-<p>“챗GPT와 SQL”은 <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">기여자 행동 강령</a>을 준용한다는 점에 유의하고, 이 책에 기여하는 것은 여러분은 해당 조항을 준수하는 데 동의함을 의미한다.</p>
+<p>“챗GPT와 SQL”은 <a href="https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html">기여자 행동 강령</a>을 준용한다는 점에 유의하고, 이 책에 기여하는 것은 여러분이 해당 조항을 준수하는 데 동의함을 의미한다. 이 책은 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 라이선스를 준용하고 교보문고에서 <a href="https://product.kyobobook.co.kr/detail/S000212372280">POD 종이책</a>과 함께 <a href="https://ebook-product.kyobobook.co.kr/dig/epd/ebook/E000006436385">전자책</a>으로도 소장이 가능하다.</p>
 <section id="감사의-글" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="감사의-글">감사의 글</h2>
 <p>이 책이 탄생할 수 있도록 도움을 주신 여러분께 깊은 감사의 마음을 표합니다.</p>
@@ -494,27 +494,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
     }
     stripColumnClz(note)
-    const typesetMath = (el) => {
-      if (window.MathJax) {
-        // MathJax Typeset
-        window.MathJax.typeset([el]);
-      } else if (window.katex) {
-        // KaTeX Render
-        var mathElements = el.getElementsByClassName("math");
-        var macros = [];
-        for (var i = 0; i < mathElements.length; i++) {
-          var texText = mathElements[i].firstChild;
-          if (mathElements[i].tagName == "SPAN") {
-            window.katex.render(texText.data, mathElements[i], {
-              displayMode: mathElements[i].classList.contains('display'),
-              throwOnError: false,
-              macros: macros,
-              fleqn: false
-            });
-          }
-        }
-      }
-    }
     if (id === null || id.startsWith('sec-')) {
       // Special case sections, only their first couple elements
       const container = document.createElement("div");
@@ -529,10 +508,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             break;
           }
         }
-        typesetMath(container);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
         return container.innerHTML
       } else {
-        typesetMath(note);
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
         return note.innerHTML;
       }
     } else {
@@ -541,8 +524,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (anchorLink) {
         anchorLink.remove();
       }
-      typesetMath(note);
-      return note.innerHTML;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -767,7 +757,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./intro.html" class="pagination-link" aria-label="<span class='chapter-number'>2</span>&nbsp; <span class='chapter-title'>들어가며</span>">
+      <a href="./intro.html" class="pagination-link" aria-label="들어가며">
         <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">들어가며</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
@@ -780,13 +770,37 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/bit2r/gpt-sql/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>편집</a></li><li><a href="https://github.com/bit2r/gpt-sql/issues/new" class="toc-action"><i class="bi empty"></i>이슈 보고</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>순수하게 <a href="https://quarto.org/">쿼토(Quarto)</a>로 제작되었습니다.</p>
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","loop":false,"selector":".lightbox","descPosition":"bottom","openEffect":"zoom"});</script>
+<script>var lightboxQuarto = GLightbox({"loop":false,"openEffect":"zoom","closeEffect":"zoom","descPosition":"bottom","selector":".lightbox"});
+window.onload = () => {
+  lightboxQuarto.on('slide_before_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    const href = trigger.getAttribute('href');
+    if (href !== null) {
+      const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+      if (imgEl !== null) {
+        const srcAttr = imgEl.getAttribute("src");
+        if (srcAttr && srcAttr.startsWith("data:")) {
+          slideConfig.href = srcAttr;
+        }
+      }
+    } 
+  });
+
+  lightboxQuarto.on('slide_after_load', (data) => {
+    const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+    if (window.Quarto?.typesetMath) {
+      window.Quarto.typesetMath(slideNode);
+    }
+  });
+
+};
+          </script>
 
 
 
